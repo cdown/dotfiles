@@ -1,3 +1,6 @@
 [user]
 	name = Christopher Down
 	email = iofc.org@christopher.down
+
+[alias]
+    oops = reset --soft HEAD~1
