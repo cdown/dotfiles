@@ -7,7 +7,6 @@ set nobackup
 set nocompatible
 set nowrap
 set shiftwidth=4
-set showmatch
 set smartcase
 set tabstop=4
 set undolevels=1000
