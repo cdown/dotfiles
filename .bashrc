@@ -16,4 +16,4 @@ if [[ $SSH_CLIENT || $SSH_CONNECTION || $SSH_TTY ]]; then
 fi
 
 (( EUID )) && m="$" || m="#"
-PS1="\h:\W$m "
+[[ -f ~/.hostname ]] && PS1="$(< ~/.hostname):\W$m " || PS1="\h:\W$m "
