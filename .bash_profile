@@ -36,7 +36,7 @@ getTerminfo() {
     if [[ $TERM == st || $TERM == st-256color ]]; then
         if [[ ! -f ~/.terminfo/s/st || ! -f ~/.terminfo/s/st-256color ]]; then
             wget -qO /tmp/st.info http://sprunge.us/BNMe && tic /tmp/st.info
-            rm /tic/st.info
+            rm /tmp/st.info
         fi
     fi
 }
