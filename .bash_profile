@@ -17,6 +17,7 @@ updateDotfiles() {
                 [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
                 [[ -e ~/$fileName ]] && unlink ~/"$fileName"
             done
+            mkdir -p ~/git
             rm -rf ~/git/dotfiles && mv /tmp/cdown-dotfiles ~/git/dotfiles
             for file in ~/git/dotfiles/**/*; do
                 fileName=${file##~/git/dotfiles/}
