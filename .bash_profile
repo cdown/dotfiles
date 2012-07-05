@@ -1,3 +1,28 @@
+shopt -s dotglob nullglob globstar
+
+if type -p git >/dev/null 2>&1; then
+    if [[ ! -d ~/git/dotfiles ]]; then
+        mkdir -p ~/git/dotfiles
+        for file in ~/git/dotfiles/**/*; do
+            fileName=${file##~/git/dotfiles/}
+            [[ ! -f $file ]] && continue
+            [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
+            [[ -e ~/$fileName ]] && unlink ~/"$fileName"
+        done
+        git clone git://github.com/cdown/dotfiles.git ~/git/dotfiles
+    else
+        git pull ~/git/dotfiles
+    fi
+    for file in ~/git/dotfiles/**/*; do
+        fileName=${file##~/git/dotfiles/}
+        [[ ! -f $file ]] && continue
+        [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
+        [[ -e ~/$fileName ]] && unlink ~/"$fileName"
+        [[ $fileName == */* ]] && mkdir -p "${fileName%/*}" 
+        ln -s "$file" ~/"$fileName"
+    done
+fi
+
 localesDesired=({en_{GB,US},C}.{utf8,UTF-8}) 
 
 [[ -r ~/.bashrc ]] && . ~/.bashrc
