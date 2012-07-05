@@ -78,6 +78,6 @@ if [[ $1 == noupdate ]]; then
     getLocale
     exportEnvironment
 else
-    runSSHAgent
+    [[ $SSH_CLIENT ]] || runSSHAgent
     updateDotfiles
 fi

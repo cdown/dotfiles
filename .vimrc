@@ -1,4 +1,5 @@
 set autoindent
+set autoread
 set backspace=2
 set encoding=utf-8
 set expandtab
@@ -14,6 +15,8 @@ set undolevels=1000
 set whichwrap+=<,>,[,]
 
 syntax on
+
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Allow up/down to work as expected when ''wrap'' is set
 nnoremap <Down> gj
