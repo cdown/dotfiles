@@ -24,6 +24,7 @@ updateDotfiles() {
                 [[ ! -f $file ]] && continue
                 [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
                 [[ $fileName == */* ]] && mkdir -p "${fileName%/*}" 
+                [[ -e ~/$fileName ]] && unlink ~/"$fileName"
                 ln -s "$file" ~/"$fileName"
             done
         fi
