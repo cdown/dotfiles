@@ -1,4 +1,5 @@
 autocutsel -f
 autocutsel -f -s PRIMARY
-unclutter -root -idle 5 &
+xset +fp /usr/share/fonts/local
+xset fp rehash
 exec dwm
