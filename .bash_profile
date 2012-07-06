@@ -5,7 +5,7 @@ shopt -s dotglob nullglob globstar
 updateDotfiles() {
     if type -p git >/dev/null 2>&1; then
         rm -rf /tmp/cdown-dotfiles
-        if [[ -f ~/id_rsa ]]; then
+        if [[ -f ~/.ssh/id_rsa ]]; then
             gitCommand=(git clone git@github.com:cdown/dotfiles.git /tmp/cdown-dotfiles)
         else
             gitCommand=(git clone git://github.com/cdown/dotfiles.git /tmp/cdown-dotfiles)
