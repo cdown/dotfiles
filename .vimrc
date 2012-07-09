@@ -1,6 +1,7 @@
 set autoindent
 set autoread
 set backspace=2
+set colorcolumn=+1
 set encoding=utf-8
 set expandtab
 set incsearch
@@ -11,6 +12,7 @@ set shiftwidth=4
 set shortmess=atI
 set smartcase
 set tabstop=4
+set textwidth=80
 set undolevels=1000
 set whichwrap+=<,>,[,]
 
