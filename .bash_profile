@@ -13,7 +13,7 @@ updateDotfiles() {
         [[ -e ~/$fileName ]] && unlink ~/"$fileName"
     done
     mkdir -p ~/git
-    rm -rf ~/git/dotfiles && mv /tmp/cdown-dotfiles ~/git/dotfiles
+    rm -rf ~/git/dotfiles && mv /tmp/cdown-dotfiles ~/git/dotfiles || return 3
     for file in ~/git/dotfiles/**/*; do
         fileName=${file##~/git/dotfiles/}
         [[ ! -f $file ]] && continue
