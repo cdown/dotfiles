@@ -78,6 +78,8 @@ if [[ $1 == noupdate ]]; then
     getLocale
     exportEnvironment
 else
-    [[ $SSH_CLIENT ]] || runSSHAgent
+    if ! [[ $SSH_CLIENT ]] && (( EUID )) && ! pgrep -u "$EUID" ssh-agent; then
+        runSSHAgent
+    fi
     updateDotfiles
 fi
