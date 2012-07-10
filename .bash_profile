@@ -3,33 +3,26 @@
 shopt -s dotglob nullglob globstar
 
 updateDotfiles() {
-    if type -p git >/dev/null 2>&1; then
-        rm -rf /tmp/cdown-dotfiles
-        if [[ -f ~/.ssh/id_rsa ]]; then
-            gitCommand=(git clone git@github.com:cdown/dotfiles.git /tmp/cdown-dotfiles)
-        else
-            gitCommand=(git clone git://github.com/cdown/dotfiles.git /tmp/cdown-dotfiles)
-        fi
-        if "${gitCommand[@]}"; then
-            for file in ~/git/dotfiles/**/*; do
-                fileName=${file##~/git/dotfiles/}
-                [[ ! -f $file ]] && continue
-                [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
-                [[ -e ~/$fileName ]] && unlink ~/"$fileName"
-            done
-            mkdir -p ~/git
-            rm -rf ~/git/dotfiles && mv /tmp/cdown-dotfiles ~/git/dotfiles
-            for file in ~/git/dotfiles/**/*; do
-                fileName=${file##~/git/dotfiles/}
-                [[ ! -f $file ]] && continue
-                [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
-                [[ $fileName == */* ]] && mkdir -p "${fileName%/*}" 
-                [[ -e ~/$fileName ]] && unlink ~/"$fileName"
-                ln -s "$file" ~/"$fileName"
-            done
-        fi
-        [[ -r ~/.bash_profile ]] && . ~/.bash_profile noupdate
-    fi
+    type -p git >/dev/null 2>&1 || return 1
+    rm -rf /tmp/cdown-dotfiles
+    git clone git://github.com/cdown/dotfiles.git /tmp/cdown-dotfiles || return 2
+    for file in ~/git/dotfiles/**/*; do
+        fileName=${file##~/git/dotfiles/}
+        [[ ! -f $file ]] && continue
+        [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
+        [[ -e ~/$fileName ]] && unlink ~/"$fileName"
+    done
+    mkdir -p ~/git
+    rm -rf ~/git/dotfiles && mv /tmp/cdown-dotfiles ~/git/dotfiles
+    for file in ~/git/dotfiles/**/*; do
+        fileName=${file##~/git/dotfiles/}
+        [[ ! -f $file ]] && continue
+        [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
+        [[ $fileName == */* ]] && mkdir -p "${fileName%/*}" 
+        [[ -e ~/$fileName ]] && unlink ~/"$fileName"
+        ln -s "$file" ~/"$fileName"
+    done
+    [[ -r ~/.bash_profile ]] && . ~/.bash_profile noupdate
 }
 
 getTerminfo() {
