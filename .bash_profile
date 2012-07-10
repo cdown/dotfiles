@@ -52,8 +52,13 @@ getLocale() {
 }
 
 runSSHAgent() {
-    eval $(ssh-agent)
-    ssh-add
+    if pgrep -u "$EUID" -x ssh-agent && [[ -f ~/.ssh-agent ]]; then
+        . ~/.ssh-agent
+    else
+        ssh-agent > ~/.ssh-agent
+        . ~/.ssh-agent
+        ssh-add
+    fi
 }
 
 exportEnvironment() {
@@ -71,7 +76,7 @@ if [[ $1 == noupdate ]]; then
     getLocale
     exportEnvironment
 else
-    if ! [[ $SSH_CLIENT ]] && (( EUID )) && ! pgrep -u "$EUID" ssh-agent; then
+    if ! [[ $SSH_CLIENT ]] && (( EUID )); then
         runSSHAgent
     fi
     updateDotfiles
