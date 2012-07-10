@@ -7,7 +7,7 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias v='ls -laFh'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
-alias sudo='sudo '
+alias p='ps auf'
 
 ytget() { wget -c -O "$1" -- "$(yturl "$2")" ; }
 
