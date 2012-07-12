@@ -1,7 +1,6 @@
 set autoindent
 set autoread
 set backspace=2
-set colorcolumn=+1
 set encoding=utf-8
 set expandtab
 set incsearch
@@ -16,9 +15,10 @@ set textwidth=80
 set undolevels=1000
 set whichwrap+=<,>,[,]
 
-syntax on
+highlight OverLength ctermbg=darkred ctermfg=white
+match OverLength /\%>80v.\+/
 
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+syntax on
 
 " Allow up/down to work as expected when ''wrap'' is set
 nnoremap <Down> gj
