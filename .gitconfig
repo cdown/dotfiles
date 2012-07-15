@@ -1,6 +1,5 @@
 [user]
-	name = Christopher Down
-	email = iofc.org@christopher.down
-
-[alias]
-    oops = reset --soft HEAD~1
+    name = Christopher Down
+    email = iofc.org@christopher.down
+[core]
+    excludesfile = /home/chris/.gitignore_global
