@@ -1,2 +1,5 @@
 "dmenu_run -fn -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-* -nb \#000000 -nf \#ffffff -sb \#ffffff -sf \#000000"
     Mod4 + q
+
+"st"
+    Mod4 + w
