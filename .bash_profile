@@ -16,10 +16,12 @@ updateDotfiles() {
     rm -rf ~/git/dotfiles && mv /tmp/cdown-dotfiles ~/git/dotfiles || return 3
     for file in ~/git/dotfiles/**/*; do
         fileName=${file##~/git/dotfiles/}
+        dirName=~/${fileName%/*}
         [[ ! -f $file ]] && continue
         [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
         [[ $fileName == */* ]] && mkdir -p "${fileName%/*}" 
         [[ -e ~/$fileName ]] && unlink ~/"$fileName"
+        [[ -d $dirName ]] || mkdir -p "$dirName"
         ln -s "$file" ~/"$fileName"
     done
     [[ -r ~/.bash_profile ]] && . ~/.bash_profile noupdate
