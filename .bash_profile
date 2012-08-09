@@ -21,7 +21,9 @@ updateDotfiles() {
         [[ $fileName == .git/* || $fileName == .gitignore ]] && continue
         [[ $fileName == */* ]] && mkdir -p "${fileName%/*}" 
         [[ -e ~/$fileName ]] && unlink ~/"$fileName"
-        [[ -d $dirName ]] || mkdir -p "$dirName"
+        if [[ $dirName != "$fileName" ]]; then
+            [[ -d $dirName ]] || mkdir -p "$dirName"
+        fi
         ln -s "$file" ~/"$fileName"
     done
     [[ -r ~/.bash_profile ]] && . ~/.bash_profile noupdate
