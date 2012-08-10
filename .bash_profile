@@ -15,7 +15,7 @@ updateDotfiles() {
     mkdir -p ~/git
     rm -rf ~/git/dotfiles && mv /tmp/cdown-dotfiles ~/git/dotfiles || return 3
     cd ~/git/dotfiles
-    find * -type d -exec mkdir ~/{} \;
+    find * -type d -exec mkdir ~/{} \; 2>/dev/null
     for file in ~/git/dotfiles/**/*; do
         fileName=${file##~/git/dotfiles/}
         [[ ! -f $file ]] && continue
