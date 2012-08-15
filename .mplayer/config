@@ -1,5 +1,2 @@
 vo=vdpau,
 vc=ffh264vdpau,ffmpeg12vdpau,ffodivxvdpau,ffwmv3vdpau,ffvc1vdpau,
-double=yes
-framedrop=yes
-hardframedrop=yes
