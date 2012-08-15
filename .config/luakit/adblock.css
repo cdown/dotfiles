@@ -1,5 +1,0 @@
-/* Facebook */
-#pagelet_ego_pane_w, #pagelet_ego_pane_m, .fbTimelineSideAds, .ego_column {display:none}
-
-/* ETF2L */
-#sidebarSponsor {visibility:hidden} /* The width is important to stop sidebar breakage */

@@ -1,6 +1,0 @@
-#!/bin/bash
-shopt -s nullglob
-for patch in patches/*.diff; do
-    file="${patch%.diff}"
-    cp /etc/xdg/luakit/"${file##patches/}" . && patch < "$patch"
-done

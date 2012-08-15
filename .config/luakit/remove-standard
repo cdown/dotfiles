@@ -1,5 +1,0 @@
-#!/bin/bash
-shopt -s nullglob
-for file in /etc/xdg/luakit/*; do
-    [[ -f ${file##*/} ]] && rm "${file##*/}"
-done
