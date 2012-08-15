@@ -3,7 +3,6 @@ syntax on
 
 set autoindent
 set backspace=2
-set encoding=utf-8
 set expandtab
 set fileencoding=utf-8
 set incsearch
