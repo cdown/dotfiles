@@ -10,6 +10,4 @@ set nobackup
 set nowrap
 set shiftwidth=4
 set shortmess=aI
-set tabstop=4
-set textwidth=80
 set whichwrap+=<,>,[,]
