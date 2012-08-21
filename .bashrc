@@ -4,7 +4,7 @@ HISTCONTROL=ignoredups
 
 alias l='ls --color=auto'
 alias g='grep --color=auto'
-alias v='ls -laFh'
+alias v='l -laFh'
 if type -p sudo >/dev/null 2>&1; then
     alias s='sudo -i'
 else
