@@ -1,11 +1,15 @@
-shopt -s checkwinsize extglob globstar
+shopt -s extglob globstar
 
 HISTCONTROL=ignoredups
-unset HISTFILE
 
-alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+alias l='ls --color=auto'
+alias g='grep --color=auto'
+alias v='ls -laFh'
+if type -p sudo >/dev/null 2>&1; then
+    alias s='sudo -i'
+else
+    alias s='su -'
+fi
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 
-(( EUID )) && m="$" || m="#"
-PS1="\h:\W$m "
+PS1='\h:\W\$ '
