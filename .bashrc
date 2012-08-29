@@ -1,4 +1,4 @@
-shopt -s extglob globstar
+shopt -s extglob globstar nullglob
 
 HISTCONTROL=ignoredups
 
