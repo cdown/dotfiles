@@ -11,11 +11,9 @@ set nowrap
 set shiftwidth=4
 set shortmess=aI
 set tabstop=4
-set textwidth=0
 set whichwrap+=<,>,[,]
 
 autocmd FileType make setlocal noexpandtab
 
 let mapleader = ","
 nmap <silent> <leader>s :set nolist!<CR>
-nmap <silent> <leader>w :set textwidth=80<CR> gqG :set textwidth=0<CR>
