@@ -5,7 +5,7 @@ set backspace=indent,eol,start
 set expandtab
 set fileencoding=utf-8
 set incsearch
-set listchars=tab:>-,trail:·,eol:$
+set listchars=tab:>-,trail:.,eol:$
 set nobackup
 set nowrap
 set shiftwidth=4
