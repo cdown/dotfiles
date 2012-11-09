@@ -13,7 +13,10 @@ alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 so() {
     local tmpdir="$(mktemp -d)"
     local tmprc="$(mktemp)"
-    cat > "$tmprc" <<< "PS1='\\$ '"
-    bash -c "cd \"$tmpdir\"; exec env - /bin/bash --noprofile --rcfile \"$tmprc\""
+    cat > "$tmprc" << EOF
+PS1='\$ '
+cd "$tmpdir"
+EOF
+    env - "$(type -p bash)" --noprofile --rcfile "$tmprc"
     rm -r "$tmpdir" "$tmprc"
 }
