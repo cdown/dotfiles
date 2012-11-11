@@ -21,10 +21,6 @@ set whichwrap+=<,>,[,]
 autocmd FileType make setlocal noexpandtab
 autocmd InsertEnter * let @/ = ""
 
-imap ( ()<left>
-imap { {}<left>
-imap [ []<left>
-
 inoremap <CR> <C-g>u<CR>
 
 let mapleader = ","
