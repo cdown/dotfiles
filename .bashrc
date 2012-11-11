@@ -1,3 +1,7 @@
+if [[ $TERM != screen* ]] && type -p tmux >/dev/null 2>&1; then
+    exec tmux
+fi
+
 shopt -s extglob globstar nullglob
 
 HISTCONTROL=ignoredups
