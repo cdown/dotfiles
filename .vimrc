@@ -1,5 +1,7 @@
 syntax on
 
+let loaded_matchparen = 1
+
 set autoindent
 set backspace=indent,eol,start
 set expandtab
@@ -17,8 +19,7 @@ set tabstop=4
 set whichwrap+=<,>,[,]
 
 autocmd FileType make setlocal noexpandtab
-
-autocmd InsertEnter * :let @/ = ""
+autocmd InsertEnter * let @/ = ""
 
 imap ( ()<left>
 imap { {}<left>
