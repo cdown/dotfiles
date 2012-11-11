@@ -6,6 +6,7 @@ set expandtab
 set fileencoding=utf-8
 set formatoptions+=r
 set fileformats=unix
+set hlsearch
 set incsearch
 set listchars=tab:>-,trail:.,eol:$
 set nobackup
@@ -16,6 +17,9 @@ set tabstop=4
 set whichwrap+=<,>,[,]
 
 autocmd FileType make setlocal noexpandtab
+
+autocmd InsertEnter * :set nohlsearch
+autocmd InsertLeave * :set hlsearch
 
 inoremap <CR> <C-g>u<CR>
 
