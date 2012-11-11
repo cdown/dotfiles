@@ -1,7 +1,6 @@
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
 export EDITOR=vim
-export LANG=en_GB.utf8
 export PAGER=less
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
