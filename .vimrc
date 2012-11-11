@@ -17,3 +17,4 @@ autocmd FileType make setlocal noexpandtab
 
 let mapleader = ","
 nmap <silent> <leader>s :set nolist!<CR>
+nmap <silent> <leader>p :set paste!<CR>
