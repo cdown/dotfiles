@@ -18,8 +18,7 @@ set whichwrap+=<,>,[,]
 
 autocmd FileType make setlocal noexpandtab
 
-autocmd InsertEnter * :set nohlsearch
-autocmd InsertLeave * :set hlsearch
+autocmd InsertEnter * :let @/ = ""
 
 inoremap <CR> <C-g>u<CR>
 
