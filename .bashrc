@@ -5,8 +5,8 @@ HISTFILESIZE=50
 HISTSIZE=$HISTFILESIZE
 PS1='\h:\W\$ '
 
-alias l='ls --color=auto'
-alias g='grep --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias v='l -laFh'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 
