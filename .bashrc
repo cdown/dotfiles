@@ -1,7 +1,7 @@
 shopt -s extglob globstar nullglob
 
 HISTCONTROL=ignoredups
-HISTFILESIZE=50
+HISTFILESIZE=250
 HISTSIZE=$HISTFILESIZE
 PS1='\h:\W\$ '
 
