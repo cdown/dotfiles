@@ -17,6 +17,8 @@ set whichwrap+=<,>,[,]
 
 autocmd FileType make setlocal noexpandtab
 
+inoremap <CR> <C-g>u<CR>
+
 let mapleader = ","
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <leader>p :set paste!<CR>
