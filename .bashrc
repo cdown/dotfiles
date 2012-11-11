@@ -7,7 +7,7 @@ PS1='\h:\W\$ '
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias v='l -laFh'
+alias v='ls -laFh'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 
 so() {
