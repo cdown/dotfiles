@@ -1,4 +1,4 @@
-URxvt.font: xft:DejaVu Sans Mono:size=10:antialias=true
+URxvt.font: xft:Terminus:size=8
 URxvt.depth: 32
 URxvt.borderless: 1
 URxvt.internalBorder: 4
