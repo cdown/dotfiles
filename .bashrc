@@ -19,6 +19,6 @@ so() {
 PS1='\$ '
 cd "$tmpdir"
 EOF
-    env - "$(type -p bash)" --noprofile --rcfile "$tmprc"
+    env - HOME="$HOME" TERM="$TERM" "$(type -p bash)" --noprofile --rcfile "$tmprc"
     rm -r "$tmpdir" "$tmprc"
 }
