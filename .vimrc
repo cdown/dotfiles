@@ -11,6 +11,7 @@ set fileformats=unix
 set hlsearch
 set incsearch
 set listchars=tab:>-,trail:.,eol:$
+set mouse=a
 set nobackup
 set nowrap
 set shiftwidth=4
