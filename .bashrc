@@ -10,6 +10,7 @@ alias grep='grep --color=auto'
 alias v='ls -laFh'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias sc=systemctl
+alias sudo='sudo '
 
 so() {
     local tmpdir="$(mktemp -d)"
