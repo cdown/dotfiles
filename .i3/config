@@ -6,7 +6,7 @@ new_window 1pixel
 font -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u
 
 bar {
-    status_command date '+%a %Y-%m-%d %H:%M'
+    status_command sh -c "while date '+%a %Y-%m-%d %H:%M'; do sleep 60; done"
     mode hide
 }
 
