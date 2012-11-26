@@ -4,4 +4,5 @@ xset fp rehash
 autocutsel -selection CLIPBOARD -fork
 autocutsel -selection PRIMARY -fork
 
-exec dwm
+#exec dwm
+exec i3
