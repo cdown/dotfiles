@@ -1,0 +1,12 @@
+#!/bin/bash
+
+so() {
+    local tmpdir="$(mktemp -d)"
+    local tmprc="$(mktemp)"
+    cat > "$tmprc" << EOF
+PS1='\$ '
+cd "$tmpdir"
+EOF
+    env - HOME="$HOME" TERM="$TERM" "$(type -p bash)" --noprofile --rcfile "$tmprc"
+    rm -r "$tmpdir" "$tmprc"
+}

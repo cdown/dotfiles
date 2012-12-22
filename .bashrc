@@ -1,24 +1,5 @@
-shopt -s extglob globstar nullglob
+#!/bin/bash
 
-HISTCONTROL=ignoredups
-HISTFILESIZE=250
-HISTSIZE=$HISTFILESIZE
-PS1='\h:\W\$ '
-
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias v='ls -laFh'
-alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
-alias sc=systemctl
-alias sudo='sudo '
-
-so() {
-    local tmpdir="$(mktemp -d)"
-    local tmprc="$(mktemp)"
-    cat > "$tmprc" << EOF
-PS1='\$ '
-cd "$tmpdir"
-EOF
-    env - HOME="$HOME" TERM="$TERM" "$(type -p bash)" --noprofile --rcfile "$tmprc"
-    rm -r "$tmpdir" "$tmprc"
-}
+for file in ~/.bash/rc/*; do
+    [[ -e $file ]] && . "$file"
+done
