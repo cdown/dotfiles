@@ -12,7 +12,6 @@ bar {
 
 bindsym $mod+Return exec urxvt
 bindsym $mod+q exec dmenu_run -fn -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u -nb \#000000 -nf \#666666 -sb \#ffffff -sf \#000000
-bindsym $mod+BackSpace exec slock
 
 bindsym $mod+slash kill
 
@@ -20,9 +19,6 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-bindsym $mod+comma split h
-bindsym $mod+period split v
 
 bindsym $mod+f fullscreen
 
@@ -40,10 +36,5 @@ bindsym $mod+Ctrl+l move container to workspace 4
 bindsym $mod+Ctrl+semicolon move container to workspace 5
 bindsym $mod+Ctrl+apostrophe move container to workspace 6
 
-bindsym $mod+Ctrl+slash exit
-
-bindsym $mod+Shift+Left resize shrink width 5 px or 5 ppt
-bindsym $mod+Shift+Down resize grow height 5 px or 5 ppt
-bindsym $mod+Shift+Up resize shrink height 5 px or 5 ppt
-bindsym $mod+Shift+Right resize grow width 5 px or 5 ppt
-
+bindsym $mod+Ctrl+slash reload
+bindsym $mod+Ctrl+Shift+slash exit
