@@ -1,8 +1,7 @@
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-autocutsel -selection CLIPBOARD -fork
+autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
-#exec dwm
-exec i3
+exec i3 > "/tmp/i3-$$.log" 2>&1
