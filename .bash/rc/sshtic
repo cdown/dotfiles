@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sshtic() {
+    infocmp | ssh "$@" 't="$(mktemp)" && cat >"$t" && tic "$t"; rm "$t"'
+}
