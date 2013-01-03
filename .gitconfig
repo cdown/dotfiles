@@ -1,5 +1,7 @@
 [user]
     name = Christopher Down
-    email = iofc.org@christopher.down
+    email = chris@regentmarkets.com
 [core]
     excludesfile = /home/chris/.gitignore_global
+[color]
+    ui = always
