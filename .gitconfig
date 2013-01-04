@@ -5,3 +5,6 @@
     excludesfile = /home/chris/.gitignore_global
 [color]
     ui = always
+[alias]
+    ignore = update-index --assume-unchanged 
+    unignore = update-index --no-assume-unchanged
