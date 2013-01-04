@@ -6,3 +6,4 @@ alias v='ls -laFh'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias sc=systemctl
 alias sudo='sudo '
+alias startx='startx; logout'
