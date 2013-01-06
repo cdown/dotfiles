@@ -16,28 +16,22 @@ bindsym XF86ScreenSaver exec slock
 bindsym XF86Sleep exec slock
 bindsym Print exec sh -c "mkdir -p Screenshots && cd Screenshots && scrot" 
 
-bindsym $mod+slash kill
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 bindsym $mod+f fullscreen
 
-bindsym $mod+p workspace 1
-bindsym $mod+bracketleft workspace 2
-bindsym $mod+bracketright workspace 3
-bindsym $mod+l workspace 4
-bindsym $mod+semicolon workspace 5
-bindsym $mod+apostrophe workspace 6
+bindsym $mod+p            workspace web
+bindsym $mod+bracketleft  workspace dev
+bindsym $mod+bracketright workspace vcs
 
-bindsym $mod+Ctrl+p move container to workspace 1
-bindsym $mod+Ctrl+bracketleft move container to workspace 2
-bindsym $mod+Ctrl+bracketright move container to workspace 3
-bindsym $mod+Ctrl+l move container to workspace 4
-bindsym $mod+Ctrl+semicolon move container to workspace 5
-bindsym $mod+Ctrl+apostrophe move container to workspace 6
+bindsym $mod+Shift+p            move container to workspace web
+bindsym $mod+Shift+bracketleft  move container to workspace dev
+bindsym $mod+Shift+bracketright move container to workspace vcs
 
-bindsym $mod+Ctrl+slash reload
-bindsym $mod+Ctrl+Shift+slash exit
+bindsym $mod+slash kill
+bindsym $mod+r reload
+bindsym $mod+Escape exit
