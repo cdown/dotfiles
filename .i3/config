@@ -1,21 +1,19 @@
-set $mod Mod4
-floating_modifier $mod
-
-new_window 1pixel
-
+new_window pixel 1
 font -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u
+workspace_bar no
 
 bar {
     status_command sh -c "while date '+%a %Y-%m-%d %H:%M'; do sleep 60; done"
     mode hide
 }
 
+set $mod Mod4
+
 bindsym $mod+Return exec urxvt
 bindsym $mod+q exec dmenu_run -fn -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u -nb \#000000 -nf \#666666 -sb \#ffffff -sf \#000000
 bindsym XF86ScreenSaver exec slock
 bindsym XF86Sleep exec slock
 bindsym Print exec sh -c "mkdir -p Screenshots && cd Screenshots && scrot" 
-
 
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
@@ -24,13 +22,15 @@ bindsym $mod+Right focus right
 
 bindsym $mod+f fullscreen
 
-bindsym $mod+p            workspace web
-bindsym $mod+bracketleft  workspace dev
-bindsym $mod+bracketright workspace vcs
+bindsym $mod+o            workspace web
+bindsym $mod+p            workspace dev
+bindsym $mod+bracketleft  workspace mmd
+bindsym $mod+bracketright workspace tmp
 
-bindsym $mod+Shift+p            move container to workspace web
-bindsym $mod+Shift+bracketleft  move container to workspace dev
-bindsym $mod+Shift+bracketright move container to workspace vcs
+bindsym $mod+Shift+o            move container to workspace web
+bindsym $mod+Shift+p            move container to workspace dev
+bindsym $mod+Shift+bracketleft  move container to workspace mmd
+bindsym $mod+Shift+bracketright move container to workspace tmp
 
 bindsym $mod+slash kill
 bindsym $mod+r reload
