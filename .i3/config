@@ -1,6 +1,5 @@
 new_window pixel 1
 font -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u
-workspace_bar no
 
 bar {
     status_command sh -c "while date '+%a %Y-%m-%d %H:%M'; do sleep 60; done"
