@@ -49,6 +49,6 @@ bindsym XF86AudioStop exec --no-startup-id mpc stop
 bindsym XF86AudioPrev exec --no-startup-id mpc prev 
 bindsym XF86AudioNext exec --no-startup-id mpc next
 
-bindsym $mod+Delete kill
+bindsym $mod+BackSpace kill
 bindsym $mod+r reload
 bindsym $mod+Escape exit
