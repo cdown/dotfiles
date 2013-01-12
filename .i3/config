@@ -41,14 +41,13 @@ bindsym $mod+slash fullscreen
 
 bindsym XF86AudioMute        exec --no-startup-id amixer -q sset Master toggle
 bindsym $mod+XF86AudioMute   exec --no-startup-id amixer -q sset Speaker toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset PCM 10dB-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset PCM 10dB+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset PCM 4dB-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset PCM 4dB+
 
-set $mpdSocket ~/.mpd/socket 
-bindsym XF86AudioPlay exec --no-startup-id mpc -h $mpdSocket toggle
-bindsym XF86AudioStop exec --no-startup-id mpc -h $mpdSocket stop
-bindsym XF86AudioPrev exec --no-startup-id mpc -h $mpdSocket prev 
-bindsym XF86AudioNext exec --no-startup-id mpc -h $mpdSocket next
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+bindsym XF86AudioStop exec --no-startup-id mpc stop
+bindsym XF86AudioPrev exec --no-startup-id mpc prev 
+bindsym XF86AudioNext exec --no-startup-id mpc next
 
 bindsym $mod+Delete kill
 bindsym $mod+r reload
