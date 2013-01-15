@@ -10,4 +10,4 @@ xset fp rehash
 
 ( pgrep -u "$EUID" -x systemd >/dev/null 2>&1 || systemd --user & ) &
 
-exec i3 >"/tmp/i3-$$.log" 2>&1
+exec i3 >"/tmp/i3.log" 2>&1
