@@ -55,4 +55,4 @@ bindsym $mod+r reload
 bindsym $mod+Escape exit
 
 exec --no-startup-id nm-applet
-exec --no-startup-id parcellite
+exec --no-startup-id parcellite -n
