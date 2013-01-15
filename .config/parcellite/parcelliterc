@@ -1,0 +1,4 @@
+[rc]
+use_copy=true
+use_primary=true
+synchronize=true
