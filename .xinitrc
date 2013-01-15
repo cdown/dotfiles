@@ -8,8 +8,6 @@ fi
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-autocutsel -fork &
-autocutsel -fork -selection PRIMARY &
+( pgrep -u "$EUID" -x systemd >/dev/null 2>&1 || systemd --user & ) &
 
-systemd --user &
 exec i3 >"/tmp/i3-$$.log" 2>&1
