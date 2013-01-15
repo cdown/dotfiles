@@ -53,3 +53,6 @@ bindsym XF86AudioNext exec --no-startup-id mpc next
 bindsym $mod+BackSpace kill
 bindsym $mod+r reload
 bindsym $mod+Escape exit
+
+exec --no-startup-id nm-applet
+exec --no-startup-id parcellite
