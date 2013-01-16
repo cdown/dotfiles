@@ -1,10 +1,4 @@
-# We need this to launch dbus properly
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-    for f in /etc/X11/xinit/xinitrc.d/*; do
-        [ -x "$f" ] && . "$f"
-    done
-    unset f
-fi
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
 
 # We use terminus, which is (on Arch Linux) stored in a font path that is not
 # hashed by default. DON'T background these or programs trying to use this
