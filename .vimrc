@@ -1,6 +1,6 @@
 syntax on
 
-let loaded_matchparen = 1
+highlight MatchParen ctermbg=white ctermfg=black
 
 set autoindent
 set backspace=indent,eol,start
