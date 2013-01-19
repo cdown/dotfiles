@@ -20,6 +20,7 @@ set whichwrap+=<,>,[,]
 autocmd FileType make setlocal noexpandtab
 autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * set nopaste
+autocmd BufWritePre * %s/\s\+$//e
 
 let mapleader = ","
 nmap <silent> <leader>s :set nolist!<CR>
