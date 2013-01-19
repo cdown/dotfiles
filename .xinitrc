@@ -1,5 +1,3 @@
-eval "$(dbus-launch --sh-syntax --exit-with-session)"
-
 # We use terminus, which is (on Arch Linux) stored in a font path that is not
 # hashed by default. DON'T background these or programs trying to use this
 # font may launch before it is rehashed
