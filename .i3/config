@@ -15,7 +15,7 @@ bindsym $mod+Ctrl+backslash exec chromium --incognito
 bindsym Menu exec dmenu_run -fn -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u -nb \#000000 -nf \#666666 -sb \#ffffff -sf \#000000
 bindsym XF86ScreenSaver exec i3lock -u
 bindsym XF86Sleep exec i3lock -u
-bindsym Print exec sh -c "mkdir -p /tmp/screenshots && cd /tmp/screenshots && scrot" 
+bindsym Print exec sh -c "mkdir -p /tmp/screenshots && cd /tmp/screenshots && scrot"
 
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
@@ -42,17 +42,14 @@ bindsym $mod+slash fullscreen
 
 bindsym XF86AudioMute        exec --no-startup-id amixer -q sset Master toggle
 bindsym $mod+XF86AudioMute   exec --no-startup-id amixer -q sset Speaker toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset PCM 4dB-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset PCM 4dB+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset PCM 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset PCM 5%+
 
 bindsym XF86AudioPlay exec --no-startup-id mpc toggle
 bindsym XF86AudioStop exec --no-startup-id mpc stop
-bindsym XF86AudioPrev exec --no-startup-id mpc prev 
+bindsym XF86AudioPrev exec --no-startup-id mpc prev
 bindsym XF86AudioNext exec --no-startup-id mpc next
 
 bindsym $mod+BackSpace kill
 bindsym $mod+r reload
 bindsym $mod+Escape exit
-
-exec --no-startup-id nm-applet
-exec --no-startup-id parcellite -n
