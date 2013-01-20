@@ -13,4 +13,7 @@ xset b off &
 autocutsel -f
 autocutsel -f -s PRIMARY
 
+mpd &
+mpdscribble &
+
 exec i3 >"/tmp/i3.log" 2>&1
