@@ -10,7 +10,7 @@ xset b off &
 autocutsel -f
 autocutsel -f -s PRIMARY
 
-mpd &
-mpdscribble &
+pgrep -u "$EUID" -x mpd || mpd ~/.mpd/config &
+pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
 exec dbus-launch --exit-with-session i3
