@@ -13,8 +13,9 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+backslash exec chromium
 bindsym $mod+Ctrl+backslash exec chromium --incognito
 bindsym Menu exec dmenu_run -fn -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u -nb \#000000 -nf \#666666 -sb \#ffffff -sf \#000000
-bindsym XF86ScreenSaver exec i3lock -u
-bindsym XF86Sleep exec i3lock -u
+bindsym XF86ScreenSaver exec i3lock -u -c 000000
+bindsym XF86Sleep exec i3lock -u -c 000000
+bindsym $mod+Escape exec i3lock -u -c 000000
 bindsym Print exec sh -c "mkdir -p /tmp/screenshots && cd /tmp/screenshots && scrot"
 
 bindsym $mod+Left  focus left
@@ -52,4 +53,4 @@ bindsym XF86AudioNext exec --no-startup-id mpc next
 
 bindsym $mod+BackSpace kill
 bindsym $mod+r reload
-bindsym $mod+Escape exit
+bindsym $mod+Ctrl+Escape exit
