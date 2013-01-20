@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if ! pgrep -x X >/dev/null && ! [[ $DISPLAY ]] && ! [[ $SSH_TTY ]]; then
-    exec startx
-fi
