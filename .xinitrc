@@ -7,13 +7,10 @@ xset fp rehash
 # Turn off the bell
 xset b off &
 
-# Only launch a user instance of systemd if one isn't already running
-( pgrep -u "$EUID" -x systemd >/dev/null 2>&1 || systemd --user & ) &
-
 autocutsel -f
 autocutsel -f -s PRIMARY
 
 mpd &
 mpdscribble &
 
-exec i3 >"/tmp/i3.log" 2>&1
+exec dbus-launch --exit-with-session i3
