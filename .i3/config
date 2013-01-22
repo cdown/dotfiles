@@ -9,7 +9,7 @@ bar {
 
 set $mod Mod4
 
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvtc
 bindsym $mod+backslash exec chromium
 bindsym $mod+Ctrl+backslash exec chromium --incognito
 bindsym Menu exec dmenu_run -fn -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*u -nb \#000000 -nf \#666666 -sb \#ffffff -sf \#000000
