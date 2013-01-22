@@ -15,4 +15,4 @@ pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
 urxvtd -q -o -f
 
-exec dbus-launch --exit-with-session i3
+exec dbus-launch --exit-with-session dwm
