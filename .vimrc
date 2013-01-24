@@ -9,6 +9,7 @@ set fileencoding=utf-8
 set fileformats=unix
 set hlsearch
 set incsearch
+set lazyredraw
 set listchars=tab:>-,trail:.,eol:$
 set nobackup
 set nowrap
