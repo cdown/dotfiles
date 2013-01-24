@@ -27,3 +27,4 @@ nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <leader>p :set paste<CR>
 map  <silent> <leader>c :s/^/#/<CR>:let @/ = ""<CR>
 map  <silent> <leader>u :s/^#//<CR>
+nmap <silent> p ]p<CR>k
