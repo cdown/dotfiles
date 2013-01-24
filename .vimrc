@@ -23,6 +23,13 @@ autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * set nopaste
 autocmd BufWritePre * %s/\s\+$//e
 
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
 let mapleader = ","
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <leader>p :set paste<CR>
