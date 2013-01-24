@@ -25,3 +25,4 @@ autocmd BufWritePre * %s/\s\+$//e
 let mapleader = ","
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <leader>p :set paste<CR>
+map <silent> <leader># :s/^/#/<CR>:let @/ = ""<CR>
