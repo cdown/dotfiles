@@ -6,5 +6,3 @@ alias v='ls -laFh'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias sc=systemctl
 alias sudo='sudo '
-alias b='git branch -a'
-alias p=pwd
