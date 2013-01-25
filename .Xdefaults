@@ -4,6 +4,8 @@ URxvt.borderless: 1
 URxvt.internalBorder: 4
 URxvt.scrollBar: false
 URxvt.saveLines: 5000
+URxvt.iso14755: true
+URxvt.iso14755_52: false
 
 URxvt.background: #000000
 URxvt.foreground: #999999
