@@ -1,0 +1,5 @@
+#!/bin/bash
+
+yt() {
+    mplayer -cache 512 "$(yturl "$@")"
+}
