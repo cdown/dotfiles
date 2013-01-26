@@ -1,5 +1,12 @@
 #!/bin/bash
 
+[[ -d /dev/shm ]] && dir=/dev/shm || dir=/tmp
+
+mkdir -m 700 -p "$dir/$USER/"{,bash}
+[[ -f $dir/$USER/bash/history ]] || > "$dir/$USER/bash/history"
+chmod 600 "$dir/$USER/bash/history"
+
 HISTCONTROL=ignoredups
 HISTFILESIZE=250
 HISTSIZE=$HISTFILESIZE
+HISTFILE="$dir/$USER/bash/history"
