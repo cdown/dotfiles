@@ -18,27 +18,25 @@ set tabstop=4
 set whichwrap+=<,>,[,]
 
 function TabsOrSpaces()
+    if getfsize(bufname("%")) > 256000
+        return
+    endif
+
     let numTabs=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^\\t"'))
     let numSpaces=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^ "'))
+
     if numTabs > numSpaces
         setlocal noexpandtab
     endif
 endfunction
 
+autocmd BufReadPost * call TabsOrSpaces()
+autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType make setlocal noexpandtab
 autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * set nopaste
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufReadPost * call TabsOrSpaces()
-
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
 
 let mapleader = ","
+nmap <silent> <leader>c :s/^/#/<CR>:let @/ = ""<CR>
 nmap <silent> <leader>p :set paste<CR>
-map  <silent> <leader>c :s/^/#/<CR>:let @/ = ""<CR>
-map  <silent> <leader>u :s/^#//<CR>
+nmap <silent> <leader>u :s/^#//<CR>
