@@ -1,5 +1,8 @@
 syntax on
 
+filetype on
+filetype plugin indent on
+
 highlight MatchParen ctermbg=white ctermfg=black
 
 set autoindent
