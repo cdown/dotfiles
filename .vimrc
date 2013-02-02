@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 syntax on
 
 filetype on
@@ -40,6 +42,4 @@ autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * set nopaste
 
 let mapleader = ","
-nmap <silent> <leader>c :s/^/#/<CR>:let @/ = ""<CR>
 nmap <silent> <leader>p :set paste<CR>
-nmap <silent> <leader>u :s/^#//<CR>
