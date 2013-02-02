@@ -1,3 +1,0 @@
-#!/bin/bash
-
-PATH+=:/opt/android-sdk/platform-tools
