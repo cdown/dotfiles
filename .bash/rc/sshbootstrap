@@ -9,10 +9,12 @@ ssh-dotfiles() {
     if ! [[ -d ~/git/dotfiles ]]; then
         mkdir -p ~/git
         git clone git://github.com/cdown/dotfiles.git ~/git/dotfiles
-        ln -sf ~/git/dotfiles/.vimrc ~/
         ln -sf ~/git/dotfiles/.bash ~/
-        ln -sf ~/git/dotfiles/.bashrc ~/
         ln -sf ~/git/dotfiles/.bash_profile ~/
+        ln -sf ~/git/dotfiles/.bashrc ~/
+        ln -sf ~/git/dotfiles/.hushlogin ~/
+        ln -sf ~/git/dotfiles/.vim ~/
+        ln -sf ~/git/dotfiles/.vimrc ~/
     else
         cd ~/git/dotfiles
         git pull

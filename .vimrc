@@ -41,5 +41,16 @@ autocmd FileType make setlocal noexpandtab
 autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * set nopaste
 
+nnoremap \ :
+
 let mapleader = ","
 nmap <silent> <leader>p :set paste<CR>
+
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
