@@ -5,6 +5,8 @@ syntax on
 filetype on
 filetype plugin indent on
 
+let g:EasyMotion_leader_key = '<Leader>'
+
 highlight MatchParen ctermbg=white ctermfg=black
 
 set autoindent
