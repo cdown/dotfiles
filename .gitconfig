@@ -1,5 +1,5 @@
 [user]
-    name = Christopher Down
+    name = Chris Down
     email = chris@chrisdown.name
 [core]
     excludesfile = /home/chris/.gitignore_global
