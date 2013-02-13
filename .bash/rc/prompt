@@ -1,3 +1,8 @@
 #!/bin/bash
 
-PS1='\h:\W\$ '
+gitPrompt() {
+    branch="$(git name-rev HEAD 2>/dev/null | awk "{ print \$2 }")"
+    printf '%s\n' "${branch:+:$branch}"
+}
+
+PS1='\h:\W$(gitPrompt)\$ '
