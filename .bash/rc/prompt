@@ -1,7 +1,7 @@
 #!/bin/bash
 
 gitPrompt() {
-    git name-rev HEAD 2>/dev/null | awk '{ print ":" $2 }'
+    git branch --no-color 2>/dev/null | awk '/^*/ { print ":" $2 }'
 }
 
 PS1='\h:\W$(gitPrompt)\$ '
