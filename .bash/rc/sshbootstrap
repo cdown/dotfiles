@@ -8,7 +8,7 @@ ssh-dotfiles() {
     ssh "$@" '
     if ! [[ -d ~/git/dotfiles ]]; then
         mkdir -p ~/git
-        git clone git://github.com/cdown/dotfiles.git ~/git/dotfiles
+        git clone http://github.com/cdown/dotfiles.git ~/git/dotfiles
         ln -sf ~/git/dotfiles/.bash ~/
         ln -sf ~/git/dotfiles/.bash_profile ~/
         ln -sf ~/git/dotfiles/.bashrc ~/
@@ -18,7 +18,9 @@ ssh-dotfiles() {
     else
         cd ~/git/dotfiles
         git pull
-    fi'
+    fi
+    cd ~/git/dotfiles && git submodule init && git submodule update
+    '
 }
 
 ssh-bootstrap() {
