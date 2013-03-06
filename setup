@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [[ $0 == /* ]]; then
+    location=${0%/*}
+else
+    location=$PWD/${0#./}
+    location=${location%/*}
+fi
+
+cat > "$location/.git/hooks/post-update" << EOF
+#!/bin/sh
+cd '${location//\'/\'}'
+
+git checkout -f master
+git submodule init
+git submodule update
+EOF
+
+chmod a+x "$location/.git/hooks/post-update"
+"$location/.git/hooks/post-update"
