@@ -18,3 +18,7 @@ EOF
 
 chmod a+x "$location/.git/hooks/post-update"
 "$location/.git/hooks/post-update"
+
+for file in ~/.{bash{,rc,_profile},vim{,rc},gitignore_global,hushlogin}; do
+    [[ -h $file ]] || ln -sf "$location/${file##*/}" "$file"
+done
