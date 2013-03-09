@@ -1,0 +1,6 @@
+#!/bin/bash
+
+topic() {
+    export TOPIC="$1"
+}
+alias t=topic

@@ -4,4 +4,4 @@ gitPrompt() {
     git branch --no-color 2>/dev/null | awk '/^\*/ { print ":" $2 }'
 }
 
-PS1='\h:\W$(gitPrompt)\$ '
+PS1='${TOPIC-(none)}:\W$(gitPrompt)\$ '
