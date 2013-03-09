@@ -1,6 +1,0 @@
-#!/bin/bash
-
-topic() {
-    TOPIC="$1"
-}
-alias t=topic
