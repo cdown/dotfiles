@@ -19,6 +19,9 @@ EOF
 chmod a+x "$location/.git/hooks/post-update"
 "$location/.git/hooks/post-update"
 
-for file in ~/.{bash{,rc,_profile},vim{,rc},gitignore_global,hushlogin}; do
+for file in ~/.{bash{,rc,_profile},vim{,rc},gitignore_global,hushlogin,tmux.conf,gitconfig,xinitrc,Xdefaults}; do
     [[ -h $file ]] || ln -sf "$location/${file##*/}" "$file"
 done
+
+mkdir -p ~/.config/fontconfig
+ln -s "$location"/.config/fontconfig/fonts.conf ~/.config/fontconfig/fonts.conf
