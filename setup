@@ -24,4 +24,4 @@ for file in ~/.{bash{,rc,_profile},vim{,rc},gitignore_global,hushlogin,tmux.conf
 done
 
 mkdir -p ~/.config/fontconfig
-ln -s "$location"/.config/fontconfig/fonts.conf ~/.config/fontconfig/fonts.conf
+ln -sf "$location"/.config/fontconfig/fonts.conf ~/.config/fontconfig/fonts.conf
