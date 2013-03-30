@@ -10,7 +10,7 @@ xset b off &
 autocutsel -f
 autocutsel -f -s PRIMARY
 
-pgrep -u "$EUID" -x mpd || mpd ~/.mpd/config &
+pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
 urxvtd -q -o -f
