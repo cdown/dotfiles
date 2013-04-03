@@ -5,3 +5,5 @@
     excludesfile = /home/chris/.gitignore_global
 [color]
     ui = always
+[alias]
+    peek = log HEAD..@{u}
