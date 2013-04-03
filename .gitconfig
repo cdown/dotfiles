@@ -7,3 +7,5 @@
     ui = always
 [alias]
     peek = log HEAD..@{u}
+[push]
+    default = current
