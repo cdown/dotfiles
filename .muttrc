@@ -17,6 +17,10 @@ set realname = "Chris Down"
 
 set imap_user = "christopher.down.uk@gmail.com"
 set imap_idle = yes
+set imap_keepalive = 60
+set mail_check = 30
+set timeout = 60
+
 set folder = "imaps://$imap_user@imap.gmail.com:993"
 
 set smtp_url = "smtp://$imap_user@smtp.gmail.com:587/"
