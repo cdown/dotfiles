@@ -1,0 +1,17 @@
+#!/bin/bash
+
+declare -A JUMP_DIRS
+
+jump() {
+    (( $# == 1 )) || return 1
+    dir="${JUMP_DIRS[$1]}"
+    if ! [[ "$dir" ]]; then
+        printf 'No such jump name: %s\n' "$1" >&2
+        return 1
+    fi
+    cd "$dir"
+}
+
+JUMP_DIRS["b"]=~/git/bom
+JUMP_DIRS["c"]=~/git/clarity
+JUMP_DIRS["d"]=~/Downloads
