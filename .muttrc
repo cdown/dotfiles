@@ -11,6 +11,7 @@ set pgp_verify_key_command="/usr/bin/gpg --verbose --batch --fingerprint --check
 set pgp_list_pubring_command="/usr/bin/gpg --no-verbose --batch --quiet --with-colons --list-keys %r"
 set pgp_list_secring_command="/usr/bin/gpg --no-verbose --batch --quiet --with-colons --list-secret-keys %r"
 set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
+set pgp_autosign=yes
 
 set from = "chris@chrisdown.name"
 set realname = "Chris Down"

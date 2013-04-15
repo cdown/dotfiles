@@ -12,6 +12,7 @@ autocutsel -f -s PRIMARY
 
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
+pgrep -u "$EUID" -x mutt || tmux new-session -d -s mutt mutt &
 
 urxvtd -q -o -f
 
