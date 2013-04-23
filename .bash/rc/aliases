@@ -9,7 +9,5 @@ alias sc=systemctl
 alias sudo='sudo '
 alias proxy='ssh -C2qTnN -D 1337'
 
-alias work-rev-create='autossh -M 12340 -f -N -R 1234:localhost:222 guthrie'
-alias home-rev-create='autossh -M 23450 -f -N -R 2345:localhost:222 guthrie'
-alias work-rev-connect='ssh -p 1234 localhost'
-alias home-rev-connect='ssh -p 2345 localhost'
+alias work-rev-create='autossh -M 22200 -f -N -R 2220:localhost:222 guthrie'
+alias home-rev-create='autossh -M 22210 -f -N -R 2221:localhost:222 guthrie'
