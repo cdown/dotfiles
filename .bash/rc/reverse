@@ -1,0 +1,18 @@
+#!/bin/bash
+
+ssh-rev() {
+    local ports host port
+    declare -A ports
+
+    ports=(
+        [turtle]=2220
+        [element]=2221
+    )
+
+    host="${HOSTNAME%%.*}"
+    port="${ports[$host]}"
+
+    [[ $port ]] || return 1
+
+    autossh -M "$port"0 -f -N -R "$port":localhost:222 guthrie
+}
