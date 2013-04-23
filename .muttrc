@@ -8,6 +8,8 @@ auto_view text/html
 set from = "chris@chrisdown.name"
 set realname = "Chris Down"
 
+source "gpg -q -d ~/.mutt/passwords.gpg |"
+
 set imap_idle
 set imap_keepalive = 60
 set imap_user = "christopher.down.uk@gmail.com"
