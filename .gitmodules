@@ -16,9 +16,6 @@
 [submodule ".vim/bundle/vim-easymotion"]
 	path = .vim/bundle/vim-easymotion
 	url = http://github.com/Lokaltog/vim-easymotion.git
-[submodule ".vim/bundle/vim-sleuth"]
-	path = .vim/bundle/vim-sleuth
-	url = http://github.com/tpope/vim-sleuth
 [submodule ".vim/bundle/control-p"]
 	path = .vim/bundle/control-p
 	url = http://github.com/kien/ctrlp.vim.git
