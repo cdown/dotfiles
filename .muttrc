@@ -1,12 +1,14 @@
 set certificate_file = ~/.mutt/certificates
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
+set alias_file = ~/.mutt/aliases
 
 alternative_order text/plain text/html
 auto_view text/html
 
 set from = "chris@chrisdown.name"
 set realname = "Chris Down"
+alternates chris@regentmarkets\.com chris@illco\.de christopher\.down@iofc\.org christopher\.?down\.?uk@gmail\.com
 
 source "gpg -q -d ~/.mutt/passwords.gpg |"
 
@@ -22,11 +24,14 @@ set spoolfile = "+INBOX"
 set timeout = 60
 unset move
 unset postpone
+unset record
 
 ignore *
-unignore From: To: Date: Subject: Cc: Bcc:
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
 
-source /usr/share/doc/mutt/samples/gpg.rc
+source /etc/Muttrc.gpg.dist
 my_hdr X-PGP-Key: http://chrisdown.name/pgp/personal.asc
 set pgp_autosign
 set pgp_sign_as = 0xA7CC9B4D
@@ -37,7 +42,12 @@ macro index,pager ,i "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ,s "<change-folder>=[Gmail]/Sent<quote-char> Mail<enter>" "Go to sent mail"
 
 set pager_stop
-unset record
+unset confirmappend
+unset mark_old
+unset markers
+
+set pipe_decode
+set thorough_search
 
 set editor="vim -c 'set fo=tcrq' -c 'set tw=80'"
 
@@ -45,6 +55,17 @@ set date_format="!%Y-%m-%d %H:%M"
 set index_format="%4C  [%Z]  %D  %-15.15F  %s"
 set sort=reverse-threads
 set sort_aux=last-date-received
+
+set uncollapse_jump
+set sort_re
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+bind index gg       first-entry
+bind index G        last-entry
+
+bind index R        group-reply
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
 
 color attachment brightblack   default
 color bold       brightyellow  default
