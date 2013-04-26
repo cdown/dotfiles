@@ -16,15 +16,15 @@ set imap_idle
 set imap_keepalive = 60
 set imap_user = "christopher.down.uk@gmail.com"
 
-set smtp_url = "smtp://$imap_user@smtp.gmail.com:587/"
+set smtp_url = "smtp://$from@mail.gandi.net:587/"
 
 set folder = "imaps://$imap_user@imap.gmail.com:993"
 set mail_check = 30
+set record = "+[Gmail]/Sent Mail"
 set spoolfile = "+INBOX"
 set timeout = 60
 unset move
 unset postpone
-unset record
 
 ignore *
 unignore from: to: cc: date: subject:
