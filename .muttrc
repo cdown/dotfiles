@@ -3,6 +3,8 @@ set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set alias_file = ~/.mutt/aliases
 
+set edit_headers
+
 alternative_order text/plain text/html
 auto_view text/html
 
