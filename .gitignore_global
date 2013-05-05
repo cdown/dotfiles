@@ -1,8 +1,17 @@
+# Vim
 *~
 *.sw[po]
+
+# Python
 *.py[cod]
+.coverage
+nosetests.xml
+pip-log.txt
+dist
+build
+sdist
+__pycache__
+
+# C
 *.o
 *.so
-build/
-MANIFEST
-dist/
