@@ -1,6 +1,5 @@
 #!/bin/bash
 
-alias j=jump
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias v='ls -laFh'
