@@ -8,7 +8,7 @@ if (( EUID )) && ! ssh-add -l >/dev/null 2>&1; then
     ssh-add
 fi
 
-if ssh-add -l >/dev/null 2>&1; then
+if ! ssh-add -l >/dev/null 2>&1; then
     pkill -x ssh-agent
     rm ~/.ssh-agent
 fi
