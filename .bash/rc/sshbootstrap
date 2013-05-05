@@ -4,25 +4,6 @@ ssh-tic() {
     infocmp | ssh "$@" 't="$(mktemp)" && cat >"$t" && tic "$t"; rm "$t"'
 }
 
-ssh-dotfiles() {
-    ssh "$@" '
-    if ! [[ -d ~/git/dotfiles ]]; then
-        mkdir -p ~/git
-        git clone http://github.com/cdown/dotfiles.git ~/git/dotfiles
-        ln -sf ~/git/dotfiles/.bash ~/
-        ln -sf ~/git/dotfiles/.bash_profile ~/
-        ln -sf ~/git/dotfiles/.bashrc ~/
-        ln -sf ~/git/dotfiles/.hushlogin ~/
-        ln -sf ~/git/dotfiles/.vim ~/
-        ln -sf ~/git/dotfiles/.vimrc ~/
-    else
-        cd ~/git/dotfiles
-        git pull
-    fi
-    cd ~/git/dotfiles && git submodule init && git submodule update
-    '
-}
-
 ssh-bootstrap() {
     for file in ~/.ssh/*.pub; do
         ssh-copy-id -i "$file" "$@"
