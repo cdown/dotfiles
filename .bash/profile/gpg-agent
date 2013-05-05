@@ -1,7 +1,0 @@
-#!/bin/bash
-
-[[ -r ~/.gpg-agent ]] && . ~/.gpg-agent >/dev/null
-
-if (( EUID )) && ! gpg-agent >/dev/null 2>&1; then
-    eval "$(gpg-agent --daemon | tee ~/.gpg-agent)" >/dev/null
-fi
