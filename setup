@@ -2,6 +2,8 @@
 
 shopt -s dotglob extglob globstar nullglob
 
+git submodule update --init
+
 if [[ $0 == /* ]]; then
     location=${0%/*}
 else
