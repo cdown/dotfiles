@@ -1,14 +1,11 @@
 #!/bin/bash
 
-[[ -r ~/.ssh-agent ]] && . ~/.ssh-agent >/dev/null
-if (( EUID )) && ! ssh-add -l >/dev/null 2>&1; then
-    if ! pgrep -u "$EUID" -x ssh-agent >/dev/null 2>&1; then
-        eval "$(ssh-agent | tee ~/.ssh-agent)" >/dev/null
+if ! pgrep keyring >/dev/null 2>&1; then
+    [[ -r ~/.ssh-agent ]] && . ~/.ssh-agent >/dev/null
+    if (( EUID )) && ! ssh-add -l >/dev/null 2>&1; then
+        if ! pgrep -u "$EUID" -x ssh-agent >/dev/null 2>&1; then
+            eval "$(ssh-agent | tee ~/.ssh-agent)" >/dev/null
+        fi
+        ssh-add
     fi
-    ssh-add
-fi
-
-if ! ssh-add -l >/dev/null 2>&1; then
-    pkill -x ssh-agent
-    rm -f ~/.ssh-agent
 fi
