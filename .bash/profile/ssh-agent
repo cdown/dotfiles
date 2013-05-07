@@ -10,5 +10,5 @@ fi
 
 if ! ssh-add -l >/dev/null 2>&1; then
     pkill -x ssh-agent
-    rm ~/.ssh-agent
+    rm -f ~/.ssh-agent
 fi
