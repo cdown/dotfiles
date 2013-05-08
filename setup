@@ -15,7 +15,7 @@ for file in "$location"/**/*; do
     bare="${file#$location/}"
 
     case "$bare" in
-        ".git"|".git/"*|".gitignore"|setup) continue ;;
+        .git|.git/*|.gitignore|.gitmodules|setup) continue ;;
     esac
 
     if [[ -d "$file" ]]; then
