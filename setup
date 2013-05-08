@@ -11,6 +11,7 @@ else
     location=${location%/*}
 fi
 
+
 for file in "$location"/**/*; do
     bare="${file#$location/}"
 
@@ -24,3 +25,16 @@ for file in "$location"/**/*; do
         ln -sfn "$file" ~/"$bare"
     fi
 done
+
+deleted=()
+if [[ -f ~/.dfsha ]]; then
+    mapfile -t deleted < <(git diff --name-status "$(<~/.dfsha)" HEAD | sed -n '/^D/s/^D[[:blank:]]//p')
+fi
+
+if (( "${#deleted[@]}" )); then
+    printf 'Deleted since last setup:\n'
+    printf '  %s\n' "${deleted[@]}"
+    printf '\nYou may want to review any links to these files present in your home directory.\n'
+fi
+
+git rev-parse HEAD > ~/.dfsha
