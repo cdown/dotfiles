@@ -4,8 +4,4 @@ gitPrompt() {
     git branch --no-color 2>/dev/null | awk '/^\*/ { print ":" $2 }'
 }
 
-sshFlag() {
-    [[ $SSH_CONNECTION ]] && echo r || echo l
-}
-
-PS1='${USER::1}${HOSTNAME::1}:$(sshFlag)${TMUX+t}:\W$(gitPrompt)\$ '
+PS1='\u@\h:\W$(gitPrompt)\$ '
