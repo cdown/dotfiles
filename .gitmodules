@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/vim-pathogen"]
 	path = .vim/bundle/vim-pathogen
 	url = http://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/vim-snipmate"]
+	path = .vim/bundle/vim-snipmate
+	url = http://github.com/garbas/vim-snipmate.git
