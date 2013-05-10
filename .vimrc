@@ -13,6 +13,8 @@ set backspace=indent,eol,start
 set expandtab
 set fileencoding=utf-8
 set fileformats=unix
+set foldmethod=indent
+set foldlevel=99
 set hlsearch
 set incsearch
 set lazyredraw
