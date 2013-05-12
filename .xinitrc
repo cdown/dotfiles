@@ -1,12 +1,14 @@
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-autocutsel -f
-autocutsel -f -s PRIMARY
+autocutsel &
+autocutsel -s PRIMARY &
+
+setxkbmap -option ctrl:nocaps &
 
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
-urxvtd -q -o -f
+urxvtd -q -o &
 
 exec dbus-launch --exit-with-session dwm
