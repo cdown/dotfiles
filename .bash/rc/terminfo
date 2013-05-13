@@ -1,5 +1,5 @@
 #!/bin/bash
 
-if [[ "$TERM" == rxvt-unicode-* ]]; then
-    TERM=rxvt-unicode
+if [[ "$TERM" == rxvt-* ]]; then
+    TERM=rxvt
 fi
