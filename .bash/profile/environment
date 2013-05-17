@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export EDITOR=vim
+export LESS=-FX
 export PAGER=less
 export PATH=~/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl
 export VISUAL=vim
