@@ -4,8 +4,6 @@ xset fp rehash
 autocutsel &
 autocutsel -s PRIMARY &
 
-setxkbmap -option caps:none &
-
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
