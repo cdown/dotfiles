@@ -1,6 +1,7 @@
 set from = "chris@chrisdown.name"
 set realname = "Chris Down"
-alternates chris@regentmarkets\.com chris@illco\.de christopher\.down@iofc\.org christopher\.?down\.?uk@gmail\.com
+set reverse_name
+alternates chris@regentmarkets\.com christopher\.down@iofc\.org chris@binary.com chris@blinkmenu.ca
 
 source /etc/Muttrc.gpg.dist
 my_hdr X-PGP-Key: http://chrisdown.name/pgp/personal.asc

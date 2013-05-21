@@ -13,6 +13,12 @@ macro index,pager ,a "<change-folder>=[Gmail]/All<quote-char> Mail<enter>" "Go t
 macro index,pager ,i "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ,s "<change-folder>=[Gmail]/Sent<quote-char> Mail<enter>" "Go to sent mail"
 
+macro index,pager ,fbm "<enter-command>set from=chris@blinkmenu.ca<enter>"
+macro index,pager ,fbi "<enter-command>set from=chris@binary.com<enter>"
+macro index,pager ,frm "<enter-command>set from=chris@regentmarkets.com<enter>"
+macro index,pager ,fcd "<enter-command>set from=chris@chrisdown.name<enter>"
+macro index,pager ,fio "<enter-command>set from=christopher.down@iofc.org<enter>"
+
 set pager_stop
 unset confirmappend
 unset mark_old
