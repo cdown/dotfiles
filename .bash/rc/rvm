@@ -1,4 +1,0 @@
-#!/bin/bash
-
-[[ -r ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
-PATH+=:~/.rvm/bin
