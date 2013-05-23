@@ -1,5 +1,9 @@
 #!/bin/bash
 
 if [[ -r /usr/share/bash-completion/bash_completion ]]; then
+    # Arch
     . /usr/share/bash-completion/bash_completion
+elif [[ -r /etc/bash_completion ]]; then
+    # Debian
+    . /etc/bash_completion
 fi
