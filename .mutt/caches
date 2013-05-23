@@ -1,4 +1,0 @@
-set certificate_file = ~/.mutt/certificates
-set header_cache = ~/.mutt/cache/headers
-set message_cachedir = ~/.mutt/cache/bodies
-set alias_file = ~/.mutt/aliases
