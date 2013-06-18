@@ -14,5 +14,5 @@ ssh-rev() {
 
     [[ $port ]] || return 1
 
-    autossh -M "$port"0 -f -N -R "$port":localhost:222 leo
+    autossh -M "$port"0 -f -N -R "$port":localhost:22 leo
 }
