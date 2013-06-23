@@ -1,0 +1,5 @@
+#!/bin/bash
+
+activate() {
+    . "$1/bin/activate"
+}
