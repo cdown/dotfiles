@@ -1,4 +1,4 @@
-wmname LG3D
+wmname LG3D &
 
 xset +fp /usr/share/fonts/local
 xset fp rehash

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if awk 'NR==FNR && !/^#/{lines[$0]=FNR;next} lines[$0]==FNR' "$HISTFILE" "$HISTFILE" > "$HISTFILE.compressed"; then
+    mv "$HISTFILE.compressed" "$HISTFILE"
+fi
+
+HISTCONTROL=ignoredups
+HISTFILESIZE=
+HISTSIZE=
+PROMPT_COMMAND='history -a'
+
+shopt -s histappend
+shopt -s extglob
+shopt -s globstar
+
+set +H
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias v='ls -laFh'
+alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
+alias sc=systemctl
+alias ssh='TERM=rxvt ssh'
+alias sudo='sudo '
+alias proxy='ssh -C2qTnN -D 1337'
+
+gitPrompt() {
+    git branch --no-color 2>/dev/null | awk '/^\*/ { print ":" $2 }'
+}
+
+PS1='\u@\h:\W$(gitPrompt)\$ '
