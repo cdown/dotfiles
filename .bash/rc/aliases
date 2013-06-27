@@ -8,4 +8,3 @@ alias sc=systemctl
 alias ssh='TERM=rxvt ssh'
 alias sudo='sudo '
 alias proxy='ssh -C2qTnN -D 1337'
-

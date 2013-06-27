@@ -3,9 +3,8 @@
 awk 'NR==FNR && !/^#/{lines[$0]=FNR;next} lines[$0]==FNR' "$HISTFILE" "$HISTFILE" > "$HISTFILE.compressed" && mv "$HISTFILE.compressed" "$HISTFILE"
 
 HISTCONTROL=ignoredups
-unset HISTFILESIZE
-HISTSIZE=10000
+HISTFILESIZE=
+HISTSIZE=
 PROMPT_COMMAND="history -a"
-export HISTSIZE PROMPT_COMMAND
 
 shopt -s histappend
