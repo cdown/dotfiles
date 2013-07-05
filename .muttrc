@@ -1,0 +1,6 @@
+source ~/.mutt/account
+source ~/.mutt/caches
+source ~/.mutt/feel
+source ~/.mutt/imap
+source ~/.mutt/passwords
+source ~/.mutt/smtp
