@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if awk 'NR==FNR && !/^#/{lines[$0]=FNR;next} lines[$0]==FNR' "$HISTFILE" "$HISTFILE" > "$HISTFILE.compressed"; then
-    mv "$HISTFILE.compressed" "$HISTFILE"
-fi
-
 HISTCONTROL=ignoredups
 HISTFILESIZE=
 HISTSIZE=
