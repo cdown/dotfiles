@@ -1,0 +1,17 @@
+#!/bin/bash
+
+vpn() {
+    case "$2" in
+        rmg)
+            case "$1" in
+                start)
+                    pppd call rmg
+                    ip route add 192.168.12.0/22 via 192.168.12.229 dev ppp0 onlink
+                ;;
+                stop)
+                    kill "$(head -1 /var/run/ppp-rmg-vpn.pid)"
+                ;;
+            esac
+        ;;
+    esac
+}
