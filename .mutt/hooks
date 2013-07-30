@@ -1,0 +1,3 @@
+send-hook . 'set from=chris@chrisdown.name'
+send-hook '~t ^.+@regentmarkets\.com$' 'set from=chris@binary.com'
+send-hook '~t ^.+@binary\.com$' 'set from=chris@binary.com'
