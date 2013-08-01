@@ -47,6 +47,9 @@ autocmd InsertLeave * set nopaste
 let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
 
+autocmd FileType mail set textwidth=80
+autocmd FileType mail set formatoptions=tcrq
+
 nmap <silent> <leader>p :set paste<CR>
 
 map ; :

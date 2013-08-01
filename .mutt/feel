@@ -19,8 +19,6 @@ unset markers
 set pipe_decode
 set thorough_search
 
-set editor="vim -c 'set fo=tcrq' -c 'set tw=80'"
-
 set date_format="!%Y-%m-%d %H:%M"
 set index_format="%4C  [%Z]  %D  %-15.15F  %s"
 set sort=reverse-threads
