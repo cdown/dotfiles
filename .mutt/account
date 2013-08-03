@@ -3,6 +3,6 @@ set realname = "Chris Down"
 alternates chris@(regentmarkets|binary)\.com chris@(blinkmenu|zenu)\.ca chris(topher)?\.down@iofc\.org
 
 source /etc/Muttrc.gpg.dist
-my_hdr PGP-Key: http://chrisdown.name/pgp/personal.asc
+my_hdr PGP-Key: http://chrisdown.name/pgp
 set pgp_autosign
 set pgp_sign_as = 0xA7CC9B4D

@@ -1,6 +1,8 @@
 alternative_order text/plain text/html
 auto_view text/html
 
+set edit_headers
+
 ignore *
 unignore from: to: cc: date: subject:
 unhdr_order *
