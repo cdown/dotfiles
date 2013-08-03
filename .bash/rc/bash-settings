@@ -1,8 +1,9 @@
 #!/bin/bash
 
+HISTFILESIZE=
+HISTSIZE=
+
 HISTCONTROL=ignoredups
-HISTFILESIZE=9999999
-HISTSIZE=$HISTFILESIZE
 PROMPT_COMMAND='history -a'
 
 shopt -s histappend
