@@ -3,6 +3,8 @@ wmname LG3D &
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+xset b off
+
 autocutsel &
 autocutsel -s PRIMARY &
 
