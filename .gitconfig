@@ -9,5 +9,6 @@
 [alias]
     new = log HEAD..@{u}
     old = log @{u}..HEAD
+    up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
 [push]
     default = current
