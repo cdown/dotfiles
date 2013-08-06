@@ -26,6 +26,7 @@ set shiftwidth=4
 set shortmess=aI
 set tabstop=4
 set textwidth=79
+set timeoutlen=250
 set whichwrap+=<,>,[,]
 
 
@@ -57,3 +58,5 @@ nmap <silent> <leader>p :set paste<CR>
 
 noremap : ;
 noremap ; :
+
+imap ;; <Esc>
