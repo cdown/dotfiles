@@ -6,10 +6,12 @@ syntax on
 filetype on
 filetype plugin indent on
 
+highlight ColorColumn ctermbg=0
 highlight MatchParen ctermbg=white ctermfg=black
 
 set autoindent
 set backspace=indent,eol,start
+set colorcolumn=+1
 set expandtab
 set fileencoding=utf-8
 set fileformats=unix
@@ -23,7 +25,9 @@ set nowrap
 set shiftwidth=4
 set shortmess=aI
 set tabstop=4
+set textwidth=79
 set whichwrap+=<,>,[,]
+
 
 function TabsOrSpaces()
     if getfsize(bufname("%")) > 256000
@@ -47,10 +51,9 @@ autocmd InsertLeave * set nopaste
 let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
 
-autocmd FileType mail set textwidth=80
 autocmd FileType mail set formatoptions=tcrq
 
 nmap <silent> <leader>p :set paste<CR>
 
-map ; :
-noremap ;; ;
+noremap : ;
+noremap ; :
