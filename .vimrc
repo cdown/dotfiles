@@ -43,6 +43,8 @@ function TabsOrSpaces()
     endif
 endfunction
 
+
+
 autocmd BufReadPost * call TabsOrSpaces()
 autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType make setlocal noexpandtab
@@ -55,8 +57,3 @@ let mapleader = ","
 autocmd FileType mail set formatoptions=tcrq
 
 nmap <silent> <leader>p :set paste<CR>
-
-noremap : ;
-noremap ; :
-
-imap ;; <Esc>

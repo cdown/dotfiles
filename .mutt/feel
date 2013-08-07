@@ -2,6 +2,8 @@ alternative_order text/plain text/html
 auto_view text/html
 
 set edit_headers
+set autoedit
+set include
 
 ignore *
 unignore from: to: cc: date: subject:
