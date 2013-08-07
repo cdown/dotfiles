@@ -49,12 +49,12 @@ autocmd BufReadPost * call TabsOrSpaces()
 autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType make setlocal noexpandtab
 autocmd InsertEnter * let @/ = ""
-autocmd InsertLeave * set nopaste
+autocmd InsertLeave * setlocal nopaste
 
 let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
 
-autocmd FileType mail set formatoptions=tcrq
+autocmd FileType mail setlocal formatoptions=tcrq
 autocmd FileType mail normal }
 
 nmap <silent> <leader>p :set paste<CR>
