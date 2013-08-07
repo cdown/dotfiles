@@ -55,5 +55,6 @@ let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
 
 autocmd FileType mail set formatoptions=tcrq
+autocmd FileType mail normal }
 
 nmap <silent> <leader>p :set paste<CR>
