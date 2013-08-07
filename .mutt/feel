@@ -3,6 +3,7 @@ auto_view text/html
 
 set edit_headers
 set include
+set reply_to
 
 ignore *
 unignore from: to: cc: date: subject:
