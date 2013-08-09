@@ -14,11 +14,6 @@ hdr_order from: to: cc: date: subject:
 
 macro attach s "<save-entry><bol>~/Downloads/<eol>"
 
-macro index,pager m "<enter-command>unset autoedit<enter><mail>"
-macro index,pager g "<enter-command>set autoedit<enter><group-reply>"
-macro index,pager L "<enter-command>set autoedit<enter><list-reply>"
-macro index,pager r "<enter-command>set autoedit<enter><reply>"
-
 set pager_stop
 unset confirmappend
 unset mark_old

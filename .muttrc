@@ -1,6 +1,5 @@
 source ~/.mutt/caches
 source ~/.mutt/feel
-source ~/.mutt/hooks
 source ~/.mutt/imap
 source ~/.mutt/passwords
 source ~/.mutt/pgp
