@@ -13,14 +13,11 @@ unhdr_order *
 hdr_order from: to: cc: date: subject:
 
 macro attach s "<save-entry><bol>~/Downloads/<eol>"
-macro index,pager ,a "<change-folder>=[Gmail]/All<quote-char> Mail<enter>" "Go to all mail"
-macro index,pager ,i "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index,pager ,s "<change-folder>=[Gmail]/Sent<quote-char> Mail<enter>" "Go to sent mail"
 
-macro index m "<enter-command>unset autoedit<enter><mail>"
-macro index g "<enter-command>set autoedit<enter><group-reply>"
-macro index L "<enter-command>set autoedit<enter><list-reply>"
-macro index r "<enter-command>set autoedit<enter><reply>"
+macro index,pager m "<enter-command>unset autoedit<enter><mail>"
+macro index,pager g "<enter-command>set autoedit<enter><group-reply>"
+macro index,pager L "<enter-command>set autoedit<enter><list-reply>"
+macro index,pager r "<enter-command>set autoedit<enter><reply>"
 
 set pager_stop
 unset confirmappend
