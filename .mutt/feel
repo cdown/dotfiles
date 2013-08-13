@@ -27,8 +27,8 @@ macro index ,ar '<sync-mailbox><enter-command>source ~/.mutt/accounts/chris@rege
 
 set date_format="!%Y-%m-%d %H:%M"
 set index_format="%4C  [%Z]  %D  %-15.15F  %s"
-set sort=reverse-threads
-set sort_aux=last-date-received
+set sort=threads
+set sort_aux=reverse-date-received
 
 set uncollapse_jump
 set sort_re
