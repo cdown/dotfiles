@@ -20,6 +20,7 @@ alias sc=systemctl
 alias ssh='TERM=rxvt ssh'
 alias sudo='sudo '
 alias proxy='ssh -C2qTnN -D 1337'
+alias fp='readlink -f'
 
 gitPrompt() {
     git branch --no-color 2>/dev/null | awk '/^\*/ { print ":" $2 }'
