@@ -1,7 +1,11 @@
 #!/bin/bash
 
+export GPG_TTY=$(tty)
+
 [[ -r ~/.gpg-agent ]] && . ~/.gpg-agent >/dev/null
 
 if (( EUID )) && ! gpg-agent >/dev/null 2>&1; then
     eval "$(gpg-agent --daemon | tee ~/.gpg-agent)" >/dev/null
 fi
+
+gpg -qs </dev/null >/dev/null 2>&1
