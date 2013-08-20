@@ -1,4 +1,5 @@
 source /etc/Muttrc.gpg.dist
 my_hdr PGP-Key: http://chrisdown.name/pgp
 set pgp_autosign
+set pgp_use_gpg_agent = yes
 set pgp_sign_as = 0xA7CC9B4D
