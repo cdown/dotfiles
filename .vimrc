@@ -43,10 +43,7 @@ function TabsOrSpaces()
     endif
 endfunction
 
-
-
 autocmd BufReadPost * call TabsOrSpaces()
-autocmd BufWritePre * v/^-- $/s/\s\+$//e
 autocmd FileType make setlocal noexpandtab
 autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * setlocal nopaste
