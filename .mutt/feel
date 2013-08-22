@@ -1,7 +1,7 @@
 alternative_order text/plain text/html
 auto_view text/html
 
-unset use_domain
+set use_domain
 unset reply_self
 set edit_headers
 set include
