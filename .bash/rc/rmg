@@ -6,8 +6,7 @@ vpn() {
             case "$1" in
                 start)
                     sudo pppd call rmg
-                    sleep 5
-                    sudo ip route add 192.168.12.0/22 via 192.168.12.229 dev ppp0 onlink
+                    sleep 2
                     (
                         cd ~/git/rmg/setupscripts/config
                         perl -e 'use config_ip_addresses;
@@ -16,6 +15,8 @@ vpn() {
                                      print "ip route add " . $ip . "/32 via 192.168.12.229 dev ppp0 onlink\n";
                                  }' | sudo sh
                     )
+                    sleep 1
+                    sudo ip route add 192.168.12.0/22 via 192.168.12.229 dev ppp0 onlink
                 ;;
                 stop)
                     sudo kill "$(head -1 /var/run/ppp-rmg-vpn.pid)"

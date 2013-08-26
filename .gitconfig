@@ -5,7 +5,7 @@
 [core]
     excludesfile = /home/chris/.gitignore_global
 [color]
-    ui = always
+    ui = auto
 [alias]
     new = log HEAD..@{u}
     old = log @{u}..HEAD
