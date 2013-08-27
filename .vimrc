@@ -9,9 +9,12 @@ filetype plugin indent on
 highlight ColorColumn ctermbg=0
 highlight MatchParen ctermbg=white ctermfg=black
 
+if exists('+colorcolumn')
+    set colorcolumn=+1
+endif
+
 set autoindent
 set backspace=indent,eol,start
-set colorcolumn=+1
 set expandtab
 set fileencoding=utf-8
 set fileformats=unix
