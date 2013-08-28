@@ -12,6 +12,7 @@ shopt -s globstar
 
 set +H
 
+alias be='bundle exec'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias v='ls -laFh'
