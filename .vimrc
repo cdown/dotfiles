@@ -46,16 +46,18 @@ function TabsOrSpaces()
     endif
 endfunction
 
-autocmd BufWritePre * %s/\s\+$//e
 autocmd BufReadPost * call TabsOrSpaces()
+autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType mail normal }
+autocmd FileType mail setlocal formatoptions=tcrq
 autocmd FileType make setlocal noexpandtab
+autocmd FileType ruby setlocal shiftwidth=4
+autocmd FileType ruby setlocal tabstop=4
 autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * setlocal nopaste
 
 let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
 
-autocmd FileType mail setlocal formatoptions=tcrq
-autocmd FileType mail normal }
 
 nmap <silent> <leader>p :set paste<CR>

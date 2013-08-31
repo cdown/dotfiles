@@ -12,6 +12,16 @@ shopt -s globstar
 
 set +H
 
+freenode() {
+    ssh -L 16000:irc.freenode.net:6667 guthrie -N &
+    sleep 6
+    irssi -c freenode-local
+
+    # This sucks. Why on earth the tunnel won't quit on any other signal, I
+    # don't know...
+    kill "$!"
+}
+
 alias be='bundle exec'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
