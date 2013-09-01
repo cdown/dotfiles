@@ -16,9 +16,6 @@ freenode() {
     ssh -L 16000:irc.freenode.net:7000 guthrie -N &
     sleep 6
     irssi -c freenode-local
-
-    # This sucks. Why on earth the tunnel won't quit on any other signal, I
-    # don't know...
     kill "$!"
 }
 
