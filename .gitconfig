@@ -7,8 +7,8 @@
 [color]
     ui = auto
 [alias]
-    new = log HEAD..@{u}
-    old = log @{u}..HEAD
-    up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+    new = log --pretty=oneline --abbrev-commit HEAD..@{u}
+    f = fetch
+    r = rebase -p
 [push]
     default = current
