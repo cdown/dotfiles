@@ -1,3 +1,4 @@
 text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
+application/msword; catdoc; copiousoutput
 image/*; sxiv %s
 application/pdf; zathura %s
