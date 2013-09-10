@@ -6,6 +6,7 @@ unset reply_self
 set edit_headers
 set include
 set reply_to
+set reverse_alias
 
 ignore *
 unignore from: to: cc: date: subject:
