@@ -7,6 +7,8 @@ set edit_headers
 set include
 set reply_to
 set reverse_alias
+set delete
+set quit
 
 ignore *
 unignore from: to: cc: date: subject:
@@ -23,8 +25,8 @@ unset markers
 set pipe_decode
 set thorough_search
 
-macro index ,ac '<sync-mailbox><enter-command>source ~/.mutt/accounts/chris@chrisdown.name<enter><change-folder>!<enter>'
-macro index ,ar '<sync-mailbox><enter-command>source ~/.mutt/accounts/chris@regentmarkets.com<enter><change-folder>!<enter>'
+macro index zc '<sync-mailbox><enter-command>source ~/.mutt/accounts/chris@chrisdown.name<enter><change-folder>!<enter>'
+macro index zr '<sync-mailbox><enter-command>source ~/.mutt/accounts/chris@regentmarkets.com<enter><change-folder>!<enter>'
 
 set date_format="!%Y-%m-%d %H:%M"
 set index_format="%4C  [%Z]  %D  %-15.15F  %s"
