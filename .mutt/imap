@@ -2,4 +2,3 @@ set imap_idle
 set imap_keepalive = 60
 set mail_check = 30
 set timeout = 60
-unset move
