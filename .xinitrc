@@ -10,6 +10,7 @@ autocutsel -s PRIMARY &
 
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
+pgrep -u "$EUID" -x offlineimap || offlineimap &
 
 urxvtd -q -o &
 

@@ -10,6 +10,9 @@ set reverse_alias
 set delete
 set quit
 
+set forward_format = "Fwd: %s"
+set forward_quote
+
 ignore *
 unignore from: to: cc: date: subject:
 unhdr_order *
