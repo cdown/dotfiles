@@ -30,6 +30,7 @@ set shortmess=aI
 set tabstop=4
 set textwidth=79
 set timeoutlen=250
+set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
 
