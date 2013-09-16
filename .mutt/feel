@@ -42,7 +42,7 @@ set sort_re
 color attachment brightblack   default
 color bold       brightyellow  default
 color error      brightred     default
-color message    white         default
+color message    white   default
 color normal     white         default
 color quoted     magenta       default
 color quoted1    cyan          default
@@ -55,4 +55,15 @@ color quoted7    brightcyan    default
 color search     red           brightblack
 color signature  cyan          default
 color tilde      brightblack   default
-color tree       white         default
+color tree       brightblack         default
+
+color index brightblack default "!~N !~p !~F !~T !~D"          # Old
+color index brightred        default  "~N ~p !~F !~T !~D"  # New, to me
+color index magenta        default  "!~N ~p !~F !~T !~D"  # Old, to me
+color index brightcyan         default    "~T"                   # Tagged
+color index cyan       default     "~F"                     # Flagged
+color index blue           default "~D"                 # Deleted
+color index green         default     "~P !~F !~T !~D"     # From me
+
+color index yellow default "~f \"zenoss|x-sysadmin-alerts|pingdom|datadog\" !~F !~T !~D"
+color index yellow default "~t \"backup@|replication-monitor@\" !~F !~T !~D"

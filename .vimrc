@@ -10,7 +10,7 @@ highlight ColorColumn ctermbg=0
 highlight MatchParen ctermbg=white ctermfg=black
 
 if exists('+colorcolumn')
-    set colorcolumn=+1
+    set colorcolumn=80
 endif
 
 set autoindent
@@ -28,7 +28,6 @@ set nowrap
 set shiftwidth=4
 set shortmess=aI
 set tabstop=4
-set textwidth=79
 set timeoutlen=250
 set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
