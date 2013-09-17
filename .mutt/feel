@@ -3,15 +3,28 @@ auto_view text/html
 
 set use_domain
 unset reply_self
+set auto_tag
+unset delete_untag
+
 set edit_headers
 set include
 set reply_to
+set mime_forward
 set reverse_alias
 set delete
 set quit
 
+set pgp_replyencrypt
+set pgp_replysign
+set pgp_replysignencrypted
+
+# This is fine as the default ("us-ascii:iso-8859-1:utf-8"), but consider this
+# a way of selectively coaxing people to support UTF-8 everywhere :-)
+set send_charset = "utf-8"
+
+set strict_threads
+
 set forward_format = "Fwd: %s"
-set forward_quote
 
 ignore *
 unignore from: to: cc: date: subject:
