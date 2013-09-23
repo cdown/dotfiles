@@ -33,6 +33,8 @@ hdr_order from: to: cc: date: subject:
 
 macro attach s "<save-entry><bol>~/Downloads/<eol>"
 
+bind index C save-message
+
 set pager_stop
 unset confirmappend
 unset mark_old

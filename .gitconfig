@@ -9,6 +9,6 @@
 [alias]
     new = log --pretty=oneline --abbrev-commit HEAD..@{u}
     f = fetch
-    r = rebase -p
+    r = rebase -p @{u}
 [push]
     default = current
