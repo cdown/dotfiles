@@ -3,7 +3,7 @@
     email = chris@chrisdown.name
     signingkey = A7CC9B4D
 [core]
-    excludesfile = /home/chris/.gitignore_global
+    excludesfile = /home/chris/.config/git/gitignore_global
 [color]
     ui = auto
 [alias]
