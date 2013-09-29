@@ -1,0 +1,20 @@
+#!/bin/bash
+
+freenode() {
+    ssh -L 16000:irc.freenode.net:7000 element -N &
+    if [[ "$1" != --init-only ]]; then
+        sleep 6
+        irssi -c freenode-local
+        kill "$!"
+    fi
+}
+
+quakenet() {
+    ssh -L 16001:irc.quakenet.org:6667 element -N &
+    if [[ "$1" != --init-only ]]; then
+        sleep 6
+        irssi -c quakenet-local
+        kill "$!"
+    fi
+}
+

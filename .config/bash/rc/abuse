@@ -1,9 +1,0 @@
-#!/bin/bash
-
-abuse() {
-    whois -h whois.ripe.net "$1" | grep -i abuse
-}
-
-ripe() {
-    whois -h whois.ripe.net "$1"
-}
