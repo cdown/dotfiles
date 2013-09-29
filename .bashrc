@@ -2,6 +2,6 @@
 
 [[ "$-" == *i* ]] || return
 
-for file in ~/.bash/rc/*; do
+for file in ~/.config/bash/rc/*; do
     . "$file"
 done
