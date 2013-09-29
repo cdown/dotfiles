@@ -1,6 +1,1 @@
-source ~/.mutt/caches
-source ~/.mutt/feel
-source ~/.mutt/imap
-source ~/.mutt/pgp
-
-source ~/.mutt/accounts/chris@chrisdown.name
+.config/mutt/rc

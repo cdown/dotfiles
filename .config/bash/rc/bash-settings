@@ -30,7 +30,7 @@ quakenet() {
     fi
 }
 
-alias mutt-patch='mutt -F ~/.muttrc-patch -H'
+alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
 alias be='bundle exec'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
