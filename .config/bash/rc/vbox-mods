@@ -1,3 +1,0 @@
-#!/bin/bash
-
-alias vbox-mods='modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci'

@@ -1,13 +1,14 @@
 #!/bin/bash
 
-alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
 alias be='bundle exec'
-alias ls='ls --color=auto'
+alias fp='readlink -f'
 alias grep='grep --color=auto'
-alias v='ls -laFh'
-alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
+alias ls='ls --color=auto'
+alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
+alias proxy='ssh -C2qTnN -D 1337'
 alias sc=systemctl
+alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias ssh='TERM=rxvt ssh'
 alias sudo='sudo '
-alias proxy='ssh -C2qTnN -D 1337'
-alias fp='readlink -f'
+alias v='ls -laFh'
+alias vbox-mods='modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci'
