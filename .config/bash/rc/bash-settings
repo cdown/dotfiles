@@ -15,8 +15,8 @@ shopt -s globstar
 
 set +H
 
-gitPrompt() {
+git_prompt() {
     git branch --no-color 2>/dev/null | awk '/^\*/ { print ":" $2 }'
 }
 
-PS1='\u@\h:\W$(gitPrompt)\$ '
+PS1='\u@\h:\W$(git_prompt)\$ '
