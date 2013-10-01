@@ -50,6 +50,7 @@ autocmd BufReadPost * call TabsOrSpaces()
 autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions=tcrq
+autocmd FileType mail setlocal textwidth=0
 autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby setlocal shiftwidth=4
 autocmd FileType ruby setlocal tabstop=4
