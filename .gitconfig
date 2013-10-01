@@ -10,5 +10,7 @@
     new = log --pretty=oneline --abbrev-commit HEAD..@{u}
     f = fetch
     r = rebase -p @{u}
+    mimic = !git reset --hard @{u} && git clean -dfx
+
 [push]
     default = current
