@@ -37,7 +37,8 @@ fi
 
 if (( "${#deleted[@]}" )); then
     printf 'Deleted since last setup, to remove them, run:\n\n'
-    printf '%q ' rm -r ~/"${deleted[@]}"
+    printf 'rm -r '
+    printf '~/%q ' "${deleted[@]}"
     printf '\n\nYou may want to review any links to these files present in your home directory.\n'
 fi
 
