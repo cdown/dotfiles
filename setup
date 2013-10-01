@@ -3,6 +3,9 @@
 shopt -s dotglob extglob globstar nullglob
 
 git submodule update --init
+git submodule foreach git checkout master
+git submodule foreach git fetch
+git submodule foreach git reset --hard @{u}
 
 if [[ $0 == /* ]]; then
     location=${0%/*}
