@@ -8,9 +8,8 @@
     ui = auto
 [alias]
     new = log --pretty=oneline --abbrev-commit ..@{u}
-    iron = rebase -p @{u}
     mimic = !git reset --hard @{u} && git clean -dfx
-    only = "!git log \"$(git symbolic-ref HEAD)\" --not $(git for-each-ref --format=\"%(refname)\" refs/heads | grep -Fv \"$(git symbolic-ref HEAD)\")"
+    up = !git fetch -p && git rebase -p @{u}
 
 [push]
     default = current
