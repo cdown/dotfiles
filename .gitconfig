@@ -8,9 +8,9 @@
     ui = auto
 [alias]
     new = log --pretty=oneline --abbrev-commit ..@{u}
-    relevant = "!bash -c '[[ $1 ]] && branch_ref=refs/heads/$1 || branch_ref=$(git symbolic-ref HEAD); git log --no-merges \"${1-HEAD}\" --not $(git for-each-ref --format=\"%(refname)\" refs/heads | grep -Fv \"$branch_ref\")' --"
     iron = rebase -p @{u}
     mimic = !git reset --hard @{u} && git clean -dfx
+    only = "!git log \"$(git symbolic-ref HEAD)\" --not $(git for-each-ref --format=\"%(refname)\" refs/heads | grep -Fv \"$(git symbolic-ref HEAD)\")"
 
 [push]
     default = current
