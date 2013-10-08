@@ -8,8 +8,7 @@
     ui = auto
 [alias]
     new = log --pretty=oneline --abbrev-commit ..@{u}
-    mimic = !git reset --hard @{u} && git clean -dfx
-    up = !git fetch -p && git rebase -p @{u}
+    up = !git fetch -p && git rebase -p @{u} && git submodule update --init
 
 [push]
     default = current
