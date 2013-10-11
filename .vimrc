@@ -6,8 +6,10 @@ syntax on
 filetype on
 filetype plugin indent on
 
-highlight ColorColumn ctermbg=0
+highlight ColorColumn ctermbg=black
 highlight MatchParen ctermbg=white ctermfg=black
+highlight Search ctermbg=white ctermfg=black
+highlight Visual ctermbg=white ctermfg=black
 
 if exists('+colorcolumn')
     set colorcolumn=80
