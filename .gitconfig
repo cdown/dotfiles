@@ -8,7 +8,7 @@
     ui = auto
 [alias]
     new = log --pretty=oneline --abbrev-commit ..@{u}
-    up = !git fetch -p && git rebase -p @{u} && git submodule update --init
+    up = !git rebase -p @{u} && git submodule update --init
 
 [push]
     default = current
