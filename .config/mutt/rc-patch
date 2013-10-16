@@ -1,4 +1,8 @@
+source ~/.config/mutt/aliases
 source ~/.config/mutt/caches
+source ~/.config/mutt/content
 source ~/.config/mutt/feel
+source ~/.config/mutt/headers
+source ~/.config/mutt/look
 
 source ~/.config/mutt/accounts/chris@chrisdown.name
