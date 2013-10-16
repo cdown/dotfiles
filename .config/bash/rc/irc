@@ -1,7 +1,7 @@
 #!/bin/bash
 
 freenode() {
-    ssh -L 16000:irc.freenode.net:7000 element -N &
+    ssh -L 16000:irc.freenode.net:7000 guthrie -N &
     if [[ "$1" != --init-only ]]; then
         sleep 6
         irssi -c freenode-local
@@ -10,7 +10,7 @@ freenode() {
 }
 
 quakenet() {
-    ssh -L 16001:irc.quakenet.org:6667 element -N &
+    ssh -L 16001:irc.quakenet.org:6667 guthrie -N &
     if [[ "$1" != --init-only ]]; then
         sleep 6
         irssi -c quakenet-local
