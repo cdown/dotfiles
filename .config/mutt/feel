@@ -12,4 +12,8 @@ unset confirmappend
 set pager_stop
 set thorough_search
 
+bind pager,attach q exit
+bind index q noop
+bind index Q quit
+
 macro attach s "<save-entry><bol>~/Downloads/<eol>"
