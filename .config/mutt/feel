@@ -16,4 +16,6 @@ bind pager,attach q exit
 bind index q noop
 bind index Q quit
 
+bind index,pager r group-reply
+
 macro attach s "<save-entry><bol>~/Downloads/<eol>"
