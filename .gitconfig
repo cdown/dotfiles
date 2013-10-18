@@ -1,14 +1,7 @@
 [user]
     name = Chris Down
     email = chris@chrisdown.name
-    signingkey = A7CC9B4D
-[core]
-    excludesfile = /home/chris/.config/git/gitignore_global
 [color]
     ui = auto
-[alias]
-    new = log --pretty=oneline --abbrev-commit ..@{u}
-    up = !git rebase -p @{u} && git submodule update --init
-
 [push]
     default = current
