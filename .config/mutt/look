@@ -6,6 +6,9 @@ hdr_order   From: To: Cc: Date: Subject:
 set date_format  = '!%Y-%m-%d %H:%M'
 set index_format = '%4C  [%Z]  %D  %-15.15F  %s'
 
+set status_format  = '%> %?V?Limit: %V | ?%v'
+set compose_format = '%> %v'
+
 unset help
 
 set sort     = threads
@@ -25,6 +28,7 @@ color quoted5    brightgreen   default
 color quoted6    brightyellow  default
 color quoted7    brightcyan    default
 color search     red           brightblack
+color status     default       default
 color signature  cyan          default
 color tilde      brightblack   default
 color tree       brightblack   default
