@@ -6,6 +6,8 @@ hdr_order   From: To: Cc: Date: Subject:
 set date_format  = '!%Y-%m-%d %H:%M'
 set index_format = '%4C  [%Z]  %D  %-15.15F  %s'
 
+unset help
+
 set sort     = threads
 set sort_aux = last-date-received
 
