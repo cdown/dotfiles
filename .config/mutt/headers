@@ -1,4 +1,4 @@
-my_hdr PGP-Key: http://chrisdown.name/pgp
+my_hdr PGP-Key: https://chrisdown.name/pgp
 
 set use_domain
 set forward_format = "Fwd: %s"
