@@ -2,4 +2,3 @@ my_hdr PGP-Key: https://chrisdown.name/pgp
 
 set use_domain
 set forward_format = "Fwd: %s"
-set reverse_alias

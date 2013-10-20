@@ -11,6 +11,8 @@ set compose_format = '%> %v'
 
 unset help
 
+set reverse_alias
+
 set sort     = threads
 set sort_aux = last-date-received
 
