@@ -56,6 +56,7 @@ autocmd FileType mail setlocal textwidth=0
 autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby setlocal shiftwidth=2
 autocmd FileType ruby setlocal tabstop=2
+autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * setlocal nopaste
 
