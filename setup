@@ -4,20 +4,12 @@ shopt -s dotglob extglob globstar nullglob
 
 git submodule update --init
 
-if [[ $1 == --update-submodules ]]; then
-    git submodule foreach git checkout master
-    git submodule foreach git fetch
-    git submodule foreach git reset --hard @{u}
-fi
-
 if [[ $0 == /* ]]; then
     location=${0%/*}
 else
     location=$PWD/${0#./}
     location=${location%/*}
 fi
-
-rm -rf ~/.vim/bundle
 
 for file in "$location"/**/*; do
     bare="${file#$location/}"
@@ -28,21 +20,24 @@ for file in "$location"/**/*; do
 
     if [[ -d "$file" ]]; then
         mkdir -p ~/"$bare"
-    elif [[ -f "$file" ]]; then
+    else
         ln -sfn "$file" ~/"$bare"
     fi
 done
 
 deleted=()
 if [[ -f ~/.dfsha ]]; then
-    mapfile -t deleted < <(git diff --name-status "$(<~/.dfsha)" HEAD | sed -n '/^D/s/^D[[:blank:]]//p')
+    mapfile -t deleted < <(git diff --name-status "$(<~/.dfsha)" HEAD | sed -n 's/^D[[:blank:]]//p')
 fi
 
 if (( "${#deleted[@]}" )); then
-    printf 'Deleted since last setup, to remove them, run:\n\n'
-    printf 'rm -r '
-    printf '~/%q ' "${deleted[@]}"
-    printf '\n\nYou may want to review any links to these files present in your home directory.\n'
+    printf 'Files removed since last setup:\n'
+    printf '  ~/%q\n' "${deleted[@]}"
+    printf '\nRemove files from home directory? '
+    read -r delete_reply
+    if [[ $delete_reply == [yY] ]]; then
+        ( cd && rm -r "${deleted[@]}" )
+    fi
 fi
 
 git rev-parse HEAD > ~/.dfsha
