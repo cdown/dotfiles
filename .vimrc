@@ -34,8 +34,7 @@ set timeoutlen=250
 set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
-
-function TabsOrSpaces()
+function Tabs_Or_Spaces()
     if getfsize(bufname("%")) > 256000
         return
     endif
@@ -48,7 +47,7 @@ function TabsOrSpaces()
     endif
 endfunction
 
-autocmd BufReadPost * call TabsOrSpaces()
+autocmd BufReadPost * call Tabs_Or_Spaces()
 autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions=tcrq
