@@ -18,19 +18,13 @@ endif
 set autoindent
 set backspace=indent,eol,start
 set expandtab
-set fileencoding=utf-8
-set fileformats=unix
-set foldmethod=indent
-set foldlevel=99
 set hlsearch
 set incsearch
-set lazyredraw
 set nobackup
 set nowrap
 set shiftwidth=4
 set shortmess=aI
 set tabstop=4
-set timeoutlen=250
 set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
