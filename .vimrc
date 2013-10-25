@@ -12,7 +12,7 @@ highlight Search ctermbg=white ctermfg=black
 highlight Visual ctermbg=white ctermfg=black
 
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=+1
 endif
 
 set autoindent
