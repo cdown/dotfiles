@@ -34,20 +34,6 @@ set timeoutlen=250
 set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
-function Tabs_Or_Spaces()
-    if getfsize(bufname("%")) > 256000
-        return
-    endif
-
-    let numTabs=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^\\t"'))
-    let numSpaces=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^ "'))
-
-    if numTabs > numSpaces
-        setlocal noexpandtab
-    endif
-endfunction
-
-autocmd BufReadPost * call Tabs_Or_Spaces()
 autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions=tcrq
@@ -61,6 +47,5 @@ autocmd InsertLeave * setlocal nopaste
 
 let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
-
 
 nmap <silent> <leader>p :set paste<CR>
