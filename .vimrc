@@ -28,7 +28,6 @@ set tabstop=4
 set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
-autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions=tcrq
 autocmd FileType mail setlocal textwidth=0
@@ -38,6 +37,9 @@ autocmd FileType ruby setlocal tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertEnter * let @/ = ""
 autocmd InsertLeave * setlocal nopaste
+
+highlight TrailingWhitespace ctermbg=black
+match TrailingWhitespace /\s\+$/
 
 let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
