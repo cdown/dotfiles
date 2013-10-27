@@ -2,7 +2,7 @@
 
 shopt -s dotglob extglob globstar nullglob
 
-git submodule update --init
+git submodule update --init --recursive
 
 if [[ $0 == /* ]]; then
     location=${0%/*}
