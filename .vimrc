@@ -25,10 +25,11 @@ endif
 
 set autoindent
 set backspace=indent,eol,start
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
 set expandtab
 set hlsearch
 set incsearch
-set nobackup
 set nowrap
 set shiftwidth=4
 set shortmess=aI
