@@ -15,6 +15,12 @@ if exists('+colorcolumn')
     set colorcolumn=+1
 endif
 
+if exists("&relativenumber")
+    set relativenumber
+else
+    set number
+endif
+
 set autoindent
 set backspace=indent,eol,start
 set expandtab
