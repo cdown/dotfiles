@@ -10,6 +10,8 @@ highlight ColorColumn ctermbg=black
 highlight MatchParen ctermbg=white ctermfg=black
 highlight Search ctermbg=white ctermfg=black
 highlight Visual ctermbg=white ctermfg=black
+highlight LineNr ctermfg=black
+highlight CursorLineNr ctermfg=darkgrey
 
 if exists('+colorcolumn')
     set colorcolumn=+1
