@@ -46,3 +46,4 @@ let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
 
 nmap <silent> <leader>p :set paste<CR>
+nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
