@@ -23,6 +23,11 @@ else
     set number
 endif
 
+if exists("&undofile")
+    set undodir=~/.vim/undo//
+    set undofile
+endif
+
 set autoindent
 set backspace=indent,eol,start
 set backupdir=~/.vim/backup//
