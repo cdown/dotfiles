@@ -1,0 +1,40 @@
+#!/bin/bash
+
+alias grp='git rebase -p'
+alias gfr='git fetch -p && git rebase -p @{u}'
+alias grh='git reset --hard HEAD'
+alias gru='git reset --hard @{u}'
+alias gbmm='git fetch -p && git branch -r --merged master@{u}'
+alias glm='git log master@{u}..'
+alias glb='git log bugfixes@{u}..'
+alias gfp='git fetch -p'
+alias gmm='git fetch -p && git merge --no-ff master@{u}'
+alias gmb='git fetch -p && git merge --no-ff bugfixes@{u}'
+alias gca='git commit --amend'
+alias ga='git add'
+alias gri='git rebase -i'
+alias griu='git rebase -i @{u}'
+
+b_release() {
+    git checkout master && git reset --hard @{u} && git merge --no-ff "$1"@{u}
+
+    latest_tag="$(git describe --abbrev=0 --tags @{u})"
+    latest_tag="${latest_tag#RELEASE_}"
+
+    IFS=_ read last_release_date last_release_number <<< "$latest_tag"
+
+    current_date="$(date '+%Y%m%d')"
+
+    if [[ "$current_date" == "$last_release_date" ]]; then
+        let number++
+    else
+        number=1
+    fi
+
+    release_name="RELEASE_${date}_${number}"
+
+    git tag -a "$release_name"
+
+    git push origin master
+    git push origin "$release_name"
+}
