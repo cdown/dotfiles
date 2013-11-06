@@ -3,8 +3,8 @@ unignore    From: To: Cc: Date: Subject:
 unhdr_order *
 hdr_order   From: To: Cc: Date: Subject:
 
-set date_format  = '!%Y-%m-%d %H:%M'
 set index_format = '%4C  [%Z]  %D  %-15.15F  %s'
+set date_format  = "%Y-%m-%d %H:%M:%S %Z"
 
 set status_format  = '%> %?V?Limit: %V | ?%v'
 set compose_format = '%> %v'
