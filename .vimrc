@@ -33,6 +33,7 @@ set backspace=indent,eol,start
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set expandtab
+set formatoptions-=t
 set hlsearch
 set incsearch
 set nowrap
@@ -45,7 +46,7 @@ set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
 autocmd FileType mail normal }
-autocmd FileType mail setlocal formatoptions=tcrq
+autocmd FileType mail setlocal formatoptions=crq
 autocmd FileType mail setlocal textwidth=72
 autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby setlocal shiftwidth=2
