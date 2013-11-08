@@ -20,3 +20,11 @@ record-screen() {
 f() {
     find "${2-.}" -iname "*$1*"
 }
+
+chromium-proxy() {
+    pkill -f chromium
+    proxy guthrie &
+    sleep 5
+    chromium --incognito --proxy-server=socks5://localhost:1337
+    kill "$!"
+}
