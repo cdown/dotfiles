@@ -8,6 +8,8 @@ xset b off
 autocutsel &
 autocutsel -s PRIMARY &
 
+dunst &
+
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
