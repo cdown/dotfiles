@@ -1,0 +1,9 @@
+[BASIC]
+const-rgx=(([A-Za-z_][A-Za-z1-9_]*)|(__.*__))$
+
+[MESSAGES CONTROL]
+disable=W0621
+
+[REPORTS]
+include-ids=yes
+reports=no
