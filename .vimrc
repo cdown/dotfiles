@@ -63,8 +63,3 @@ let mapleader = ","
 
 nmap <silent> <leader>p :set paste<CR>
 nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
-
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
