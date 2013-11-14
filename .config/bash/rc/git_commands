@@ -16,27 +16,3 @@ alias gca='git commit --amend'
 alias ga='git add'
 alias gri='git rebase -i'
 alias griu='git rebase -i @{u}'
-
-b_release() {
-    git checkout master && git reset --hard @{u} && git merge --no-ff "$1"@{u}
-
-    latest_tag="$(git describe --abbrev=0 --tags @{u})"
-    latest_tag="${latest_tag#RELEASE_}"
-
-    IFS=_ read last_release_date last_release_number <<< "$latest_tag"
-
-    current_date="$(date '+%Y%m%d')"
-
-    if [[ "$current_date" == "$last_release_date" ]]; then
-        let number++
-    else
-        number=1
-    fi
-
-    release_name="RELEASE_${date}_${number}"
-
-    git tag -a "$release_name"
-
-    git push origin master
-    git push origin "$release_name"
-}
