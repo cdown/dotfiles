@@ -18,4 +18,6 @@ bind index Q quit
 
 bind index,pager r group-reply
 
+macro index I "<limit><bol>~p<enter>"
+macro index L "<limit>all<enter>"
 macro attach s "<save-entry><bol>~/Downloads/<eol>"
