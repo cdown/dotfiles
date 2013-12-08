@@ -1,6 +1,7 @@
 #!/bin/bash
 
 alias ga='git add'
+alias gap='git add -p'
 alias gc='git commit -v'
 alias gca='git commit -av'
 alias gcaa='git commit --amend -av'
