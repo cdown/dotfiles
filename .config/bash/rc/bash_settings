@@ -6,6 +6,7 @@ current_shell=${current_shell##*/}
 case "$current_shell" in
     zsh)
         HISTFILE=$HOME/.zsh_history
+        bindkey -e
         setopt extendedglob
         setopt histappend
         setopt no_bang_hist
