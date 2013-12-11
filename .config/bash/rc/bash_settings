@@ -16,7 +16,11 @@ shopt -s globstar
 set +H
 
 git_prompt() {
-    git branch --no-color 2>/dev/null | awk '/^\*/ { print ":" $2 }'
+    local branch
+
+    if branch="$(git symbolic-ref --short -q HEAD 2>/dev/null)"; then
+        printf ':%s' "$branch"
+    fi
 }
 
 PS1='\u@\h:\W$(git_prompt)\$ '
