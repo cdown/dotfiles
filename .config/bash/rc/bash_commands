@@ -12,6 +12,7 @@ alias ssh='TERM=rxvt ssh'
 alias sudo='sudo '
 alias v='ls -laFh'
 alias vbox-mods='modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci'
+alias refresh-mirrors='sudo reflector -f 6 -c Japan -c Australia -c Korea --sort rate --save /etc/pacman.d/mirrorlist'
 
 record-screen() {
     ffmpeg -f x11grab -r 25 -s "$1" -i :0.0+0,0 -vcodec libx264 -threads 0 "$2"
