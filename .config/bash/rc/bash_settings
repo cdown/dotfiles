@@ -1,5 +1,26 @@
 #!/bin/bash
 
+current_shell=$(readlink -f /proc/$$/exe)
+current_shell=${current_shell##*/}
+
+case "$current_shell" in
+    zsh)
+        HISTFILE=$HOME/.zsh_history
+        setopt extendedglob
+        setopt histappend
+        setopt no_bang_hist
+        setopt prompt_subst
+        PS1='%n@%m:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)%% '
+    ;;
+    bash)
+        set +H
+        shopt -s histappend
+        shopt -s extglob
+        shopt -s globstar
+        PS1='\u@\h:\W$(git_prompt)\$ '
+    ;;
+esac
+
 awk 'NR==FNR && !/^#/{lines[$0]=FNR;next} lines[$0]==FNR' "$HISTFILE" "$HISTFILE" > "$HISTFILE.compressed"
 mv "$HISTFILE.compressed" "$HISTFILE"
 
@@ -9,12 +30,6 @@ HISTSIZE=
 HISTCONTROL=ignoredups
 PROMPT_COMMAND='history -a'
 
-shopt -s histappend
-shopt -s extglob
-shopt -s globstar
-
-set +H
-
 git_prompt() {
     local branch
 
@@ -23,4 +38,3 @@ git_prompt() {
     fi
 }
 
-PS1='\u@\h:\W$(git_prompt)\$ '

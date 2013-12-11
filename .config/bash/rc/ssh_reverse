@@ -12,7 +12,7 @@ ssh-rev() {
     host="${HOSTNAME%%.*}"
     port="${ports[$host]}"
 
-    [[ $port ]] || return 1
+    [[ -n $port ]] || return 1
 
     autossh -M "$port"0 -f -N -R "$port":localhost:22 leo
 }
