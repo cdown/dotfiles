@@ -2,6 +2,10 @@
 
 alias ga='git add'
 alias gap='git add -p'
+alias gb='git branch'
+alias gbr='git branch -r'
+alias gbm='git branch -r --merged master@{u}'
+alias gbb='git branch -r --merged bugfixes@{u}'
 alias gc='git commit -v'
 alias gca='git commit -av'
 alias gcaa='git commit --amend -av'
