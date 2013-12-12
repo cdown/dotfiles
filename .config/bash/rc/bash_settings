@@ -4,7 +4,7 @@ current_shell=$(readlink -f /proc/$$/exe)
 current_shell=${current_shell##*/}
 
 case "$current_shell" in
-    zsh)
+    zsh*)
         HISTFILE=$HOME/.zsh_history
         bindkey -e
         bindkey "^[[3~"  delete-char
@@ -15,7 +15,7 @@ case "$current_shell" in
         setopt prompt_subst
         PS1='%n@%m:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)%% '
     ;;
-    bash)
+    bash*)
         set +H
         shopt -s histappend
         shopt -s extglob
