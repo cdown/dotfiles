@@ -13,6 +13,7 @@ alias sudo='sudo '
 alias v='ls -laFh'
 alias vbox-mods='modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci'
 alias refresh-mirrors='sudo reflector -f 6 -c Japan -c Australia -c Korea --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-dotfiles='cd ~/git/dotfiles && git fetch -p && git rebase -p @{u} && ./setup'
 
 rtdump() {
     perl -MData::Dumper -MBOM::Platform::Runtime -e "print Dumper($1)"
