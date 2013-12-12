@@ -36,7 +36,7 @@ PROMPT_COMMAND='history -a'
 git_prompt() {
     local branch
 
-    if branch="$(git symbolic-ref --short -q HEAD 2>/dev/null)"; then
+    if branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"; then
         printf ':%s' "$branch"
     fi
 }
