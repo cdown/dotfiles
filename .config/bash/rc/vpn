@@ -1,5 +1,3 @@
-#!/bin/bash
-
 vpn() {
     case "$2" in
         rmg)

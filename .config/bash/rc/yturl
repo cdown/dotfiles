@@ -1,5 +1,3 @@
-#!/bin/bash
-
 yt() {
     mplayer -cache 8096 -cache-min 10  "$(yturl "$@")"
 }

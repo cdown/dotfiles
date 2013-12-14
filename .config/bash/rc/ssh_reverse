@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ssh-rev() {
     local ports host port
     declare -A ports

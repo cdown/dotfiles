@@ -1,5 +1,3 @@
-#!/bin/bash
-
 freenode() {
     ssh -L 16000:irc.freenode.net:7000 guthrie -N &
     if [[ "$1" != --init-only ]]; then

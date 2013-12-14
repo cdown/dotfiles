@@ -1,5 +1,3 @@
-#!/bin/bash
-
 so() {
     local tmpdir="$(mktemp -d)"
     local tmprc="$(mktemp)"

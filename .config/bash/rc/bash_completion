@@ -1,5 +1,3 @@
-#!/bin/bash
-
 if [[ -r /usr/share/bash-completion/bash_completion ]]; then
     # Arch
     . /usr/share/bash-completion/bash_completion
