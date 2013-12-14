@@ -3,7 +3,7 @@ LS_COLORS='rs=0:di=01;34:ln=01;36:mh=38;5;220;1:pi=40;33:so=01;35:do=01;35:bd=40
 hide=(.viminfo .Xauthority .ssh-agent .rediscli_history .lesshst .bash_history .gitignore .pyc .pyo)
 
 for hidden in "${hide[@]}"; do
-    LS_COLORS+="*$hidden=1;30:"
+    LS_COLORS="$LS_COLORS*$hidden=1;30:"
 done
 
 export LS_COLORS
