@@ -20,6 +20,7 @@ case "$current_shell" in
         shopt -s histappend
         shopt -s extglob
         shopt -s globstar
+        PROMPT_COMMAND='history -a'
         PS1='\u@\h:\W$(git_prompt)\$ '
     ;;
     mksh*)
@@ -36,7 +37,6 @@ HISTFILESIZE=
 HISTSIZE=
 
 HISTCONTROL=ignoredups
-PROMPT_COMMAND='history -a'
 
 git_prompt() {
     local branch
