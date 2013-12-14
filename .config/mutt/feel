@@ -21,3 +21,5 @@ bind index,pager r group-reply
 macro index I "<limit><bol>~p<enter>"
 macro index L "<limit>all<enter>"
 macro attach s "<save-entry><bol>~/Downloads/<eol>"
+
+macro attach B "<pipe-message>cat > /tmp/mutt.html; chromium /tmp/mutt.html<enter>"
