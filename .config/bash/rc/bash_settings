@@ -24,7 +24,7 @@ case "$current_shell" in
     mksh*)
         HISTFILE=$HOME/.mksh_history
         bind ^L=clear-screen
-        PS1='${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)$ '
+        PS1='${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo \$) '
     ;;
 esac
 
