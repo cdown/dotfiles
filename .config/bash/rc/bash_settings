@@ -28,6 +28,8 @@ case "$current_shell" in
     ;;
 esac
 
+[[ -e $HISTFILE ]] || > "$HISTFILE"
+
 awk 'NR==FNR && !/^#/{lines[$0]=FNR;next} lines[$0]==FNR' "$HISTFILE" "$HISTFILE" > "$HISTFILE.compressed"
 mv "$HISTFILE.compressed" "$HISTFILE"
 
