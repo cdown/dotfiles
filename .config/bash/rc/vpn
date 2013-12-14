@@ -21,7 +21,7 @@ vpn() {
 
 ssh-rmg() {
     # This is naive, but it should work for RMG stuff
-    mapfile -t ips < <(dig +short "${@: -1}.regentmarkets.com")
+    ips=( $(dig +short "${@: -1}.regentmarkets.com") )
 
     for ip in "${ips[@]}"; do
         if [[ "${ip: -1}" != "." ]]; then
