@@ -1,0 +1,7 @@
+#!/bin/mksh
+
+[[ "$-" == *i* ]] || return
+
+for file in ~/.config/mksh/rc/*; do
+    . "$file"
+done
