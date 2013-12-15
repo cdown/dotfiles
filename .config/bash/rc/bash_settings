@@ -12,6 +12,8 @@ case "$current_shell" in
         setopt no_bang_hist
         setopt prompt_subst
         PS1='%n@%m:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo \$) '
+        HISTSIZE=2500
+        SAVEHIST=$HISTSIZE
     ;;
     bash*)
         set +H
@@ -20,11 +22,15 @@ case "$current_shell" in
         shopt -s globstar
         PROMPT_COMMAND='history -a'
         PS1='\u@\h:\W$(git_prompt)\$ '
+        HISTFILESIZE=
+        HISTSIZE=
     ;;
     mksh*)
         HISTFILE=$HOME/.mksh_history
         bind ^L=clear-screen
         PS1='${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo \$) '
+        HISTFILESIZE=
+        HISTSIZE=
     ;;
 esac
 
@@ -33,8 +39,6 @@ esac
 awk 'NR==FNR && !/^#/{lines[$0]=FNR;next} lines[$0]==FNR' "$HISTFILE" "$HISTFILE" > "$HISTFILE.compressed"
 mv "$HISTFILE.compressed" "$HISTFILE"
 
-HISTFILESIZE=
-HISTSIZE=
 
 HISTCONTROL=ignoredups
 
