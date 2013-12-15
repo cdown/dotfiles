@@ -1,1 +1,2 @@
-../../bash/rc/bash_settings
+HISTFILE=$HOME/.mksh_history
+bind ^L=clear-screen

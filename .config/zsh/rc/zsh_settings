@@ -1,1 +1,10 @@
-../../bash/rc/bash_settings
+HISTFILE=$HOME/.zsh_history
+
+bindkey -e
+bindkey "^[[3~"  delete-char
+bindkey "^[3;5~" delete-char
+
+setopt extendedglob
+setopt histappend
+setopt no_bang_hist
+setopt prompt_subst
