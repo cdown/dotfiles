@@ -1,7 +1,4 @@
 HISTSIZE=2500
-HISTFILESIZE=$HISTSIZE
-SAVEHIST=$HISTFILESIZE
-HISTCONTROL=ignoredups
 
 PS1='${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo \$) '
 

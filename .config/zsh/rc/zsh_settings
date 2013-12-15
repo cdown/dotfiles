@@ -1,4 +1,5 @@
 HISTFILE=$HOME/.zsh_history
+SAVEHIST=2500
 
 bindkey -e
 bindkey "^[[3~"  delete-char

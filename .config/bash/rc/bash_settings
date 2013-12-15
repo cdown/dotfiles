@@ -1,5 +1,8 @@
 set +H
 
+HISTFILESIZE=2500
+HISTCONTROL=ignoredups
+
 shopt -s histappend
 shopt -s extglob
 shopt -s globstar
