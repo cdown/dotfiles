@@ -5,6 +5,8 @@ set -o append_history
 set -o histignorealldups
 set -o share_history
 
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
 bindkey -e
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
