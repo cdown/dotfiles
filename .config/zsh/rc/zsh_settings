@@ -1,6 +1,10 @@
 HISTFILE=$HOME/.zsh_history
 SAVEHIST=2500
 
+set -o append_history
+set -o histignorealldups
+set -o share_history
+
 bindkey -e
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
