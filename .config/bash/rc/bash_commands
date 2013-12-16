@@ -14,6 +14,10 @@ alias refresh-mirrors='sudo reflector -f 6 -c Japan -c Australia -c Korea --sort
 alias update-dotfiles='( cd ~/git/dotfiles && git fetch -p && git reset --hard @{u} && git clean -dffx && ./setup )'
 alias bom='cd /home/git/bom && coa bom'
 
+ssh-dotfiles() {
+    ssh "$@" 'rm -rf ~/git/dotfiles && mkdir -p ~/git && git clone https://github.com/cdown/dotfiles.git ~/git/dotfiles && cd ~/git/dotfiles && ./setup'
+}
+
 coa() {
     tmux attach-session -t "$1" || tmux new-session -s "$1"
 }
