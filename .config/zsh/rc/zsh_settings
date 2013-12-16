@@ -8,7 +8,6 @@ set -o share_history
 set -o complete_in_word
 set -o always_to_end
 
-zstyle ':completion:*' menu select
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 bindkey -e
