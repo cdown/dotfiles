@@ -25,6 +25,7 @@ bom() {
     tmux new-window -t "$session:2" -n git
     tmux new-window -t "$session:3" -n test
     tmux select-window -t "$session:1"
+    tmux select-pane -t bom:1.0
     tmux attach-session -t "$session"
 }
 
