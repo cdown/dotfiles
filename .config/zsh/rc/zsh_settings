@@ -1,5 +1,6 @@
 HISTFILE=$HOME/.zsh_history
 SAVEHIST=2500
+LISTMAX=0
 
 set -o append_history
 set -o histignorealldups
