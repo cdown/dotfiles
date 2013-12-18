@@ -1,6 +1,6 @@
 HISTSIZE=2500
 
-PS1='${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo \$) '
+PS1='${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo $) '
 
 git_prompt() {
     local branch
