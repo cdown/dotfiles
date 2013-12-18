@@ -6,7 +6,7 @@ alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
 alias proxy='ssh -C2qTnN -D 1337'
 alias sc=systemctl
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
-alias ssh='TERM=xterm-256color ssh'
+alias ssh='TERM=rxvt ssh'
 alias ssh-fw='ssh -o ForwardAgent=yes'
 alias sudo='sudo '
 alias v='ls -laFh'
