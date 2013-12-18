@@ -23,8 +23,8 @@ bom() {
     tmux new-session -d -s "$session" 'while :; do vim; done'
     tmux split-window -t "$session:1" -h 'while :; do vim; done'
     tmux rename-window -t "$session:1" code
-    tmux new-window -t "$session:2" -n git
-    tmux new-window -t "$session:3" -n test
+    tmux new-window -t "$session:2" -n git 'while :; do "$SHELL"; done'
+    tmux new-window -t "$session:3" -n test 'while :; do "$SHELL"; done'
     tmux select-window -t "$session:1"
     tmux select-pane -t bom:1.0
     tmux attach-session -t "$session"
