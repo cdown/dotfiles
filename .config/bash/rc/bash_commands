@@ -20,8 +20,8 @@ bom() {
     tmux attach-session -t "$session" && return
 
     cd /home/git/bom
-    tmux new-session -d -s "$session" vim
-    tmux split-window -t "$session:1" -h vim
+    tmux new-session -d -s "$session" 'while :; do vim; done'
+    tmux split-window -t "$session:1" -h 'while :; do vim; done'
     tmux rename-window -t "$session:1" code
     tmux new-window -t "$session:2" -n git
     tmux new-window -t "$session:3" -n test
