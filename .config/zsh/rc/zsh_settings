@@ -34,16 +34,18 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
 [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
-zle-line-init() {
-    echoti smkx
-}
+if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
+    zle-line-init() {
+        echoti smkx
+    }
 
-zle-line-finish() {
-    echoti rmkx
-}
+    zle-line-finish() {
+        echoti rmkx
+    }
 
-zle -N zle-line-init
-zle -N zle-line-finish
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
 
 bindkey "\e[A" history-beginning-search-backward
 bindkey "\e[B" history-beginning-search-forward
