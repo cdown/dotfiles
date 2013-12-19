@@ -7,6 +7,7 @@ set -o histignorealldups
 set -o share_history
 set -o complete_in_word
 set -o always_to_end
+set -o nullglob
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
