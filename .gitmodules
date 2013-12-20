@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/mru"]
 	path = .vim/bundle/mru
 	url = https://github.com/yegappan/mru.git
+[submodule ".vim/bundle/ag"]
+	path = .vim/bundle/ag
+	url = https://github.com/rking/ag.vim.git
