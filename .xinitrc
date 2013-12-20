@@ -3,6 +3,8 @@ xset fp rehash
 
 xset b off
 
+xset r off
+
 autocutsel &
 autocutsel -s PRIMARY &
 
