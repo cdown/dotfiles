@@ -11,6 +11,8 @@ else
     location=${location%/*}
 fi
 
+rm -rf ~/.vim/bundle
+
 for file in "$location"/**/*; do
     bare="${file#$location/}"
 
