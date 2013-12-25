@@ -46,6 +46,7 @@ autocmd InsertLeave * setlocal nopaste
 
 let mapleader = ","
 
+nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
 nmap <silent> H :set hlsearch!<CR>
 nmap <silent> <leader>p :set paste<CR>
 nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
