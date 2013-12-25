@@ -33,7 +33,6 @@ set textwidth=79
 set undodir=~/.vim/undo//
 set undofile
 set viminfo-=<50,s10
-set whichwrap+=<,>,[,]
 
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=r
