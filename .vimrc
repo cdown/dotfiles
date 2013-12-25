@@ -13,35 +13,24 @@ highlight Visual ctermbg=white ctermfg=black
 highlight LineNr ctermfg=black
 highlight CursorLineNr ctermfg=darkgrey
 
-if exists('+colorcolumn')
-    set colorcolumn=+1
-endif
-
-if exists("&relativenumber")
-    set relativenumber
-else
-    set number
-endif
-
-if exists("&undofile")
-    set undodir=~/.vim/undo//
-    set undofile
-endif
-
 set autoindent
 set backspace=indent,eol,start
 set backupdir=~/.vim/backup//
+set colorcolumn=+1
 set directory=~/.vim/swap//
 set expandtab
 set formatoptions-=t
 set hlsearch
 set incsearch
 set nowrap
+set relativenumber
 set scrolloff=1
 set shiftwidth=4
 set shortmess=aI
 set tabstop=4
 set textwidth=79
+set undodir=~/.vim/undo//
+set undofile
 set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
