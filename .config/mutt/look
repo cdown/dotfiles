@@ -1,6 +1,5 @@
 ignore      *
 unignore    From: To: Cc: Date: Subject:
-unhdr_order *
 hdr_order   From: To: Cc: Date: Subject:
 
 set index_format = '%4C  [%Z] [%-4.4c]  %D  %-15.15F  %s'
@@ -10,8 +9,6 @@ set status_format  = '%> %?V?Limit: %V | ?%v'
 set compose_format = '%> %v'
 
 unset help
-
-set reverse_alias
 
 set sort     = threads
 set sort_aux = last-date-received
@@ -35,14 +32,10 @@ color signature  cyan          default
 color tilde      brightblack   default
 color tree       brightblack   default
 
-color index brightblack default "!~N !~p !~F !~T !~D"  # Old
-color index brightred   default "~N ~p !~F !~T !~D"    # New, to me
-color index magenta     default "!~N ~p !~F !~T !~D"   # Old, to me
-color index brightcyan  default "~T"                   # Tagged
-color index cyan        default "~F"                   # Flagged
-color index blue        default "~D"                   # Deleted
-color index green       default "~P !~F !~T !~D"       # From me
+color index brightblack default "!~N !~p !~F !~T !~D"          # Old
+color index brightred   default "~p !~F !~T !~D"               # New, to me
+color index brightcyan  default "~T"                           # Tagged
+color index cyan        default "~F"                           # Flagged
+color index blue        default "~D"                           # Deleted
+color index green       default "~P !~F !~T !~D"               # From me
 color index brightgreen default "~z 100k- !~F !~T !~D !~P !~p" # Big messages
-
-color index yellow default "~f \"zenoss|x-sysadmin-alerts|pingdom|datadog\" !~F !~T !~D !~P"
-color index yellow default "~t \"backup@|replication-monitor@\" !~F !~T !~D !~P"
