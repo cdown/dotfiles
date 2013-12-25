@@ -2,7 +2,7 @@
 
 [[ "$-" == *i* ]] || return
 
-for file in ~/.config/zsh/profile/*; do
+for file in ~/.config/shells/profile/*; do
     . "$file"
 done
 

@@ -1,0 +1,121 @@
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
+alias proxy='ssh -C2qTnN -D 1337'
+alias rbenv-init='eval "$(rbenv init -)"'
+alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
+alias ssh='TERM=rxvt ssh'
+alias sudo='sudo '
+alias vbox-mods='sudo modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci'
+
+alias ga='git add'
+alias gap='git add -p'
+alias gb='git branch'
+alias gbb='git branch -r --merged bugfixes@{u}'
+alias gbm='git branch -r --merged master@{u}'
+alias gbr='git branch -r'
+alias gc='git commit -v'
+alias gca='git commit -av'
+alias gcaa='git commit --amend -av'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdb='git diff bugfixes@{u}..'
+alias gdc='git diff --cached'
+alias gdm='git diff master@{u}..'
+alias gfp='git fetch -p'
+alias gfr='git fetch -p && git rebase -p @{u}'
+alias gg='git grep'
+alias gl='git log'
+alias glb='git log --no-merges bugfixes@{u}..'
+alias glm='git log --no-merges master@{u}..'
+alias gmb='git merge --no-ff bugfixes@{u}'
+alias gmm='git merge --no-ff master@{u}'
+alias gp='git push'
+alias grh='git reset --hard'
+alias gru='git rebase -p @{u}'
+alias gs='git show'
+alias gst='git status'
+
+alias refresh-mirrors='
+    sudo reflector -f 6 \
+    -c Japan -c Australia -c Korea \
+    --sort rate \
+    --save /etc/pacman.d/mirrorlist'
+
+alias chromium-proxy='
+    pkill -f chromium
+    proxy guthrie &
+    sleep 5
+    chromium --incognito --proxy-server=socks5://localhost:1337
+    kill "$!"'
+
+coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
+f() { find "${2-.}" -iname "*$1*"; }
+yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
+
+ssh-dotfiles() {
+    ssh "$@" 'rm -rf ~/git/dotfiles
+    mkdir -p ~/git
+    git clone https://github.com/cdown/dotfiles.git ~/git/dotfiles
+    cd ~/git/dotfiles
+    ./setup'
+}
+
+record-screen() {
+    ffmpeg \
+        -f x11grab \
+        -r 25 \
+        -s "${2-$(xrandr --current | awk '$2 ~ /*/ { print $1 }')}" \
+        -i :0.0+0,0 \
+        -vcodec libx264 \
+        -threads 0 \
+        "$1"
+}
+
+freenode() {
+    ssh -L 16000:irc.freenode.net:7000 guthrie -N &
+    if [[ "$1" != --init-only ]]; then
+        sleep 6
+        irssi -c freenode-local
+        kill "$!"
+    fi
+}
+
+quakenet() {
+    ssh -L 16001:irc.quakenet.org:6667 guthrie -N &
+    if [[ "$1" != --init-only ]]; then
+        sleep 6
+        irssi -c quakenet-local
+        kill "$!"
+    fi
+}
+
+update-auth-sock() {
+    local socket_path="$(tmux show-environment | sed -n 's/^SSH_AUTH_SOCK=//p')"
+
+    if [[ -z "$socket_path" ]]; then
+        echo 'no socket path' >&2
+        return 1
+    else
+        export SSH_AUTH_SOCK="$socket_path"
+    fi
+}
+
+so() {
+    local tmpdir="$(mktemp -d)"
+    local tmprc="$(mktemp)"
+    cat > "$tmprc" << EOF
+PS1='\$ '
+cd "$tmpdir"
+EOF
+    env - HOME="$HOME" TERM="$TERM" bash --noprofile --rcfile "$tmprc"
+    rm -r "$tmpdir" "$tmprc"
+}
+
+_git_prompt() {
+    local branch
+
+    if branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"; then
+        printf ':%s' "$branch"
+    fi
+}
