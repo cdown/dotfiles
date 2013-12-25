@@ -7,20 +7,21 @@ filetype on
 filetype plugin indent on
 
 highlight ColorColumn ctermbg=black
+highlight CursorLineNr ctermfg=darkgrey
+highlight LineNr ctermfg=black
 highlight MatchParen ctermbg=white ctermfg=black
 highlight Search ctermbg=white ctermfg=black
+highlight TrailingWhitespace ctermbg=black
 highlight Visual ctermbg=white ctermfg=black
-highlight LineNr ctermfg=black
-highlight CursorLineNr ctermfg=darkgrey
+
+match TrailingWhitespace /\s\+$/
 
 set autoindent
-set backspace=indent,eol,start
 set backupdir=~/.vim/backup//
 set colorcolumn=+1
 set directory=~/.vim/swap//
 set expandtab
 set formatoptions-=t
-set hlsearch
 set incsearch
 set nowrap
 set relativenumber
@@ -41,13 +42,10 @@ autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby setlocal shiftwidth=2
 autocmd FileType ruby setlocal tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
-autocmd InsertEnter * let @/ = ""
+autocmd InsertEnter * setlocal nohlsearch
 autocmd InsertLeave * setlocal nopaste
+autocmd InsertLeave * setlocal hlsearch
 
-highlight TrailingWhitespace ctermbg=black
-match TrailingWhitespace /\s\+$/
-
-let g:EasyMotion_leader_key = '<Leader>'
 let mapleader = ","
 
 nmap <silent> <leader>p :set paste<CR>
