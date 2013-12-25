@@ -35,7 +35,7 @@ set viminfo-=<50,s10
 set whichwrap+=<,>,[,]
 
 autocmd FileType mail normal }
-autocmd FileType mail setlocal formatoptions=crq
+autocmd FileType mail setlocal formatoptions+=r
 autocmd FileType mail setlocal textwidth=72
 autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby setlocal shiftwidth=2
