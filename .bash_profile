@@ -1,6 +1,6 @@
 [[ "$-" == *i* ]] || return
 
-for file in ~/.config/shells/profile/*; do
+for file in ~/.config/shell/profile/*; do
     . "$file"
 done
 
