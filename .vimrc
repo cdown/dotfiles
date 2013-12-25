@@ -23,6 +23,7 @@ set directory=~/.vim/swap//
 set expandtab
 set formatoptions-=t
 set incsearch
+set hlsearch
 set nowrap
 set relativenumber
 set scrolloff=1
@@ -41,11 +42,10 @@ autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby setlocal shiftwidth=2
 autocmd FileType ruby setlocal tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
-autocmd InsertEnter * setlocal nohlsearch
 autocmd InsertLeave * setlocal nopaste
-autocmd InsertLeave * setlocal hlsearch
 
 let mapleader = ","
 
+nmap <silent> H :set hlsearch!<CR>
 nmap <silent> <leader>p :set paste<CR>
 nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
