@@ -1,2 +1,0 @@
-HISTFILE=$HOME/.mksh_history
-bind ^L=clear-screen
