@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/easymotion"]
 	path = .vim/bundle/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule ".vim/bundle/markdown"]
+	path = .vim/bundle/markdown
+	url = https://github.com/tpope/vim-markdown.git
