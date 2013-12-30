@@ -37,6 +37,8 @@ alias gru='git rebase -p @{u}'
 alias gs='git show'
 alias gst='git status'
 
+[ "$ZSH_VERSION" ] && alias git='noglob git'
+
 alias refresh-mirrors='
     sudo reflector -f 6 \
     -c Japan -c Australia -c Korea \
