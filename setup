@@ -2,6 +2,7 @@
 
 shopt -s dotglob extglob globstar nullglob
 
+git clean -dffx
 git submodule update --init --recursive
 
 if [[ $0 == /* ]]; then
