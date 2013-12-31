@@ -1,7 +1,7 @@
 [[ "$-" == *i* ]] || return
 
-for file in ~/.config/shell/rc/*; do
-    . "$file"
+for file in ~/.config/{shell,bash}/rc/*; do
+    [[ -e $file ]] && . "$file"
 done
 
 PS1='\u@\h:\W$(_git_prompt)\$ '
