@@ -52,6 +52,7 @@ alias chromium-proxy='
     chromium --incognito --proxy-server=socks5://localhost:1337
     kill "$!"'
 
+activate() { . "$1"/bin/activate; }
 coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iname "*$1*"; }
 yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
