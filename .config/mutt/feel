@@ -16,6 +16,8 @@ bind pager,attach q exit
 bind index q noop
 bind index Q quit
 
+bind index,pager p noop
+
 bind index,pager r group-reply
 
 macro index I "<limit><bol>~p<enter>"
