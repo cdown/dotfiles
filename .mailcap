@@ -2,4 +2,4 @@ text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
 application/msword; abiword --to pdf --to-name /tmp/mutt.pdf %s\; mupdf /tmp/mutt.pdf
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; abiword --to pdf --to-name /tmp/mutt.pdf %s\; mupdf /tmp/mutt.pdf
 image/*; sxiv %s
-application/pdf; zathura %s
+application/pdf; mupdf %s
