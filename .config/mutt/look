@@ -9,6 +9,7 @@ set status_format  = '%> %?V?Limit: %V | ?%v'
 set compose_format = '%> %v'
 
 unset help
+unset markers
 
 set sort     = threads
 set sort_aux = last-date-received
