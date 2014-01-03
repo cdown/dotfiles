@@ -4,7 +4,17 @@ for file in ~/.config/{shell,zsh}/rc/*(N); do
     . "$file"
 done
 
-PS1='%n@%m:$([[ $PWD == $HOME ]] && echo "~" || echo "${PWD##*/}")$(_git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo $) '
+PS1='%n@%m:$(if [[ $PWD == $HOME ]]; then
+    echo "~"
+else
+    stripped_pwd="${PWD##*/}"
+    if [[ -n $stripped_pwd ]]; then
+        echo "$stripped_pwd"
+    else
+        echo /
+    fi
+fi
+)$(_git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo $) '
 
 autoload -U compinit promptinit
 compinit
