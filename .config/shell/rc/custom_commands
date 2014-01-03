@@ -120,6 +120,12 @@ _git_prompt() {
     local branch
 
     if branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"; then
-        printf ':%s' "$branch"
+        if [[ $branch != HEAD ]]; then
+            printf ':%s' "$branch"
+        elif tag="$(git describe --tags --exact-match HEAD 2>/dev/null)"; then
+            printf ':%s' "$tag"
+        else
+            printf ':%s' "$(git rev-parse --short HEAD)"
+        fi
     fi
 }
