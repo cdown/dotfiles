@@ -7,7 +7,7 @@ alias rbenv-init='eval "$(rbenv init -)"'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias ssh='TERM=rxvt-256color ssh'
 alias sudo='sudo '
-alias vbox-mods='sudo modprobe -a vboxdrv vboxnetadp vboxnetflt vboxpci'
+alias vbox-mods='sudo modprobe -a vboxdrv vboxnetadp vboxnetflt'
 
 alias ga='git add'
 alias gap='git add -p'
