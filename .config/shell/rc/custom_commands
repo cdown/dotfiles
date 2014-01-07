@@ -53,6 +53,15 @@ alias chromium-proxy='
     chromium --incognito --proxy-server=socks5://localhost:1337
     kill "$!"'
 
+alias udf='(
+    set -e
+    cd ~/git/dotfiles
+    git fetch -p
+    git reset --hard @{u}
+    git clean -dffx
+    ./setup
+)'
+
 activate() { . "$1"/bin/activate; }
 coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iname "*$1*"; }
