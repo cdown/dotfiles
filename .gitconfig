@@ -1,6 +1,8 @@
 [user]
     name = Chris Down
     email = chris@chrisdown.name
+[core]
+    excludesfile = ~/.config/git/gitignore_global
 [color]
     ui = auto
 [push]

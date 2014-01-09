@@ -1,0 +1,15 @@
+*~
+*.sw[po]
+
+*.py[cod]
+.coverage
+nosetests.xml
+pip-log.txt
+dist
+build
+sdist
+__pycache__
+venv*/
+
+*.o
+*.so
