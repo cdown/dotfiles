@@ -4,6 +4,8 @@ xset fp rehash
 autocutsel &
 autocutsel -s PRIMARY &
 
+xbanish &
+
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
