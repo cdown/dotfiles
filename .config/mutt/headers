@@ -1,4 +1,7 @@
 my_hdr PGP-Key: https://chrisdown.name/pgp
 
+set reverse_name
+unset reverse_realname
+
 set use_domain
 set forward_format = "Fwd: %s"
