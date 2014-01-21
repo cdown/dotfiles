@@ -5,6 +5,8 @@ set auto_tag
 
 set strict_threads
 
+set sleep_time = 0
+
 set delete
 set quit
 unset confirmappend
