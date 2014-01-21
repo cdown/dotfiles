@@ -1,6 +1,10 @@
 [Unit]
-Description=Synchronise local and remote mails
+Description=Start offlineimap as a daemon
 
 [Service]
-Type=oneshot
 ExecStart=/usr/bin/offlineimap
+KillSignal=SIGUSR2
+Restart=always
+
+[Install]
+WantedBy=default.target
