@@ -4,8 +4,8 @@ xset fp rehash
 autocutsel &
 autocutsel -s PRIMARY &
 
-pgrep -u "$EUID" -x mpd || mpd &
-pgrep -u "$EUID" -x mpdscribble || mpdscribble &
+systemctl --user start mpd
+systemctl --user start mpdscribble
 
 urxvtd -q -o &
 
