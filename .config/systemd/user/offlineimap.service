@@ -1,0 +1,6 @@
+[Unit]
+Description=Synchronise local and remote mails
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/offlineimap

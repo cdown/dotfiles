@@ -1,0 +1,9 @@
+[Unit]
+Description=Synchronise mails every minute
+
+[Timer]
+OnUnitActiveSec=1min
+Unit=offlineimap.service
+
+[Install]
+WantedBy=default.target
