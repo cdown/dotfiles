@@ -1,0 +1,8 @@
+[Unit]
+Description=rxvt-unicode terminal daemon
+
+[Service]
+ExecStart=/usr/bin/urxvtd -q -o
+
+[Install]
+WantedBy=default.target
