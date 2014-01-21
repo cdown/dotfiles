@@ -7,6 +7,6 @@ autocutsel -s PRIMARY &
 systemctl --user start mpd
 systemctl --user start mpdscribble
 
-urxvtd -q -o &
+systemctl --user start urxvtd
 
 exec dbus-launch --exit-with-session dwm
