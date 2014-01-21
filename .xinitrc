@@ -9,4 +9,6 @@ systemctl --user start mpdscribble
 
 systemctl --user start urxvtd
 
+systemctl --user start offlineimap
+
 exec dbus-launch --exit-with-session dwm
