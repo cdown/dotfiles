@@ -1,5 +1,6 @@
 text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
-application/msword; abiword --to pdf --to-name /tmp/mutt.pdf %s\; mupdf /tmp/mutt.pdf
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; abiword --to pdf --to-name /tmp/mutt.pdf %s\; mupdf /tmp/mutt.pdf
+application/msword; lowriter %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; lowriter %s
+application/vnd.oasis.opendocument.spreadsheet; localc %s
 image/*; sxiv %s
 application/pdf; mupdf %s
