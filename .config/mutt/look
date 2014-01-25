@@ -7,6 +7,8 @@ set date_format  = "%Y-%m-%d %H:%M:%S %Z"
 
 set read_inc = 500
 
+unset mark_old
+
 set status_format  = '%> %?V?Limit: %V | ?%v'
 set compose_format = '%> %v'
 
