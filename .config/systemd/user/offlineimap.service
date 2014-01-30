@@ -1,10 +1,8 @@
 [Unit]
-Description=Start offlineimap as a daemon
+Description=OfflineIMAP
+After=network.target
 
 [Service]
-ExecStart=/usr/bin/offlineimap
-KillSignal=SIGUSR2
-Restart=always
-
-[Install]
-WantedBy=default.target
+Type=oneshot
+ExecStart=/usr/bin/offlineimap -o -q -u quiet
+TimeoutStartSec=1min30s

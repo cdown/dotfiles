@@ -1,0 +1,9 @@
+[Unit]
+Description=OfflineIMAP pseudo-daemon
+
+[Timer]
+OnCalendar=*:*:0/30
+Unit=offlineimap.service
+
+[Install]
+WantedBy=default.target
