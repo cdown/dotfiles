@@ -12,7 +12,7 @@ unset mark_old
 set status_format  = '%> %?V?Limit: %V | ?%v'
 set compose_format = '%> %v'
 
-set display_filter = "sed -r '/^-- ?/,\$d'"
+set display_filter = "sed -r '/^-- ?$/,\$d'"
 
 unset help
 unset markers
