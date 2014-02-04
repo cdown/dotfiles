@@ -17,7 +17,7 @@ set display_filter = "sed -r '/^-- ?$/,\$d'"
 unset help
 unset markers
 
-set sort     = reverse-threads
+set sort     = threads
 set sort_aux = last-date-received
 
 color attachment brightblack   default
