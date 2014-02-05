@@ -7,9 +7,6 @@ xset fp rehash
 # Vertical side monitor
 #xrandr --output VGA1 --right-of LVDS1 --auto --rotate left
 
-autocutsel &
-autocutsel -s PRIMARY &
-
 systemctl --user start mpd
 systemctl --user start mpdscribble
 
