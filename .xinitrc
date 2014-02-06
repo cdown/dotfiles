@@ -9,6 +9,9 @@ xset fp rehash
 
 clipmenud &
 
+autocutsel &
+autocutsel -s PRIMARY &
+
 systemctl --user start mpd
 systemctl --user start mpdscribble
 
