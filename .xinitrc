@@ -7,8 +7,6 @@ xset fp rehash
 # Vertical side monitor
 #xrandr --output VGA1 --right-of LVDS1 --auto --rotate left
 
-clipmenud &
-
 autocutsel &
 autocutsel -s PRIMARY &
 
