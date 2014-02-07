@@ -60,7 +60,7 @@ nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
 nmap <silent> H :set hlsearch!<CR>
 nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 
-noremap Q gq
+noremap Q gqap
 
 for prefix in ['i', 'n', 'v']
     for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<F1>']
