@@ -62,6 +62,8 @@ nmap <silent> H :set hlsearch!<CR>
 nmap <silent> <leader>p :set paste<CR>
 nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 
+noremap Q gq
+
 for prefix in ['i', 'n', 'v']
     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
         exe prefix . "noremap " . key . " <NOP>"
