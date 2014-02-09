@@ -76,6 +76,16 @@ ssh-dotfiles() {
     ./setup'
 }
 
+ssh-rev() {
+    typeset -A ports
+    ports[gopher]=2200
+    ports[lakes]=2201
+
+    port=${ports[$(hostname)]}
+
+    autossh -M "$port"0 -vv -- -R "$port":localhost:22 guthrie -N
+}
+
 record-screen() {
     ffmpeg \
         -f x11grab \
