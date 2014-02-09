@@ -13,7 +13,7 @@ autocutsel -s PRIMARY &
 systemctl --user start mpd
 systemctl --user start mpdscribble
 
-systemctl --user start urxvtd
+systemctl --user start urxvtd@"$DISPLAY"
 
 systemctl --user start offlineimap.timer
 
