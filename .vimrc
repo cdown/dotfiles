@@ -10,7 +10,6 @@ highlight ColorColumn ctermbg=black
 highlight CursorLineNr ctermfg=darkgrey
 highlight LineNr ctermfg=black
 highlight MatchParen ctermbg=white ctermfg=black
-highlight Search ctermbg=white ctermfg=black
 highlight TrailingWhitespace ctermbg=black
 highlight Visual ctermbg=white ctermfg=black
 
@@ -37,7 +36,6 @@ set directory=~/.vim/swap//
 set expandtab
 set formatoptions-=t
 set incsearch
-set hlsearch
 set nowrap
 set scrolloff=1
 set shiftwidth=4
@@ -56,8 +54,6 @@ autocmd FileType gitcommit setlocal textwidth=72
 let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>'
 
-nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
-nmap <silent> H :set hlsearch!<CR>
 nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 
 for key in ["f", "F", "t", "T"]
