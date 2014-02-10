@@ -37,7 +37,6 @@ set expandtab
 set formatoptions-=t
 set incsearch
 set nowrap
-set scrolloff=1
 set shiftwidth=4
 set shortmess=aI
 set tabstop=4
