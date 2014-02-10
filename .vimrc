@@ -57,8 +57,6 @@ for key in ["f", "F", "t", "T"]
     exe "map " . key . " <Plug>(easymotion-" . key . ")"
 endfor
 
-noremap Q gqap
-
 for prefix in ['i', 'n', 'v']
     for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<F1>']
         exe prefix . "noremap " . key . " <NOP>"
