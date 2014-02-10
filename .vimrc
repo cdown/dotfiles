@@ -2,8 +2,6 @@ runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 syntax on
-
-filetype on
 filetype plugin indent on
 
 highlight ColorColumn ctermbg=black
