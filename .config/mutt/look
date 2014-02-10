@@ -39,8 +39,9 @@ color signature  cyan          default
 color tilde      brightblack   default
 color tree       brightblack   default
 
-color index brightblack default "!~N !~p !~F !~T !~D"          # Old
-color index brightred   default "~p !~F !~T !~D"               # New, to me
+color index brightblack default "~A"                           # Default
+color index brightred   default "~p ~t chris@ !~F !~T !~D"     # New, to me
+color index white       default "~p !~t chris@ !~F !~T !~D"    # New, Cc me
 color index brightcyan  default "~T"                           # Tagged
 color index cyan        default "~F"                           # Flagged
 color index blue        default "~D"                           # Deleted
