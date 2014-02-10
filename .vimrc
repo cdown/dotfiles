@@ -42,7 +42,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 nnoremap <silent> <leader>p :set paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
-inoremap jj <Esc>
+inoremap jk <Esc>
 
 for key in ["f", "F", "t", "T"]
     exe "map " . key . " <Plug>(easymotion-" . key . ")"
