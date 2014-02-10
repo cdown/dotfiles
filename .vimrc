@@ -49,8 +49,8 @@ autocmd FileType gitcommit setlocal textwidth=72
 let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>'
 
-nmap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
-imap jj <Esc>
+nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
+inoremap jj <Esc>
 
 for key in ["f", "F", "t", "T"]
     exe "map " . key . " <Plug>(easymotion-" . key . ")"
