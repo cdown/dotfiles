@@ -36,10 +36,12 @@ autocmd FileType mail setlocal formatoptions+=r textwidth=72
 autocmd FileType make setlocal noexpandtab
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
+autocmd InsertLeave * setlocal nopaste
 
 let mapleader = ","
 let g:EasyMotion_leader_key = '<Leader>'
 
+nnoremap <silent> <leader>p :set paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 inoremap jj <Esc>
 
