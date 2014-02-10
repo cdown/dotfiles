@@ -13,21 +13,6 @@ highlight Visual ctermbg=white ctermfg=black
 
 match TrailingWhitespace /\s\+$/
 
-if exists('+colorcolumn')
-    set colorcolumn=+1
-endif
-
-if exists("&relativenumber")
-    set relativenumber
-else
-    set number
-endif
-
-if exists("&undofile")
-    set undodir=~/.vim/undo//
-    set undofile
-endif
-
 set autoindent
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
@@ -35,10 +20,16 @@ set expandtab
 set formatoptions-=t
 set incsearch
 set nowrap
+set number
 set shiftwidth=4
 set shortmess=aI
 set tabstop=4
 set textwidth=79
+
+silent! set colorcolumn=+1
+silent! set relativenumber
+silent! set undodir=~/.vim/undo//
+silent! set undofile
 
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=r textwidth=72
