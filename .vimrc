@@ -41,7 +41,6 @@ set shiftwidth=4
 set shortmess=aI
 set tabstop=4
 set textwidth=79
-set viminfo-=<50,s10
 
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=r textwidth=72
