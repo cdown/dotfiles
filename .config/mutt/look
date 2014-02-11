@@ -44,7 +44,7 @@ color index brightred   default "~p ~t chris@ !~F !~T !~D"     # New, to me
 color index white       default "~p !~t chris@ !~F !~T !~D"    # New, Cc me
 
 color index white       default '~f (zenoss\|alert@(pingdom\|datadog)\|system@pushmon)'
-color index brightred   default '~f (zenoss\|alert@(pingdom\|datadog)\|system@pushmon) !~s (UP\|SUCCESSFUL\|Recovered)'
+color index brightred   default '~f (zenoss\|alert@(pingdom\|datadog)\|system@pushmon) !~s (UP\|SUCCESSFUL\|CLEAR\|Recovered)'
 
 color index brightcyan  default "~T"                           # Tagged
 color index cyan        default "~F"                           # Flagged
