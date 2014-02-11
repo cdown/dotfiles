@@ -46,3 +46,6 @@ color index brightcyan  default "~T"                           # Tagged
 color index cyan        default "~F"                           # Flagged
 color index blue        default "~D"                           # Deleted
 color index green       default "~P !~F !~T !~D"               # From me
+
+color index white       default '~f (zenoss\|alert@(pingdom\|datadog)\|system@pushmon)'
+color index brightred   default '~f (zenoss\|alert@(pingdom\|datadog)\|system@pushmon) !~s (UP\|SUCCESSFUL\|Recovered)'
