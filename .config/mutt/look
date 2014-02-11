@@ -2,7 +2,7 @@ ignore      *
 unignore    From: To: Cc: Date: Subject:
 hdr_order   From: To: Cc: Date: Subject:
 
-set index_format = '%4C  [%Z] [%-4.4c]  %D  %-15.15F  %s'
+set index_format = '%5C  [%Z] [%-4.4c]  %D  %-15.15F  %s'
 set date_format  = "%Y-%m-%d %H:%M:%S %Z"
 
 set read_inc = 500
