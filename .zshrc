@@ -33,7 +33,7 @@ set -o extendedglob
 set -o histappend
 set -o histignorealldups
 set -o no_bang_hist
-set -o no_rmstarsilent
+set -o rmstarsilent
 set -o nullglob
 set -o prompt_subst
 set -o share_history
