@@ -23,6 +23,7 @@ set nowrap
 set number
 set shiftwidth=4
 set shortmess=aI
+set softtabstop=4
 set tabstop=4
 set textwidth=79
 
@@ -34,7 +35,7 @@ silent! set undofile
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=r textwidth=72
 autocmd FileType make setlocal noexpandtab
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertLeave * setlocal nopaste
 
