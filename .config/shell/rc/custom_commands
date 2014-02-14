@@ -47,13 +47,6 @@ alias refresh-mirrors='
     --sort rate \
     --save /etc/pacman.d/mirrorlist'
 
-alias chromium-proxy='
-    pkill -f chromium
-    proxy guthrie &
-    sleep 5
-    chromium --incognito --proxy-server=socks5://localhost:1337
-    kill "$!"'
-
 alias udf='(
     set -e
     cd ~/git/dotfiles
@@ -67,6 +60,14 @@ activate() { . "$1"/bin/activate; }
 coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iname "*$1*"; }
 yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
+
+chromium-proxy() {
+    pkill -f chromium
+    proxy "$1" &
+    sleep 5
+    chromium --incognito --proxy-server=socks5://localhost:1337
+    kill "$!"
+}
 
 ssh-dotfiles() {
     ssh "$@" 'rm -rf ~/git/dotfiles
