@@ -1,6 +1,8 @@
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+setxkbmap -option caps:none
+
 # Office projector
 #xrandr --output VGA1 --right-of LVDS1 --auto
 
