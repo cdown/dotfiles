@@ -22,6 +22,9 @@ for file in "$location"/**/*; do
     esac
 
     if [[ -d "$file" ]]; then
+        if [[ -L ~/"$bare" ]]; then
+            rm ~/"$bare"
+        fi
         mkdir -p ~/"$bare"
     else
         ln -sfn "$file" ~/"$bare"
