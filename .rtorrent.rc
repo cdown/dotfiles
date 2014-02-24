@@ -9,8 +9,8 @@ max_uploads = 15
 download_rate = 1500
 upload_rate = 150
 
-directory = ~/Downloads/Torrents
-session = ~/.rtorrent/session
+directory = /mnt/rtorrent/data
+session = /mnt/rtorrent/session
 
 port_range = 5000-10000
 port_random = yes
