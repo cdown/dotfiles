@@ -61,6 +61,11 @@ coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iname "*$1*"; }
 yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
 
+zhutf8() {
+    cp "$1"{,.orig}
+    enca -c -x UTF8 -L zh "$1"
+}
+
 chromium-proxy() {
     pkill -f chromium
     proxy "$1" &
