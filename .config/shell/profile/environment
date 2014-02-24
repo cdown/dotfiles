@@ -4,3 +4,6 @@ export PATH=~/bin:~/.rbenv/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/
 export VISUAL=vim
 export LC_COLLATE=C
 export LESS=-R
+export GTK_IM_MODULE=scim
+export QT_IM_MODULE=scim
+export XMODIFIERS="@im=SCIM"
