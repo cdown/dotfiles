@@ -9,11 +9,11 @@ setxkbmap -option caps:none
 # Vertical side monitor
 #xrandr --output VGA1 --right-of LVDS1 --auto --rotate left
 
-systemctl --user start mpd
-systemctl --user start mpdscribble
+systemctl --user start mpd &
+systemctl --user start mpdscribble &
 
-systemctl --user start urxvtd@"$DISPLAY"
+systemctl --user start urxvtd@"$DISPLAY" &
 
-systemctl --user start offlineimap.timer
+systemctl --user start offlineimap.timer &
 
 exec dbus-launch --exit-with-session dwm
