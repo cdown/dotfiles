@@ -16,6 +16,6 @@ systemctl --user start urxvtd@"$DISPLAY" &
 
 systemctl --user start offlineimap.timer &
 
-scim -d
+fcitx &
 
 exec dbus-launch --exit-with-session dwm
