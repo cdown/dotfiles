@@ -48,11 +48,14 @@ alias refresh-mirrors='
 
 alias udf='(
     set -e
-    cd ~/git/dotfiles
-    git fetch -p
-    git reset --hard @{u}
-    git clean -dffx
-    ./setup
+    for dir in ~/git/dotfiles{,-private}; do
+        [[ -d $dir ]] || continue
+        cd "$dir"
+        git fetch -p
+        git reset --hard @{u}
+        git clean -dffx
+        ./setup
+    done
 )'
 
 activate() { . "$1"/bin/activate; }
