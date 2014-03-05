@@ -1,6 +1,8 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+let no_mail_maps = 1
+
 syntax on
 filetype plugin indent on
 
