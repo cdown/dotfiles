@@ -91,7 +91,10 @@ ssh-rev() {
 
     port=${ports[$(hostname)]}
 
-    autossh -M "$port"0 -vv -- -R "$port":localhost:22 guthrie -N
+    autossh -M "$port"0 -vv -- -R "$port":localhost:22 guthrie -N |&
+        perl -pe '
+        use POSIX strftime;
+        print strftime "[%Y-%m-%d %H:%M:%S] ", localtime'
 }
 
 record-screen() {
