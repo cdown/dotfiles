@@ -17,6 +17,8 @@ set compose_format = '%> %v'
 unset help
 unset markers
 
+set rfc2047_parameters = yes
+
 set sort     = threads
 set sort_aux = last-date-received
 
