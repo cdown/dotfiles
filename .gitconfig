@@ -9,3 +9,4 @@
     default = current
 [merge]
     tool = vimdiff
+    conflictstyle = diff3
