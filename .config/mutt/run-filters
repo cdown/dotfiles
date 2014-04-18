@@ -1,0 +1,15 @@
+#!/bin/sh
+
+in_temp=$(mktemp)
+out_temp=$(mktemp)
+
+cat > "$in_temp"
+
+for filter in ~/.config/mutt/filters/*; do
+    "$filter" < "$in_temp" > "$out_temp"
+    cp "$out_temp" "$in_temp"
+done
+
+cat "$in_temp"
+
+rm -f "$in_temp" "$out_temp"

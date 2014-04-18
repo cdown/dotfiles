@@ -1,0 +1,13 @@
+#!/bin/sh
+
+temp=$(mktemp)
+
+cat > "$temp"
+
+date=$(formail -xDate: < "$temp")
+date=$(date -R -d "$date")
+
+printf 'Date: %s\n' "$date"
+formail -fI Date < "$temp"
+
+rm -f "$temp"
