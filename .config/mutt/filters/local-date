@@ -7,7 +7,6 @@ cat > "$temp"
 date=$(formail -xDate: < "$temp")
 date=$(date -R -d "$date")
 
-printf 'Date: %s\n' "$date"
-formail -fI Date < "$temp"
+formail -fI "Date: $date" < "$temp"
 
 rm -f "$temp"
