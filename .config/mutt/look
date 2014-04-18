@@ -1,5 +1,6 @@
 ignore      *
 unignore    From: To: Cc: Date: Subject:
+unhdr_order *
 hdr_order   From: To: Cc: Date: Subject:
 
 set index_format = '%5C  [%Z] [%-4.4c]  %D  %-15.15F  %s'
