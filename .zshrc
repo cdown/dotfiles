@@ -16,6 +16,10 @@ else
 fi
 )$(_git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo $) '
 
+__git_files () {
+    _wanted files expl 'local files' _files
+}
+
 autoload -U compinit promptinit
 compinit
 promptinit
