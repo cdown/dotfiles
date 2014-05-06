@@ -68,6 +68,12 @@ zhutf8() {
     enca -c -x UTF8 -L zh "$1"
 }
 
+spoof-wifi() {
+    sudo ip link set wlp18s0 down
+    sudo macchanger -r wlp18s0
+    sudo wifi-menu
+}
+
 chromium-proxy() {
     pkill -f chromium
     proxy "$1" &
