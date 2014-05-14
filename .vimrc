@@ -43,7 +43,7 @@ autocmd InsertLeave * setlocal nopaste
 
 let g:EasyMotion_leader_key = '<Leader>'
 
-nnoremap <silent> <leader>p :set paste<CR>
+nnoremap <silent> <leader>p :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 inoremap jk <Esc>
 
