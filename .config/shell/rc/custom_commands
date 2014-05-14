@@ -52,7 +52,8 @@ alias udf='(
         [[ -d $dir ]] || continue
         cd "$dir"
         git fetch -p
-        git reset --hard @{u}
+        git stash -u
+        git rebase -p @{u}
         git clean -dffx
         ./setup
     done
