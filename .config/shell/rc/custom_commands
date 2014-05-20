@@ -70,9 +70,9 @@ zhutf8() {
 }
 
 spoof-wifi() {
-    sudo ip link set wlp18s0 down
-    sudo macchanger -r wlp18s0
-    sudo wifi-menu
+    sudo netctl stop-all
+    sudo ip link set dev wlp18s0 down
+    sudo ip link set dev wlp18s0 address 94:eb:cd:"$(tr -cd '[:xdigit:]' </dev/urandom | head -c6 | sed -e 's/../&:/g' -e 's/.$//')"
 }
 
 chromium-proxy() {
