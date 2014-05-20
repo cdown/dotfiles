@@ -70,8 +70,8 @@ zhutf8() {
 }
 
 spoof-wifi() {
-    sudo macchanger --mac 94:eb:cd:29:87:2d wlp18s0
-    sudo macchanger -b -e wlp18s0
+    sudo ip link set wlp18s0 down
+    sudo macchanger -r wlp18s0
     sudo wifi-menu
 }
 
