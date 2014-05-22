@@ -25,7 +25,7 @@ for file in "$location"/**/*; do
         if [[ -L ~/"$bare" ]]; then
             rm ~/"$bare"
         fi
-        mkdir -p ~/"$bare"
+        mkdir -m700 -p ~/"$bare"
     else
         ln -sfn "$file" ~/"$bare"
     fi
