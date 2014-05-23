@@ -103,7 +103,7 @@ ssh-rev() {
 
     port=${ports[$(hostname)]}
 
-    autossh -M "$port"0 -vv -- -R "$port":localhost:22 guthrie -N |&
+    autossh -M "$port"0 -vv -- -R "$port":localhost:22 dian -N |&
         perl -pe '
         use POSIX strftime;
         print strftime "[%Y-%m-%d %H:%M:%S] ", localtime'
@@ -121,7 +121,7 @@ record-screen() {
 }
 
 freenode() {
-    ssh -L 16000:irc.freenode.net:7000 guthrie -N &
+    ssh -L 16000:irc.freenode.net:7000 dian -N &
     if [[ "$1" != --init-only ]]; then
         sleep 6
         irssi -c freenode-local
@@ -130,7 +130,7 @@ freenode() {
 }
 
 quakenet() {
-    ssh -L 16001:irc.quakenet.org:6667 guthrie -N &
+    ssh -L 16001:irc.quakenet.org:6667 dian -N &
     if [[ "$1" != --init-only ]]; then
         sleep 6
         irssi -c quakenet-local
