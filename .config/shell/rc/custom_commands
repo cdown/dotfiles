@@ -77,7 +77,7 @@ zhutf8() {
 spoof-wifi() {
     sudo netctl stop-all
     sudo ip link set dev wlp18s0 down
-    sudo ip link set dev wlp18s0 address 94:eb:cd:"$(tr -cd '[:xdigit:]' </dev/urandom | head -c6 | sed -e 's/../&:/g' -e 's/.$//')"
+    sudo ip link set dev wlp18s0 address 24:0A:11:0B:72:DC
 }
 
 chromium-proxy() {
