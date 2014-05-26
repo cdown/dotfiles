@@ -9,6 +9,9 @@ setxkbmap -option caps:none
 # Vertical side monitor
 #xrandr --output VGA1 --right-of LVDS1 --auto --rotate left
 
+pgrep -u "$EUID" -x mpd || mpd &
+pgrep -u "$EUID" -x mpdscribble || mpdscribble &
+
 systemctl --user start mpd &
 systemctl --user start mpdscribble &
 
