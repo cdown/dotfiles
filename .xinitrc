@@ -12,10 +12,7 @@ setxkbmap -option caps:none
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
-systemctl --user start mpd &
-systemctl --user start mpdscribble &
-
-systemctl --user start urxvtd@"$DISPLAY" &
+urxvtd -q -o &
 
 systemctl --user start offlineimap.timer &
 
