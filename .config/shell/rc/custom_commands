@@ -74,10 +74,13 @@ zhutf8() {
     enca -c -x UTF8 -L zh "$1"
 }
 
-spoof-wifi() {
+spoof() {
+    local interface="${1-wlp18s0}"
+    local nic_specific="$(tr -cd '[:xdigit:]' </dev/urandom | head -c6 | sed 's/../:&/g')"
+
     sudo netctl stop-all
-    sudo ip link set dev wlp18s0 down
-    sudo ip link set dev wlp18s0 address 24:0A:11:0B:72:DC
+    sudo ip link set dev "$interface" down
+    sudo ip link set dev "$interface" address "00:1a:a0$nic_specific"
 }
 
 chromium-proxy() {
