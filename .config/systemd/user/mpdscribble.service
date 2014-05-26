@@ -1,8 +1,0 @@
-[Unit]
-Description=MPD last.fm scrobbler
-
-[Service]
-ExecStart=/usr/bin/mpdscribble --no-daemon
-
-[Install]
-WantedBy=default.target
