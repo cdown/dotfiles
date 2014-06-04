@@ -1,3 +1,5 @@
+set my_dummy = `mkdir -p ~/.cache/mutt`
+
 set certificate_file = ~/.config/mutt/certificates
 set header_cache     = ~/.cache/mutt/headers
 set alias_file       = ~/.config/mutt/aliases
