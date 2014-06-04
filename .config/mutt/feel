@@ -1,8 +1,6 @@
 alternative_order text/plain text/html
 auto_view text/html
 
-set auto_tag
-
 set strict_threads
 
 set sleep_time = 0
