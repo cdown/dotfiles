@@ -56,8 +56,8 @@ coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iwholename "*$1*"; }
 yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
 
-pacman() {
-    command pacman "$@"
+owlman() {
+    command owlman "$@"
     hash -r
 }
 
