@@ -1,3 +1,0 @@
-set imap_keepalive = 300
-set mail_check     = 30
-set timeout        = 60
