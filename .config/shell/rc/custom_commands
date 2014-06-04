@@ -38,12 +38,6 @@ alias gru='git rebase -p @{u}'
 alias gs='git show'
 alias gst='git status'
 
-alias refresh-mirrors='
-    sudo reflector -f 6 \
-    -c Japan -c Australia -c Korea \
-    --sort rate \
-    --save /etc/pacman.d/mirrorlist'
-
 alias udf='(
     set -e
     for dir in ~/git/dotfiles{,-private}; do
