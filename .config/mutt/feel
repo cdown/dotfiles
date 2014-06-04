@@ -7,16 +7,13 @@ set delete
 set quit
 set pager_stop
 
-bind pager,attach q exit
-bind index q noop
 bind index Q quit
-
+bind index q noop
 bind index,pager p noop
-
 bind index,pager r group-reply
+bind pager,attach q exit
 
-macro index I "<limit><bol>~p<enter>"
 macro index L "<limit>all<enter>"
-macro attach s "<save-entry><bol>~/Downloads/<eol>"
-
-macro attach B "<pipe-message>cat > /tmp/mutt.html; chromium /tmp/mutt.html<enter>"
+macro attach s "<save-entry><bol>/tmp/<eol>"
+macro attach S "<save-entry><bol>~/Downloads/<eol>"
+macro attach B "<pipe-message>cat > /tmp/mutt.html; w3m /tmp/mutt.html<enter>"
