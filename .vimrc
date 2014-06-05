@@ -47,6 +47,7 @@ nnoremap <silent> <leader>p :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 
 for key in ["f", "F", "t", "T"]
+    exe "noremap <Leader>" . key . " " . key
     exe "map " . key . " <Plug>(easymotion-" . key . ")"
 endfor
 
