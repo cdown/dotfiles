@@ -56,6 +56,7 @@ activate() { . "$1"/bin/activate; }
 coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iwholename "*$1*"; }
 yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
+ssh-context() { . ~/.ssh/agents/"$1" ; }
 
 ytd() {
     local temp="$(mktemp -u)"
