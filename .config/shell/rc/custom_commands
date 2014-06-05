@@ -56,6 +56,12 @@ coa() { tmux attach-session -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iwholename "*$1*"; }
 yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
 
+ytd() {
+    local temp="$(mktemp -u)"
+    curl -o "$temp" "$(yturl "$@")"
+    printf '%s\n' "$temp"
+}
+
 owlman() {
     command owlman "$@"
     hash -r
