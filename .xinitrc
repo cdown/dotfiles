@@ -1,3 +1,7 @@
+export GTK_IM_MODULE=xim
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
