@@ -1,6 +1,7 @@
 alias grep='grep --color=auto'
 alias l='ls -laFh'
 alias ls='ls --color=auto'
+alias less='less -R'
 alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
 alias proxy='ssh -C2qTnN -D 1337'
 alias rbenv-init='eval "$(rbenv init -)"'
