@@ -58,6 +58,10 @@ f() { find "${2-.}" -iwholename "*$1*"; }
 yt() { mpv -cache 8096 -cache-min 10 "$(yturl "$@")"; }
 ssh-context() { . ~/.ssh/agents/"$1" ; }
 
+shr() ( ssh-context rmg >/dev/null; ssh "$@" )
+shp() ( ssh-context personal >/dev/null; ssh "$@" )
+shi() ( ssh-context iofc >/dev/null; ssh "$@" )
+
 ytd() {
     local temp="$(mktemp -u)"
     curl -o "$temp" "$(yturl "$@")"
