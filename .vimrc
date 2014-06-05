@@ -1,6 +1,10 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+for directory in ["backup", "swap", "undo"]
+    silent! call mkdir($HOME . "/.vim/" . directory, "p")
+endfor
+
 let no_mail_maps = 1
 
 syntax on
