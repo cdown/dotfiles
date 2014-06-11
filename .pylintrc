@@ -1,0 +1,9 @@
+[BASIC]
+const-rgx=(([A-Za-z_][A-Za-z1-9_]*)|(__.*__))$
+
+[MESSAGES CONTROL]
+disable=import-error,no-name-in-module
+
+[REPORTS]
+include-ids=yes
+reports=no

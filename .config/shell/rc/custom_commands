@@ -64,7 +64,7 @@ shi() ( ssh-context iofc >/dev/null; ssh "$@" )
 
 ytd() {
     local temp="$(mktemp -u)"
-    curl -o "$temp" "$(yturl "$@")"
+    curl -L -o "$temp" "$(yturl "$@")"
     printf '%s\n' "$temp"
 }
 
@@ -80,11 +80,10 @@ zhutf8() {
 
 spoof() {
     local interface="${1-wlp18s0}"
-    local nic_specific="$(tr -cd '[:xdigit:]' </dev/urandom | head -c6 | sed 's/../:&/g')"
 
     sudo netctl stop-all
     sudo ip link set dev "$interface" down
-    sudo ip link set dev "$interface" address "00:1a:a0$nic_specific"
+    sudo macchanger -r -b "$interface"
 }
 
 chromium-proxy() {
