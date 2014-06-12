@@ -28,6 +28,7 @@ set sort_aux = last-date-received
 color attachment brightblack   default
 color bold       brightyellow  default
 color error      brightred     default
+color indicator  white         black
 color message    white         default
 color normal     white         default
 color quoted     magenta       default
