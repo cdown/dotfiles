@@ -1,4 +1,8 @@
-source /etc/Muttrc.gpg.dist
+# Arch
+source `[ -f /etc/Muttrc.gpg.dist ] && echo /etc/Muttrc.gpg.dist || echo /dev/null`
+
+# Debian
+source `[ -f /etc/Muttrc.d/gpg.rc ] && echo /etc/Muttrc.d/gpg.rc || echo /dev/null`
 
 set pgp_use_gpg_agent
 set pgp_sign_as = 0xDF8D21B616118070
