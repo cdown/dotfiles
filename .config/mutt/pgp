@@ -3,6 +3,7 @@ source /etc/Muttrc.gpg.dist
 set pgp_use_gpg_agent
 set pgp_sign_as = 0xDF8D21B616118070
 
+set pgp_auto_decode
 set pgp_autosign
 set pgp_replyencrypt
 set pgp_replysignencrypted
