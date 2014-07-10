@@ -18,4 +18,4 @@ bind pager,attach q exit
 macro index L "<limit>all<enter>"
 macro attach s "<save-entry><bol>/tmp/<eol>"
 macro attach S "<save-entry><bol>~/Downloads/<eol>"
-macro attach B "<pipe-message>cat > /tmp/mutt.html; w3m /tmp/mutt.html<enter>"
+macro attach B "<pipe-message>cat > /tmp/mutt.html; lynx /tmp/mutt.html<enter>"
