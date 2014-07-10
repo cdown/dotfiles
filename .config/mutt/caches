@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 set my_dummy = `mkdir -p ~/.cache/mutt`
 
 set certificate_file = ~/.config/mutt/certificates

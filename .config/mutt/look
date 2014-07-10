@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 ignore      *
 unignore    From: To: Cc: Date: Subject:
 unhdr_order *

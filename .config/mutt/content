@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 set edit_headers
 set include
 set mime_forward

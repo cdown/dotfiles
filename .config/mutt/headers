@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 set reverse_name
 unset reverse_realname
 

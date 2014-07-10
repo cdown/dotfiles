@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 # Arch
 source `[ -f /etc/Muttrc.gpg.dist ] && echo /etc/Muttrc.gpg.dist || echo /dev/null`
 

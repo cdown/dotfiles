@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 source ~/.config/mutt/aliases
 source ~/.config/mutt/caches
 source ~/.config/mutt/content
