@@ -15,6 +15,9 @@ bind index,pager p noop
 bind index,pager r group-reply
 bind pager,attach q exit
 
+bind index g first-entry
+bind index G last-entry
+
 macro index L "<limit>all<enter>"
 macro attach s "<save-entry><bol>/tmp/<eol>"
 macro attach S "<save-entry><bol>~/Downloads/<eol>"
