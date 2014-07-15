@@ -7,4 +7,6 @@ source ~/.config/mutt/feel
 source ~/.config/mutt/headers
 source ~/.config/mutt/look
 
+unset text_flowed
+
 source ~/.config/mutt/accounts/chris@chrisdown.name
