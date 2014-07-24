@@ -1,5 +1,7 @@
 # vim: ft=muttrc
 
+source ~/.config/mutt/mutt-colors-solarized-dark-256.muttrc
+
 ignore      *
 unignore    From: To: Cc: Date: Subject:
 unhdr_order *
@@ -26,36 +28,3 @@ set rfc2047_parameters = yes
 
 set sort     = threads
 set sort_aux = last-date-received
-
-color attachment brightblack   default
-color bold       brightyellow  default
-color error      brightred     default
-color indicator  white         black
-color message    white         default
-color normal     white         default
-color quoted     magenta       default
-color quoted1    cyan          default
-color quoted2    green         default
-color quoted3    yellow        default
-color quoted4    brightmagenta default
-color quoted5    brightgreen   default
-color quoted6    brightyellow  default
-color quoted7    brightcyan    default
-color search     red           brightblack
-color status     default       default
-color signature  cyan          default
-color tilde      brightblack   default
-color tree       brightblack   default
-
-color index brightblack default "~A"                           # Default
-color index brightred   default "~p !~F !~T !~D"               # New, to me
-color index white       default "~p !~t chris@ !~F !~T !~D"    # New, Cc me
-
-color index red         default '~f (zenoss\|alert@(pingdom\|datadog)\|system@pushmon)'
-color index green       default '~f (zenoss\|alert@pingdom\|system@pushmon) ~s (UP\|SUCCESSFUL\|CLEAR\|Recovered)'
-color index green       default '~f alert@datadog ~b Recovered'
-
-color index brightcyan  default "~T"                           # Tagged
-color index cyan        default "~F"                           # Flagged
-color index blue        default "~D"                           # Deleted
-color index brightgreen default "~P !~F !~T !~D"               # From me
