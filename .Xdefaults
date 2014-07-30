@@ -10,7 +10,7 @@ URxvt.iso14755_52: false
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.clipboard.autocopy:   true
-URxvt.url-select.launcher:  chromium
+URxvt.url-select.launcher:  google-chrome-stable
 URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
