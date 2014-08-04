@@ -1,5 +1,6 @@
 [[ "$-" == *i* ]] || return
 
+
 for file in ~/.config/{shell,bash}/rc/*; do
     [[ -e $file ]] && . "$file"
 done

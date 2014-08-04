@@ -1,5 +1,6 @@
 [[ "$-" == *i* ]] || return
 
+
 for file in ~/.config/{shell,zsh}/rc/*(N); do
     . "$file"
 done
