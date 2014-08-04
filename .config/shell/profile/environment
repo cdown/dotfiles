@@ -5,4 +5,5 @@ export VISUAL=vim
 export LC_COLLATE=C
 export OWLMAN_ASK_EDIT=false
 
+    alias termecho=:
 fi
