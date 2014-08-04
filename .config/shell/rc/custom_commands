@@ -206,3 +206,5 @@ unset chroot_text
 if [[ $chroot_output != 2 ]]; then
     chroot_text=%chroot
 fi
+
+[[ -r /usr/local/ittools/etc/ruby.rc ]] && . /usr/local/ittools/etc/ruby.rc
