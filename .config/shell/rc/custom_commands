@@ -196,7 +196,13 @@ _git_prompt() {
     fi
 }
 
+if [[ $(uname -s) == Darwin ]]; then
+    chroot_output=$(stat -f %i /)
+else
+    chroot_output=$(stat -c %i /)
+fi
+
 unset chroot_text
-if [[ "$(stat -c %i /)" != 2 ]]; then
-    chroot_text="%chroot"
+if [[ $chroot_output != 2 ]]; then
+    chroot_text=%chroot
 fi
