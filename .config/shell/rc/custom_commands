@@ -195,3 +195,8 @@ _git_prompt() {
         fi
     fi
 }
+
+unset chroot_text
+if [[ "$(stat -c %i /)" != 2 ]]; then
+    chroot_text="%chroot"
+fi

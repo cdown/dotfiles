@@ -5,7 +5,7 @@ for file in ~/.config/{shell,bash}/rc/*; do
     [[ -e $file ]] && . "$file"
 done
 
-PS1='\u@\h:\W$(_git_prompt)\$ '
+PS1='\u@\h$chroot_text:\W$(_git_prompt)\$ '
 
 set +H
 

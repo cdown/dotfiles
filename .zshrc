@@ -5,7 +5,7 @@ for file in ~/.config/{shell,zsh}/rc/*(N); do
     . "$file"
 done
 
-PS1='%n@%m:$(if [[ $PWD == $HOME ]]; then
+PS1='%n@%m$chroot_text:$(if [[ $PWD == $HOME ]]; then
     echo "~"
 else
     stripped_pwd="${PWD##*/}"
