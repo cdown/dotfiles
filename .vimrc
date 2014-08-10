@@ -13,11 +13,7 @@ syntax on
 filetype plugin indent on
 
 highlight ColorColumn ctermbg=black
-highlight CursorLineNr ctermfg=darkgrey
-highlight LineNr ctermfg=black
-highlight MatchParen ctermbg=white ctermfg=black
 highlight TrailingWhitespace ctermbg=black
-highlight Visual ctermbg=white ctermfg=black
 
 match TrailingWhitespace /\s\+$/
 
