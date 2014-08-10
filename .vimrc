@@ -1,6 +1,8 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+colorscheme solarized
+
 for directory in ["backup", "swap", "undo"]
     silent! call mkdir($HOME . "/.vim/" . directory, "p")
 endfor
