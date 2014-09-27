@@ -1,5 +1,9 @@
 These are my dotfiles that I use across all of my machines.
 
+## Setup
+
+Running `./setup` should sort everything out.
+
 ## Branch structures
 
 [`master`][] contains configuration that is portable to all machines. More
@@ -13,9 +17,18 @@ portable code should be present on the master branch. This may not be possible
 in some cases, but since merges are frequent, it shouldn't be too much of a
 problem anyway.
 
-## Setup
+## Changes
 
-Running `./setup` should sort everything out.
+### Linux
+
+Added configurations for:
+
+- fcitx
+- fontconfig
+- htop
+- X.org
+
+Also included is a systemd unit and timer for offlineimap.
 
 [master]: https://github.com/cdown/dotfiles/tree/master
 [mac]: https://github.com/cdown/dotfiles/tree/mac
