@@ -11,7 +11,7 @@ set pgp_sign_as = 0xDF8D21B616118070
 
 set pgp_auto_decode
 
-unset pgp_autosign
+set pgp_autosign
 
 set pgp_replysign
 set pgp_replyencrypt
