@@ -31,6 +31,8 @@ Added configurations for:
 - fontconfig
 - htop
 - X.org
+- hushlogin
+- mpd
 
 Modified master configuration for:
 
