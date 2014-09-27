@@ -40,6 +40,8 @@ Modified master configuration for:
 
 Also included is a systemd unit and timer for offlineimap.
 
+ssh-agent/gpg-agent are also initialised as part of the shell profile.
+
 [master]: https://github.com/cdown/dotfiles/tree/master
 [mac]: https://github.com/cdown/dotfiles/tree/mac
 [linux]: https://github.com/cdown/dotfiles/tree/linux
