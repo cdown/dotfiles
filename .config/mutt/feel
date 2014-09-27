@@ -8,6 +8,7 @@ set sleep_time = 0
 set delete
 set quit
 set pager_stop
+set fast_reply
 
 bind index Q quit
 bind index q noop
