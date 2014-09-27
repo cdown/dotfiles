@@ -25,22 +25,9 @@ encountering merge conflicts.
 
 ### Linux
 
-Added configurations for:
-
-- fcitx
-- fontconfig
-- htop
-- X.org
-- hushlogin
-- mpd
-
 Modified master configuration for:
 
 - GPG agent to include QT4 pinentry
-
-Also included is a systemd unit and timer for offlineimap.
-
-ssh-agent/gpg-agent are also initialised as part of the shell profile.
 
 [master]: https://github.com/cdown/dotfiles/tree/master
 [mac]: https://github.com/cdown/dotfiles/tree/mac
