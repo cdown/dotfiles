@@ -32,6 +32,10 @@ Added configurations for:
 - htop
 - X.org
 
+Modified master configuration for:
+
+- GPG agent to include QT4 pinentry
+
 Also included is a systemd unit and timer for offlineimap.
 
 [master]: https://github.com/cdown/dotfiles/tree/master
