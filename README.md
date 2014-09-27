@@ -17,6 +17,10 @@ portable code should be present on the master branch. This may not be possible
 in some cases, but since merges are frequent, it shouldn't be too much of a
 problem anyway.
 
+If you can make your configuration present the right option portably using the
+configuration file alone, you should ideally do that. This lowers the risk of
+encountering merge conflicts.
+
 ## Changes
 
 ### Linux
