@@ -1,0 +1,8 @@
+[Unit]
+Description=OfflineIMAP
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/offlineimap -o -q -u quiet
+TimeoutStartSec=1min30s
