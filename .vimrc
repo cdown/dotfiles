@@ -18,6 +18,7 @@ highlight TrailingWhitespace ctermbg=black
 match TrailingWhitespace /\s\+$/
 
 set autoindent
+set backspace=indent,eol,start
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set expandtab
