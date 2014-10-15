@@ -1,7 +1,10 @@
 #!/bin/sh
 
-in_temp=$(mktemp)
-out_temp=$(mktemp)
+mktemp_cmd=mktemp
+command -v gmktemp >/dev/null 2>&1 && mktemp_cmd=gmktemp # Mac
+
+in_temp=$("$mktemp_cmd")
+out_temp=$("$mktemp_cmd")
 
 cat > "$in_temp"
 

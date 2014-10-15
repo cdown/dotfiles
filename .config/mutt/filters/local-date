@@ -1,11 +1,18 @@
 #!/bin/sh
 
-temp=$(mktemp)
+mktemp_cmd=mktemp
+date_cmd=date
+
+# Mac
+command -v gmktemp >/dev/null 2>&1 && mktemp_cmd=gmktemp
+command -v gdate >/dev/null 2>&1 && mktemp_cmd=gdate
+
+temp=$("$mktemp_cmd")
 
 cat > "$temp"
 
 date=$(formail -xDate: < "$temp")
-date=$(date -R -d "$date")
+date=$("$date_cmd" -R -d "$date")
 
 formail -fI "Date: $date" < "$temp"
 
