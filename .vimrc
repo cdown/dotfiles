@@ -37,6 +37,7 @@ silent! set relativenumber
 silent! set undodir=~/.vim/undo//
 silent! set undofile
 
+autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=rw textwidth=72
 autocmd FileType make setlocal noexpandtab
