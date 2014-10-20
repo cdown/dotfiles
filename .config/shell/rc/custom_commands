@@ -6,10 +6,11 @@ alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
 alias proxy='ssh -C2qTnN -D 1337'
 alias rbenv-init='eval "$(rbenv init -)"'
 alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
-alias ssh='TERM=rxvt-256color ssh'
 alias sudo='sudo '
 alias vbox-mods='sudo modprobe -a vboxdrv vboxnetadp vboxnetflt'
 alias fixtime='sudo systemctl stop ntpd && sudo ntpdate 0.pool.ntp.org && sudo systemctl start ntpd'
+
+[ "$(uname -s)" = Darwin ] || alias ssh='TERM=rxvt-256color ssh'
 
 alias ga='git add'
 alias gap='git add -p'
