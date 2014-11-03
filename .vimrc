@@ -37,6 +37,8 @@ silent! set relativenumber
 silent! set undodir=~/.vim/undo//
 silent! set undofile
 
+autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+
 autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=rw textwidth=72
