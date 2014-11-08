@@ -11,6 +11,7 @@ sdist
 __pycache__
 venv*/
 .vagrant/
+.kitchen/
 
 *.o
 *.so
