@@ -12,6 +12,7 @@ __pycache__
 venv*/
 .vagrant/
 .kitchen/
+deploy/
 
 *.o
 *.so
