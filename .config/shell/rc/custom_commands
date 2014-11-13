@@ -11,7 +11,11 @@ alias vbox-mods='sudo modprobe -a vboxdrv vboxnetadp vboxnetflt'
 alias fixtime='sudo systemctl stop ntpd && sudo ntpdate 0.pool.ntp.org && sudo systemctl start ntpd'
 alias b='bundle exec '
 
-[ "$(uname -s)" = Darwin ] || alias ssh='TERM=rxvt-256color ssh'
+if [ "$(uname -s)" = Darwin ]; then
+    command -v gls >/dev/null 2>&1 && alias ls='gls --color=auto'
+else
+    alias ssh='TERM=rxvt-256color ssh'
+fi
 
 alias ga='git add'
 alias gap='git add -p'
