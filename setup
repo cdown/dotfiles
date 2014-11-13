@@ -2,6 +2,15 @@
 
 [[ $BASH_VERSION == 4.* ]] || exec /usr/local/bin/bash "$0" "$@"
 
+case $(uname -s) in
+    Darwin) git checkout mac ;;
+    Linux) git checkout linux ;;
+    *)
+        printf 'Unknown kernel "%s".' 1>&2
+        exit 1
+    ;;
+esac
+
 shopt -s dotglob extglob globstar nullglob
 
 git clean -dffx
