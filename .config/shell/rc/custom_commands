@@ -13,6 +13,9 @@ alias b='bundle exec '
 
 if [ "$(uname -s)" = Darwin ]; then
     command -v gls >/dev/null 2>&1 && alias ls='gls --color=auto'
+
+    # Thanks for breaking LC_CTYPE, Apple
+    alias ssh='LANG=en_US LC_ALL=en_US.UTF-8 ssh'
 else
     alias ssh='TERM=rxvt-256color ssh'
 fi
