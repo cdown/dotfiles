@@ -17,7 +17,7 @@ ln -fn -- "$file" "$temp_file"
 mv -- "$temp_file" "$temp_file_typed"
 
 if [[ $open_with ]]; then
-    exec open "$temp_file_typed"
-else
     exec open -a "$open_with" "$temp_file_typed"
+else
+    exec open "$temp_file_typed"
 fi
