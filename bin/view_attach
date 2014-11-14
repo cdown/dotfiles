@@ -1,0 +1,23 @@
+#!/bin/sh
+
+file=$1
+type=$2
+open_with=$3
+
+basename=${file##*/}
+
+mktemp_cmd=mktemp
+command -v gmktemp >/dev/null 2>&1 && mktemp_cmd=gmktemp # Mac
+temp_file=$("$mktemp_cmd")
+temp_file_typed="$temp_file.$type"
+
+# Since mutt might remove the file while the program is still trying to open
+# it, we should copy it and handle it ourselves.
+ln -fn -- "$file" "$temp_file"
+mv -- "$temp_file" "$temp_file_typed"
+
+if [[ $open_with ]]; then
+    exec open "$temp_file_typed"
+else
+    exec open -a "$open_with" "$temp_file_typed"
+fi
