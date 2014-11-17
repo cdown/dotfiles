@@ -54,7 +54,6 @@ alias udf='(
     for dir in ~/git/dotfiles{,-private}; do
         [[ -d $dir ]] || continue
         cd "$dir"
-        git fetch -p
         git stash -u
         git rebase -p @{u}
         git clean -dffx
