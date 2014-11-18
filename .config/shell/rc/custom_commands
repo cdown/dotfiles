@@ -71,6 +71,20 @@ shr() ( ssh-context rmg >/dev/null; ssh "$@" )
 shp() ( ssh-context personal >/dev/null; ssh "$@" )
 shi() ( ssh-context iofc >/dev/null; ssh "$@" )
 
+tar32() {
+    if (( $# != 2 )); then
+        printf 'Usage: %s [path] [dest]\n' "$0" >&2
+        return 1
+    fi
+
+    local path="$1"
+    local dest="$2"
+
+    tar pczf "$path" "$path".tar.gz
+    split -b 4095m "$path".tar.gz "$dest"/"${path##*/}".tar.gz.split.
+    rm -- "$path".tar.gz
+}
+
 ytd() {
     local temp="$(mktemp -u)"
     curl -L -o "$temp" "$(yturl "$@")"
