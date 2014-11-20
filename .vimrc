@@ -45,6 +45,7 @@ autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=rw textwidth=72
 autocmd FileType make setlocal noexpandtab
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType sql setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertLeave * setlocal nopaste
