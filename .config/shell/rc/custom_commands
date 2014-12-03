@@ -1,5 +1,6 @@
 alias grep='grep --color=auto'
 alias pbcopy='reattach-to-user-namespace pbcopy'
+alias pbpaste='reattach-to-user-namespace pbpaste'
 alias l='ls -laFh'
 alias ls='ls --color=auto'
 alias less='less -R'
