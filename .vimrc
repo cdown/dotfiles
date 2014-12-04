@@ -14,6 +14,10 @@ syntax on
 filetype plugin indent on
 
 highlight ColorColumn ctermbg=black
+highlight CursorLineNr ctermfg=darkgrey
+highlight LineNr ctermfg=black
+highlight MatchParen ctermbg=white ctermfg=black
+highlight Search ctermbg=white ctermfg=black
 highlight TrailingWhitespace ctermbg=black
 
 match TrailingWhitespace /\s\+$/
@@ -26,6 +30,7 @@ set expandtab
 set formatoptions-=t
 set highlight
 set incsearch
+set hlsearch
 set nowrap
 set number
 set shiftwidth=4
@@ -56,6 +61,8 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 nnoremap <silent> <leader>p :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
+nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
+nmap <silent> H :set hlsearch!<CR>
 
 for key in ["f", "F", "t", "T"]
     exe "noremap <Leader>" . key . " " . key
