@@ -1,5 +1,5 @@
 alias grep='grep --color=auto'
-alias vim='vim -u ~/.vimrc'
+alias vim='vim -u ~/.vimrc -N'
 alias pbcopy='reattach-to-user-namespace pbcopy'
 alias pbpaste='reattach-to-user-namespace pbpaste'
 alias l='ls -laFh'
