@@ -54,8 +54,8 @@ autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType sql setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
-autocmd InsertEnter * setlocal nohighlight
-autocmd InsertLeave * setlocal nopaste highlight
+autocmd InsertEnter * setlocal nohlsearch
+autocmd InsertLeave * setlocal nopaste hlsearch
 
 let g:EasyMotion_leader_key = '<Leader>'
 
