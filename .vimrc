@@ -24,6 +24,7 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set expandtab
 set formatoptions-=t
+set highlight
 set incsearch
 set nowrap
 set number
@@ -48,7 +49,8 @@ autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType sql setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
-autocmd InsertLeave * setlocal nopaste
+autocmd InsertEnter * setlocal nohighlight
+autocmd InsertLeave * setlocal nopaste highlight
 
 let g:EasyMotion_leader_key = '<Leader>'
 
