@@ -65,7 +65,6 @@ alias udf='(
 )'
 
 activate() { . "$1"/bin/activate; }
-coa() { tmux attach-session -d -t "$1" || tmux new-session -s "$1"; }
 f() { find "${2-.}" -iwholename "*$1*"; }
 yt() { mpv --cache 8096 "$(yturl "$@")"; }
 ssh-context() { . ~/.ssh/agents/"$1" ; }
@@ -73,6 +72,14 @@ ssh-context() { . ~/.ssh/agents/"$1" ; }
 shr() ( ssh-context rmg >/dev/null; ssh "$@" )
 shp() ( ssh-context personal >/dev/null; ssh "$@" )
 shi() ( ssh-context iofc >/dev/null; ssh "$@" )
+
+coa() {
+    if [ "$1" ]; then
+        tmux attach-session -d -t "$1" || tmux new-session -s "$1"
+    else
+        tmux ls
+    fi
+}
 
 tar32() {
     if (( $# != 2 )); then
