@@ -42,7 +42,7 @@ for file in "$location"/**/*; do
 
         output_file=${file%.gpg}
 
-        gpg -d "$file" --output "$output_file"
+        gpg --output "$output_file" -d "$file"
         chmod 0600 "$output_file"
 
         # Use the decrypted file going forwards
