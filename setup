@@ -47,6 +47,7 @@ for file in "$location"/**/*; do
 
         # Use the decrypted file going forwards
         file=$output_file
+        bare="${file#$location/}"
     fi
 
     if [[ -d "$file" ]]; then
