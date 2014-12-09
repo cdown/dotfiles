@@ -25,12 +25,29 @@ fi
 
 rm -rf ~/.vim/bundle
 
+decrypt_pgp=0
+if command -v gpg >/dev/null >/dev/null 2>&1 && gpg --list-secret-keys | grep -q 0xDF8D21B616118070; then
+    decrypt_pgp=1
+fi
+
 for file in "$location"/**/*; do
     bare="${file#$location/}"
 
     case "$bare" in
         .git|.git/*|.gitignore|.gitmodules|setup|*/.gitkeep|README.md) continue ;;
     esac
+
+    if [[ $file == *.gpg ]]; then
+        (( decrypt_pgp )) || continue
+
+        output_file=${file%.gpg}
+
+        gpg -d "$file" --output "$output_file"
+        chmod 0600 "$output_file"
+
+        # Use the decrypted file going forwards
+        file=$output_file
+    fi
 
     if [[ -d "$file" ]]; then
         if [[ -L ~/"$bare" ]]; then
