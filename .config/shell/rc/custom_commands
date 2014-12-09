@@ -54,14 +54,12 @@ alias gst='git status'
 
 alias udf='(
     set -e
-    for dir in ~/git/dotfiles{,-private}; do
-        [[ -d $dir ]] || continue
-        cd "$dir"
-        git stash -u
-        git rebase -p @{u}
-        git clean -dffx
-        ./setup
-    done
+    dir=$HOME/git/dotfiles
+    cd "$dir"
+    git stash -u
+    git rebase -p @{u}
+    git clean -dffx
+    ./setup
 )'
 
 activate() { . "$1"/bin/activate; }
