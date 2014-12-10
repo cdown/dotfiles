@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/auto-save"]
+	path = .vim/bundle/auto-save
+	url = https://github.com/907th/vim-auto-save.git
