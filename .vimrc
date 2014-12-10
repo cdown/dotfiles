@@ -55,6 +55,7 @@ autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertEnter * setlocal nohlsearch
 autocmd InsertLeave * setlocal nopaste hlsearch
 
+let mapleader = "\<Space>"
 let g:EasyMotion_leader_key = '<Leader>'
 
 nnoremap <silent> <leader>p :setlocal paste<CR>
