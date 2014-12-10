@@ -60,7 +60,8 @@ let g:EasyMotion_leader_key = '<Leader>'
 nnoremap <silent> <leader>p :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
-nmap <silent> H :set hlsearch!<CR>
+nnoremap <silent> H :set hlsearch!<CR>
+inoremap kj <Esc>
 
 for key in ["f", "F", "t", "T"]
     exe "noremap <Leader>" . key . " " . key
