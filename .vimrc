@@ -57,6 +57,7 @@ autocmd InsertLeave * setlocal nopaste hlsearch
 
 let mapleader = "\<Space>"
 let g:EasyMotion_leader_key = '<Leader>'
+let g:auto_save = 1
 
 nnoremap <silent> <leader>p :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
