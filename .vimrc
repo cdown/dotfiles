@@ -63,7 +63,14 @@ nnoremap <silent> <leader>p :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
 nnoremap <silent> H :set hlsearch!<CR>
+
 inoremap kj <Esc>
+inoremap jk <C-o>:w<CR>
+
+nnoremap Q <nop>
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
 
 for key in ["f", "F", "t", "T"]
     exe "noremap <Leader>" . key . " " . key
