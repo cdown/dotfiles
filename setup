@@ -16,6 +16,11 @@ shopt -s dotglob extglob globstar nullglob
 git clean -dffx
 git submodule update --init --recursive
 
+# Using `submodule update` is weird with -c http.proxy=..., see
+# http://thread.gmane.org/gmane.comp.version-control.git/261223
+
+git submodule init
+
 if [[ $0 == /* ]]; then
     location=${0%/*}
 else
