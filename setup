@@ -62,7 +62,7 @@ done
 
 deleted=()
 if [[ -f ~/.dfsha ]]; then
-    mapfile -t deleted < <(git diff --name-status "$(<~/.dfsha)" HEAD | sed -n 's/^D[[:blank:]]//p')
+    mapfile -t deleted < <(git diff --name-status "$(<~/.dfsha)" HEAD | sed -n 's/^D[[:blank:]]//p' | sed 's/\.gpg$//')
 fi
 
 if (( "${#deleted[@]}" )); then
