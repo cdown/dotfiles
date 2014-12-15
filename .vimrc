@@ -59,7 +59,7 @@ let mapleader = "\<Space>"
 let g:EasyMotion_leader_key = '<Leader>'
 let g:auto_save = 1
 
-nnoremap <silent> <leader>p :setlocal paste<CR>
+nnoremap <silent> <leader>n :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
 nnoremap <silent> H :set hlsearch!<CR>
@@ -68,6 +68,12 @@ inoremap kj <Esc>
 inoremap jk <C-o>:w<CR>
 
 nnoremap Q <nop>
+
+" it's 2014 people, why do clipboards still suck
+nnoremap <silent> <Leader>y :w ~/.vim/xfer<CR>
+nnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
+vnoremap <silent> <Leader>y :w ~/.vim/xfer<CR>
+vnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
