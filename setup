@@ -16,19 +16,12 @@ shopt -s dotglob extglob globstar nullglob
 git clean -dffx
 git submodule update --init --recursive
 
-# Using `submodule update` is weird with -c http.proxy=..., see
-# http://thread.gmane.org/gmane.comp.version-control.git/261223
-
-git submodule init
-
 if [[ $0 == /* ]]; then
     location=${0%/*}
 else
     location=$PWD/${0#./}
     location=${location%/*}
 fi
-
-rm -rf ~/.vim/bundle
 
 decrypt_pgp=0
 if command -v gpg >/dev/null >/dev/null 2>&1 && gpg --list-secret-keys | grep -q 0xDF8D21B616118070; then
