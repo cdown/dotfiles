@@ -70,9 +70,9 @@ inoremap jk <C-o>:w<CR>
 nnoremap Q <nop>
 
 " it's 2014 people, why do clipboards still suck
-nnoremap <silent> <Leader>y :w ~/.vim/xfer<CR>
+nnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>
 nnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
-vnoremap <silent> <Leader>y :w ~/.vim/xfer<CR>
+vnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>
 vnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
 
 nnoremap <Leader>o :CtrlP<CR>
