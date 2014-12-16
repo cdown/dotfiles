@@ -75,6 +75,11 @@ nnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
 vnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>
 vnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
 
+" jump to end of paste
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 
