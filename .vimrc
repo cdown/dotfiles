@@ -80,6 +80,9 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" do not show command history window
+map q: :q
+
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 
