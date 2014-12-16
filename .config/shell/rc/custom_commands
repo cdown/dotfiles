@@ -197,7 +197,7 @@ EOF
 git() {
     shift
     if command git remote -v 2>/dev/null | grep -q cdown; then
-        GIT_AUTHOR_EMAIL=chris@chrisdown.name command git "$@"
+        GIT_COMMITTER_EMAIL=chris@chrisdown.name GIT_AUTHOR_EMAIL=chris@chrisdown.name command git "$@"
     else
         command git "$@"
     fi
