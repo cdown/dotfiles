@@ -2,7 +2,7 @@
 const-rgx=(([A-Za-z_][A-Za-z1-9_]*)|(__.*__))$
 
 [MESSAGES CONTROL]
-disable=import-error,no-name-in-module,bad-whitespace,bad-continuation
+disable=bad-builtin
 
 [REPORTS]
 include-ids=yes
