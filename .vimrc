@@ -47,12 +47,13 @@ autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=rw textwidth=72
 autocmd FileType make setlocal noexpandtab
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType sql setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertEnter * let @/ = ''
 autocmd InsertLeave * setlocal nopaste
+
+for ft in ['yaml', 'sql', 'ruby', 'html', 'css']
+    autocmd FileType ft setlocal shiftwidth=2 softtabstop=2 tabstop=2
+endfor
 
 let mapleader = "\<Space>"
 let g:EasyMotion_leader_key = '<Leader>'
