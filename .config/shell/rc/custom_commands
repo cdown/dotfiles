@@ -66,6 +66,7 @@ activate() { . "$1"/bin/activate; }
 f() { find "${2-.}" -iwholename "*$1*"; }
 yt() { mpv --cache 8096 "$(yturl "$@")"; }
 ssh-context() { . ~/.ssh/agents/"$1" ; }
+sbdl() { while ! rsync -avP --timeout 10 dian:/srv/rtorrent/data/"$1" .; do sleep 5; done; }
 
 shr() ( ssh-context rmg >/dev/null; ssh "$@" )
 shp() ( ssh-context personal >/dev/null; ssh "$@" )
