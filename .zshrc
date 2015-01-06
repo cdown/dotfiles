@@ -21,7 +21,7 @@ __git_files () {
 }
 
 autoload -U compinit promptinit
-compinit
+compinit -i
 promptinit
 
 HISTFILE=$HOME/.zsh_history
