@@ -30,6 +30,17 @@ SAVEHIST=$HISTSIZE
 
 LISTMAX=0
 
+case $TERM in
+    xterm*|rxvt*)
+        precmd() {
+            print -Pn "\e]0;zsh%L %(1j,%j job%(2j|s|); ,)%~\a"
+        }
+        preexec() {
+            printf "\033]0;%s\a" "$1"
+        }
+    ;;
+esac
+
 alias git='noglob git'
 
 set -o always_to_end
