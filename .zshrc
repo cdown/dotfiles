@@ -33,7 +33,7 @@ LISTMAX=0
 case $TERM in
     xterm*|rxvt*)
         precmd() {
-            print -Pn "\e]0;zsh%L %(1j,%j job%(2j|s|); ,)%~\a"
+            print -Pn "\e]0;zsh %(1j,%j job%(2j|s|); ,)%~\a"
         }
         preexec() {
             printf "\033]0;%s\a" "$1"
