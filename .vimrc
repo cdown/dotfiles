@@ -28,6 +28,7 @@ set expandtab
 set formatoptions-=t
 set incsearch
 set hlsearch
+set nofoldenable
 set nowrap
 set number
 set shiftwidth=4
