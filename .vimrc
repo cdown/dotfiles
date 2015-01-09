@@ -53,7 +53,7 @@ autocmd InsertEnter * let @/ = ''
 autocmd InsertLeave * setlocal nopaste
 
 for ft in ['yaml', 'sql', 'ruby', 'html', 'css']
-    autocmd FileType ft setlocal shiftwidth=2 softtabstop=2 tabstop=2
+    exe 'autocmd FileType ' . ft . ' setlocal sw=2 sts=2 ts=2'
 endfor
 
 let mapleader = "\<Space>"
