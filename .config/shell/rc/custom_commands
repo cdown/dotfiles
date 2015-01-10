@@ -196,14 +196,22 @@ EOF
 }
 
 lol_homebrew() (
+    sudo chown -R "$(id -un):admin" /usr/local /Library/{Logs,Caches}/Homebrew
+
     cd -- "$(brew --prefix)"
     git fetch origin
     git reset --hard origin/master
     brew update
     brew upgrade
+
     brew list -1 | while read pkg; do
         brew unlink "$pkg"
-        brew link "$pkg"
+        brew link --overwrite "$pkg"
+    done
+
+    # Link again in case other stuff needed linking as deps
+    brew list -1 | while read pkg; do
+        brew link --overwrite "$pkg"
     done
 )
 
