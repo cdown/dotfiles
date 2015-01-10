@@ -195,6 +195,18 @@ EOF
     rm -r "$tmpdir" "$tmprc"
 }
 
+lol_homebrew() (
+    cd -- "$(brew --prefix)
+    git fetch origin
+    git reset --hard origin/master
+    brew update
+    brew upgrade
+    brew list -1 | while read pkg; do
+        brew unlink "$pkg"
+        brew link "$pkg"
+    done
+)
+
 git() {
     if [ "$1" = git ]; then
         # XXX: zsh bug? when aliasing with noglob around a function, it seems
