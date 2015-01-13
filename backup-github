@@ -1,0 +1,27 @@
+#!/bin/sh
+
+mktemp_cmd=mktemp
+command -v gmktemp >/dev/null 2>&1 && mktemp_cmd=gmktemp
+
+date_cmd=date
+command -v gdate >/dev/null 2>&1 && date_cmd=gdate
+
+temp=$("$mktemp_cmd" -d)
+
+cd -- "$temp"
+
+git clone git@github.com:cdown/gh-mirror.git
+mkdir repos
+cd repos
+../gh-mirror/gh-mirror cdown
+
+cd ..
+
+filename=git_repos_$("$date_cmd" +%F).tar.gz
+
+tar -zcvf "$filename" repos
+
+s3cmd put "$filename" s3://chrisdown-github
+
+cd /
+rm -rf -- "$temp"
