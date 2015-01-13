@@ -81,6 +81,8 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+nnoremap <silent> <Leader>c :s/\v(\S+)/'\1',/g<CR>A <Esc>F,r]^i[<Esc>
+
 nnoremap <Leader><Leader> :
 
 " do not show command history window
