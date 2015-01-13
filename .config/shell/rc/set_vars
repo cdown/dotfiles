@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 if [[ $(uname -s) == Darwin ]]; then
     chroot_output=$(stat -f %i /)
 else

@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 alias grep='grep --color=auto'
 alias vim='vim -u ~/.vimrc -N'
 alias pbcopy='reattach-to-user-namespace pbcopy'
