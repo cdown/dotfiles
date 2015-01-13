@@ -81,7 +81,7 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-nnoremap <silent> <Leader>c :s/\v(\S+)/'\1',/g<CR>A <Esc>F,r]^i[<Esc>
+nnoremap <silent> <Leader>c :s/.*/\="['" . join(split(submatch(0), ' '), "', '") . "']"/<CR>
 
 nnoremap <Leader><Leader> :
 
