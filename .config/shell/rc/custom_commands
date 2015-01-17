@@ -14,6 +14,7 @@ alias sprunge='curl -F "sprunge=<-" http://sprunge.us'
 alias sudo='sudo '
 alias vbox-mods='sudo modprobe -a vboxdrv vboxnetadp vboxnetflt'
 alias fixtime='sudo systemctl stop ntpd && sudo ntpdate 0.pool.ntp.org && sudo systemctl start ntpd'
+alias v='virtualenv env && activate env && for file in **/requirements.txt; do pip install -r "$file"; done'
 alias b='bundle exec '
 
 if [ "$(uname -s)" = Darwin ]; then
