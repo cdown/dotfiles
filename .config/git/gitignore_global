@@ -218,7 +218,6 @@
 /.build/
 /.bundle
 /.bundle/
-/.config
 /.qmake.cache
 /.qmake.stash
 /.yardoc/
