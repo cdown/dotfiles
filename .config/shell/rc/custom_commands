@@ -1,5 +1,6 @@
 # vim: ft=sh
 
+alias cdg='cd "$(git rev-parse --show-toplevel)"'
 alias grep='grep --color=auto'
 alias vim='vim -u ~/.vimrc -N'
 alias pbcopy='reattach-to-user-namespace pbcopy'
