@@ -4,7 +4,13 @@ for file in ~/.config/{shell,bash}/rc/*; do
     [[ -e $file ]] && . "$file"
 done
 
-PS1='\u@\h$chroot_text:\W$(_git_prompt)\$ '
+PS1=''
+
+if [[ $USER != chris && $USER != cdown ]]; then
+    PS1+='\u@'
+fi
+
+PS1+='\h$chroot_text:\W$(_git_prompt)\$ '
 
 set +H
 
