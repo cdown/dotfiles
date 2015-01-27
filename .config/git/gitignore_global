@@ -203,6 +203,7 @@
 .powenv
 .rebar
 .repl_history
+.rnd
 .rspec
 .rvmrc
 .sass-cache
