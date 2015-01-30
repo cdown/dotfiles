@@ -17,6 +17,8 @@ alias vbox-mods='sudo modprobe -a vboxdrv vboxnetadp vboxnetflt'
 alias fixtime='sudo systemctl stop ntpd && sudo ntpdate 0.pool.ntp.org && sudo systemctl start ntpd'
 alias v='virtualenv env && activate env && for file in **/requirements.txt; do pip install -r "$file"; done'
 alias b='bundle exec '
+alias sed="$(use_first_to_exist gsed sed)"
+alias awk="$(use_first_to_exist gawk awk)"
 
 if [ "$(uname -s)" = Darwin ]; then
     # Thanks for breaking LC_CTYPE, Apple
