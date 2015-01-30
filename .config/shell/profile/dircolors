@@ -1,0 +1,5 @@
+# vim: ft=sh
+
+eval "$(
+    "$(use_first_to_exist gdircolors dircolors)" ~/.config/shell/dircolors
+)"
