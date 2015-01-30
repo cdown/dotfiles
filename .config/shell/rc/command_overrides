@@ -1,0 +1,26 @@
+# vim: ft=sh
+
+# GNU Coreutils that might not be installed with default names on OSX
+alias grep="$(use_first_to_exist ggrep grep)"
+alias ls="$(use_first_to_exist gls ls) --color=auto -p --group-directories-first"
+alias sed="$(use_first_to_exist gsed sed)"
+alias awk="$(use_first_to_exist gawk awk)"
+
+# Disable sourcing systemwide vim configuration
+alias vim='vim -u ~/.vimrc -N'
+
+# Commands that need to be reattached to the user namespace to access the
+# clipboard from inside a tmux session
+alias pbcopy='reattach-to-user-namespace pbcopy'
+alias pbpaste='reattach-to-user-namespace pbpaste'
+alias pass='reattach-to-user-namespace pass'
+
+# Do not disable raw control chars when running less
+alias less='less -R'
+
+# Do not pass a (potentially unsupported) locale when SSHing to random servers
+alias ssh='LC_ALL=C ssh'
+
+# Allow other aliases to be used after the program name
+alias sudo='sudo '
+alias watch='watch '

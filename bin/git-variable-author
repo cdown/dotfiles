@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Run git with a variable identity depending on upstream
+
+remote_info=$(git remote -v 2>/dev/null)
+
+case $remote_info in 
+    *cdown/*) identity=chris@chrisdown.name;;
+esac
+
+export GIT_COMMITTER_EMAIL="$identity"
+export GIT_AUTHOR_EMAIL="$identity"
+
+exec git "$@"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+interface=${1-wlp18s0}
+
+sudo netctl stop-all
+sudo ip link set dev "$interface" down
+sudo macchanger -r -b "$interface"

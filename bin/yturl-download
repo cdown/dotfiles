@@ -1,0 +1,5 @@
+#!/bin/bash
+
+local temp="$(mktemp -u)"
+curl -L -o "$temp" "$(yturl "$@")"
+printf '%s\n' "$temp"

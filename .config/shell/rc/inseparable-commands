@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Commands that cannot be separated into scripts in bin/ because they
+# manipulate the current shell's environment.
+
+# Initialise rbenv environment in the current shell
+alias rbenv-init='eval "$(rbenv init -)"'
+
+# virtualenv
+activate() {
+    . "$1"/bin/activate
+}
+virtualenv-auto() {
+    virtualenv env
+    activate env
+    for file in **/requirements.txt; do
+        pip install -r "$file"
+    done
+}
+
+# Update a stale $SSH_AUTH_SOCK inside tmux
+update-auth-sock() {
+    local socket_path="$(tmux show-environment | sed -n 's/^SSH_AUTH_SOCK=//p')"
+
+    if [[ -z "$socket_path" ]]; then
+        echo 'no socket path' >&2
+        return 1
+    else
+        export SSH_AUTH_SOCK="$socket_path"
+    fi
+}

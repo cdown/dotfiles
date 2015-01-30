@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if (( $# != 2 )); then
+    printf 'Usage: %s [path] [dest]\n' "$0" >&2
+    return 1
+fi
+
+local path="$1"
+local dest="$2"
+
+tar pczf "$path" "$path".tar.gz
+split -b 4095m "$path".tar.gz "$dest"/"${path##*/}".tar.gz.split.
+rm -- "$path".tar.gz

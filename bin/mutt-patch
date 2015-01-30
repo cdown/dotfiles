@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mutt -F ~/.config/mutt/rc-patch -H

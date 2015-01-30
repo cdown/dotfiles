@@ -278,7 +278,6 @@ Temporary Items
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
 [568vq].out
-[Bb]in
 [Ii]nclude
 [Ll]ib
 [Ss]cripts
@@ -293,8 +292,6 @@ _site/
 _test
 _testmain.go
 acs-*.bib
-bin/
-bin/*
 bower.json
 build
 build/

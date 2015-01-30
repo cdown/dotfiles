@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+
+done
+
+dir=$HOME/git/dotfiles
+cd "$dir"
+git stash -u
+git rebase -p @{u}
+git clean -dffx
+./setup

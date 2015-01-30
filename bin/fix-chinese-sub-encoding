@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp -- "$1"{,.orig}
+enca -c -x UTF8 -L zh "$1"

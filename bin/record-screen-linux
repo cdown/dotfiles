@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ffmpeg \
+    -f x11grab \
+    -r 25 \
+    -s "${2-$(xrandr --current | awk '$2 ~ /*/ { print $1 }')}" \
+    -i :0.0+0,0 \
+    -vcodec libx264 \
+    -threads 0 \
+    "$1"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pkill -f chromium
+proxy "$1" &
+sleep 5
+chromium --incognito --proxy-server=socks5://localhost:1337
+kill "$!"

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tmpdir="$(mktemp -d)"
+tmprc="$(mktemp)"
+
+cat > "$tmprc" << EOF
+PS1='\$ '
+cd "$tmpdir"
+EOF
+
+env - HOME="$HOME" TERM="$TERM" bash --noprofile --rcfile "$tmprc"
+rm -r "$tmpdir" "$tmprc"

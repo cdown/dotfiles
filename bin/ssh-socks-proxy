@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh -C2qTnN -D 1337 "$@"

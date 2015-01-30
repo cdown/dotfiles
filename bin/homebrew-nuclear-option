@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Try every method I know to fix homebrew when it gets broken
+
+for hb_dir in /usr/local /Library/{Logs,Caches}/Homebrew; do
+    [[ -d $file ]] && sudo chown -R "$USER:admin" "$hb_dir"
+done
+
+cd -- "$(brew --prefix)"
+
+git fetch origin
+git reset --hard origin/master
+brew update
+brew upgrade
+
+brew list -1 | while read pkg; do
+    brew unlink "$pkg"
+    brew link "$pkg"
+done
+
+# Link again in case other stuff needed linking as deps
+brew list -1 | while read pkg; do
+    brew link "$pkg"
+done

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+_git_prompt() {
+    local branch
+    local git_dir
+    local tag
+
+    if branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"; then
+        if [[ $branch != HEAD ]]; then
+            printf ':%s' "$branch"
+        elif tag="$(git describe --tags --exact-match HEAD 2>/dev/null)"; then
+            printf ':%s' "$tag"
+        else
+            printf ':%s' "$(git rev-parse --short HEAD)"
+        fi
+
+        git_dir=$(git rev-parse --git-dir)
+
+        if [[ -d $git_dir/rebase-apply ]]; then
+            printf ':%s' rebase
+        elif [[ -d $git_dir/rebase-merge ]]; then
+            printf ':%s' rebase
+        elif [[ -f $git_dir/MERGE_HEAD ]]; then
+            printf ':%s' merge
+        elif [[ -f $git_dir/CHERRY_PICK_HEAD ]]; then
+            printf ':%s' cherry-pick
+        elif [[ -f $git_dir/REVERT_HEAD ]]; then
+            printf ':%s' revert
+        elif [[ -f $git_dir/BISECT_LOG ]]; then
+            printf ':%s' bisect
+        fi
+    fi
+}
