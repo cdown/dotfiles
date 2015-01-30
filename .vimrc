@@ -52,7 +52,7 @@ autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertEnter * let @/ = ''
 autocmd InsertLeave * setlocal nopaste
 
-for ft in ['yaml', 'sql', 'ruby', 'html', 'css']
+for ft in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml']
     exe 'autocmd FileType ' . ft . ' setlocal sw=2 sts=2 ts=2'
 endfor
 
