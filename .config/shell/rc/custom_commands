@@ -1,12 +1,12 @@
 # vim: ft=sh
 
 alias cdg='cd "$(git rev-parse --show-toplevel)"'
-alias grep='grep --color=auto'
+alias grep='"$(use_first_to_exist ggrep grep)" --color=auto'
 alias vim='vim -u ~/.vimrc -N'
 alias pbcopy='reattach-to-user-namespace pbcopy'
 alias pbpaste='reattach-to-user-namespace pbpaste'
-alias l='ls -laFh'
-alias ls='ls --color=auto'
+alias l='"$(use_first_to_exist gls ls)" -laFh'
+alias ls='"$(use_first_to_exist gls ls)" --color=auto'
 alias less='less -R'
 alias mutt-patch='mutt -F ~/.config/mutt/rc-patch -H'
 alias proxy='ssh -C2qTnN -D 1337'
@@ -19,8 +19,6 @@ alias v='virtualenv env && activate env && for file in **/requirements.txt; do p
 alias b='bundle exec '
 
 if [ "$(uname -s)" = Darwin ]; then
-    command -v gls >/dev/null 2>&1 && alias ls='gls --color=auto'
-
     # Thanks for breaking LC_CTYPE, Apple
     alias ssh='LANG=en_US LC_ALL=en_US.UTF-8 ssh'
 else
