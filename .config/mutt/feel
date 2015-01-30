@@ -12,6 +12,7 @@ set fast_reply
 
 bind index Q quit
 bind index q noop
+bind index x noop
 bind index,pager p noop
 bind index,pager r group-reply
 bind pager,attach q exit
