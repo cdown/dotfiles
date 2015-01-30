@@ -1,0 +1,12 @@
+#!/bin/sh
+
+for file in \
+    /etc/Muttrc.gpg.dist \
+    /etc/Muttrc.d/gpg.rc \
+    ~/.config/mutt/mac-pgp
+do
+    if [ -e "$file" ]; then
+        echo "$file"
+        break
+    fi
+done

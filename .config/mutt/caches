@@ -1,7 +1,9 @@
 # vim: ft=muttrc
 
+# This is an unused variable, it's only used to allow the creation of
+# ~/.cache/mutt
 set my_dummy = `mkdir -p ~/.cache/mutt`
 
 set certificate_file = ~/.config/mutt/certificates
-set header_cache     = ~/.cache/mutt/headers
-set alias_file       = ~/.config/mutt/aliases
+set header_cache = ~/.cache/mutt/headers
+set alias_file = ~/.config/mutt/aliases

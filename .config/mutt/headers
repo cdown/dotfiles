@@ -3,4 +3,4 @@
 set reverse_name
 unset reverse_realname
 
-set forward_format = "Fwd: %s"
+set forward_format = 'Fwd: %s'

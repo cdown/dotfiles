@@ -2,29 +2,30 @@
 
 source ~/.config/mutt/mutt-colors-solarized-dark-256.muttrc
 
-ignore      *
-unignore    From: To: Cc: Date: Subject:
+ignore *
+unignore From: To: Cc: Date: Subject:
 unhdr_order *
-hdr_order   From: To: Cc: Date: Subject:
+hdr_order From: To: Cc: Date: Subject:
 
 set index_format = '%5C  [%Z] [%-4.4c]  %D  %-15.15F  %s'
-set date_format  = "%Y-%m-%d %H:%M:%S %Z"
+set date_format = '%Y-%m-%d %H:%M:%S %Z'
 
 set display_filter = ~/.config/mutt/run-filters
 
-set attribution = "%n writes:"
+set attribution = '%n writes:'
 
 set read_inc = 500
 
 unset mark_old
 
-set status_format  = '%> %?V?Limit: %V | ?%v'
+set status_format = '%> %?V?Limit: %V | ?%v'
 set compose_format = '%> %v'
 
 unset help
 unset markers
 
-set rfc2047_parameters = yes
+# Decode attachment filenames
+set rfc2047_parameters
 
-set sort     = threads
+set sort = threads
 set sort_aux = last-date-received
