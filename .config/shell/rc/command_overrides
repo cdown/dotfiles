@@ -1,10 +1,18 @@
 # vim: ft=sh
 
+# If noglob (for zsh) is not available, just make it a noop
+if ! type noglob >/dev/null 2>&1; then
+    alias noglob=''
+fi
+
 # GNU Coreutils that might not be installed with default names on OSX
 alias grep="$(use_first_to_exist ggrep grep)"
 alias ls="$(use_first_to_exist gls ls) --color=auto -p --group-directories-first"
 alias sed="$(use_first_to_exist gsed sed)"
 alias awk="$(use_first_to_exist gawk awk)"
+
+# Apply git environment changes for variable author, and do not glob
+alias git='noglob git-variable-author'
 
 # Disable sourcing systemwide vim configuration
 alias vim='vim -u ~/.vimrc -N'
