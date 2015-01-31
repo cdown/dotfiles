@@ -48,8 +48,6 @@ case $TERM in
     ;;
 esac
 
-alias git='noglob git'
-
 set -o always_to_end
 set -o append_history
 set -o complete_in_word
