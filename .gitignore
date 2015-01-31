@@ -11,3 +11,4 @@
 /.pypirc
 /.s3cfg
 /.ssh/config
+/bin/pushbullet-push

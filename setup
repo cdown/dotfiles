@@ -43,7 +43,13 @@ for file in "$location"/**/*; do
         output_file=${file%.gpg}
 
         gpg --output "$output_file" -d "$file"
-        chmod 0600 "$output_file"
+
+        case $output_file in
+            */bin/*) gpg_mode=0700 ;;
+            *) gpg_mode=0600 ;;
+        esac
+
+        chmod "$gpg_mode" "$output_file"
 
         # Use the decrypted file going forwards
         file=$output_file
