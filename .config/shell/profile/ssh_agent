@@ -18,4 +18,4 @@ for key in ~/.ssh/keys/*; do
 done
 )
 
-[[ -e ~/.ssh/agents/personal ]] && . ~/.ssh/agents/personal >/dev/null
+[[ -e ~/.ssh/agents/global ]] && . ~/.ssh/agents/global >/dev/null
