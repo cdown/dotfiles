@@ -1,6 +1,6 @@
 # vim: ft=muttrc
 
-source ~/.config/mutt/mutt-colors-solarized-dark-256.muttrc
+source ~/.config/mutt/mutt-colors-solarized-dark-16.muttrc
 
 ignore *
 unignore From: To: Cc: Date: Subject:
