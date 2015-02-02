@@ -2,6 +2,8 @@ export GTK_IM_MODULE=xim
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+type -p VBoxClient-all 2>&1 >/dev/null && VBoxClient-all &
+
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
