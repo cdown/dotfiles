@@ -6,6 +6,7 @@
 /.config/shell/rc/custom_private_commands
 /.duply/github/conf
 /.duply/google-drive/conf
+/.duply/mail/conf
 /.mpdscribble/mpdscribble.conf
 /.offlineimaprc
 /.pypirc
