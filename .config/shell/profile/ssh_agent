@@ -1,0 +1,20 @@
+type ssh-agent >/dev/null 2>&1 || return
+[[ -d ~/.ssh/keys ]] || return
+
+mkdir -m700 -p ~/.ssh/agents
+
+# Execute in subshell to avoid polluting environment
+(
+for key in ~/.ssh/keys/*; do
+    agent_file=$HOME/.ssh/agents/${key##*/}
+
+    [[ -r $agent_file ]] && . "$agent_file" >/dev/null
+
+    if (( EUID )) && ! ssh-add -l >/dev/null 2>&1; then
+        eval "$(ssh-agent | tee "$agent_file")" >/dev/null
+        ssh-add "$key"
+    fi
+done
+)
+
+[[ -e ~/.ssh/agents/personal ]] && . ~/.ssh/agents/personal >/dev/null
