@@ -1,4 +1,5 @@
 type gpg-agent >/dev/null 2>&1 || return
+[[ $(uname -s) == Linux ]] || return
 
 export GPG_TTY=$(tty)
 
