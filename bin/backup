@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for backup_path in ~/.duply/*; do
+    backup_name=${backup_path%%*/}
+    duply "$backup_name" backup
+done
