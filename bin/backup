@@ -2,5 +2,10 @@
 
 for backup_path in ~/.duply/*; do
     backup_name=${backup_path%%*/}
+
+    if [[ $backup_name == google-drive && $(uname -s) != Darwin ]]; then
+        continue
+    fi
+
     duply "$backup_name" backup
 done
