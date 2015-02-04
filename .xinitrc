@@ -7,6 +7,8 @@ type -p VBoxClient-all 2>&1 >/dev/null && VBoxClient-all &
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+xmodmap -e "keycode 75 = Insert Insert Insert"
+
 setxkbmap -option caps:none
 
 if ! xrandr | grep -q 'VGA1 disconnected'; then
