@@ -9,7 +9,7 @@ xset fp rehash
 
 xmodmap -e "keycode 75 = Insert Insert Insert"
 
-setxkbmap -option caps:none
+setxkbmap -option ctrl:nocaps
 
 if ! xrandr | grep -q 'VGA1 disconnected'; then
     xrandr --output VGA1 --right-of LVDS1 --auto
