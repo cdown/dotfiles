@@ -7,7 +7,7 @@ type -p VBoxClient-all 2>&1 >/dev/null && VBoxClient-all &
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-xmodmap -e "keycode 75 = Insert Insert Insert"
+xmodmap ~/.xmodmap
 
 setxkbmap -option ctrl:nocaps
 
