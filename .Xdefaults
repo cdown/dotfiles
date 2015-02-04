@@ -8,13 +8,13 @@ URxvt.saveLines: 5000
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common:      default,clipboard,url-select
 URxvt.clipboard.autocopy:   true
 URxvt.url-select.launcher:  google-chrome-stable
 URxvt.url-select.underline: true
-URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.searchable-scrollback: M-slash
+URxvt.keysym.M-u:            perl:url-select:select_next
 
 *background: #002b36
 *foreground: #839496
