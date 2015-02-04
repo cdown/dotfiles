@@ -1,3 +1,9 @@
+# vim: ft=sh
+
+for file in /etc/X11/xinit/xinitrc.d/*; do
+    [[ -f $file ]] && . "$file"
+done
+
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
