@@ -28,7 +28,9 @@ fi
 # Do not disable raw control chars when running less
 alias less='less -R'
 
-# Do not pass a (potentially unsupported) locale when SSHing to random servers
+# Do not pass a (potentially unsupported) locale when SSHing to random servers.
+# In mosh, a UTF-8 aware locale is needed, so we use en_US.UTF-8 because
+# there's a high likelihood that it will be available ('Murica baby!).
 safe_termname() {
     case $TERM in
         rxvt*) echo rxvt ;;
@@ -37,6 +39,7 @@ safe_termname() {
     esac
 }
 alias ssh='LC_ALL=C TERM="$(safe_termname)" ssh'
+alias mosh='LC_ALL=en_US.UTF-8 TERM="$(safe_termname)" mosh'
 
 # Allow other aliases to be used after the program name
 alias sudo='sudo '
