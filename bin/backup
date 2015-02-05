@@ -3,7 +3,7 @@
 set -e
 
 for backup_path in ~/.duply/*; do
-    backup_name=${backup_path%%*/}
+    backup_name=${backup_path##*/}
 
     if [[ $backup_name == google-drive && $(uname -s) != Darwin ]]; then
         continue
