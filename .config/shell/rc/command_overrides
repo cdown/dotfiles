@@ -29,7 +29,14 @@ fi
 alias less='less -R'
 
 # Do not pass a (potentially unsupported) locale when SSHing to random servers
-alias ssh='LC_ALL=C ssh'
+safe_termname() {
+    case $TERM in
+        rxvt*) echo rxvt ;;
+        xterm*) echo xterm ;;
+        *) echo linux ;;
+    esac
+}
+alias ssh='LC_ALL=C TERM="$(safe_termname)" ssh'
 
 # Allow other aliases to be used after the program name
 alias sudo='sudo '
