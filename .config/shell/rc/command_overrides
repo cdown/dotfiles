@@ -39,7 +39,7 @@ safe_termname() {
     esac
 }
 alias ssh='LC_ALL=C TERM="$(safe_termname)" ssh'
-alias mosh='LC_ALL=en_US.UTF-8 TERM="$(safe_termname)" mosh'
+alias mosh='LC_ALL=en_US.UTF-8 mosh'
 
 # Allow other aliases to be used after the program name
 alias sudo='sudo '
