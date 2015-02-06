@@ -5,7 +5,6 @@ fi
 
 dir=$HOME/git/dotfiles
 cd "$dir"
-git stash -u
-git rebase -p @{u}
+git reset --hard {u}
 git clean -dffx
 ./setup
