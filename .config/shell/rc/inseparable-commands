@@ -11,11 +11,15 @@ activate() {
     . "$1"/bin/activate
 }
 virtualenv-auto() {
-    virtualenv env
-    activate env
-    for file in **/requirements.txt; do
-        pip install -r "$file"
-    done
+    if ! [ -d env ]; then
+        virtualenv env
+        activate env
+        for file in **/requirements.txt; do
+            pip install -r "$file"
+        done
+    else
+        activate env
+    fi
 }
 
 # Update a stale $SSH_AUTH_SOCK inside tmux
