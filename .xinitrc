@@ -17,8 +17,6 @@ xset fp rehash
 
 xmodmap ~/.xmodmap
 
-setxkbmap -option ctrl:nocaps
-
 if ! xrandr | grep -q 'VGA1 disconnected'; then
     xrandr --output VGA1 --right-of LVDS1 --auto
 fi

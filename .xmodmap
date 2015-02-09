@@ -3,3 +3,8 @@ keycode 75 = Insert Insert Insert
 
 ! Allow Print Screen on Macbook keyboards by binding F10 to Print
 keycode 76 = Print Print Print
+
+! Use Caps Lock as Ctrl
+clear Lock
+keycode 126 = Control_R
+add Control = Control_R
