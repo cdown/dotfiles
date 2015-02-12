@@ -4,8 +4,8 @@
 
 remote_info=$(git remote -v 2>/dev/null)
 
-case $remote_info in 
-    *cdown/*) identity=chris@chrisdown.name;;
+case $remote_info in
+    *cdown/*|'') identity=chris@chrisdown.name;;
 esac
 
 export GIT_COMMITTER_EMAIL="$identity"
