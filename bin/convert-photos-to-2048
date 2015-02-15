@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in Camera/*.jpg; do
+    echo "$file"
+    convert "$file" -resize 2048x2048 -quality 95 Camera_2048/"${file#Camera/}"
+done
