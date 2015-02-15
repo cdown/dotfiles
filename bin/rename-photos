@@ -1,0 +1,26 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+for in_filename in Camera/*.{JP{,E}G,jp{,e}g}; do
+    datetime=$(
+        exiftool -p '$DateTimeOriginal' "$in_filename" | tr -d ':' | tr ' ' _
+    )
+
+    if ! [[ $datetime ]]; then
+        printf '%s\n' "$in_filename" >&2
+        continue
+    fi
+
+    out_filename=Camera/IMG_$datetime.jpg
+
+    [[ $in_filename == $out_filename ]] && continue
+
+    if [[ -e $out_filename ]]; then
+        printf 'Already exists: %s (%s -> %s)\n' \
+            "$out_filename" "$in_filename" "$out_filename" >&2
+        continue
+    fi
+
+    mv -- "$in_filename" "$out_filename"
+done
