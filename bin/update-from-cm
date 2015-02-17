@@ -5,6 +5,6 @@ playbook_dir=$(mktemp -d)
 trap 'cd /; rm -rf "$playbook_dir"' 0
 
 cd "$playbook_dir"
-wget -qO- https://github.com/cdown/ansible-personal/tarball/master | tar xvz --strip-components 1
+curl -L https://github.com/cdown/ansible-personal/tarball/master | tar xvz --strip-components 1
 
 ansible-playbook -i localhost, -v setup.yml
