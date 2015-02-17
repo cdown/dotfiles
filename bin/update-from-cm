@@ -4,7 +4,7 @@ playbook_dir=$(mktemp -ud)
 
 trap 'cd /; rm -rf "$playbook_dir"' 0
 
-git clone --recursive git@github.com:cdown/ansible-personal.git "$playbook_dir"
+git clone --recursive git://github.com/cdown/ansible-personal.git "$playbook_dir"
 cd "$playbook_dir"
 
 ansible-playbook -i localhost, -v setup.yml
