@@ -1,5 +1,7 @@
 # vim: ft=sh
 
+user=$(id -un)
+
 for file in /etc/X11/xinit/xinitrc.d/*; do
     [[ -f $file ]] && . "$file"
 done
@@ -14,6 +16,10 @@ type -p VBoxClient-all 2>&1 >/dev/null && VBoxClient-all &
 
 xset +fp /usr/share/fonts/local
 xset fp rehash
+
+case $user in
+    chris|lin) xrdb -merge ~/.config/x/xresources/"$user"
+esac
 
 xmodmap ~/.xmodmap
 
