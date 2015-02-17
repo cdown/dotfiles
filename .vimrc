@@ -111,12 +111,6 @@ for key in ["f", "F", "t", "T"]
     exe "map " . key . " <Plug>(easymotion-" . key . ")"
 endfor
 
-for prefix in ['i', 'n', 'v']
-    for key in ['<Up>', '<Down>', '<Left>', '<Right>', '<F1>']
-        exe prefix . "noremap " . key . " <NOP>"
-    endfor
-endfor
-
 " vp doesn't replace paste buffer
 function! RestoreRegister()
   let @" = s:restore_reg
