@@ -32,7 +32,7 @@ pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
 urxvtd -q -o &
 
-if [[ "$(id -u)" == chris ]]; then
+if [[ "$user" == chris ]]; then
     {
         sleep 3
         urxvtc -title dev
