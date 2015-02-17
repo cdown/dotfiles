@@ -34,7 +34,7 @@ set number
 set shiftwidth=4
 set shortmess=aoOtI
 set softtabstop=4
-set synmaxcol=80
+set synmaxcol=160
 set tabstop=4
 set textwidth=79
 
