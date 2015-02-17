@@ -26,13 +26,15 @@ pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
 urxvtd -q -o &
 
-{
-    sleep 3
-    urxvtc -title dev
-    urxvtc -title mail -e create-or-attach-tmux-session mail mutt
-    urxvtc -title irc -e create-or-attach-tmux-session irc irssi
-    google-chrome-stable &
-} &
+if [[ "$(id -u)" == chris ]]; then
+    {
+        sleep 3
+        urxvtc -title dev
+        urxvtc -title mail -e create-or-attach-tmux-session mail mutt
+        urxvtc -title irc -e create-or-attach-tmux-session irc irssi
+        google-chrome-stable &
+    } &
+fi
 
 systemctl --user start offlineimap.timer &
 
