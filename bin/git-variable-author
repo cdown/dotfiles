@@ -4,11 +4,22 @@
 
 remote_info=$(git remote -v 2>/dev/null)
 
-case $remote_info in
-    *cdown/*|'') identity=chris@chrisdown.name;;
+case $USER in
+    lin)
+        email=lin.sally.zhao@gmail.com
+        name='Lin Zhao'
+    ;;
+    *)
+        case $remote_info in
+            *cdown/*|'') email=chris@chrisdown.name;;
+        esac
+        name='Chris Down'
+    ;;
 esac
 
-export GIT_COMMITTER_EMAIL="$identity"
-export GIT_AUTHOR_EMAIL="$identity"
+export GIT_COMMITTER_EMAIL="$email"
+export GIT_AUTHOR_EMAIL="$email"
+export GIT_COMMITTER_NAME="$name"
+export GIT_AUTHOR_NAME="$name"
 
 exec git "$@"
