@@ -26,9 +26,10 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set expandtab
 set formatoptions-=t
-set incsearch
 set hlsearch
+set incsearch
 set nofoldenable
+set nomodeline
 set nowrap
 set number
 set shiftwidth=4
