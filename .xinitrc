@@ -32,8 +32,7 @@ urxvtd -q -o &
 
 if [[ "$user" == chris ]]; then
     {
-        sleep 3
-        urxvtc -title dev
+        while ! urxvtc -title dev; do :; done
         urxvtc -title mail -e create-or-attach-tmux-session mail mutt
         urxvtc -title irc -e create-or-attach-tmux-session irc irssi
         google-chrome-stable &
