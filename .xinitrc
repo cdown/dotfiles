@@ -21,8 +21,6 @@ case $user in
     chris|lin) xrdb -merge ~/.config/x/xresources/"$user"
 esac
 
-xmodmap ~/.xmodmap
-
 if ! xrandr | grep -q 'VGA1 disconnected'; then
     xrandr --output VGA1 --right-of LVDS1 --auto
 fi
@@ -45,5 +43,12 @@ fi
 systemctl --user start offlineimap.timer &
 
 fcitx &
+
+# ibus overrides xmodmap after it's run. Since it might take some time to
+# start, just launching after it is not enough, we have to wait until it has
+# finished setup to run xmodmap.
+#
+# https://code.google.com/p/ibus/issues/detail?id=1469
+{ sleep 5; xmodmap ~/.xmodmap; } &
 
 exec dbus-launch --exit-with-session dwm
