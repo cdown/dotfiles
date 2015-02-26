@@ -28,6 +28,7 @@ set expandtab
 set formatoptions-=t
 set hlsearch
 set incsearch
+set nofoldenable
 set nomodeline
 set nowrap
 set number
