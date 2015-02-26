@@ -33,8 +33,8 @@ urxvtd -q -o &
 if [[ "$user" == chris ]]; then
     {
         while ! urxvtc -title dev; do :; done
-        urxvtc -title mail -e create-or-attach-tmux-session mail mutt
-        urxvtc -title irc -e create-or-attach-tmux-session irc irssi
+        urxvtc -title mail -e create-or-attach-tmux-session mail 'while mutt; do :; done'
+        urxvtc -title irc -e create-or-attach-tmux-session irc 'while irssi; do :; done'
         google-chrome-stable &
     } &
 fi
