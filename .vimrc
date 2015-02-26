@@ -49,6 +49,7 @@ autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType mail normal }
 autocmd FileType mail setlocal formatoptions+=rw textwidth=72
 autocmd FileType make setlocal noexpandtab
+autocmd Filetype python setlocal foldmethod=syntax
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd InsertEnter * let @/ = ''
 autocmd InsertLeave * setlocal nopaste
