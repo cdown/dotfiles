@@ -17,6 +17,9 @@ highlight ColorColumn ctermbg=black
 highlight MatchParen ctermbg=white ctermfg=black
 highlight Search ctermbg=white ctermfg=black
 highlight TrailingWhitespace ctermbg=black
+highlight Folded cterm=NONE ctermfg=10
+
+set fillchars=fold:\ 
 
 match TrailingWhitespace /\s\+$/
 
