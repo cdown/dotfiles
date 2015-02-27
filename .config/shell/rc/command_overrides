@@ -12,6 +12,7 @@ alias sed="$(use_first_to_exist gsed sed)"
 alias awk="$(use_first_to_exist gawk awk)"
 
 # Apply git environment changes for variable author, and do not glob
+compdef git-variable-author=git
 alias git='noglob git-variable-author'
 
 # Disable sourcing systemwide vim configuration
