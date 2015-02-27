@@ -1,5 +1,9 @@
 [[ "$-" == *i* ]] || return
 
+autoload -U compinit promptinit
+compinit -i
+promptinit
+
 . ~/.config/shell/early-funcs
 
 for file in ~/.config/{shell,zsh}/rc/*(N); do
@@ -26,10 +30,6 @@ fi
 __git_files () {
     _wanted files expl 'local files' _files
 }
-
-autoload -U compinit promptinit
-compinit -i
-promptinit
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2500
