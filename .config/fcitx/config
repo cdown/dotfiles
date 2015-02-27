@@ -1,0 +1,16 @@
+[Hotkey]
+TriggerKey=CTRL_SPACE
+PuncSwitchKey=CTRL_.
+
+[Program]
+
+[Output]
+HalfPuncAfterNumber=True
+CandidateWordNumber=10
+PhraseTips=True
+DontCommitPreeditWhenUnfocus=False
+
+[Appearance]
+ShowInputWindowAfterTriggering=True
+ShowInputWindowWhenFocusIn=True
+ShowInputWindowOnlyWhenActive=True
