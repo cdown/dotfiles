@@ -18,14 +18,6 @@ alias git='noglob git-variable-author'
 # Disable sourcing systemwide vim configuration
 alias vim='vim -u ~/.vimrc -N'
 
-# Commands that need to be reattached to the user namespace to access the
-# clipboard from inside a tmux session
-if type reattach-to-user-namespace >/dev/null 2>&1; then
-    alias pbcopy='reattach-to-user-namespace pbcopy'
-    alias pbpaste='reattach-to-user-namespace pbpaste'
-    alias pass='reattach-to-user-namespace pass'
-fi
-
 # Do not disable raw control chars when running less
 alias less='less -R'
 
