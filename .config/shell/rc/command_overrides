@@ -5,11 +5,16 @@ if ! type noglob >/dev/null 2>&1; then
     alias noglob=''
 fi
 
-# GNU Coreutils that might not be installed with default names on OSX
+# GNU Coreutils that might not be installed with default names on OSX.
+# Lint warning for expansion at definition is disabled as that's intentional.
+#
+# shellcheck disable=SC2139
+{
 alias grep="$(use_first_to_exist ggrep grep)"
 alias ls="$(use_first_to_exist gls ls) --color=auto -p --group-directories-first"
 alias sed="$(use_first_to_exist gsed sed)"
 alias awk="$(use_first_to_exist gawk awk)"
+}
 
 # Apply git environment changes for variable author, and do not glob
 compdef git-variable-author=git

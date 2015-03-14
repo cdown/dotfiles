@@ -26,7 +26,7 @@ virtualenv-auto() {
 update-auth-sock() {
     local socket_path="$(tmux show-environment | sed -n 's/^SSH_AUTH_SOCK=//p')"
 
-    if [[ -z "$socket_path" ]]; then
+    if [ -z "$socket_path" ]; then
         echo 'no socket path' >&2
         return 1
     else

@@ -60,6 +60,6 @@ set -o nullglob
 set -o prompt_subst
 set -o share_history
 
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 bindkey -e

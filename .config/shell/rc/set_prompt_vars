@@ -1,0 +1,14 @@
+# vim: ft=sh
+
+if [ "$(uname -s)" = Darwin ]; then
+    chroot_output=$(stat -f %i /)
+else
+    chroot_output=$(stat -c %i /)
+fi
+
+unset chroot_text
+if [ "$chroot_output" -ne 2 ]; then
+    # This is used later in .zshrc/,bashrc to configure the prompt, but
+    # the linter doesn't know this.
+    chroot_text=%chroot  # shellcheck disable=SC2034
+fi
