@@ -1,0 +1,11 @@
+language: haskell
+
+install:
+  - cabal install shellcheck
+  - sudo ln ~/.cabal/bin/shellcheck /usr/bin/shellcheck
+
+script:
+  - shellcheck -s bash .bashrc .bash_profile
+  - shellcheck -s zsh .zshrc .zprofile
+  - find .config/shell -not -name dircolors -type f -exec shellcheck -s sh {} +
+  - find .config/zsh -type f -exec shellcheck -s zsh {} +
