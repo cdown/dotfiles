@@ -12,3 +12,5 @@
     conflictstyle = diff3
 [rebase]
     autosquash = true
+[alias]
+    why-ignore = check-ignore -v
