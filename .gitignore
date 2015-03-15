@@ -3,7 +3,6 @@
 /.config/burp/burp.conf
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
-/.config/shell/rc/custom_private_commands
 /.duply/github/conf
 /.duply/google-drive/conf
 /.duply/mail/conf
@@ -12,4 +11,5 @@
 /.pypirc
 /.s3cfg
 /.ssh/config
+/.ssh/keys/global
 /bin/pushbullet-push
