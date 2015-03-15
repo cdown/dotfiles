@@ -1,5 +1,5 @@
 type ssh-agent >/dev/null 2>&1 || return
-[ -d ~/.ssh/keys ] | return
+[ -d ~/.ssh/keys ] || return
 [ "$(uname -s)" = Linux ] || return
 
 mkdir -m700 -p ~/.ssh/agents
