@@ -11,3 +11,6 @@ use_first_to_exist() {
     echo false
     return 1
 }
+
+setopt NULL_GLOB >/dev/null 2>&1
+shopt -s nullglob >/dev/null 2>&1
