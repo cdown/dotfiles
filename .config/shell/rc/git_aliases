@@ -1,30 +1,46 @@
 #!/bin/sh
 
 alias cdg='cd "$(git rev-parse --show-toplevel)"'
+
+# Base commands that set command defaults
 alias ga='git add'
-alias gap='git add -p'
 alias gb='git branch'
-alias gbm='git branch -r --merged master@{u}'
-alias gbr='git branch -r'
 alias gc='git commit -v'
-alias gca='git commit -av'
-alias gcaa='git commit --amend -av'
 alias gco='git checkout'
 alias gd='git diff --no-prefix'
-alias gdc='gd --cached'
-alias gdm='gd master@{u}..'
-alias gdw='gd --color-words'
-alias gfp='git fetch -p'
-alias gfr='git fetch -p && git rebase -p @{u}'
+alias gf='git fetch -p'
 alias gg='git grep'
 alias gl='git log'
-alias glm='git log --no-merges master@{u}..'
 alias gm='git merge --no-ff'
-alias gmm='gm master@{u}'
 alias gp='git push'
-alias grh='git reset --hard'
-alias grim='git rebase -p -i master@{u}'
-alias grpm='git rebase -p master@{u}'
-alias gru='git rebase -p @{u}'
 alias gs='git show'
 alias gst='git status'
+
+# Rebasing
+alias grp='git rebase -p'
+alias gri='grp -i'
+alias grim='gri master@{u}'
+alias grpm='grp master@{u}'
+alias grid='gri develop@{u}'
+alias grpd='grp develop@{u}'
+alias gru='grp @{u}'
+
+# Diffing
+alias gdm='gd master@{u}..'
+alias gdd='gd develop@{u}..'
+alias gdu='gd @{u}..'
+alias gdc='gd --cached'
+alias gdw='gd --color-words'
+
+# Logs
+alias glm='gl master@{u}..'
+alias gld='gl develop@{u}..'
+alias glu='gl @{u}..'
+
+# Misc
+alias gap='ga -p'
+alias gbr='gb -r'
+alias gca='gc -a'
+alias gcaa='gca --amend'
+alias grh='git reset --hard'
+alias grhu='grh @{u}'
