@@ -5,8 +5,11 @@ set -e
 for backup_path in ~/.duply/*; do
     backup_name=${backup_path##*/}
 
-    if [[ $backup_name == google-drive && $(uname -s) != Darwin ]]; then
-        continue
+    if [[ $backup_name == google-drive ]]; then
+        if [[ $(uname -s) != Darwin ]]; then
+            cd ~/'Google Drive'
+            drive pull
+        fi
     fi
 
     duply "$backup_name" backup
