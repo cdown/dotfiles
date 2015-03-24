@@ -17,9 +17,24 @@ for in_filename in Camera/*.{JP{,E}G,jp{,e}g}; do
     [[ $in_filename == $out_filename ]] && continue
 
     if [[ -e $out_filename ]]; then
-        printf 'Already exists: %s (%s -> %s)\n' \
-            "$out_filename" "$in_filename" "$out_filename" >&2
-        continue
+        i=2
+        last_filename=$out_filename
+
+        while true; do
+            new_filename=${out_filename%%.jpg}_$i.jpg
+
+            printf 'Already exists: %s, trying %s (%s -> %s)\n' \
+                "$last_filename" "$new_filename" \
+                "$in_filename" "$last_filename" >&2
+
+            if ! [[ -e $new_filename ]]; then
+                out_filename=$new_filename
+                break
+            else
+                last_filename=$new_filename
+                let i++
+            fi
+        done
     fi
 
     mv -- "$in_filename" "$out_filename"
