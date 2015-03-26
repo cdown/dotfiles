@@ -48,6 +48,7 @@ silent! set undodir=~/.vim/undo//
 silent! set undofile
 
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+autocmd BufRead,BufNewFile TARGETS set filetype=python
 
 autocmd FileType crontab setlocal backupcopy=yes
 autocmd FileType mail normal }
