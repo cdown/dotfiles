@@ -1,0 +1,21 @@
+#!/bin/bash -e
+
+mkdir -p ~/Screenshots
+
+file=$HOME/Screenshots/$(date +%F_%H%M%S_%N).png
+
+case $1 in
+    --select) import "$file" ;;
+    --all) import -window root "$file" ;;
+    --focused)
+        focused_win=$(xprop -root | awk '/^_NET_ACTIVE_WINDOW/ { print $NF }')
+        import -window "$focused_win" "$file"
+    ;;
+    *)
+        echo 'Must pass an option.'
+        exit 1
+    ;;
+esac
+
+notify-send 'Screenshot taken'
+printf '%s\n' "$file"
