@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ -e "$(git rev-parse --show-toplevel)/.arcconfig" ]]; then
+    arc feature --cleanup
+else
+    while read -r branch; do
+        git branch -d "$branch"
+    done < <(
+        git branch --merged "${1-HEAD}" | awk '$1 ~ /^feature\// { print $1 }'
+    )
+fi
