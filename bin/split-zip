@@ -1,0 +1,3 @@
+ #!/bin/bash
+ 
+ 7z a -tzip -v3g -mx0 "${2-archive.zip}" "$1"
