@@ -1,7 +1,8 @@
 type gpg-agent >/dev/null 2>&1 || return
 [ "$(uname -s)" = Linux ] || return
 
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 [ -r ~/.gpg-agent ] && . ~/.gpg-agent >/dev/null
 

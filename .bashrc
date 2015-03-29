@@ -12,6 +12,8 @@ if [[ $USER != chris && $USER != cdown ]]; then
     PS1+='\u@'
 fi
 
+# $chroot_text comes from .config/shell/rc/set_prompt_vars
+# shellcheck disable=SC2154
 PS1+='\h$chroot_text:\W$(_git_prompt)\$ '
 
 set +H

@@ -48,7 +48,8 @@ alias gpf='gp -f'
 alias grcp=git_re_cherry_pick
 
 git_re_cherry_pick() {
-    local sha=$(git rev-parse "${2-HEAD}")
+    local sha
+    sha=$(git rev-parse "${2-HEAD}")
     git reset --hard "${1-master}"
     git cherry-pick "$sha"
 }
