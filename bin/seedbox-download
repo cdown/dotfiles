@@ -1,5 +1,5 @@
 #!/bin/bash
 
-while ! rsync -avP --timeout 10 dian:/srv/rtorrent/data/"$1" .; do
+while ! rsync -avP --timeout 10 "${@:2}" dian:/srv/rtorrent/data/"$1" .; do
     sleep 5
 done
