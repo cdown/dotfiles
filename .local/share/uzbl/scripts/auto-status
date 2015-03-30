@@ -1,0 +1,9 @@
+#!/bin/sh
+
+show_status=$1
+
+if [ "$2" ]; then
+    show_status=1
+fi
+
+echo "set show_status = $show_status" > "$UZBL_FIFO"
