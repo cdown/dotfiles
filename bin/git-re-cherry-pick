@@ -1,5 +1,5 @@
 #!/bin/bash
 
 sha=$(git rev-parse "${2-HEAD}")
-git reset --hard "${1-master}"
+git reset --hard "${1-master@{u}}"
 git cherry-pick "$sha"
