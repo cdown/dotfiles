@@ -46,6 +46,7 @@ alias grh='git reset --hard'
 alias grhu='grh @{u}'
 alias gpf='gp -f'
 alias grcp=git_re_cherry_pick
+alias gcm='git cleanup-merged'
 
 git_re_cherry_pick() {
     local sha
