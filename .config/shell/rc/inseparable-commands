@@ -46,4 +46,6 @@ cd-git-cdpath() {
     fi
 
     builtin cd "$@"
+
+    CDPATH=$old_cdpath
 }
