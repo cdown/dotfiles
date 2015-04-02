@@ -1,5 +1,6 @@
 #!/bin/sh
 
+alias cd=cd-git-cdpath
 alias coa=create-or-attach-tmux-session
 alias sbdl=seedbox-download
 alias sbls=seedbox-ls

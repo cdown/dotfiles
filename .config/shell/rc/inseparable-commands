@@ -34,3 +34,16 @@ update-auth-sock() {
         export SSH_AUTH_SOCK="$socket_path"
     fi
 }
+
+# Add current git root to CDPATH before running cd
+cd-git-cdpath() {
+    local git_top
+    if git_top=$(git rev-parse --show-toplevel 2>/dev/null); then
+        old_cdpath=$CDPATH
+        CDPATH=.:$git_top:$CDPATH  # Adding "." explicitly at the beginning is
+                                   # a hack to avoid zsh echoing the dir
+                                   # because $git_top matched
+    fi
+
+    builtin cd "$@"
+}
