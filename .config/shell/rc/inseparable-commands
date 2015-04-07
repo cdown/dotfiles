@@ -38,14 +38,13 @@ update-auth-sock() {
 # Add current git root to CDPATH before running cd
 cd-git-cdpath() {
     local git_top
+    local old_cdpath="$CDPATH"
+
     if git_top=$(git rev-parse --show-toplevel 2>/dev/null); then
-        old_cdpath=$CDPATH
-        CDPATH=.:$git_top:$CDPATH  # Adding "." explicitly at the beginning is
-                                   # a hack to avoid zsh echoing the dir
-                                   # because $git_top matched
+        CDPATH=.:$git_top:$CDPATH
     fi
 
     builtin cd "$@"
 
-    CDPATH=$old_cdpath
+    CDPATH=${old_cdpath:-.}
 }
