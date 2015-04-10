@@ -33,6 +33,8 @@ _git_prompt() {
         fi
     fi
 
+    [ "$git_head" = master ] && unset git_head
+
     [ "$git_head" ]  && printf '%s:' "$git_head"
     [ "$git_state" ] && printf '%s:' "$git_state"
 }
