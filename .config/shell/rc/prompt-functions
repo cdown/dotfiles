@@ -2,32 +2,94 @@
 
 _git_prompt() {
     local branch
+    local git_state
+    local git_head
     local git_dir
     local tag
 
     if branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"; then
         if [ "$branch" != HEAD ]; then
-            printf ':%s' "$branch"
+            git_head=$branch
         elif tag="$(git describe --tags --exact-match HEAD 2>/dev/null)"; then
-            printf ':%s' "$tag"
+            git_head=$tag
         else
-            printf ':%s' "$(git rev-parse --short HEAD)"
+            git_head=$(git rev-parse --short HEAD)
         fi
 
         git_dir=$(git rev-parse --git-dir)
 
         if [ -d "$git_dir/rebase-apply" ]; then
-            printf ':%s' rebase
+            git_state=rebase
         elif [ -d "$git_dir/rebase-merge" ]; then
-            printf ':%s' rebase
+            git_state=rebase
         elif [ -f "$git_dir/MERGE_HEAD" ]; then
-            printf ':%s' merge
+            git_state=merge
         elif [ -f "$git_dir/CHERRY_PICK_HEAD" ]; then
-            printf ':%s' cherry-pick
+            git_state=cherry-pick
         elif [ -f "$git_dir/REVERT_HEAD" ]; then
-            printf ':%s' revert
+            git_state=revert
         elif [ -f "$git_dir/BISECT_LOG" ]; then
-            printf ':%s' bisect
+            git_state=bisect
         fi
     fi
+
+    [ "$git_head" ]  && printf '%s:' "$git_head"
+    [ "$git_state" ] && printf '%s:' "$git_state"
+}
+
+_hostname_prompt() {
+    local real_hostname
+    local displayed_hostname
+
+    if ! [ "$SSH_CLIENT" ]; then
+        return
+    fi
+
+    real_hostname=$(hostname -s)
+
+    case $(hostname) in
+        dev*) displayed_hostname=dev ;;
+        *) displayed_hostname=$real_hostname ;;
+    esac
+
+    printf '%s:' "$displayed_hostname"
+}
+
+_user_prompt() {
+    local user
+    user=$(id -un)
+
+    case $user in
+        cdown|chris|lin) return ;;
+    esac
+
+    printf '%s@' "$user"
+}
+
+_pwd_prompt() {
+    local current_dir
+    local stripped_pwd
+
+    if [ "$PWD" = "$HOME" ]; then
+        return
+    else
+        stripped_pwd=${PWD##*/}
+        if [ "$stripped_pwd" ]; then
+            current_dir=$stripped_pwd
+        else
+            current_dir=/
+        fi
+    fi
+
+    printf '%s:' "$current_dir"
+}
+
+_get_ps1() {
+    local unstripped
+    local stripped
+
+    unstripped=$(_user_prompt)$(_hostname_prompt)$(_pwd_prompt)$(_git_prompt)
+    stripped=${unstripped%:}
+
+    printf '%s%% ' "$stripped"
 }

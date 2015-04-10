@@ -10,22 +10,7 @@ for file in ~/.config/{shell,zsh}/rc/*(N); do
     . "$file"
 done
 
-PS1='$(
-user=$(id -un)
-if [[ $user != cdown && $user != chris ]]; then
-    echo "$user@"
-fi
-)%m$chroot_text:$(if [[ $PWD == $HOME ]]; then
-    echo "~"
-else
-    stripped_pwd="${PWD##*/}"
-    if [[ -n $stripped_pwd ]]; then
-        echo "$stripped_pwd"
-    else
-        echo /
-    fi
-fi
-)$(_git_prompt)$([[ $(id -u) == 0 ]] && echo "#" || echo $) '
+PS1='$(_ps1=$(_get_ps1); printf "%s" "${_ps1//\%/%%}")'
 
 __git_files () {
     _wanted files expl 'local files' _files
