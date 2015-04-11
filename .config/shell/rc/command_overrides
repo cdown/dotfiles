@@ -46,3 +46,10 @@ alias mosh='LC_ALL=en_US.UTF-8 mosh'
 # Allow other aliases to be used after the program name
 alias sudo='sudo '
 alias watch='watch '
+
+# If the makepkg user exists, it should take responsibility for all package
+# building
+if id makepkg >/dev/null 2>&1; then
+    alias pacman='sudo -u makepkg sudo pacman'
+    alias yaourt='sudo -u makepkg yaourt'
+fi
