@@ -10,7 +10,7 @@ for file in ~/.config/{shell,zsh}/rc/*(N); do
     . "$file"
 done
 
-PS1='$(_ps1=$(_get_ps1); printf "%s" "${_ps1//\%/%%}")'
+PS1='$(_get_ps1)'
 
 __git_files () {
     _wanted files expl 'local files' _files

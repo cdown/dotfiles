@@ -1,5 +1,20 @@
 #!/bin/sh
 
+colour_part() {
+    local colour="$1"
+    local msg="$2"
+    local format
+
+    [ "$msg" ] || return 1
+
+    if [ "$BASH" ]; then
+        printf '%s ' "$msg"
+    elif [ "$ZSH_VERSION" ]; then
+        printf '%%{%s%%}%s%%{%s%%} ' "$(tput setaf "$colour")" "$msg" "$(tput sgr0)"
+    fi
+
+}
+
 _git_prompt() {
     local branch
     local git_state
@@ -35,8 +50,8 @@ _git_prompt() {
 
     [ "$git_head" = master ] && unset git_head
 
-    [ "$git_head" ]  && printf '%s:' "$git_head"
-    [ "$git_state" ] && printf '%s:' "$git_state"
+    colour_part 2 "$git_head"
+    colour_part 1 "$git_state"
 }
 
 _hostname_prompt() {
@@ -54,7 +69,7 @@ _hostname_prompt() {
         *) displayed_hostname=$real_hostname ;;
     esac
 
-    printf '%s:' "$displayed_hostname"
+    colour_part 3 "$displayed_hostname"
 }
 
 _user_prompt() {
@@ -65,7 +80,7 @@ _user_prompt() {
         cdown|chris|lin) return ;;
     esac
 
-    printf '%s@' "$user"
+    colour_part 3 "$user@"
 }
 
 _pwd_prompt() {
@@ -83,15 +98,19 @@ _pwd_prompt() {
         fi
     fi
 
-    printf '%s:' "$current_dir"
+    colour_part 4 "$current_dir"
 }
 
 _get_ps1() {
-    local unstripped
-    local stripped
+    local prompt
+    local prompt_ender
 
-    unstripped=$(_user_prompt)$(_hostname_prompt)$(_pwd_prompt)$(_git_prompt)
-    stripped=${unstripped%:}
+    if [ "$ZSH_VERSION" ]; then
+        prompt_ender=%%
+    else
+        prompt_ender=%
+    fi
 
-    printf '%s%% ' "$stripped"
+    prompt="$(_user_prompt)$(_hostname_prompt)$(_pwd_prompt)$(_git_prompt)"
+    printf '%s%s ' "$prompt" "$prompt_ender"
 }
