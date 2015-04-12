@@ -109,6 +109,7 @@ if executable('ag')
     let g:unite_source_grep_recursive_opt=''
 endif
 nnoremap <silent> <C-p> :Unite -auto-resize file file_mru file_rec<cr>
+nnoremap <leader>y :<C-u>Unite history/yank<CR>
 
 nnoremap <Leader>w :w<CR>
 
