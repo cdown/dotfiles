@@ -3,7 +3,6 @@
 colour_part() {
     local colour="$1"
     local msg="$2"
-    local format
 
     [ "$msg" ] || return 1
 
