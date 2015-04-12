@@ -347,7 +347,6 @@ rel/example_project
 rerun.txt
 sdist
 sdist/
-src/
 src_managed/
 sympy-plots-for-*.tex/
 tags
