@@ -51,6 +51,13 @@ alias watch='watch '
 # building
 if id makepkg >/dev/null 2>&1; then
     alias pacman='sudo -u makepkg sudo pacman'
+
+    # The linter warns that "yaourt" is being passed over sudo, which won't
+    # work, but this one is actually fine because we *want* to call the raw
+    # binary (not the alias) after sudoing
+
+    # shellcheck disable=SC2033
     yaourt-cd() ( cd / && sudo -u makepkg yaourt "$@" )
+    # shellcheck disable=SC2032
     alias yaourt=yaourt-cd
 fi
