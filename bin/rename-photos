@@ -2,8 +2,11 @@
 
 shopt -s nullglob
 
+# https://github.com/koalaman/shellcheck/issues/333
+# shellcheck disable=SC1083
 for in_filename in Camera/*.{JP{,E}G,jp{,e}g}; do
     datetime=$(
+        # shellcheck disable=SC2016
         exiftool -p '$DateTimeOriginal' "$in_filename" | tr -d ':' | tr ' ' _
     )
 
@@ -14,7 +17,7 @@ for in_filename in Camera/*.{JP{,E}G,jp{,e}g}; do
 
     out_filename=Camera/IMG_$datetime.jpg
 
-    [[ $in_filename == $out_filename ]] && continue
+    [[ $in_filename == "$out_filename" ]] && continue
 
     if [[ -e $out_filename ]]; then
         i=2

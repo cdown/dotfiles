@@ -3,7 +3,7 @@
 # Try every method I know to fix homebrew when it gets broken
 
 for hb_dir in /usr/local /Library/{Logs,Caches}/Homebrew; do
-    [[ -d $file ]] && sudo chown -R "$USER:admin" "$hb_dir"
+    [[ -d $hb_dir ]] && sudo chown -R "$USER:admin" "$hb_dir"
 done
 
 cd -- "$(brew --prefix)"

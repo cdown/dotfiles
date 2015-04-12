@@ -5,8 +5,8 @@ if (( $# != 2 )); then
     return 1
 fi
 
-local path="$1"
-local dest="$2"
+path=$1
+dest=$2
 
 tar pczf "$path" "$path".tar.gz
 split -b 4095m "$path".tar.gz "$dest"/"${path##*/}".tar.gz.split.
