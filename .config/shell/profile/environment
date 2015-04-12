@@ -6,3 +6,8 @@ export OWLMAN_ASK_EDIT=false
 export PAGER=less
 export PATH="/opt/chefdk/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/local/ittools/arcanist/bin:/usr/texbin"
 export VISUAL=vim
+
+case $(uname -s) in
+    Darwin) export MAILCAPS="$HOME/.config/mailcap/mac" ;;
+    Linux) export MAILCAPS="$HOME/.config/mailcap/linux" ;;
+esac

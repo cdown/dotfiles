@@ -1,0 +1,6 @@
+text/html; lynx -dump -force_html -assume_charset=%{charset} -dump -stdin; copiousoutput
+application/msword; lowriter %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; lowriter %s
+application/vnd.oasis.opendocument.spreadsheet; localc %s
+image/*; sxiv -bf %s \; reset
+application/pdf; zathura %s

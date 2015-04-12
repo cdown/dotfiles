@@ -1,9 +1,0 @@
-text/html; lynx -dump -force_html -assume_charset=%{charset} -dump -stdin; copiousoutput
-application/msword; bin/view_attachment %s doc
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; bin/view_attachment %s docx
-application/vnd.oasis.opendocument.spreadsheet; bin/view_attachment %s xlsx
-image/png; bin/view_attachment %s png
-image/jpg; bin/view_attachment %s jpg
-image/jpeg; bin/view_attachment %s jpeg
-image/gif; bin/view_attachment %s gif
-application/pdf; bin/view_attachment %s pdf
