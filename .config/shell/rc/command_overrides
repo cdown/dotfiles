@@ -51,5 +51,6 @@ alias watch='watch '
 # building
 if id makepkg >/dev/null 2>&1; then
     alias pacman='sudo -u makepkg sudo pacman'
-    alias yaourt='sudo -u makepkg yaourt'
+    yaourt-cd() ( cd / && sudo -u makepkg yaourt "$@" )
+    alias yaourt=yaourt-cd
 fi
