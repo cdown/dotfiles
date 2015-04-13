@@ -7,6 +7,10 @@ mkdir -m700 -p ~/.ssh/agents
 # Execute in subshell to avoid polluting environment
 (
 for key in ~/.ssh/keys/*; do
+    case $key in
+        *.pub) continue ;;
+    esac
+
     agent_file=$HOME/.ssh/agents/${key##*/}
 
     [ -r "$agent_file" ] && . "$agent_file" >/dev/null
