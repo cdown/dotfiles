@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+
+set -e
 
 rm -rf /tmp/github-backup
 mkdir -p /tmp/github-backup/repos
