@@ -44,6 +44,8 @@ cd-git-cdpath() {
         CDPATH=.:$git_top:$CDPATH
     fi
 
+    # Eh, "builtin" violates POSIX here, but good luck getting around that.
+    # shellcheck disable=SC2039
     builtin cd "$@"
 
     CDPATH=${old_cdpath:-.}

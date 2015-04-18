@@ -1,7 +1,7 @@
 # vim: ft=sh
 
 # If noglob (for zsh) is not available, just make it a noop
-if ! type noglob >/dev/null 2>&1; then
+if ! command -v noglob >/dev/null 2>&1; then
     alias noglob=''
 fi
 
