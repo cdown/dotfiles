@@ -35,10 +35,7 @@ if [[ "$user" == chris ]]; then
         while ! urxvtc -title dev; do :; done
         urxvtc -title mail -e create-or-attach-tmux-session mail 'while mutt; do :; done'
         urxvtc -title irc -e create-or-attach-tmux-session irc 'while irssi; do :; done'
-
-        # Temporary workaround for
-        # https://code.google.com/p/chromium/issues/detail?id=456222
-        google-chrome-stable --touch-devices=123 &
+        google-chrome-stable &
     } &
 fi
 
