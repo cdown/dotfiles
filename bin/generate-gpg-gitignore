@@ -1,3 +1,3 @@
 #!/bin/bash
 
-find . -name '*.gpg' | sed -e 's/^\.//' -e 's/\.gpg$//'
+find . -name '*.gpg' | sed -e 's/^\.//' -e 's/\.gpg$//' | sort
