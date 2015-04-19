@@ -3,8 +3,8 @@
 /.config/burp/burp.conf
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
+/.duply/bitbucket/_pre
 /.duply/bitbucket/conf
-/.duply/bitbucket/pre
 /.duply/github/conf
 /.duply/google-drive/conf
 /.duply/mail/conf

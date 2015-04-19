@@ -1,16 +1,11 @@
-#!/bin/bash
-
-set -e
+#!/bin/bash -e
 
 for backup_path in ~/.duply/*; do
     backup_name=${backup_path##*/}
+    pre=$backup_path/_pre
+    post=$backup_path/_post
 
-    if [[ $backup_name == google-drive ]]; then
-        if [[ $(uname -s) != Darwin ]]; then
-            cd ~/'Google Drive'
-            drive pull
-        fi
-    fi
-
+    [[ -x "$pre" ]] && "$pre"
     duply "$backup_name" backup
+    [[ -x "$post" ]] && "$post"
 done

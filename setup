@@ -49,6 +49,8 @@ for file in "$location"/**/*; do
             *) gpg_mode=0600 ;;
         esac
 
+        [[ -x "$file" ]] && gpg_mode=0700
+
         chmod "$gpg_mode" "$output_file"
 
         # Use the decrypted file going forwards
