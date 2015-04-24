@@ -1,5 +1,6 @@
 # GPG encrypted files
 /.aws/config
+/.boto
 /.config/burp/burp.conf
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
