@@ -41,6 +41,7 @@ set softtabstop=4
 set synmaxcol=400
 set tabstop=4
 set textwidth=79
+set viminfo='20,<1000,s1000
 
 silent! set colorcolumn=+1
 silent! set relativenumber
