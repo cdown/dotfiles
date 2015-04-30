@@ -8,7 +8,7 @@ alias rbenv-init='eval "$(rbenv init -)"'
 
 # virtualenv
 activate() {
-    . "$1"/bin/activate
+    . "${1-env}"/bin/activate
 }
 virtualenv-auto() {
     if ! [ -d env ]; then
