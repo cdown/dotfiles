@@ -24,7 +24,7 @@ bind index G last-entry
 macro index L '<limit>all<enter>'
 macro attach s '<save-entry><bol>/tmp/<eol>'
 macro attach S '<save-entry><bol>~/Downloads/<eol>'
-macro attach B '<pipe-message>cat > /tmp/mutt.html; lynx /tmp/mutt.html<enter>'
+macro attach B '<pipe-message>cat > /tmp/mutt.html; google-chrome-stable /tmp/mutt.html<enter>'
 
 macro index zc '<sync-mailbox><enter-command> \
                 source ~/.config/mutt/accounts/chris@chrisdown.name \
