@@ -1,6 +1,12 @@
 #!/bin/bash -e
 
-for backup_path in ~/.duply/*; do
+if (( $# )); then
+    backup_paths=( "${@/#/"$HOME/.duply/"}" )
+else
+    backup_paths=( ~/.duply/* )
+fi
+
+for backup_path in "${backup_paths[@]}"; do
     backup_name=${backup_path##*/}
     pre=$backup_path/_pre
     post=$backup_path/_post
