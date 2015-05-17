@@ -9,6 +9,7 @@ hdr_order From: To: Cc: Date: Subject:
 
 set index_format = '%5C  [%Z] [%-4.4c]  %D  %-15.15F  %s'
 set date_format = '%Y-%m-%d %H:%M:%S %Z'
+set reverse_alias
 
 set display_filter = ~/.config/mutt/run-filters
 
