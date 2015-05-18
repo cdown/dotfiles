@@ -34,19 +34,3 @@ update-auth-sock() {
         export SSH_AUTH_SOCK="$socket_path"
     fi
 }
-
-# Add current git root to CDPATH before running cd
-cd-git-cdpath() {
-    local git_top
-    local old_cdpath="$CDPATH"
-
-    if git_top=$(git rev-parse --show-toplevel 2>/dev/null); then
-        CDPATH=.:$git_top:$CDPATH
-    fi
-
-    # Eh, "builtin" violates POSIX here, but good luck getting around that.
-    # shellcheck disable=SC2039
-    builtin cd "$@"
-
-    CDPATH=${old_cdpath:-.}
-}
