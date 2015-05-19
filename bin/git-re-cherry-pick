@@ -1,7 +1,0 @@
-#!/bin/bash
-
-shas=( $(git rev-list "${2-master..}") )
-
-printf 'Current sha: %s\n' "$(git rev-parse HEAD)"
-git reset --hard "${1-master@{u}}"
-git cherry-pick "${shas[@]}"
