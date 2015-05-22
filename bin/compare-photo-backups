@@ -4,8 +4,8 @@ subpath="$1"
 
 gsutil ls -r gs://chris-down-photos/chrisdown-photos/"$subpath" |
     grep -v ':$' | grep -v '^$' | grep -v '/$' |
-    sed 's|^gs://chris-down-photos/chrisdown-photos/||'
-    | sort > /tmp/google-comp &
+    sed 's|^gs://chris-down-photos/chrisdown-photos/||' |
+    sort > /tmp/google-comp &
 
 s3cmd ls -r s3://chrisdown-photos/"$subpath" |
     grep -v '/$' | sed 's|^.*s3://chrisdown-photos/||' | sort > /tmp/s3-comp &
