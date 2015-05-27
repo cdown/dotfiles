@@ -26,10 +26,13 @@ alias grpd='grp develop@{u}'
 alias gru='grp @{u}'
 
 # Diffing
-git-diff-merge-base() { gd "$(git merge-base "$1" "$2")..$2"; }
+git-diff-merge-base() {
+    local feature="${2-HEAD}"
+    gd "$(git merge-base "$1" "$feature")..$feature"
+}
 
-alias gdm='git-diff-merge-base master@{u} HEAD'
-alias gdd='git-diff-merge-base develop@{u} HEAD'
+alias gdm='git-diff-merge-base master@{u}'
+alias gdd='git-diff-merge-base develop@{u}'
 alias gdu='gd @{u}..'
 alias gdc='gd --cached'
 alias gdw='gd --color-words'
