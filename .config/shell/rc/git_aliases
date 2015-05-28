@@ -13,7 +13,7 @@ alias gg='git grep'
 alias gl='git log'
 alias gm='git merge --no-ff'
 alias gp='git push'
-alias gs='git show'
+alias gs='git show --no-prefix'
 alias gst='git status'
 
 # Rebasing
