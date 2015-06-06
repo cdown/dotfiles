@@ -40,5 +40,5 @@ for in_filename in Camera/*.{JP{,E}G,jp{,e}g}; do
         done
     fi
 
-    mv -- "$in_filename" "$out_filename"
+    mv -n -- "$in_filename" "$out_filename"
 done
