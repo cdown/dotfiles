@@ -2,10 +2,6 @@
 
 user=$(id -un)
 
-for file in /etc/X11/xinit/xinitrc.d/*; do
-    [[ -f $file ]] && . "$file"
-done
-
 systemctl --user import-environment DISPLAY
 
 export GTK_IM_MODULE=xim
