@@ -15,9 +15,9 @@ colour_part() {
 }
 
 _hg_prompt() {
-    local hg_branch
-    hg_branch=$(hg branch 2>/dev/null)
-    colour_part 2 "$hg_branch"
+    local hg_bookmark
+    hg_bookmark=$(hg bookmarks 2>/dev/null | awk '/\*/ { print $2 }')
+    colour_part 2 "$hg_bookmark"
 }
 
 _git_prompt() {
