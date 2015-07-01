@@ -14,6 +14,12 @@ colour_part() {
 
 }
 
+_hg_prompt() {
+    local hg_branch
+    hg_branch=$(hg branch 2>/dev/null)
+    colour_part 2 "$hg_branch"
+}
+
 _git_prompt() {
     local branch
     local git_state
@@ -110,6 +116,6 @@ _get_ps1() {
         prompt_ender=%
     fi
 
-    prompt="$(_user_prompt)$(_hostname_prompt)$(_pwd_prompt)$(_git_prompt)"
+    prompt="$(_user_prompt)$(_hostname_prompt)$(_pwd_prompt)$(_git_prompt)$(_hg_prompt)"
     printf '%s%s ' "$prompt" "$prompt_ender"
 }
