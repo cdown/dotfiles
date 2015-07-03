@@ -1,28 +1,22 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-colorscheme solarized
 
-for directory in ["backup", "swap", "undo"]
-    silent! call mkdir($HOME . "/.vim/" . directory, "p")
-endfor
-
-let no_mail_maps = 1
-
-syntax on
 filetype plugin on
+syntax on
 
+
+colorscheme solarized
+set background=dark
 highlight ColorColumn ctermbg=black
 highlight MatchParen ctermbg=white ctermfg=black
 highlight Search ctermbg=white ctermfg=black
-highlight TrailingWhitespace ctermbg=black
 
-match TrailingWhitespace /\s\+$/
 
 set autoindent
 set backspace=indent,eol,start
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
+set backupcopy=yes
+set colorcolumn=+1
 set expandtab
 set formatoptions-=t
 set hlsearch
@@ -31,6 +25,7 @@ set nofoldenable
 set nomodeline
 set nowrap
 set number
+set relativenumber
 set shiftwidth=4
 set shortmess=aoOtI
 set softtabstop=4
@@ -39,85 +34,101 @@ set tabstop=4
 set textwidth=79
 set viminfo='20,<1000,s1000
 
-silent! set colorcolumn=+1
-silent! set relativenumber
-silent! set undodir=~/.vim/undo//
-silent! set undofile
-
-autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-autocmd BufRead,BufNewFile TARGETS set filetype=python
-
-autocmd FileType crontab setlocal backupcopy=yes
-autocmd FileType mail normal }
-autocmd FileType mail setlocal formatoptions+=rw textwidth=72
-autocmd FileType make setlocal noexpandtab
-autocmd Filetype python setlocal foldenable foldmethod=syntax
-autocmd FileType gitcommit setlocal textwidth=72
-autocmd InsertEnter * let @/ = ''
-autocmd InsertLeave * setlocal nopaste
-
-for ft in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php']
-    exe 'autocmd FileType ' . ft . ' setlocal sw=2 sts=2 ts=2'
-endfor
 
 let mapleader = "\<Space>"
-let g:EasyMotion_leader_key = '<Leader>'
-let g:auto_save = 1
-
+nnoremap <Leader>w :w<CR>
 nnoremap <silent> <leader>n :setlocal paste<CR>
 nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
 nnoremap <silent> H :set hlsearch!<CR>
 
-inoremap kj <Esc>
-inoremap jk <C-o>:w<CR>
 
+highlight TrailingWhitespace ctermbg=black
+match TrailingWhitespace /\s\+$/
+
+
+for directory in ["backup", "swap", "undo"]
+  silent! call mkdir($HOME . "/.vim/" . directory, "p")
+endfor
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+set undofile
+
+" This avoids <Leader>q getting mapped to MailQuote when in a mail file
+let no_mail_maps = 1
+
+
+" Do not enter ex mode when I fat finger q with shift pressed
 nnoremap Q <nop>
 
-" it's 2014 people, why do clipboards still suck
-nnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>
-nnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
-vnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>
-vnoremap <silent> <Leader>p :r ~/.vim/xfer<CR>
 
-" jump to end of paste
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
-
-nnoremap <silent> <Leader>c :s/.*/\="['" . join(split(submatch(0), ' '), "', '") . "']"/<CR>
-
-nnoremap <Leader><Leader> :
-
-" do not show command history window
+" Do not show command history window when :q gets entered in the wrong order
 map q: :q
 
-" Unite
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-let g:unite_data_directory='~/.vim/.cache/unite'
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable=1
-let g:unite_prompt='» '
-let g:unite_split_rule='botright'
-if executable('ag')
-    let g:unite_source_grep_command='ag'
-    let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-    let g:unite_source_grep_recursive_opt=''
-endif
-nnoremap <silent> <C-p> :Unite -auto-resize file file_mru file_rec<cr>
-nnoremap <leader>y :<C-u>Unite history/yank<CR>
 
-nnoremap <Leader>w :w<CR>
-
-for key in ["f", "F", "t", "T"]
-    exe "noremap <Leader>" . key . " " . key
-    exe "map " . key . " <Plug>(easymotion-" . key . ")"
+" Use easymotion for find/til movements, with <Leader> prefixed version as
+" option to use regular find/til
+for key in ['f', 'F', 't', 'T']
+  exe 'noremap <Leader>' . key . ' ' . key
+  exe 'map ' . key . ' <Plug>(easymotion-' . key . ')'
 endfor
 
-" Do not copy to default register on delete/change
+
+" Do not copy to default register on delete/change, use <Leader> prefixed
+" version to use regular delete/change
 for key in ['d', 'D', 'c', 'C']
-    for keymode in ['n', 'v']
-        exe keymode . 'noremap ' . key . ' "_' . key
-    endfor
+  for keymode in ['n', 'v']
+    exe keymode . 'noremap <Leader>' . key . ' ' . key
+    exe keymode . 'noremap ' . key . ' "_' . key
+  endfor
 endfor
+
+
+" Use xfer file as custom yank/paste. It's 2014 people, why do clipboards still
+" suck :-(
+for keymode in ['n', 'v']
+  exe keymode . 'noremap <silent> <Leader>y :w! ~/.vim/xfer<CR>'
+  exe keymode . 'noremap <silent> <Leader>p :r ~/.vim/xfer<CR>'
+endfor
+
+
+augroup filetype_settings
+  " Clear this autocmd group so that the settings won't get loaded over and
+  " over again
+  autocmd!
+
+  " Seek past headers, since usually we don't want to edit them
+  autocmd FileType mail normal }
+  autocmd FileType mail setlocal formatoptions+=rw
+
+  autocmd FileType make setlocal noexpandtab
+
+  for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim']
+  exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
+  endfor
+augroup END
+
+
+augroup modechange_settings
+  autocmd!
+
+  " Clear search context when entering insert mode, which implicitly stops the
+  " highlighting of whatever was searched for with hlsearch on. It should also
+  " not be persisted between sessions.
+  autocmd InsertEnter * let @/ = ''
+  autocmd BufReadPre,FileReadPre * let @/ = ''
+
+  autocmd InsertLeave * setlocal nopaste
+augroup END
+
+" Do not overwrite default register when pasting in visual mode
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
