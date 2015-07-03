@@ -115,13 +115,9 @@ for key in ["f", "F", "t", "T"]
     exe "map " . key . " <Plug>(easymotion-" . key . ")"
 endfor
 
-" vp doesn't replace paste buffer
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
+" Do not copy to default register on delete/change
+for key in ['d', 'D', 'c', 'C']
+    for keymode in ['n', 'v']
+        exe keymode . 'noremap ' . key . ' "_' . key
+    endfor
+endfor
