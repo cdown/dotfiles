@@ -2,7 +2,6 @@ runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 colorscheme solarized
-set background=dark
 
 for directory in ["backup", "swap", "undo"]
     silent! call mkdir($HOME . "/.vim/" . directory, "p")
@@ -11,7 +10,7 @@ endfor
 let no_mail_maps = 1
 
 syntax on
-filetype plugin indent on
+filetype plugin on
 
 highlight ColorColumn ctermbg=black
 highlight MatchParen ctermbg=white ctermfg=black
