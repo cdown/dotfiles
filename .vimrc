@@ -52,6 +52,7 @@ set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 set undofile
 
+
 " This avoids <Leader>q getting mapped to MailQuote when in a mail file
 let no_mail_maps = 1
 
@@ -118,6 +119,7 @@ augroup modechange_settings
 
   autocmd InsertLeave * setlocal nopaste
 augroup END
+
 
 " Do not overwrite default register when pasting in visual mode
 function! RestoreRegister()
