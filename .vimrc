@@ -9,7 +9,6 @@ syntax on
 colorscheme solarized
 set background=dark
 highlight MatchParen ctermbg=white ctermfg=black
-highlight Search ctermbg=white ctermfg=black
 
 
 set autoindent
