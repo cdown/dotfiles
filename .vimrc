@@ -10,8 +10,6 @@ colorscheme solarized
 set background=dark
 
 
-set autoindent
-set backspace=indent,eol,start
 set backupcopy=yes
 set colorcolumn=+1
 set expandtab
