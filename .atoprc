@@ -1,2 +1,15 @@
 interval 2
 flags p
+
+linelen 80
+maxlinecpu 4
+maxlineintf 4
+maxlinedisk 4
+
+cpucritperc 85
+dskcritperc 85
+memcritperc 85
+netcritperc 85
+swoutcritsec 10
+swpcritperc 50
+almostcrit 50
