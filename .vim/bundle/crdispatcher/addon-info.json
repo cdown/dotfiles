@@ -1,0 +1,11 @@
+{
+    "name": "CRDispatcher",
+    "author": "Marcin Szamotulski",
+    "repository":  {
+	"type": "git",
+	"url": "git@github.com:coot/CRDispatcher.git",
+	"script-type": "plugin",
+	"vim_script_nr": 4856,
+    },
+}
+
