@@ -8,7 +8,6 @@ syntax on
 
 colorscheme solarized
 set background=dark
-highlight ColorColumn ctermbg=black
 highlight MatchParen ctermbg=white ctermfg=black
 highlight Search ctermbg=white ctermfg=black
 
