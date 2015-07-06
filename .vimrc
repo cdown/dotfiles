@@ -18,6 +18,8 @@ set expandtab
 set formatoptions-=t
 set hlsearch
 set incsearch
+set list
+set listchars=trail:·
 set nofoldenable
 set nomodeline
 set nowrap
