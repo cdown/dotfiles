@@ -65,3 +65,11 @@ alias hs='hg show'
 alias hst='hg status'
 alias hu='hg update'
 alias huc='hu --clean'
+
+# Arcanist
+alias ab='arc build'
+alias ad='arc diff'
+alias adp='ad --preview'
+alias al='arc land'
+alias all='al --local'
+alias ap='arc pull'
