@@ -105,7 +105,7 @@ augroup filetype_settings
   autocmd FileType make setlocal noexpandtab
 
   for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim']
-  exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
+    exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
   endfor
 augroup END
 
