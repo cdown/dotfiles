@@ -63,7 +63,7 @@ if id makepkg >/dev/null 2>&1; then
 fi
 
 # If vim is present, use the bundled less.sh as less
-if type vim >/dev/null 2>&1; then
+if command -v vim >/dev/null 2>&1; then
     vim_runtime_dir=$(
         vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>"|echo $VIMRUNTIME|quit' |
             tr -d '\015'
