@@ -13,6 +13,7 @@ type -p VBoxClient-all 2>&1 >/dev/null && VBoxClient-all &
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+xrdb -merge ~/.config/x/xresources/base
 case $user in
     chris|lin) xrdb -merge ~/.config/x/xresources/"$user"
 esac
