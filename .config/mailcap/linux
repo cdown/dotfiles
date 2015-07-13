@@ -1,4 +1,4 @@
-text/html; lynx -dump -force_html -assume_charset=%{charset} -dump -stdin; copiousoutput
+text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
 application/msword; lowriter %s
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; lowriter %s
 application/vnd.oasis.opendocument.spreadsheet; localc %s
