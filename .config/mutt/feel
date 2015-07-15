@@ -6,6 +6,7 @@ auto_view text/html
 set mailcap_path = `[ "$(uname -s)" == Linux ] && echo ~/.config/mailcap/linux || echo ~/.config/mailcap/mac`
 set strict_threads
 set sleep_time = 0
+set timeout = 20
 set delete
 set quit
 set pager_stop
