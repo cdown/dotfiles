@@ -19,6 +19,7 @@ set formatoptions-=t
 set hlsearch
 set incsearch
 set nofoldenable
+set nojoinspaces
 set nomodeline
 set nowrap
 set number
@@ -104,6 +105,10 @@ augroup filetype_settings
 
   for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim']
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
+  endfor
+
+  for filetype in ['gitcommit', 'mail']
+    exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
   endfor
 augroup END
 
