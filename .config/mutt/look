@@ -30,3 +30,10 @@ set rfc2047_parameters
 
 set sort = threads
 set sort_aux = last-date-received
+
+auto_view text/html
+message-hook . 'unalternative_order *; alternative_order text/plain text/html'
+
+# Auto view HTML for these senders, even if they send text/plain, because their
+# text/plain e-mails are fucked up.
+message-hook '~f ^support@digicert\.com$' 'unalternative_order *; alternative_order text/html text/plain'
