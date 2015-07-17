@@ -66,6 +66,10 @@ nnoremap Q <nop>
 map q: :q
 
 
+" When joining, do the right thing to join up function definitions
+vnoremap J J:s/( /(/g<CR>:s/,)/)/g<CR>
+
+
 " Use easymotion for find/til movements, with <Leader> prefixed version as
 " option to use regular find/til
 for key in ['f', 'F', 't', 'T']
