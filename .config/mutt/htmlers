@@ -1,0 +1,3 @@
+# vim: ft=muttrc
+
+group -group force_html -addr support@digicert.com
