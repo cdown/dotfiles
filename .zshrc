@@ -44,6 +44,8 @@ set -o rmstarsilent
 set -o nullglob
 set -o prompt_subst
 set -o share_history
+set -o ksh_glob
+set -o no_bare_glob_qual
 
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
