@@ -2,7 +2,9 @@ language: haskell
 
 install:
   - cabal install shellcheck
-  - sudo ln ~/.cabal/bin/shellcheck /usr/bin/shellcheck
+
+before_script:
+  - export PATH=$PATH:$HOME/.cabal/bin/
 
 script:
   - shellcheck -s bash .bashrc .bash_profile
