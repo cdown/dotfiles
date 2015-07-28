@@ -1,0 +1,16 @@
+#!/bin/bash
+
+parent_pids=()
+current_pid="$$"
+current_ppid=$current_pid
+
+while (( current_pid )); do
+    parent_pids+=( "$current_ppid" )
+
+    current_ppid=$(ps -p "$current_pid" -o ppid=)
+    current_ppid=${current_ppid##* }
+
+    current_pid=$current_ppid
+done
+
+printf '%s\n' "${parent_pids[@]}"
