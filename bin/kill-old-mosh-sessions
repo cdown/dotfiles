@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mapfile -t parent_pids < <(parent-pids)
+mapfile -t mosh_pids < <(pgrep mosh-server)
+
+for mosh_pid in "${mosh_pids[@]}"; do
+    for parent_pid in "${parent_pids[@]}"; do
+        [[ $mosh_pid == $parent_pid ]] && continue 2
+    done
+
+    kill "$mosh_pid"
+done
