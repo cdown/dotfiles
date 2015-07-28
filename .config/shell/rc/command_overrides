@@ -30,6 +30,8 @@ alias vim='vim -u ~/.vimrc -N'
 # Do not disable raw control chars when running less
 alias less='less -R'
 
+alias sxiv='sxiv -b'
+
 # Do not pass a (potentially unsupported) locale when SSHing to random servers.
 # In mosh, a UTF-8 aware locale is needed, so we use en_US.UTF-8 because
 # there's a high likelihood that it will be available ('Murica baby!).
