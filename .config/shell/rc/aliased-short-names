@@ -7,3 +7,4 @@ alias so=clean-env
 alias udf=update-dotfiles
 alias zhsub=fix-chinese-sub-encoding
 alias v=virtualenv-auto
+alias p=ipython
