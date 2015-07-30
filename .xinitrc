@@ -47,4 +47,6 @@ fcitx &
 # https://code.google.com/p/ibus/issues/detail?id=1469
 { sleep 5; xmodmap ~/.xmodmap; } &
 
+xbanish -i Mod4 &
+
 exec dbus-launch --exit-with-session dwm
