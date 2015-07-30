@@ -76,3 +76,5 @@ if command -v vim >/dev/null 2>&1; then
     # shellcheck disable=SC2139
     alias less="$vim_runtime_dir/macros/less.sh"
 fi
+
+alias startx='startx > "/tmp/startx-${USER}.log" 2>&1'
