@@ -20,7 +20,6 @@ set hlsearch
 set incsearch
 set nofoldenable
 set nojoinspaces
-set nomodeline
 set nowrap
 set number
 set relativenumber
