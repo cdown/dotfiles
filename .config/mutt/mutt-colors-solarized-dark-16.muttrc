@@ -33,7 +33,7 @@ color attachment    white           default
 color search        brightmagenta   default         
 #color status        J_black         J_status        
 color status        brightyellow    black           
-color indicator     brightblack     yellow          
+color indicator     black           yellow          
 color tree          yellow          default                                     # arrow in threads
 
 # basic monocolor screen
