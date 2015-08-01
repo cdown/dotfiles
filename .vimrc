@@ -43,6 +43,10 @@ nnoremap <silent> H :set hlsearch!<CR>
 highlight TrailingWhitespace ctermbg=black
 match TrailingWhitespace /\s\+$/
 
+" Since we changed solarized colour from #002b36 to #3b5a61, we need to
+" explicitly set this to avoid the whole background becoming that colour
+highlight Normal ctermbg=none
+
 
 for directory in ["backup", "swap", "undo"]
   silent! call mkdir($HOME . "/.vim/" . directory, "p")
