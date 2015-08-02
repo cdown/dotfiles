@@ -16,7 +16,7 @@ set backspace=indent,eol,start
 set backupcopy=yes
 set colorcolumn=+1
 set expandtab
-set formatoptions-=t
+set formatoptions=qrn
 set hlsearch
 set ignorecase
 set incsearch
