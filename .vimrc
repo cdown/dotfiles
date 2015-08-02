@@ -18,6 +18,7 @@ set colorcolumn=+1
 set expandtab
 set formatoptions-=t
 set hlsearch
+set ignorecase
 set incsearch
 set nofoldenable
 set nojoinspaces
@@ -26,6 +27,7 @@ set number
 set relativenumber
 set shiftwidth=4
 set shortmess=aoOtI
+set smartcase
 set softtabstop=4
 set synmaxcol=400
 set tabstop=4
