@@ -1,7 +1,5 @@
 # vim: ft=sh
 
-user=$(id -un)
-
 systemctl --user import-environment DISPLAY
 
 export GTK_IM_MODULE=xim
@@ -19,13 +17,13 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 xrdb -merge ~/.config/x/xresources/base
-case $user in
-    chris|lin) xrdb -merge ~/.config/x/xresources/"$user"
+case $USER in
+    chris|lin) xrdb -merge ~/.config/x/xresources/"$USER"
 esac
 
 urxvtd -q -o &
 
-if [[ "$user" == chris ]]; then
+if [[ "$USER" == chris ]]; then
     {
         while ! urxvtc -title dev; do :; done
         urxvtc -title irc -e create-or-attach-tmux-session irc \
