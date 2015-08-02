@@ -18,10 +18,6 @@ case $user in
     chris|lin) xrdb -merge ~/.config/x/xresources/"$user"
 esac
 
-if ! xrandr | grep -q 'VGA1 disconnected'; then
-    xrandr --output VGA1 --right-of LVDS1 --auto
-fi
-
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
