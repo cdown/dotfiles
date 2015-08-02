@@ -8,6 +8,11 @@ export GTK_IM_MODULE=xim
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+declare -A mutts
+mutts=(
+    [personal]=chris@chrisdown.name
+)
+
 type -p VBoxClient-all 2>&1 >/dev/null && VBoxClient-all &
 
 xset +fp /usr/share/fonts/local
@@ -29,10 +34,13 @@ if [[ "$user" == chris ]]; then
         urxvtc -title irc -e create-or-attach-tmux-session irc \
             'while irssi; do :; done'
 
-        if [[ -r .config/mutt/accounts/chris@chrisdown.name ]]; then
-            urxvtc -title mail -e create-or-attach-tmux-session mail \
-                'while mutt; do :; done'
-        fi
+        for account_type in "${!mutts[@]}"; do
+            email="${mutts[$account_type]}"
+            if [[ -r ~/.config/mutt/accounts/"$email" ]]; then
+                urxvtc -title mail -e create-or-attach-tmux-session \
+                    "mail-$account_type" 'while mutt; do :; done'
+            fi
+        done
 
         google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1 &
     } &

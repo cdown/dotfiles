@@ -23,9 +23,3 @@ macro index L '<limit>all<enter>'
 macro attach s '<save-entry><bol>/tmp/<eol>'
 macro attach S '<save-entry><bol>~/Downloads/<eol>'
 macro attach B '<pipe-message>cat > /tmp/mutt.html; google-chrome-stable /tmp/mutt.html<enter>'
-
-macro index zc '<sync-mailbox><enter-command> \
-                source ~/.config/mutt/accounts/chris@chrisdown.name \
-                <enter><change-folder>!<enter>'
-macro index zf '<sync-mailbox><enter-command> \
-                <enter><change-folder>!<enter>'
