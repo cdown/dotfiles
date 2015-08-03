@@ -94,6 +94,8 @@ for key in ['d', 'D', 'c', 'C']
   endfor
 endfor
 
+" By default, *.md is detected as modula2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Use xfer file as custom yank/paste. It's 2014 people, why do clipboards still
 " suck :-(
