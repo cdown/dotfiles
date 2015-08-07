@@ -53,5 +53,6 @@ fcitx &
 { sleep 5; xmodmap ~/.xmodmap; } &
 
 xbanish -i Mod4 &
+clipmenud &
 
 exec dbus-launch --exit-with-session dwm
