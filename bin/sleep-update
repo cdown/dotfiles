@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if git rev-parse --git-dir >/dev/null 2>&1; then
+    cmd=(git fetch)
+elif hg root >/dev/null 2>&1; then
+    cmd=(hg pull)
+else
+    printf '%s\n' 'No version control found, exiting' >&2
+    exit 1
+fi
+
+while sleep "${1:-300}"; do
+    "${cmd[@]}"
+done
