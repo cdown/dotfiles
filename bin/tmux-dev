@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+repo=${1?repo required}
+
+cd ~/"$repo"
+tmux new-session -d -s "$repo"
+tmux rename-window -t "$repo:1" dev
+tmux new-window -t "$repo" -n update sleep-update
+tmux select-window -t "$repo:1"
