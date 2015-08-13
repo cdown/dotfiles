@@ -1,3 +1,6 @@
 # vim: ft=muttrc
 
-group -group force_html -addr support@digicert.com -rx @outlook\.com$
+group -group force_html \
+    -addr support@digicert.com \
+    -rx @outlook\.com$ \
+    -addr notifications@stackoverflow.com
