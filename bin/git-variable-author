@@ -11,7 +11,7 @@ case $USER in
     ;;
     *)
         case $remote_info in
-            *cdown/*|*zx2c4*|*suckless*|'') email=chris@chrisdown.name;;
+            *cdown/*|*zx2c4*|*suckless*|*aur*|'') email=chris@chrisdown.name;;
         esac
         name='Chris Down'
     ;;
