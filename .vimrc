@@ -50,6 +50,10 @@ match TrailingWhitespace /\s\+$/
 " explicitly set this to avoid the whole background becoming that colour
 highlight Normal ctermbg=none
 
+" Solarized colours for parens are quite bad by defualt, because it's difficult
+" to tell which is the cursor and which is the match.
+highlight MatchParen ctermbg=darkmagenta ctermfg=black
+
 
 for directory in ["backup", "swap", "undo"]
   silent! call mkdir($HOME . "/.vim/" . directory, "p")
