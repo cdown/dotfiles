@@ -70,6 +70,13 @@ alias hs='hg show'
 alias hst='hg status'
 alias hu='hg update'
 alias huc='hu --clean'
+alias hbs=hg-bookmark-strip
+
+hg-bookmark-strip() {
+    local bookmark="${1?bookmark required}"
+    hg strip -r "$bookmark"
+    hg bookmark --delete "$bookmark"
+}
 
 # Arcanist
 alias ab='arc build'
