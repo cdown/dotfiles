@@ -3,4 +3,5 @@
 group -group force_html \
     -addr support@digicert.com \
     -rx @outlook\.com$ \
-    -addr notifications@stackoverflow.com
+    -addr notifications@stackoverflow.com \
+    -rx @schwab\.com$
