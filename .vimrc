@@ -100,7 +100,7 @@ endfor
 " By default, *.md is detected as modula2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-autocmd BufNewFile,BufReadPost *.cconf,TARGETS set filetype=python
+autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS set filetype=python
 
 " Use xfer file as custom yank/paste. It's 2014 people, why do clipboards still
 " suck :-(
