@@ -5,3 +5,9 @@ group -group force_html \
     -rx @outlook\.com$ \
     -addr notifications@stackoverflow.com \
     -rx @schwab\.com$
+
+message-hook . 'unalternative_order *; alternative_order text/plain text/html'
+
+# Auto view HTML for these senders, even if they send text/plain, because their
+# text/plain e-mails are fucked up.
+message-hook '%f force_html' 'unalternative_order *; alternative_order text/html text/plain'
