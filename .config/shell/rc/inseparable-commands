@@ -8,22 +8,6 @@ alias rbenv-init='eval "$(rbenv init -)"'
 
 alias u='udf && exec zsh -l'
 
-# virtualenv
-activate() {
-    . "${1-env}"/bin/activate
-}
-virtualenv-auto() {
-    if ! [ -d env ]; then
-        virtualenv env
-        activate env
-        for file in **/requirements.txt; do
-            pip install -r "$file"
-        done
-    else
-        activate env
-    fi
-}
-
 # Update a stale $SSH_AUTH_SOCK inside tmux
 update-auth-sock() {
     local socket_path
