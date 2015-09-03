@@ -9,3 +9,8 @@ alias zhsub=fix-chinese-sub-encoding
 alias v=virtualenv-auto
 alias p=ipython
 alias u='udf && exec zsh -l'
+
+# virtualenvwrapper
+alias mv2='mkvirtualenv -p python2'
+alias mv3='mkvirtualenv -p python3'
+alias wo=workon
