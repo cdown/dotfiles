@@ -26,7 +26,7 @@ alias git='noglob git-variable-author'
 
 # Disable sourcing systemwide vim configuration. Also set PYTHONPATH to
 # include basedir so we can edit tests that get their sys.path munged by nose
-alias vim='PYTHONPATH=$(git rev-parse --show-toplevel 2>/dev/null) vim -u ~/.vimrc -N'
+alias vim='PYTHONPATH="$(vcs-root)" vim -u ~/.vimrc -N'
 
 # Do not disable raw control chars when running less
 alias less='less -R'
