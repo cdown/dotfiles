@@ -6,19 +6,19 @@ for hb_dir in /usr/local /Library/{Logs,Caches}/Homebrew; do
     [[ -d $hb_dir ]] && sudo chown -R "$USER:admin" "$hb_dir"
 done
 
-cd -- "$(brew --prefix)"
+cd -- "$(brew --prefix)" || exit
 
 git fetch origin
 git reset --hard origin/master
 brew update
 brew upgrade
 
-brew list -1 | while read pkg; do
+brew list -1 | while read -r pkg; do
     brew unlink "$pkg"
     brew link "$pkg"
 done
 
 # Link again in case other stuff needed linking as deps
-brew list -1 | while read pkg; do
+brew list -1 | while read -r pkg; do
     brew link "$pkg"
 done

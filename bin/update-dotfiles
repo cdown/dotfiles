@@ -4,6 +4,9 @@
 fi
 
 dir=$HOME/git/dotfiles
+
+# set -e is already set, so...
+# shellcheck disable=SC2164
 cd "$dir"
 
 # shellcheck disable=SC1083

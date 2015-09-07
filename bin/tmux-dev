@@ -2,6 +2,8 @@
 
 repo=${1?repo required}
 
+# set -e is already set, so...
+# shellcheck disable=SC2164
 cd ~/"$repo"
 tmux new-session -d -s "$repo"
 tmux rename-window -t "$repo:1" dev
