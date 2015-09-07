@@ -7,9 +7,9 @@ before_script:
   - export PATH=$PATH:$HOME/.cabal/bin/
 
 script:
-  - shellcheck -s bash .bashrc .bash_profile
-  - find .config/shell -not -name dircolors -type f -exec shellcheck -s sh {} +
-  - find bin -not -name '*.gpg' -not -name view_attachment -type f -exec shellcheck -s bash {} +
+  - shellcheck -e SC1090,SC1091 -s bash .bashrc .bash_profile
+  - find .config/shell -not -name dircolors -type f -exec shellcheck -e SC1090,SC1091 -s sh {} +
+  - find bin -not -name '*.gpg' -not -name view_attachment -type f -exec shellcheck -e SC1090,SC1091 -s bash {} +
   - '[[ -z "$(comm -23 <(bin/generate-gpg-gitignore) .gitignore)" ]]'
 
 matrix:
