@@ -1,2 +1,7 @@
+[BASIC]
+# Allow test_ functions to have long names
+function-rgx=([a-z_][a-z0-9_]{2,30}$|^test_)
+method-rgx=([a-z_][a-z0-9_]{2,30}$|^test_)
+
 [MESSAGES CONTROL]
 disable=C,import-error,no-name-in-module,bad-builtin
