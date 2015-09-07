@@ -10,6 +10,7 @@ script:
   - shellcheck -s bash .bashrc .bash_profile
   - find .config/shell -not -name dircolors -type f -exec shellcheck -s sh {} +
   - find bin -not -name '*.gpg' -not -name view_attachment -type f -exec shellcheck -s bash {} +
+  - '[[ -z "$(comm -23 <(bin/generate-gpg-gitignore) .gitignore)" ]]'
 
 matrix:
   fast_finish: true
