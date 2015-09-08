@@ -102,6 +102,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS set filetype=python
 
+" Disable unused variable warnings on PKGBUILD, and force to type 'bash'
+autocmd BufNewFile,BufReadPost PKGBUILD let b:syntastic_sh_shellcheck_args = '-e SC2034 -s bash'
+
 " Use xfer file as custom yank/paste. It's 2014 people, why do clipboards still
 " suck :-(
 for keymode in ['n', 'v']
