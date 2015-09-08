@@ -46,6 +46,7 @@ set -o prompt_subst
 set -o share_history
 set -o ksh_glob
 set -o no_bare_glob_qual
+set -o shwordsplit
 
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
