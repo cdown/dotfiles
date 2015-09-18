@@ -13,5 +13,6 @@ for backup_path in "${backup_paths[@]}"; do
 
     [[ -x "$pre" ]] && "$pre"
     duply "$backup_name" backup
+    (( VERIFY )) && duply "$backup_name" verify
     [[ -x "$post" ]] && "$post"
 done
