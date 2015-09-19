@@ -7,4 +7,4 @@ method-rgx=([a-z_][a-z0-9_]{2,30}$|^test_)
 const-rgx=(([A-Za-z_][A-Za-z1-9_]*)|(__.*__))$
 
 [MESSAGES CONTROL]
-disable=import-error,no-name-in-module,bad-builtin,missing-docstring,multiple-statements,bad-whitespace
+disable=import-error,no-name-in-module,bad-builtin,missing-docstring,multiple-statements,bad-whitespace,protected-access,too-many-locals
