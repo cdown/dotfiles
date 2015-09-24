@@ -1,4 +1,4 @@
-# vim: ft=sh
+#!/bin/bash
 
 systemctl --user import-environment DISPLAY
 
@@ -11,7 +11,7 @@ mutts=(
     [personal]=chris@chrisdown.name
 )
 
-type -p VBoxClient-all 2>&1 >/dev/null && VBoxClient-all &
+type -p VBoxClient-all >/dev/null 2>&1 && VBoxClient-all &
 
 xset +fp /usr/share/fonts/local
 xset fp rehash
@@ -42,6 +42,10 @@ if [[ "$USER" == chris ]]; then
 fi
 
 systemctl --user start offlineimap.timer &
+
+for repo in ~/git/*; do
+    tmux-dev "$repo" -n
+done
 
 fcitx &
 
