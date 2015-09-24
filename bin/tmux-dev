@@ -5,7 +5,14 @@ repo=${1?repo required}
 # set -e is already set, so...
 # shellcheck disable=SC2164
 cd "$repo"
-tmux new-session -d -s "$repo"
+
+# We actually want to expand within tmux here
+# shellcheck disable=SC2016
+tmux new-session -d -s "$repo" 'while "$SHELL"; do :; done'
 tmux rename-window -t "$repo:1" dev
 tmux new-window -t "$repo" -n update sleep-update
 tmux select-window -t "$repo:1"
+
+if [[ $2 != -n ]]; then
+    tmux attach -t "$repo"
+fi
