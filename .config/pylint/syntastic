@@ -3,6 +3,9 @@
 function-rgx=([a-z_][a-z0-9_]{2,30}$|^test_)
 method-rgx=([a-z_][a-z0-9_]{2,30}$|^test_)
 
+# Allow dashes in module names
+module-rgx=[a-z_-][a-z0-9_-]{2,30}$
+
 # Allow lowercase module variables
 const-rgx=(([A-Za-z_][A-Za-z1-9_]*)|(__.*__))$
 
