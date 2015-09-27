@@ -23,6 +23,6 @@ printf 'Would purge the following:\nLocal: %s\nRemote: %s\n' \
 read -rp 'OK? ' purge_ok
 
 if [[ $purge_ok == [yY] ]]; then
-    git branch -D "${local_branches[@]}"
-    git push origin "${remote_branches[@]/#/:}"
+    (( ${#local_branches[@]} )) && git branch -D "${local_branches[@]}"
+    (( ${#remote_branches[@]} )) && git push origin "${remote_branches[@]/#/:}"
 fi
