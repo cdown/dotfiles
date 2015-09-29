@@ -2,9 +2,6 @@
 /.aws/config
 /.boto
 /.config/burp/burp.conf
-/.config/gcloud/application_default_credentials.json
-/.config/gcloud/credentials
-/.config/gcloud/properties
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
 /.duply/bitbucket/_pre
@@ -12,6 +9,7 @@
 /.duply/github/conf
 /.duply/google-drive/conf
 /.duply/mail/conf
+/.mpdscribble/mpdscribble.conf
 /.offlineimaprc
 /.pypirc
 /.s3cfg
