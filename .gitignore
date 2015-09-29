@@ -2,6 +2,15 @@
 /.aws/config
 /.boto
 /.config/burp/burp.conf
+/.config/gcloud/.metricsUUID
+/.config/gcloud/application_default_credentials.json
+/.config/gcloud/credentials
+/.config/gcloud/gce
+/.config/gcloud/legacy_credentials/chris@chrisdown.name/.boto
+/.config/gcloud/legacy_credentials/chris@chrisdown.name/gaejava.txt
+/.config/gcloud/legacy_credentials/chris@chrisdown.name/multistore.json
+/.config/gcloud/legacy_credentials/chris@chrisdown.name/singlestore.json
+/.config/gcloud/properties
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
 /.duply/bitbucket/_pre
@@ -9,7 +18,6 @@
 /.duply/github/conf
 /.duply/google-drive/conf
 /.duply/mail/conf
-/.mpdscribble/mpdscribble.conf
 /.offlineimaprc
 /.pypirc
 /.s3cfg
