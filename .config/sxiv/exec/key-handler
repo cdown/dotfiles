@@ -1,9 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
-while IFS= read -r file; do
-    case "${1?}" in
-        C-d) rm -- "$file" ;;
-        C-l) jpegtran -rotate 270 "$file" ;;
-        C-r) jpegtran -rotate 90 "$file" ;;
-    esac
-done
+key_combo="${1?}"
+
+# Despite what the sxiv documentation says, these seem to get passed as
+# arguments, not on stdin.
+files=( "${@:2}" )
+
+rotate() {
+    local degrees="${1?}"
+    for file in "${files[@]}"; do
+        jpegtran -rotate "$degrees" -copy all -outfile "$file" "$file"
+    done
+}
+
+case $key_combo in
+    C-d) rm -- "${files[@]}" ;;
+    C-l) rotate 270 ;;
+    C-r) rotate 90 ;;
+esac
