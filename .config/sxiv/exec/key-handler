@@ -9,7 +9,7 @@ files=( "${@:2}" )
 rotate() {
     local degrees="${1?}"
     for file in "${files[@]}"; do
-        jpegtran -rotate "$degrees" -copy all -outfile "$file" "$file"
+        jpegtran -rotate "$degrees" -trim -copy all -outfile "$file" "$file"
     done
 }
 
