@@ -1,0 +1,9 @@
+#!/bin/sh
+
+while IFS= read -r file; do
+    case "${1?}" in
+        C-d) rm -- "$file" ;;
+        C-l) jpegtran -rotate 270 "$file" ;;
+        C-r) jpegtran -rotate 90 "$file" ;;
+    esac
+done
