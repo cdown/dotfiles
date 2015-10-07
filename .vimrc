@@ -167,5 +167,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_pylint_args = '--rcfile=' . $HOME . '/.config/pylint/syntastic'
+let g:syntastic_python_pylint_exe = "sh -c 'eval \"$(pyenv init -)\" && pyenv shell 3.5.0 && pylint \"$@\"'"
+let g:syntastic_python_pylint_args = '-- --rcfile=' . $HOME . '/.config/pylint/syntastic'
 let g:syntastic_sh_checkers = ['shellcheck', 'sh']
