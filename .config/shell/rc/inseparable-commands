@@ -20,3 +20,5 @@ update-auth-sock() {
         export SSH_AUTH_SOCK="$socket_path"
     fi
 }
+
+alias tox='tox --skip-missing-interpreters'
