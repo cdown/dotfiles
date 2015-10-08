@@ -32,3 +32,7 @@ set sort = threads
 set sort_aux = last-date-received
 
 auto_view text/html
+
+# Work around M$ charset bug, sadface.
+# See https://groups.google.com/d/msg/comp.mail.mutt/V6N0ANkDoWY/aJGKkXf_zdYJ
+charset-hook ^iso-8859-1$ windows-1252
