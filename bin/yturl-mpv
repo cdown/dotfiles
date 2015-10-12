@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mpv --cache 8096 "$(yturl "$@")"
+mpv --cache=8096 "$(yturl "$@")"
