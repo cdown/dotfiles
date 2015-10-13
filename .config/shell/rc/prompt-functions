@@ -119,3 +119,5 @@ _get_ps1() {
     prompt="$(_user_prompt)$(_hostname_prompt)$(_pwd_prompt)$(_git_prompt)$(_hg_prompt)"
     printf '%s%s ' "$prompt" "$prompt_ender"
 }
+
+PS1='$(_get_ps1)'

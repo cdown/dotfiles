@@ -10,8 +10,6 @@ for file in ~/.config/{shell,zsh}/rc/*(N); do
     . "$file"
 done
 
-PS1='$(_get_ps1)'
-
 # zsh's git tab completion by default is extremely slow. This makes it use
 # local files only. See http://stackoverflow.com/a/9810485/945780.
 __git_files () {
