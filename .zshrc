@@ -12,6 +12,8 @@ done
 
 PS1='$(_get_ps1)'
 
+# zsh's git tab completion by default is extremely slow. This makes it use
+# local files only. See http://stackoverflow.com/a/9810485/945780.
 __git_files () {
     _wanted files expl 'local files' _files
 }
@@ -22,6 +24,8 @@ SAVEHIST=$HISTSIZE
 
 LISTMAX=0
 
+# I don't actually display terminal titles, but this is nice to show as part of
+# tmux.
 case $TERM in
     xterm*|rxvt*)
         precmd() {
