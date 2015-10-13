@@ -24,19 +24,6 @@ SAVEHIST=$HISTSIZE
 
 LISTMAX=0
 
-# I don't actually display terminal titles, but this is nice to show as part of
-# tmux.
-case $TERM in
-    xterm*|rxvt*)
-        precmd() {
-            print -Pn "\e]0;zsh %(1j,%j job%(2j|s|); ,)%~\a"
-        }
-        preexec() {
-            printf "\033]0;%s\a" "$1"
-        }
-    ;;
-esac
-
 set -o always_to_end
 set -o append_history
 set -o complete_in_word
