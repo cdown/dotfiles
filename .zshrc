@@ -24,20 +24,6 @@ SAVEHIST=$HISTSIZE
 
 LISTMAX=0
 
-set -o always_to_end
-set -o append_history
-set -o complete_in_word
-set -o extendedglob
-set -o histappend
-set -o histignorealldups
-set -o no_bang_hist
-set -o rmstarsilent
-set -o nullglob
-set -o prompt_subst
-set -o ksh_glob
-set -o no_bare_glob_qual
-set -o shwordsplit
-
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 bindkey -e
