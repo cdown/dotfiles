@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+autoload -U promptinit
+promptinit
