@@ -1,1 +1,2 @@
 alias type='type -f'
+alias git='noglob git-variable-author'

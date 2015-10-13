@@ -1,10 +1,5 @@
 # vim: ft=sh
 
-# If noglob (for zsh) is not available, just make it a noop
-if ! command -v noglob >/dev/null 2>&1; then
-    alias noglob=''
-fi
-
 # GNU Coreutils that might not be installed with default names on OSX.
 # Lint warning for expansion at definition is disabled as that's intentional.
 #
@@ -15,8 +10,6 @@ alias ls="$(use_first_to_exist gls ls) --color=auto -Ap --group-directories-firs
 alias sed="$(use_first_to_exist gsed sed)"
 alias awk="$(use_first_to_exist gawk awk)"
 }
-
-alias git='noglob git-variable-author'
 
 # Disable sourcing systemwide vim configuration. Also set PYTHONPATH to
 # include basedir so we can edit tests that get their sys.path munged by nose
