@@ -34,7 +34,6 @@ set -o no_bang_hist
 set -o rmstarsilent
 set -o nullglob
 set -o prompt_subst
-set -o share_history
 set -o ksh_glob
 set -o no_bare_glob_qual
 set -o shwordsplit
