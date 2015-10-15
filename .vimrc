@@ -57,7 +57,7 @@ highlight Normal ctermbg=none
 highlight MatchParen ctermbg=darkmagenta ctermfg=black
 
 highlight clear SpellBad
-highlight SpellBad ctermfg=darkmagenta ctermbg=black
+highlight SpellBad ctermbg=black
 
 
 for directory in ["backup", "swap", "undo"]
@@ -133,7 +133,7 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
   endfor
 
-  for filetype in ['gitcommit', 'mail', 'markdown']
+  for filetype in ['gitcommit', 'mail']
     exe 'autocmd FileType ' . filetype . ' setlocal joinspaces spell'
   endfor
 augroup END
