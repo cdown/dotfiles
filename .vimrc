@@ -29,6 +29,8 @@ set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
 set softtabstop=4
+set spell
+set spelllang=en_gb
 set synmaxcol=400
 set tabstop=4
 set textwidth=79
@@ -50,9 +52,12 @@ match TrailingWhitespace /\s\+$/
 " explicitly set this to avoid the whole background becoming that colour
 highlight Normal ctermbg=none
 
-" Solarized colours for parens are quite bad by defualt, because it's difficult
+" Solarized colours for parens are quite bad by default, because it's difficult
 " to tell which is the cursor and which is the match.
 highlight MatchParen ctermbg=darkmagenta ctermfg=black
+
+highlight clear SpellBad
+highlight SpellBad ctermfg=darkmagenta ctermbg=black
 
 
 for directory in ["backup", "swap", "undo"]
