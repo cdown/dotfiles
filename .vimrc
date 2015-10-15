@@ -29,7 +29,7 @@ set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
 set softtabstop=4
-set spell
+set nospell
 set spelllang=en_gb
 set synmaxcol=400
 set tabstop=4
@@ -133,8 +133,8 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
   endfor
 
-  for filetype in ['gitcommit', 'mail']
-    exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
+  for filetype in ['gitcommit', 'mail', 'markdown']
+    exe 'autocmd FileType ' . filetype . ' setlocal joinspaces spell'
   endfor
 augroup END
 
