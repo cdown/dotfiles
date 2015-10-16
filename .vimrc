@@ -29,8 +29,6 @@ set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
 set softtabstop=4
-set nospell
-set spelllang=en_gb
 set synmaxcol=400
 set tabstop=4
 set textwidth=79
@@ -55,10 +53,6 @@ highlight Normal ctermbg=none
 " Solarized colours for parens are quite bad by default, because it's difficult
 " to tell which is the cursor and which is the match.
 highlight MatchParen ctermbg=darkmagenta ctermfg=black
-
-highlight clear SpellBad
-highlight SpellBad ctermbg=black
-
 
 for directory in ["backup", "swap", "undo"]
   silent! call mkdir($HOME . "/.vim/" . directory, "p")
@@ -134,7 +128,7 @@ augroup filetype_settings
   endfor
 
   for filetype in ['gitcommit', 'mail']
-    exe 'autocmd FileType ' . filetype . ' setlocal joinspaces spell'
+    exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
   endfor
 augroup END
 
