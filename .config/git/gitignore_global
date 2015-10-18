@@ -184,12 +184,14 @@
 .coverage
 .dat*
 .directory
+.eggs/
 .eunit
 .gradle/
 .grunt
 .history
 .hpc
 .hsenv
+.hypothesis/
 .installed.cfg
 .ipynb_checkpoints/
 .kitchen.local.yml
