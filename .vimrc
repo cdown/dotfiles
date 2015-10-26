@@ -46,6 +46,11 @@ nnoremap <silent> H :set hlsearch!<CR>
 highlight TrailingWhitespace ctermbg=black
 match TrailingWhitespace /\s\+$/
 
+" I've got to stop saying this crap
+highlight ShittyWords ctermbg=red ctermfg=black
+syntax match ShittyWords /\<[Gg]uys\?\>/
+syntax match ShittyWords /\<[Dd]udes\?\>/
+
 " Since we changed solarized colour from #002b36 to #3b5a61, we need to
 " explicitly set this to avoid the whole background becoming that colour
 highlight Normal ctermbg=none
@@ -53,6 +58,7 @@ highlight Normal ctermbg=none
 " Solarized colours for parens are quite bad by default, because it's difficult
 " to tell which is the cursor and which is the match.
 highlight MatchParen ctermbg=darkmagenta ctermfg=black
+
 
 for directory in ["backup", "swap", "undo"]
   silent! call mkdir($HOME . "/.vim/" . directory, "p")
