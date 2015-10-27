@@ -13,3 +13,4 @@ set -o prompt_subst
 set -o ksh_glob
 set -o no_bare_glob_qual
 set -o shwordsplit
+set -o no_extended_glob
