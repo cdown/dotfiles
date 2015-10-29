@@ -43,10 +43,6 @@ fi
 
 systemctl --user start offlineimap.timer &
 
-for repo in ~/git/*; do
-    tmux-dev "$repo" -n
-done
-
 fcitx &
 
 # ibus overrides xmodmap after it's run. Since it might take some time to
