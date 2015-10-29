@@ -44,11 +44,11 @@ nnoremap <silent> H :set hlsearch!<CR>
 
 
 highlight TrailingWhitespace ctermbg=black
-match TrailingWhitespace /\s\+$/
+call matchadd('TrailingWhitespace', '\s\+$')
 
 " I've got to stop saying this crap
 highlight ShittyWords ctermbg=red ctermfg=black
-match ShittyWords /\<\([Gg]uy\|[Dd]ude\)s\?\>/
+call matchadd('ShittyWords', '\<\([Gg]uy\|[Dd]ude\)s\?\>')
 
 " Since we changed solarized colour from #002b36 to #3b5a61, we need to
 " explicitly set this to avoid the whole background becoming that colour
