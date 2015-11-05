@@ -26,8 +26,11 @@ urxvtd -q -o &
 if [[ "$USER" == chris ]]; then
     {
         while ! urxvtc -title dev; do :; done
-        urxvtc -title irc -e create-or-attach-tmux-session irc \
-            'while irssi; do :; done'
+        for dir in ~/.irssi/*; do
+            irc_type=${dir##*/}
+            urxvtc -title irc -e create-or-attach-tmux-session irc-"$irc_type" \
+                "while irssi --home=\"$dir\"; do :; done"
+        done
 
         for account_type in "${!mutts[@]}"; do
             email="${mutts[$account_type]}"
