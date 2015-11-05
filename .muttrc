@@ -7,4 +7,4 @@ source ~/.config/mutt/look
 source ~/.config/mutt/pgp
 source ~/.config/mutt/htmlers
 
-source ~/.config/mutt/accounts/chris@chrisdown.name
+source ~/.config/mutt/accounts/$EMAIL

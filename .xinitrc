@@ -36,7 +36,7 @@ if [[ "$USER" == chris ]]; then
             email="${mutts[$account_type]}"
             if [[ -r ~/.config/mutt/accounts/"$email" ]]; then
                 urxvtc -title mail -e create-or-attach-tmux-session \
-                    "mail-$account_type" 'while mutt; do :; done'
+                    "mail-$account_type" "while EMAIL=\"$email\" mutt; do :; done"
             fi
         done
 
