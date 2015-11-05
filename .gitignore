@@ -12,6 +12,7 @@
 /.config/gcloud/properties
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
+/.config/offlineimap/personal
 /.duply/bitbucket/_pre
 /.duply/bitbucket/conf
 /.duply/github/conf
@@ -21,7 +22,6 @@
 /.irssi/personal/config
 /.irssi/personal/keepnick
 /.irssi/personal/sasl.auth
-/.offlineimaprc
 /.pypirc
 /.s3cfg
 /bin/pushbullet-push
