@@ -21,6 +21,7 @@
 /.irssi/personal/config
 /.irssi/personal/keepnick
 /.irssi/personal/sasl.auth
+/.offlineimaprc
 /.pypirc
 /.s3cfg
 /bin/pushbullet-push
