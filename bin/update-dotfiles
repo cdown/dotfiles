@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-
-fi
-
 dir=$HOME/git/dotfiles
 
 # set -e is already set, so...
@@ -10,6 +7,7 @@ dir=$HOME/git/dotfiles
 cd "$dir"
 
 # shellcheck disable=SC1083
+git fetch -p
 git reset --hard @{u}
 
 git clean -dffx
