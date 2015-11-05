@@ -2,17 +2,13 @@
 
 # Run git with a variable identity depending on upstream
 
-remote_info=$(git remote -v 2>/dev/null)
-
 case $USER in
     lin)
         email=lin.sally.zhao@gmail.com
         name='Lin Zhao'
     ;;
     *)
-        case $remote_info in
-            *cdown/*|*zx2c4*|*suckless*|*aur*|'') email=chris@chrisdown.name;;
-        esac
+        email=chris@chrisdown.name
         name='Chris Down'
     ;;
 esac
