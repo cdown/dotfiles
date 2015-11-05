@@ -1,4 +1,3 @@
-# GPG encrypted files
 /.aws/config
 /.boto
 /.config/burp/burp.conf
@@ -18,9 +17,10 @@
 /.duply/github/conf
 /.duply/google-drive/conf
 /.duply/mail/conf
-/.offlineimaprc
+/.irssi/personal/certs/oftc-cdown.pem
+/.irssi/personal/config
+/.irssi/personal/keepnick
+/.irssi/personal/sasl.auth
 /.pypirc
 /.s3cfg
-/.ssh/config
-/.ssh/keys/global
 /bin/pushbullet-push
