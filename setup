@@ -53,7 +53,9 @@ for file in "$location"/**/*; do
         fi
         mkdir -m700 -p ~/"$bare"
     else
-        ln -sfn "$file" ~/"$bare"
+        # $file and ~/$bare can be the same if we are traversing a dir symlink,
+        # see issue #1
+        [[ $file == "$HOME/$bare" ]] || ln -sfn "$file" ~/"$bare"
     fi
 done
 
