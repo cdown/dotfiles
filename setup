@@ -53,9 +53,12 @@ for file in "$location"/**/*; do
         fi
         mkdir -m700 -p ~/"$bare"
     else
-        # $file and ~/$bare can be the same if we are traversing a dir symlink,
-        # see issue #1
-        [[ $file == "$HOME/$bare" ]] || ln -sfn "$file" ~/"$bare"
+        link=$HOME/$bare
+        real_link=$(readlink -f "$link")
+        real_file=$(readlink -f "$file")
+        # If we already linked this file due to a directory symlink inside the
+        # dotfiles, don't try and link it again (see issue #1)
+        [[ $real_link != "$real_file" ]] && ln -sfn "$file" ~/"$bare"
     fi
 done
 
