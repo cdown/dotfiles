@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for config in .config/offlineimap/*; do
+for config in ~/.config/offlineimap/*; do
     offlineimap -o -q -u quiet -c "$config" &
 done
 
