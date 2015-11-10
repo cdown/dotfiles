@@ -21,7 +21,7 @@ my %saved_colors;
 my %session_colors = {};
 
 sub load_colors {
-  open my $color_fh, "<", "$ENV{HOME}/.irssi/saved_colors";
+  open my $color_fh, "<", Irssi::get_irssi_dir() . "/saved_colors";
   while (<$color_fh>) {
     chomp;
     my($nick, $color) = split ":";
@@ -30,7 +30,7 @@ sub load_colors {
 }
 
 sub save_colors {
-  open COLORS, ">", "$ENV{HOME}/.irssi/saved_colors";
+  open COLORS, ">", Irssi::get_irssi_dir() . "/saved_colors";
 
   foreach my $nick (keys %saved_colors) {
     print COLORS "$nick:$saved_colors{$nick}\n";
