@@ -1,0 +1,12 @@
+[submodule ".vim/bundle/easymotion"]
+	path = .vim/bundle/easymotion
+	url = https://github.com/easymotion/vim-easymotion
+[submodule ".vim/bundle/indent-object"]
+	path = .vim/bundle/indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object
+[submodule ".vim/bundle/pathogen"]
+	path = .vim/bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
