@@ -6,7 +6,8 @@ group -group force_html \
     -addr notifications@stackoverflow.com \
     -rx @schwab\.com$ \
     -rx halifax\.co\.uk$ \
-    -addr hattricktickets@tickettext.co.uk
+    -addr hattricktickets@tickettext.co.uk \
+    -rx starwoodhotels\.com$
 
 message-hook . 'unalternative_order *; alternative_order text/plain text/html'
 
