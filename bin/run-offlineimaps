@@ -1,7 +1,8 @@
 #!/bin/bash
 
 for config in ~/.config/offlineimap/*; do
-    offlineimap -o -q -u quiet -c "$config" &
+    config_name=${config##*/}
+    NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" offlineimap -o -q -u quiet -c "$config" &
 done
 
 wait

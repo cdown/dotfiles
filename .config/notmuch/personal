@@ -1,0 +1,19 @@
+[database]
+path=/home/chris/Mail/Personal
+
+[user]
+name=Chris Down
+primary_email=chris@chrisdown.name
+
+[new]
+tags=unread;inbox;
+ignore=
+
+[search]
+exclude_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true
+
+[crypto]
+gpg_path=gpg
