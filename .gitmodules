@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/neocomplete"]
 	path = .vim/bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim
+[submodule ".vim/bundle/indent-guides"]
+	path = .vim/bundle/indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
