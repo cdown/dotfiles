@@ -1,6 +1,7 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+let g:neocomplete#enable_at_startup = 1
 
 filetype plugin on
 syntax on
