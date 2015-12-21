@@ -5,6 +5,7 @@
 
 # Initialise rbenv environment in the current shell
 alias rbenv-init='eval "$(rbenv init -)"'
+alias pyenv-init='eval "$(pyenv init -)"'
 
 alias u='udf && exec zsh -l'
 
