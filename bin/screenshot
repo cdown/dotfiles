@@ -18,4 +18,8 @@ case $1 in
 esac
 
 notify-send 'Screenshot taken'
+
+xclip -sel clip <<< "$file"
+xclip -sel primary <<< "$file"
+
 printf '%s\n' "$file"
