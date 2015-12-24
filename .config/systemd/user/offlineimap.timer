@@ -2,7 +2,7 @@
 Description=OfflineIMAP pseudo-daemon
 
 [Timer]
-OnCalendar=*:*:0/30
+OnCalendar=*:*:0/15
 Unit=offlineimap.service
 
 [Install]

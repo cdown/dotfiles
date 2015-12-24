@@ -5,4 +5,4 @@ After=network.target
 [Service]
 Type=oneshot
 ExecStart=/bin/sh -c "%h/bin/run-offlineimaps"
-TimeoutStartSec=1min30s
+TimeoutStartSec=3min30s
