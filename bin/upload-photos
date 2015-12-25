@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 photo_dir=${1?photo_dir required}
-session_name=photo-upload
+session_name=photo-upload-"$RANDOM"
 
 # See https://github.com/koalaman/shellcheck/issues/562
 # shellcheck disable=SC2140
