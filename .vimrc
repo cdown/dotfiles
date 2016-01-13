@@ -85,6 +85,10 @@ map q: :q
 " When joining, do the right thing to join up function definitions
 vnoremap J J:s/( /(/g<CR>:s/,)/)/g<CR>
 
+" Quickly move around (and into) command mode
+imap jk <Esc>
+imap kj <Esc>:
+nmap ; :
 
 " Use easymotion for find/til movements, with <Leader> prefixed version as
 " option to use regular find/til
