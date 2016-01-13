@@ -125,6 +125,10 @@ for keymode in ['n', 'v']
   exe keymode . 'noremap <silent> <Leader>p :r ~/.vim/xfer<CR>'
 endfor
 
+" Automatically move to end of paste
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 augroup filetype_settings
   " Clear this autocmd group so that the settings won't get loaded over and
