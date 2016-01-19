@@ -2,7 +2,8 @@
 
 for config in ~/.config/offlineimap/*; do
     config_name=${config##*/}
-    NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" offlineimap -o -q -u quiet -c "$config" &
+    NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" \
+        offlineimap -o -q -c "$config" > "/tmp/offlineimap-$config_name" 2>&1 &
 done
 
 wait
