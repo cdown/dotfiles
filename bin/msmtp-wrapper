@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# An msmtp wrapper to do per-file configuration per e-mail, instead of
+# per-account setting
+
+exec msmtp -C ~/.config/msmtp/"${EMAIL?}"
