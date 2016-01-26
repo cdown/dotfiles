@@ -6,5 +6,6 @@ source ~/.config/mutt/headers
 source ~/.config/mutt/look
 source ~/.config/mutt/pgp
 source ~/.config/mutt/htmlers
+source ~/.config/mutt/smtp
 
 source ~/.config/mutt/accounts/$EMAIL
