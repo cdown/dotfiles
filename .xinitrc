@@ -61,4 +61,9 @@ fcitx &
 xbanish -i Mod4 &
 clipmenud &
 
+if type synclient >/dev/null 2>&1; then
+    # 2 finger click = right click
+    synclient TapButton2=3
+fi
+
 exec dbus-launch --exit-with-session dwm
