@@ -110,14 +110,6 @@ for key in ['d', 'D', 'c', 'C']
   endfor
 endfor
 
-" By default, *.md is detected as modula2
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS set filetype=python
-
-" Disable unused variable warnings on PKGBUILD, and force to type 'bash'
-autocmd BufNewFile,BufReadPost PKGBUILD let b:syntastic_sh_shellcheck_args = '-e SC2034 -s bash'
-
 " Use xfer file as custom yank/paste. It's 2014 people, why do clipboards still
 " suck :-(
 for keymode in ['n', 'v']
@@ -134,6 +126,15 @@ augroup filetype_settings
   " Clear this autocmd group so that the settings won't get loaded over and
   " over again
   autocmd!
+
+  " By default, *.md is detected as modula2
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+  autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS set filetype=python
+
+  " Disable unused variable warnings on PKGBUILD, and force to type 'bash'
+  autocmd BufNewFile,BufReadPost PKGBUILD let b:syntastic_sh_shellcheck_args = '-e SC2034 -s bash'
+
 
   " Seek past headers, since usually we don't want to edit them
   autocmd FileType mail normal }
