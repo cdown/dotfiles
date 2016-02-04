@@ -149,6 +149,9 @@ augroup filetype_settings
   for filetype in ['gitcommit', 'mail']
     exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
   endfor
+
+  " Update ctags on write
+  autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R &
 augroup END
 
 
