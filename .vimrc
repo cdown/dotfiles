@@ -151,7 +151,9 @@ augroup filetype_settings
   endfor
 
   " Update ctags on write
-  autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R &
+  " Yes, the order on the redirections is correct, we want to only filter
+  " stderr with grep.
+  autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R 2>&1 >/dev/null | grep -Fv 'ignoring null tag' &
 augroup END
 
 
