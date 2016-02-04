@@ -5,6 +5,9 @@ keycode 75 = Insert Insert Insert
 keycode 76 = Print Print Print
 
 ! Use Caps Lock as Ctrl
-clear Lock
-keycode 126 = Control_R
-add Control = Control_R
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L

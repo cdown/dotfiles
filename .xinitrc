@@ -52,11 +52,8 @@ fcitx &
 # start, just launching after it is not enough, we have to wait until it has
 # finished setup to run xmodmap.
 #
-# It seems ibus also decides to override it a while after starting, so this
-# needs to get run in a loop... sigh.
-#
 # https://code.google.com/p/ibus/issues/detail?id=1469
-{ while sleep 5; do xmodmap ~/.xmodmap; done } &
+(sleep 5; xmodmap ~/.xmodmap) &
 
 xbanish -i Mod4 &
 clipmenud &
