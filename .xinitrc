@@ -53,7 +53,7 @@ fcitx &
 # finished setup to run xmodmap.
 #
 # https://code.google.com/p/ibus/issues/detail?id=1469
-(sleep 5; xmodmap ~/.xmodmap) &
+(sleep 2; xmodmap ~/.xmodmap) &
 
 xbanish -i Mod4 &
 clipmenud &
