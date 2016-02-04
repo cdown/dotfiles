@@ -52,5 +52,3 @@ if id makepkg >/dev/null 2>&1; then
     # shellcheck disable=SC2032
     alias yaourt=yaourt-cd
 fi
-
-alias startx='startx > "/tmp/startx-${USER}.log" 2>&1'
