@@ -7,7 +7,8 @@ group -group force_html \
     -rx @schwab\.com$ \
     -rx halifax\.co\.uk$ \
     -addr hattricktickets@tickettext.co.uk \
-    -rx starwoodhotels\.com$
+    -rx starwoodhotels\.com$ \
+    -rx notonthehighstreet\.com$
 
 message-hook . 'unalternative_order *; alternative_order text/plain text/html'
 
