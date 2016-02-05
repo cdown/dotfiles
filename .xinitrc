@@ -60,7 +60,7 @@ clipmenud &
 
 if type synclient >/dev/null 2>&1; then
     # 2 finger click = right click
-    synclient TapButton2=3
+    synclient TapButton2=3 VertScrollDelta=350 HorizScrollDelta=350
 fi
 
 exec dbus-launch --exit-with-session dwm
