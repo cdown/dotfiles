@@ -16,6 +16,8 @@ set autoindent
 set backspace=indent,eol,start
 set backupcopy=yes
 set colorcolumn=+1
+set cursorcolumn
+set cursorline
 set expandtab
 set formatoptions=qrn
 set hlsearch
