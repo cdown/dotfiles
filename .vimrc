@@ -153,7 +153,7 @@ augroup filetype_settings
   endfor
 
   " Update ctags on write
-  autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1
+  autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
 augroup END
 
 
