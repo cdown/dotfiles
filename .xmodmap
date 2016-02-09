@@ -1,9 +1,6 @@
 ! Allow Shift-Insert on Macbook keyboards by binding F9 to Insert
 keycode 75 = Insert Insert Insert
 
-! Allow Print Screen on Macbook keyboards by binding F10 to Print
-keycode 76 = Print Print Print
-
 ! Use Caps Lock as Ctrl
 keycode 66 = Control_L
 clear Lock
