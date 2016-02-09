@@ -6,5 +6,5 @@ keycode 76 = Print Print Print
 
 ! Use Caps Lock as Ctrl
 remove Lock = Caps_Lock
-keysym Caps_Lock = Control_L
+keycode 66 = Control_L
 add Control = Control_L
