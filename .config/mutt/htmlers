@@ -1,14 +1,15 @@
 # vim: ft=muttrc
 
 group -group force_html \
-    -addr support@digicert.com \
-    -rx @outlook\.com$ \
-    -addr notifications@stackoverflow.com \
-    -rx @schwab\.com$ \
-    -rx halifax\.co\.uk$ \
-    -addr hattricktickets@tickettext.co.uk \
-    -rx starwoodhotels\.com$ \
-    -rx notonthehighstreet\.com$
+    -rx [@.]outlook\.com$ \
+    -rx [@.]digicert\.com$ \
+    -rx [@.]stackoverflow\.com$ \
+    -rx [@.]schwab\.com$ \
+    -rx [@.]halifax\.co\.uk$ \
+    -rx [@.]tickettext\.co\.uk$ \
+    -rx [@.]starwoodhotels\.com$ \
+    -rx [@.]notonthehighstreet\.com$ \
+    -rx [@.]linkedin\.com$
 
 message-hook . 'unalternative_order *; alternative_order text/plain text/html'
 
