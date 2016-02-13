@@ -65,4 +65,11 @@ if type synclient >/dev/null 2>&1; then
         AccelFactor=0 MinSpeed=2
 fi
 
+# Interim solution until this gets set up with systemd
+for scontrol in Master PCM; do
+    amixer -q sset "$scontrol" unmute
+    amixer -q sset "$scontrol" 100%
+done
+
+
 exec dbus-launch --exit-with-session dwm
