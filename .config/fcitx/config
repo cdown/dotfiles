@@ -62,9 +62,9 @@ FullWidthSwitchKey=SHIFT_SPACE
 # Switch Full Width Punc Mode
 #PuncSwitchKey=CTRL_.
 # Prev Page
-PrevPageKey=[
+PrevPageKey=,
 # Next Page
-NextPageKey=]
+NextPageKey=.
 # Choose Second and Third Candidate Word
 SecondThirdCandWordKey=SHIFT
 # Saving All Config and Input History
