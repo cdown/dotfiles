@@ -115,9 +115,11 @@ endfor
 " Use xfer file as custom yank/paste. It's 2014 people, why do clipboards still
 " suck :-(
 for keymode in ['n', 'v']
-  exe keymode . 'noremap <silent> <Leader>y :w! ~/.vim/xfer<CR>'
   exe keymode . 'noremap <silent> <Leader>p :r ~/.vim/xfer<CR>'
 endfor
+
+nnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>:w !xclip<CR><CR>:w !xclip -sel clip<CR><CR>'
+vnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>gv:w !xclip<CR><CR>gv:w !xclip -sel clip<CR><CR>'
 
 " Automatically move to end of paste
 vnoremap <silent> y y`]
