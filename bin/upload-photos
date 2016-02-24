@@ -8,7 +8,7 @@ session_name=photo-upload-"$RANDOM"
 escaped_photo_dir=${photo_dir/"'"/"'\\''"}
 
 tmux new-session -d -s "$session_name" \
-    "PYENV_VERSION=2.7.10 gsutil cp * 's3://chrisdown-photos/$escaped_photo_dir' && echo Done; read"
+    "PYENV_VERSION=2.7.10 gsutil -m rsync . 's3://chrisdown-photos/$escaped_photo_dir/' && echo Done; read"
 tmux split-window -h -t "$session_name:1" \
-    "PYENV_VERSION=2.7.10 gsutil cp * 'gs://chris-down-photos/chrisdown-photos/$escaped_photo_dir' && echo Done; read"
+    "PYENV_VERSION=2.7.10 gsutil -m rsync . 'gs://chris-down-photos/chrisdown-photos/$escaped_photo_dir/' && echo Done; read"
 tmux attach -t "$session_name"
