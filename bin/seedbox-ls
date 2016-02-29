@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rsync dian:/srv/rtorrent/data/"$1"
+rsync dian.chrisdown.name:/srv/rtorrent/data/"$1"
