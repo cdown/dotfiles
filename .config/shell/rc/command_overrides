@@ -6,7 +6,7 @@
 # shellcheck disable=SC2139
 {
 alias grep="$(use_first_to_exist ggrep grep)"
-alias ls="$(use_first_to_exist gls ls) --color=auto -Ap --group-directories-first"
+alias ls="$(use_first_to_exist gls ls) --color=auto -NAp --group-directories-first"
 alias sed="$(use_first_to_exist gsed sed)"
 alias awk="$(use_first_to_exist gawk awk)"
 }
