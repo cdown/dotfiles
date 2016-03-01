@@ -62,7 +62,7 @@ if type synclient >/dev/null 2>&1; then
     # 2 finger click = right click
     synclient \
         TapButton2=3 VertScrollDelta=350 HorizScrollDelta=350 \
-        AccelFactor=0 MinSpeed=2
+        AccelFactor=0 MinSpeed=2 HorizTwoFingerScroll=1
 fi
 
 # Interim solution until this gets set up with systemd
