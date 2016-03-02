@@ -44,8 +44,6 @@ if [[ "$USER" == chris ]]; then
     } &
 fi
 
-systemctl --user start offlineimap.timer &
-
 fcitx &
 
 # ibus overrides xmodmap after it's run. Since it might take some time to
