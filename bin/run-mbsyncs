@@ -4,7 +4,7 @@ mbsync_job_ids=()
 
 for config in ~/.config/mbsync/*; do
     config_name=${config##*/}
-    timeout 60s -k=120s --foreground mbsync -c "$config" -a > "/tmp/mbsync-$config_name" 2>&1 &
+    timeout -k 120s --foreground 60s mbsync -c "$config" -a > "/tmp/mbsync-$config_name" 2>&1 &
     mbsync_job_ids+=("$!")
     NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" notmuch new &
 done
