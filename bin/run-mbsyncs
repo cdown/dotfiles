@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mbsync_job_ids=()
+
+for config in ~/.config/mbsync/*; do
+    config_name=${config##*/}
+    mbsync -c "$config" -a > "/tmp/mbsync-$config_name" 2>&1 &
+    mbsync_job_ids+=("$!")
+    NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" notmuch new &
+done
+
+wait "${mbsync_job_ids[@]}"  # notmuch can keep running in the bg after
