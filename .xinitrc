@@ -44,6 +44,8 @@ if [[ "$USER" == chris ]]; then
     } &
 fi
 
+systemctl --user start mbsync.service
+
 fcitx &
 
 # ibus overrides xmodmap after it's run. Since it might take some time to
