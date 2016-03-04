@@ -72,4 +72,4 @@ for scontrol in Master PCM; do
 done
 
 
-exec dbus-launch --exit-with-session dwm
+exec dbus-launch --exit-with-session dwm > "/tmp/dwm-$USER.log" 2>&1
