@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+systemctl --user stop mbsync
+
+for config in ~/.config/mbsync/*; do
+    maildir_path=$(
+        awk '$1 == "Path" { sub("~", ENVIRON["HOME"]); print $2 }' < "$config"
+    )
+    config_name=${config##*/}
+
+    if ! [[ $maildir_path ]]; then
+        echo "Could not find maildir path for $config" >&2
+        exit 1
+    fi
+
+    mkdir -p -- "$maildir_path"
+
+    for _ in {1..2}; do  # Run twice to catch up since first run is slow
+        mbsync -c "$config" -a
+        NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" notmuch new
+    done
+done
+
+systemctl --user start mbsync
