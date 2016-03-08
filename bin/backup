@@ -1,5 +1,10 @@
 #!/bin/bash -e
 
+# Otherwise pyenv shims will interfere with duplicity imports
+# Sadly duplicitly can't be pip installed :-(
+PATH="$(get-path-without-pyenv)"
+export PATH
+
 if (( $# )); then
     backup_paths=( "${@/#/"$HOME/.duply/"}" )
 else
