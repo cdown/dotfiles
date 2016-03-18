@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/gpg"]
 	path = .vim/bundle/gpg
 	url = https://github.com/jamessan/vim-gnupg
+[submodule ".vim/bundle/braceless"]
+	path = .vim/bundle/braceless
+	url = https://github.com/tweekmonster/braceless.vim.git
