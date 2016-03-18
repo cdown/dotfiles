@@ -156,6 +156,11 @@ augroup filetype_settings
 
   " Update ctags on write
   autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
+
+  " Enable braceless for indented types
+  for filetype in ['python', 'yaml']
+    exec 'autocmd FileType ' . filetype . ' BracelessEnable +indent'
+  endfor
 augroup END
 
 
