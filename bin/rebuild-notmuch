@@ -1,0 +1,26 @@
+#!/bin/bash -e
+
+shopt -s globstar
+
+session_name=notmuch
+
+echo "Removing old databases"
+find ~/Mail/ -name .notmuch -type d -exec rm -rf {} +
+
+echo "Removing old cache"
+rm -r ~/.cache/notmuch
+
+echo "Launching tmux"
+i=0
+for config in ~/.config/notmuch/*; do
+    if ! (( i++ )); then
+        # First element
+        tmux new-session -d -s "$session_name" \
+            "NOTMUCH_CONFIG='$config' notmuch new && echo Done; read"
+    else
+        tmux split-window -h -t "$session_name:1" \
+            "NOTMUCH_CONFIG='$config' notmuch new && echo Done; read"
+    fi
+done
+
+tmux attach -t "$session_name"
