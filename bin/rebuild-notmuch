@@ -2,13 +2,15 @@
 
 shopt -s globstar
 
+systemctl --user stop mbsync
+
 session_name=notmuch
 
 echo "Removing old databases"
 find ~/Mail/ -name .notmuch -type d -exec rm -rf {} +
 
 echo "Removing old cache"
-rm -r ~/.cache/notmuch
+rm -rf ~/.cache/notmuch
 
 echo "Launching tmux"
 i=0
@@ -24,3 +26,5 @@ for config in ~/.config/notmuch/*; do
 done
 
 tmux attach -t "$session_name"
+
+systemctl --user start mbsync
