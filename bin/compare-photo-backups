@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PYENV_VERSION=2.7.11
+
 subpath="$1"
 
 gsutil ls -r gs://chris-down-photos/chrisdown-photos/"$subpath" |
