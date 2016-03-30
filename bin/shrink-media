@@ -13,7 +13,7 @@ find "$@" -name '*.jpg' -print0 |
 # x264 uses all processors already so don't need parallel
 for dir; do
     for file in "$dir"/**/*.mov; do
-        mp4_filename=${file%.*}
+        mp4_filename=${file%.*}.mp4
         mp4_filename=${mp4_filename##*/}
 
         # The trunc stuff is needed because x264 doesn't like odd numbers in
