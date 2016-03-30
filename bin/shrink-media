@@ -1,0 +1,27 @@
+#!/bin/bash -e
+
+shopt -s nullglob globstar
+set -o pipefail
+
+: "${1?}"
+
+find "$@" -name '*.jpg' -print0 |
+    parallel --bar -0 nice -n 19 \
+        convert -strip -interlace Plane -resize 1200x1200 \
+        -quality 75 -filter Lanczos '{}' '{/}'
+
+# x264 uses all processors already so don't need parallel
+for dir; do
+    for file in "$dir"/**/*.mov; do
+        mp4_filename=${file%.*}
+        mp4_filename=${mp4_filename##*/}
+
+        # The trunc stuff is needed because x264 doesn't like odd numbers in
+        # resolutions. The baseline x264 profile is used to avoid compatibility
+        # issues with whatever media player Lin's parents use.
+        nice -n 19 \
+            ffmpeg -i "$file" -c:v libx264 -profile:v baseline \
+                -vf 'scale=1000:trunc(ow/a/2)*2' -preset veryslow -crf 32 \
+                -acodec aac -b:a 128k "$mp4_filename"
+    done
+done
