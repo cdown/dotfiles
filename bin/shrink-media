@@ -25,3 +25,5 @@ for dir; do
                 -acodec aac -b:a 128k "$mp4_filename"
     done
 done
+
+7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./*.mov ./*.jpg -mx0
