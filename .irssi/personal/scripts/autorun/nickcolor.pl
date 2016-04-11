@@ -62,6 +62,10 @@ sub sig_nick {
 sub simple_hash {
   my ($string) = @_;
   chomp $string;
+
+  # Remove trailing _s from string since people often have them on rejoin
+  $string =~ s/_$//;
+
   my @chars = split //, $string;
   my $counter;
 
