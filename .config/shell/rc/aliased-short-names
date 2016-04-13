@@ -7,7 +7,7 @@ alias so=clean-env
 alias udf=update-dotfiles
 alias zhsub=fix-chinese-sub-encoding
 alias v=virtualenv-auto
-alias p='pyenv-init && ipython'
+alias p=ipython
 alias u='udf && exec zsh -l'
 
 # virtualenvwrapper
