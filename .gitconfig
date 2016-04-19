@@ -13,4 +13,4 @@
 [alias]
     why-ignore = check-ignore -v
 [diff "gpg"]
-    textconv = gpg --no-tty --decrypt
+    textconv = gpg -q --no-tty --decrypt
