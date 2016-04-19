@@ -14,3 +14,5 @@
     autosquash = true
 [alias]
     why-ignore = check-ignore -v
+[diff "gpg"]
+    textconv = gpg --no-tty --decrypt
