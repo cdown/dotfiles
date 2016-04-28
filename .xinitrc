@@ -36,7 +36,9 @@ if [[ "$USER" == chris ]]; then
             email="${mutts[$account_type]}"
             if [[ -r ~/.config/mutt/accounts/"$email" ]]; then
                 urxvtc -title mail -e create-or-attach-tmux-session \
-                    "mail-$account_type" "while EMAIL=\"$email\" NOTMUCH_CONFIG=\"$HOME/.config/notmuch/$account_type\" mutt; do :; done"
+                    "mail-$account_type" \
+                    "EMAIL=\"$email\" NOTMUCH_BASENAME=\"$account_type\" " \
+                    "start-mutt"
             fi
         done
 
