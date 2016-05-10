@@ -13,3 +13,5 @@ __git_files () {
 
 # "git" is a wrapper for git-variable-author, inherit its completions.
 compdef git-variable-author=git
+
+compdef sshrc=ssh
