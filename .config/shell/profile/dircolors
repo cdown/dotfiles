@@ -1,5 +1,7 @@
 # vim: ft=sh
 
+# $config_home is set as part of init
+# shellcheck disable=SC2154
 eval "$(
-    "$(use_first_to_exist gdircolors dircolors)" ~/.config/shell/dircolors
+    "$(use_first_to_exist gdircolors dircolors)" "$config_home"/.config/shell/dircolors
 )"

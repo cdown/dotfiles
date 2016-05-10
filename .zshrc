@@ -2,9 +2,15 @@
 
 [[ "$-" == *i* ]] || return
 
-. ~/.config/shell/early-funcs
+if [[ -z "$SSHHOME" ]]; then
+    config_home="$HOME"
+else
+    config_home="$SSHHOME"
+fi
 
-for file in ~/.config/{shell,zsh}/rc/*(N); do
+. "$config_home"/.config/shell/early-funcs
+
+for file in "$config_home"/.config/{shell,zsh}/rc/*(N); do
     . "$file"
 done
 
