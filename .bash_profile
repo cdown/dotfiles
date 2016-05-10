@@ -3,7 +3,7 @@
 if [[ -z "$SSHHOME" ]]; then
     config_home="$HOME"
 else
-    config_home="$SSHHOME"
+    config_home="$SSHHOME/.sshrc.d"
 fi
 
 . "$config_home"/.config/shell/early-funcs
