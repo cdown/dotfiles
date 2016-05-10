@@ -31,7 +31,12 @@ safe_termname() {
         *) echo linux ;;
     esac
 }
-alias ssh='LC_ALL=C TERM="$(safe_termname)" ssh'
+
+for command in ssh{,rc}; do
+    # shellcheck disable=SC2139
+    alias "$command"='LC_ALL=C TERM="$(safe_termname)" '"$command"
+done
+
 alias mosh='LC_ALL=en_US.UTF-8 mosh'
 
 # Allow other aliases to be used after the program name
