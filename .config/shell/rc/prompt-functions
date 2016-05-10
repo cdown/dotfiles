@@ -3,13 +3,14 @@
 colour_part() {
     local colour="$1"
     local msg="$2"
+    local delim="${3- }"
 
     [ "$msg" ] || return 1
 
     if [ "$BASH" ]; then
         printf '%s ' "$msg"
     elif [ "$ZSH_VERSION" ]; then
-        printf '%%{%s%%}%s%%{%s%%} ' "$(tput setaf "$colour")" "$msg" "$(tput sgr0)"
+        printf '%%{%s%%}%s%%{%s%%}'"${delim}" "$(tput setaf "$colour")" "$msg" "$(tput sgr0)"
     fi
 
 }
@@ -85,7 +86,7 @@ _user_prompt() {
         cdown|chris|lin) return ;;
     esac
 
-    colour_part 3 "$user@"
+    colour_part 3 "$user@" ''
 }
 
 _pwd_prompt() {
