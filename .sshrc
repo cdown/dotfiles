@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+# shellcheck disable=SC2016
+export VIMINIT='let $MYVIMRC='"$SSHHOME/.sshrc.d/.vimrc"' | source $MYVIMRC'
+
 if command -v zsh >/dev/null 2>&1; then
     exec zsh -l
 fi
