@@ -13,7 +13,9 @@ alias awk="$(use_first_to_exist gawk awk)"
 
 # Disable sourcing systemwide vim configuration. Also set PYTHONPATH to
 # include basedir so we can edit tests that get their sys.path munged by nose
-alias vim='PYTHONPATH="$(vcs-root)" vim -u ~/.vimrc -N'
+
+# $config_home comes from shell init
+alias vim='PYTHONPATH="$(vcs-root)" vim -u $config_home/.vimrc -N'
 
 # Do not disable raw control chars when running less
 alias less='less -R'
