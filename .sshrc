@@ -1,10 +1,5 @@
 #!/bin/sh -e
 
-current_shell=$(ps -p $$ -ocomm=)
-current_shell=${current_shell#-}  # login(1) prepends this to login shells
-
-case $current_shell in
-    zsh) . "$SSHHOME/.sshrc.d/.zprofile" ;;
-    bash) . "$SSHHOME/.sshrc.d/.bash_profile" ;;
-    *) printf 'Shell "%s" unknown, not doing anything\n' "$current_shell" >&2 ;;
-esac
+if command -v zsh >/dev/null 2>&1; then
+    exec zsh -l
+fi
