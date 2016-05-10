@@ -1,5 +1,7 @@
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+runtime! bundle/pathogen/autoload/pathogen.vim
+if exists("*pathogen#infect")
+  execute pathogen#infect()
+endif
 
 let g:neocomplete#enable_at_startup = 1
 
