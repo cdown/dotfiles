@@ -45,6 +45,8 @@ alias mosh='LC_ALL=en_US.UTF-8 mosh'
 alias sudo='sudo '
 alias watch='watch '
 
+alias gdb='gdb -q'
+
 # If the makepkg user exists, it should take responsibility for all package
 # building
 if id makepkg >/dev/null 2>&1; then
