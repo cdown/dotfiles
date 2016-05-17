@@ -72,5 +72,10 @@ for scontrol in Master PCM; do
     amixer -q sset "$scontrol" 100%
 done
 
+if xinput list | grep -q Evoluent; then
+    # Middle button -> Right click
+    # Middle mouse click -> Middle button (paste)
+    xinput set-button-map "Kingsis Peripherals Evoluent VerticalMouse 4" 1 3 3 4 5 6 7 8 2 10
+fi
 
 exec dbus-launch --exit-with-session dwm > "/tmp/dwm-$USER.log" 2>&1
