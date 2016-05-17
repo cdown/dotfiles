@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+if ! [[ $1 ]]; then
+    printf 'Usage: %s profile\n' "$0" >&2
+    exit 1
+fi
+
+case $1 in
+    work) xrandr --output DP1 --right-of eDP1 --auto ;;
+    *)
+        printf 'Unknown profile: %s\n' "$1"
+        exit 1
+    ;;
+esac
