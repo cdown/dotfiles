@@ -1,0 +1,14 @@
+#!/bin/bash
+
+req_brightness_perc=${1?arg 1 should be brightness percent}
+
+backlight_dir=/sys/class/backlight/intel_backlight
+read -r max_brightness < "$backlight_dir/max_brightness"
+
+# Bash only works with integers
+req_brightness_abs=$(
+    perl -mPOSIX -e 'print POSIX::floor($ARGV[0] * ($ARGV[1] / 100))' \
+        "$req_brightness_perc" "$max_brightness"
+)
+
+printf '%s' "$req_brightness_abs" > "$backlight_dir"/brightness
