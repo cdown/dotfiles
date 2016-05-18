@@ -7,7 +7,12 @@ fi
 
 case $1 in
     work)
-        xrandr --output DP1 --primary --right-of eDP1 --auto
+        xrandr --output eDP1 --off
+        xrandr --output DP1 --primary --auto
+    ;;
+    unwork)
+        xrandr --output DP1 --off
+        xrandr --output eDP1 --primary --auto
     ;;
     *)
         printf 'Unknown profile: %s\n' "$1"
