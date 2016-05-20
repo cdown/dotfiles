@@ -1,0 +1,74 @@
+{
+    "freenode": {
+        "G": [
+            "gentoo",
+            null
+        ],
+        "I": [
+            "irssi",
+            null
+        ],
+        "a": [
+            "archlinux",
+            null
+        ],
+        "b": [
+            "bash",
+            null
+        ],
+        "c": [
+            "centos",
+            null
+        ],
+        "d": [
+            "debian",
+            null
+        ],
+        "g": [
+            "git",
+            null
+        ],
+        "h": [
+            "hypothesis",
+            null
+        ],
+        "i": [
+            "infra-talk",
+            null
+        ],
+        "l": [
+            "#linux",
+            null
+        ],
+        "m": [
+            "mutt",
+            null
+        ],
+        "n": [
+            "#networking",
+            null
+        ],
+        "p": [
+            "python",
+            null
+        ],
+        "s": [
+            "#security",
+            null
+        ],
+        "v": [
+            "vim",
+            null
+        ],
+        "z": [
+            "zsh",
+            null
+        ]
+    },
+    "oftc": {
+        "q": [
+            "suckless",
+            null
+        ]
+    }
+}
