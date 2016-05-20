@@ -21,6 +21,9 @@ case $USER in
     chris|lin) xrdb -merge ~/.config/x/xresources/"$USER"
 esac
 
+pgrep -u "$EUID" -x mpd || mpd &
+pgrep -u "$EUID" -x mpdscribble || mpdscribble &
+
 urxvtd -q -o &
 
 if [[ "$USER" == chris ]]; then
