@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+
+import sys
+import json
+
+
+def main():
+    try:
+        config_file = sys.argv[1]
+    except IndexError:  # Wrong number of args
+        print('Usage: {} <configfile>'.format(sys.argv[0]), file=sys.stderr)
+        sys.exit(1)
+
+    with open(config_file) as config_f:
+        config = json.load(config_f)
+
+    keyboard_lines = []
+    channel_lines = []
+    window_lines = [
+        '1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };'
+    ]
+
+    # Can't use enumerate() easily here because of nested loops
+    window_id = 50
+
+    # Config should look like network -> key -> (channel, pass or None)
+    for network, channel_config in sorted(config.items()):
+        for key, (channel, password) in sorted(channel_config.items()):
+            keyboard_lines.append(
+                '{{ key = "meta-{key}"; id = "change_window"; '
+                'data = "{key}:{network}/#{channel}"; }},'.format(
+                    key=key, network=network, channel=channel
+                )
+            )
+
+            opt_pass = ''
+            if password is not None:
+                opt_pass = 'password = "{}";'.format(password)
+
+            channel_line = (
+                '{{ name = "#{channel}"; chatnet = "{network}"; '
+                'autojoin = "yes"; {opt_pass} }},'.format(
+                    key=key, network=network, channel=channel,
+                    opt_pass=opt_pass,
+                )
+            )
+            channel_lines.append(channel_line)
+
+            window_lines.append(
+                '{window_id} = {{ name = "{key}:{network}/#{channel}"; '
+                'items = ( {{ type = "CHANNEL"; chat_type = "IRC"; '
+                'name = "#{channel}"; tag = "{network}"; }} ); }};'.format(
+                    window_id=window_id, key=key, network=network,
+                    channel=channel
+                )
+            )
+            window_id += 1
+
+    print('keyboard = (')
+    for line in keyboard_lines:
+        print('  ' + line)
+    print(');')
+
+    print('channels = (')
+    for line in channel_lines:
+        print('  ' + line)
+    print(');')
+
+    print('windows = {')
+    for line in window_lines:
+        print('  ' + line)
+    print('};')
+
+
+if __name__ == '__main__':
+    main()
