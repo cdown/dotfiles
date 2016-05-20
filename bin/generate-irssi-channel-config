@@ -6,6 +6,9 @@ import sys
 import json
 
 
+ILLEGAL_KEYS = ('u', '/')
+
+
 def main():
     try:
         config_file = sys.argv[1]
@@ -28,6 +31,9 @@ def main():
     # Config should look like network -> key -> (channel, pass or None)
     for network, channel_config in sorted(config.items()):
         for key, (channel, password) in sorted(channel_config.items()):
+            if key in ILLEGAL_KEYS:
+                raise ValueError("Illegal key: {}".format(key))
+
             keyboard_lines.append(
                 '{{ key = "meta-{key}"; id = "change_window"; '
                 'data = "{key}:{network}/#{channel}"; }},'.format(
