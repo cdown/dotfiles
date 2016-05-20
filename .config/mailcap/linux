@@ -3,4 +3,4 @@ application/msword; docx2txt.pl < %s; copiousoutput
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; docx2txt.pl < %s; copiousoutput
 application/vnd.oasis.opendocument.spreadsheet; localc %s
 image/*; sxiv -bf %s \; reset
-application/pdf; zathura %s
+application/pdf; mupdf %s
