@@ -356,8 +356,6 @@ abstracts = {
 formats = {
   "fe-common/core" = {
     daychange = "           %g-----%w-%W-%n Day changed to %%D %W-%w-%g-----%n";
-    topic = "";
-    topic_info = "";
     channel_created = "";
     channel_synced = "";
     url = "";
@@ -375,5 +373,5 @@ formats = {
     awl_display_key = "= $Q%K|$N%n $H$C$S ";
     awl_display_key_active = "= $Q%K|$N%n $H%U$C%n$S ";
   };
-  "fe-common/irc" = { topic = ""; no_topic = ""; topic_info = ""; url = ""; };
+  "fe-common/irc" = { no_topic = ""; url = ""; };
 };
