@@ -6,7 +6,13 @@ import sys
 import json
 
 
-ILLEGAL_KEYS = ('u', '/')
+ILLEGAL_KEYS = (
+    # Terminal search in urxvt
+    'u', '/',
+
+    # Stops arrow keys from working
+    'O'
+)
 
 
 def main():
