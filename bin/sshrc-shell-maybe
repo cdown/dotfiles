@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+if [[ $SSHHOME ]]; then
+    exec ~/.sshrc
+else
+    exec "$SHELL"
+fi
