@@ -23,6 +23,7 @@
 /.irssi/personal/config
 /.irssi/personal/keepnick
 /.irssi/personal/sasl.auth
+/.mpdscribble/mpdscribble.conf
 /.pypirc
 /.s3cfg
 /bin/pushbullet-push
