@@ -10,9 +10,18 @@ case $1 in
         xrandr --output eDP1 --off
         xrandr --output DP1 --primary --auto
     ;;
+    work-both)
+        xrandr --output eDP1 --auto
+        xrandr --output DP1 --right-of eDP1 --auto --primary
+    ;;
     unwork)
         xrandr --output DP1 --off
+        xrandr --output HDMI2 --off
         xrandr --output eDP1 --primary --auto
+    ;;
+    meeting)
+        xrandr --output eDP1 --primary --auto
+        xrandr --output HDMI2 --auto
     ;;
     *)
         printf 'Unknown profile: %s\n' "$1"
