@@ -3,7 +3,7 @@
 export EDITOR=vim
 export LC_COLLATE=C
 export PAGER=less
-export PATH="/opt/chefdk/bin:$config_home/local/bin:$config_home/bin:$config_home/.rbenv/bin:$config_home/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/local/ittools/arcanist/bin:/usr/texbin:/opt/local/bin"
+export PATH="/usr/share/bcc/tools:/opt/chefdk/bin:$config_home/local/bin:$config_home/bin:$config_home/.rbenv/bin:$config_home/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/local/ittools/arcanist/bin:/usr/texbin:/opt/local/bin"
 export VISUAL=vim
 export PYTHONDONTWRITEBYTECODE=1
 
