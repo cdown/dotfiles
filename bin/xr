@@ -21,7 +21,7 @@ case $1 in
     ;;
     meeting)
         xrandr --output eDP1 --primary --auto
-        xrandr --output HDMI2 --auto
+        xrandr --output HDMI2 --above eDP1 --auto
     ;;
     *)
         printf 'Unknown profile: %s\n' "$1"
