@@ -14,4 +14,5 @@ case $key_combo in
     C-d) rm -- "${files[@]}" ;;
     C-l) rotate 270 ;;
     C-r) rotate 90 ;;
+    C-s) printf '%s\n' "${files[@]}" > /tmp/sxivfiles ;;
 esac
