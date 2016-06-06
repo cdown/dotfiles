@@ -57,7 +57,10 @@ fcitx &
 # finished setup to run xmodmap.
 #
 # https://code.google.com/p/ibus/issues/detail?id=1469
-(sleep 2; xmodmap ~/.xmodmap) &
+#
+# There's also a bug where this does not persist after USB hotplug, so we run
+# in a loop. :-(
+(while sleep 10; do xmodmap ~/.xmodmap; done) &
 
 xbanish -i Mod4 &
 clipmenud &
@@ -75,10 +78,11 @@ for scontrol in Master PCM; do
     amixer -q sset "$scontrol" 100%
 done
 
-if xinput list | grep -q Evoluent; then
-    # Middle button -> Right click
-    # Middle mouse click -> Middle button (paste)
-    xinput set-button-map "Kingsis Peripherals Evoluent VerticalMouse 4" 1 3 3 4 5 6 7 8 2 10
-fi
+# Ideally this should be done in xorg.conf, but for now I want to keep this as
+# part of the dotfiles repo. Less hacky ways to be explored later.
+#
+# Middle button -> Right click
+# Middle mouse click -> Middle button (paste)
+(while sleep 10; do xinput set-button-map "Kingsis Peripherals Evoluent VerticalMouse 4" 1 3 3 4 5 6 7 8 2 10; done) &
 
 exec dbus-launch --exit-with-session dwm > "/tmp/dwm-$USER.log" 2>&1
