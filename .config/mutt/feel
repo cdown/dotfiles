@@ -1,6 +1,6 @@
 # vim: ft=muttrc
 
-set mailcap_path = `[ "$(uname -s)" == Linux ] && echo ~/.config/mailcap/linux || echo ~/.config/mailcap/mac`
+set mailcap_path = ~/.config/mailcap/linux
 set strict_threads
 set sleep_time = 0
 set timeout = 3

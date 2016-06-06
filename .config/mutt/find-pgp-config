@@ -2,8 +2,7 @@
 
 for file in \
     /etc/Muttrc.gpg.dist \
-    /etc/Muttrc.d/gpg.rc \
-    ~/.config/mutt/mac-pgp
+    /etc/Muttrc.d/gpg.rc
 do
     if [ -e "$file" ]; then
         echo "$file"
