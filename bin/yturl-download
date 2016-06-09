@@ -1,5 +1,5 @@
 #!/bin/bash
 
-temp="$(mktemp -u)"
-curl -L -o "$temp" "$(yturl "$@")"
-printf '%s\n' "$temp"
+: "${FILE:="$(mktemp -u)"}"
+curl -L -o "$FILE" "$(yturl "$@")"
+printf '%s\n' "$FILE"
