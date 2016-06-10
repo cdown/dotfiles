@@ -192,6 +192,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Stock replies
+nnoremap <silent> <Leader>R gg:normal }<CR>jdG:r ~/.config/mutt/replies/recruiter<CR><Leader>f,i
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
