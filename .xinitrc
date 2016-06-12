@@ -63,7 +63,6 @@ fcitx &
 (while sleep 10; do xmodmap ~/.xmodmap; done) &
 
 xbanish -i Mod4 &
-clipmenud &
 
 if type synclient >/dev/null 2>&1; then
     # 2 finger click = right click
