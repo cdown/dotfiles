@@ -67,11 +67,4 @@ for scontrol in Master PCM; do
     amixer -q sset "$scontrol" 100%
 done
 
-# Ideally this should be done in xorg.conf, but for now I want to keep this as
-# part of the dotfiles repo. Less hacky ways to be explored later.
-#
-# Middle button -> Right click
-# Middle mouse click -> Middle button (paste)
-(while sleep 10; do xinput set-button-map "Kingsis Peripherals Evoluent VerticalMouse 4" 1 3 3 4 5 6 7 8 2 10; done) &
-
 exec dbus-launch --exit-with-session dwm > "/tmp/dwm-$USER.log" 2>&1
