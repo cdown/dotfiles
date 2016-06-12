@@ -52,16 +52,6 @@ systemctl --user start mbsync.service
 
 fcitx &
 
-# ibus overrides xmodmap after it's run. Since it might take some time to
-# start, just launching after it is not enough, we have to wait until it has
-# finished setup to run xmodmap.
-#
-# https://code.google.com/p/ibus/issues/detail?id=1469
-#
-# There's also a bug where this does not persist after USB hotplug, so we run
-# in a loop. :-(
-(while sleep 10; do xmodmap ~/.xmodmap; done) &
-
 xbanish -i Mod4 &
 
 if type synclient >/dev/null 2>&1; then
