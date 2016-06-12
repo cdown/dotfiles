@@ -54,13 +54,6 @@ fcitx &
 
 xbanish -i Mod4 &
 
-if type synclient >/dev/null 2>&1; then
-    # 2 finger click = right click
-    synclient \
-        TapButton2=3 VertScrollDelta=350 HorizScrollDelta=350 \
-        AccelFactor=0 MinSpeed=1.4 HorizTwoFingerScroll=0 PalmDetect=1
-fi
-
 # Interim solution until this gets set up with systemd
 for scontrol in Master PCM; do
     amixer -q sset "$scontrol" unmute
