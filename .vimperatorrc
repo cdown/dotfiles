@@ -10,6 +10,7 @@ set complete = S
 set browser.urlbar.doubleClickSelectsAll = false
 set browser.tabs.warnOnClose = false
 set browser.tabs.warnOnCloseOtherTabs = false
+set hidenavbar.hideonstart = 1
 
 bmark https://www.google.co.uk/#q=%s -keyword=g
 
