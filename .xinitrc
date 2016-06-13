@@ -44,7 +44,7 @@ if [[ "$USER" == chris ]]; then
             fi
         done
 
-        google-chrome-stable --high-dpi-support=1 --force-device-scale-factor=1 &
+        firefox &
     } &
 fi
 
