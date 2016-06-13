@@ -1,5 +1,8 @@
 inoremap <C-a> <C-Home><C-S-End>
 
+nnoremap ; :
+nnoremap : ;
+
 qmark f https://facebook.com
 qmark g https://gmail.com
 qmark u https://unix.stackexchange.com
