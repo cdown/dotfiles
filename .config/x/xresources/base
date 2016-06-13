@@ -9,7 +9,7 @@ URxvt.iso14755_52: false
 
 URxvt.perl-ext-common:      default,clipboard,url-select
 URxvt.clipboard.autocopy:   true
-URxvt.url-select.launcher:  google-chrome-stable
+URxvt.url-select.launcher:  firefox
 URxvt.url-select.underline: true
 
 URxvt.searchable-scrollback: M-slash
