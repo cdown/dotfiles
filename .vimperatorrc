@@ -4,4 +4,7 @@ qmark f https://facebook.com
 qmark g https://gmail.com
 qmark u https://unix.stackexchange.com
 
+" Enable search engine suggestions
+set complete = S
+
 source! ~/.vimperatorrc.fb
