@@ -1,0 +1,1 @@
+inoremap <C-a> <C-Home><C-S-End>
