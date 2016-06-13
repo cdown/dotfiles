@@ -7,4 +7,6 @@ qmark u https://unix.stackexchange.com
 " Enable search engine suggestions
 set complete = S
 
+bmark https://www.google.co.uk/#q=%s -keyword=g
+
 source! ~/.vimperatorrc.fb
