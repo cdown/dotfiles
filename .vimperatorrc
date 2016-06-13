@@ -13,6 +13,7 @@ set complete = S
 set browser.urlbar.doubleClickSelectsAll = false
 set browser.tabs.warnOnClose = false
 set browser.tabs.warnOnCloseOtherTabs = false
+set hidenavbar.autohide = true
 set hidenavbar.hideonstart = 1
 set signon.rememberSignons = false
 
