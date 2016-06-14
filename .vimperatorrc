@@ -6,6 +6,7 @@ nnoremap : ;
 qmark f https://facebook.com
 qmark g https://gmail.com
 qmark u https://unix.stackexchange.com
+qmark t https://trello.com/b/GviPALDR/-
 
 " Enable search engine suggestions
 set complete=Sl
