@@ -7,9 +7,16 @@ qmark f https://facebook.com
 qmark g https://gmail.com
 qmark u https://unix.stackexchange.com
 qmark t https://trello.com/b/GviPALDR/-
+qmark h https://hangouts.google.com/
 
 " Enable search engine suggestions
 set complete=Sl
+
+" Do not focus input box on load
+set focuscontent=true
+
+set followhints=1
+set yankencodedurl=true
 
 set! browser.urlbar.doubleClickSelectsAll=false
 set! browser.tabs.warnOnClose=false
