@@ -1,0 +1,6 @@
+#!/bin/bash
+
+PATH="$(get-path-without-pyenv)"
+export PATH
+
+sudo reflector --verbose -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
