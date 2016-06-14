@@ -25,6 +25,7 @@ set followhints=1
 set yankencodedurl=true
 
 set! browser.rights.3.shown=true
+set! browser.startup.page=3
 set! browser.tabs.warnOnClose=false
 set! browser.tabs.warnOnCloseOtherTabs=false
 set! browser.urlbar.doubleClickSelectsAll=false
