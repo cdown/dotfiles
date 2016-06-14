@@ -2,7 +2,7 @@ inoremap <C-a> <Ins><C-a><Ins>
 
 nnoremap : ;
 
-nnoremap u :undo
+nnoremap u :undo<CR>
 
 qmark f https://facebook.com
 qmark g https://gmail.com
