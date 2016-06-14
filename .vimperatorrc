@@ -3,6 +3,7 @@ inoremap <C-a> <Ins><C-a><Ins>
 nnoremap : ;
 
 nnoremap u :undo<CR>
+nnoremap x :tabonly<CR>
 
 qmark f https://facebook.com
 qmark g https://gmail.com
