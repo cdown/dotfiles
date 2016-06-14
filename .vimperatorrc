@@ -1,6 +1,5 @@
 inoremap <C-a> <C-Home><C-S-End>
 
-nnoremap ; :
 nnoremap : ;
 
 qmark f https://facebook.com
@@ -8,6 +7,9 @@ qmark g https://gmail.com
 qmark u https://unix.stackexchange.com
 qmark t https://trello.com/b/GviPALDR/-
 qmark h https://hangouts.google.com/
+qmark w https://forecast.io
+qmark d https://drive.google.com
+qmark q https://quip.com
 
 " Enable search engine suggestions
 set complete=Sl
@@ -33,7 +35,7 @@ bmark https://www.google.co.uk/#q=%s -keyword=g
 
 "javascript to hide statusbar
 noremap <silent> <F8> :js toggle_bottombar()<CR>
-noremap : :js toggle_bottombar('on')<CR>:
+noremap ; :js toggle_bottombar('on')<CR>:
 noremap o :js toggle_bottombar('on')<CR>o
 noremap O :js toggle_bottombar('on')<CR>O
 noremap t :js toggle_bottombar('on')<CR>t
