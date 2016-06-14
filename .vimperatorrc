@@ -18,9 +18,13 @@ set focuscontent=true
 set followhints=1
 set yankencodedurl=true
 
-set! browser.urlbar.doubleClickSelectsAll=false
 set! browser.tabs.warnOnClose=false
 set! browser.tabs.warnOnCloseOtherTabs=false
+set! browser.urlbar.doubleClickSelectsAll=false
+set! extensions.hidtb.addtab_reopen=false
+set! extensions.hidtb.auto_hide=true
+set! extensions.hidtb.hide_delay=1000
+set! extensions.hidtb.toggle_key=112
 set! hidenavbar.autohide=true
 set! hidenavbar.hideonstart=1
 set! signon.rememberSignons=false
