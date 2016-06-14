@@ -1,4 +1,4 @@
-inoremap <C-a> <C-Home><C-S-End>
+inoremap <C-a> <Ins><C-a><Ins>
 
 nnoremap : ;
 
@@ -30,6 +30,9 @@ set! extensions.hidtb.toggle_key=112
 set! hidenavbar.autohide=true
 set! hidenavbar.hideonstart=1
 set! signon.rememberSignons=false
+
+autocmd LocationChange .* js modes.passAllKeys = false
+autocmd LocationChange .*facebook\\.com js modes.passAllKeys = true
 
 bmark https://www.google.co.uk/#q=%s -keyword=g
 
