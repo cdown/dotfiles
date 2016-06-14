@@ -20,6 +20,7 @@ set focuscontent=true
 set followhints=1
 set yankencodedurl=true
 
+set! browser.rights.3.shown=true
 set! browser.tabs.warnOnClose=false
 set! browser.tabs.warnOnCloseOtherTabs=false
 set! browser.urlbar.doubleClickSelectsAll=false
@@ -29,6 +30,7 @@ set! extensions.hidtb.hide_delay=1000
 set! extensions.hidtb.toggle_key=112
 set! hidenavbar.autohide=true
 set! hidenavbar.hideonstart=1
+set! reader.parse-on-load.enabled=false
 set! signon.rememberSignons=false
 
 autocmd LocationChange .* js modes.passAllKeys = false
