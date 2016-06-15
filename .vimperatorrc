@@ -24,6 +24,7 @@ set focuscontent=true
 set followhints=1
 set yankencodedurl=true
 
+set! browser.link.open_newwindow=1
 set! browser.rights.3.shown=true
 set! browser.startup.page=3
 set! browser.tabs.warnOnClose=false
