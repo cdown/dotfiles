@@ -38,14 +38,13 @@ set! hidenavbar.hideonstart=1
 set! reader.parse-on-load.enabled=false
 set! signon.rememberSignons=false
 
-ignorekeys add -except=<Esc>,<C-o>,b,f,g,o,t,w,;,:,/ https?://.*facebook.com
+ignorekeys add -except=<Esc>,<C-o>,x,b,f,g,o,t,w,;,:,/ https?://.*facebook.com
 
 bmark https://www.google.co.uk/#q=%s -keyword=g
 bmark http://dj.iciba.com/%s-1.html -keyword=dj
 bmark https://www.mdbg.net/chindict/chindict.php?page=worddict&wdrst=0&wdqb=%s -keyword=zw
 
 "javascript to hide statusbar
-noremap <silent> <F8> :js toggle_bottombar()<CR>
 noremap ; :js toggle_bottombar('on')<CR>:
 noremap o :js toggle_bottombar('on')<CR>o
 noremap O :js toggle_bottombar('on')<CR>O
