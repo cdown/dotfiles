@@ -36,10 +36,11 @@ set! extensions.hidtb.hide_delay=1000
 set! extensions.hidtb.toggle_key=112
 set! hidenavbar.autohide=true
 set! hidenavbar.hideonstart=1
+set! network.dnsCacheExpiration=0
 set! reader.parse-on-load.enabled=false
 set! signon.rememberSignons=false
 
-ignorekeys add -except=<Esc>,<C-o>,y,x,b,f,g,o,t,w,;,:,/ https?://.*facebook.com
+ignorekeys add -except=<Esc>,<C-o>,C,y,x,b,f,g,o,t,w,;,:,/ https?://(.*facebook|hangouts\.google)\.com
 
 bmark https://www.google.co.uk/#q=%s -keyword=g
 bmark http://dj.iciba.com/%s-1.html -keyword=dj
