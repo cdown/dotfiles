@@ -1,4 +1,4 @@
-exe "set runtimepath=" . $SSHHOME . ".sshrc.d/.vim," . $VIMRUNTIME
+exe "set runtimepath=~/.vim," . $SSHHOME . ".sshrc.d/.vim," . $VIMRUNTIME
 
 runtime! bundle/pathogen/autoload/pathogen.vim
 exe "runtime! " . $SSHHOME . ".sshrc.d/.vim/bundle/pathogen/autoload/pathogen.vim"
