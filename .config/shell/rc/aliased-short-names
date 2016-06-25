@@ -12,6 +12,7 @@ alias u='udf && exec zsh -l'
 alias m=moshrc
 alias s=sshrc
 alias b='sudo intel-brightness'
+alias x='s -l root'
 
 # virtualenvwrapper
 alias mv2='mkvirtualenv -p python2'
