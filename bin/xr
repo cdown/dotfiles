@@ -5,23 +5,42 @@ if ! [[ $1 ]]; then
     exit 1
 fi
 
+main_display=eDP1
+external_displays=()
+
+while read -r display; do
+    external_displays+=( "$display" )
+done < <(
+    xrandr | awk -v main=eDP1 '$1 != main && $2 == "connected" { print $1 }'
+)
+
+if (( ${#external_displays[@]} == 0 )); then
+    printf '%s\n' 'WARNING: No external displays detected' >&2
+fi
+
 case $1 in
-    work)
-        xrandr --output eDP1 --off
-        xrandr --output DP1 --primary --auto
+    external-only)
+        xrandr --output "$main_display" --off
+        xrandr --output "${external_displays[0]}" --primary --auto
     ;;
-    work-both)
-        xrandr --output eDP1 --auto
-        xrandr --output DP1 --right-of eDP1 --auto --primary
+    external-*)
+        direction="${1#external-}"
+        [[ $direction == right || $direction == left ]] && direction+=-of
+
+        xrandr --output "$main_display" --auto --primary
+        xrandr --output "${external_displays[0]}" --"$direction" "$main_display" --auto
     ;;
-    unwork)
-        xrandr --output DP1 --off
-        xrandr --output HDMI2 --off
-        xrandr --output eDP1 --primary --auto
+    internal)
+        for display in "${external_displays[@]}"; do
+            xrandr --output "$display" --off
+        done
+        xrandr --output "$main_display" --primary --auto
     ;;
-    meeting)
-        xrandr --output eDP1 --primary --auto
-        xrandr --output HDMI2 --above eDP1 --auto
+    mirror)
+        for display in "${external_displays[@]}"; do
+            xrandr --output "$display" --auto
+        done
+        xrandr --output "$main_display" --primary --auto
     ;;
     *)
         printf 'Unknown profile: %s\n' "$1"
