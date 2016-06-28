@@ -11,7 +11,8 @@ external_displays=()
 while read -r display; do
     external_displays+=( "$display" )
 done < <(
-    xrandr | awk -v main=eDP1 '$1 != main && $2 == "connected" { print $1 }'
+    xrandr | awk -v main="$main_display" \
+        '$1 != main && $2 == "connected" { print $1 }'
 )
 
 if (( ${#external_displays[@]} == 0 )); then
