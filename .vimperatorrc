@@ -5,6 +5,7 @@ nnoremap : ;
 nnoremap u :undo<CR>
 nnoremap x :tabonly<CR>
 nnoremap C :source ~/.vimperatorrc<CR>
+nnoremap Q :history<CR>;o
 
 qmark f https://facebook.com
 qmark g https://gmail.com
@@ -40,7 +41,7 @@ set! network.dnsCacheExpiration=0
 set! reader.parse-on-load.enabled=false
 set! signon.rememberSignons=false
 
-ignorekeys add -except=<Esc>,<C-o>,C,y,x,b,u,r,d,f,g,o,O,t,w,;,:,/ https?://(.*facebook|hangouts\.google)\.com
+ignorekeys add -except=<Esc>,<C-o>,C,y,x,Q,b,u,r,d,f,g,o,O,t,w,;,:,/ https?://(.*facebook|hangouts\.google)\.com
 
 bmark https://www.google.co.uk/#q=%s -keyword=g
 bmark http://dj.iciba.com/%s-1.html -keyword=dj
@@ -54,8 +55,8 @@ noremap t :js toggle_bottombar('on')<CR>t
 noremap T :js toggle_bottombar('on')<CR>T
 noremap / :js toggle_bottombar('on')<CR>/
 noremap w :js toggle_bottombar('on')<CR>w
+noremap Q :js toggle_bottombar('on')<CR>Q
 noremap b :js toggle_bottombar('on')<CR>b
-cnoremap <CR> <CR>:js toggle_bottombar('off')<CR>
 cnoremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
 noremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
 
