@@ -62,7 +62,6 @@ set! content.notify.interval=750000
 set! content.notify.ontimer=true
 set! content.switch.threshold=750000
 set! general.smoothScroll=false
-set! network.dns.disableIPv6=true
 set! network.http.max-connections-per-server=16
 set! network.http.max-connections=48
 set! network.http.max-persistent-connections-per-proxy=16
