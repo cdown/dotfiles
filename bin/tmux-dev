@@ -9,7 +9,7 @@ cd "$repo"
 
 # We actually want to expand within tmux here
 # shellcheck disable=SC2016
-tmux new-session -d -s "$session_name" 'while "$SHELL"; do :; done'
+tmux new-session -d -s "$session_name" 'while sshrc-shell-maybe; do :; done'
 tmux rename-window -t "$session_name:1" dev
 tmux new-window -t "$session_name" -n update sleep-update
 tmux select-window -t "$session_name:1"
