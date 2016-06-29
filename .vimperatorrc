@@ -44,7 +44,7 @@ set! signon.rememberSignons=false
 " Not sure how, but even without the setting here ignorekeys seems to be sticky
 between sessions, which causes state problems...
 ignorekeys clear
-ignorekeys add -except=<Esc>,<C-o>,C,y,x,H,b,u,r,d,f,g,o,O,t,w,;,:,/ .*
+ignorekeys add -except=<Esc>,<C-o>,C,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,/ .*
 
 sanitize cache downloads formdata history -timespan 3
 
@@ -62,6 +62,7 @@ set! content.notify.interval=750000
 set! content.notify.ontimer=true
 set! content.switch.threshold=750000
 set! general.smoothScroll=false
+set! network.dns.disableIPv6=false
 set! network.http.max-connections-per-server=16
 set! network.http.max-connections=48
 set! network.http.max-persistent-connections-per-proxy=16
