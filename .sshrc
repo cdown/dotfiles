@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+# Use permanent SSHHOME, since we can't repropagate easily in tmux/etc
+perm_rc_dir=/tmp/cdown-sshrc
+rsync -aq "$SSHHOME"/ "$perm_rc_dir"
+export SSHHOME="$perm_rc_dir"
+
 if command -v zsh >/dev/null 2>&1; then
     ZDOTDIR="$SSHHOME/.sshrc.d" exec zsh -l
 else
