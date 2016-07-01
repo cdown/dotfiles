@@ -15,6 +15,11 @@ for config in ~/.config/mbsync/*; do
 
     mkdir -p -- "$maildir_path"
 
+    # Sometimes mbsyncstate gets corrupted, it's safe to clear them out once
+    # it's stopped. See
+    # https://sourceforge.net/p/isync/mailman/message/34065662/
+    find "$maildir_path" -name .mbsyncstate.journal -delete
+
     for _ in {1..2}; do  # Run twice to catch up since first run is slow
         mbsync -c "$config" -a
         NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" notmuch new
