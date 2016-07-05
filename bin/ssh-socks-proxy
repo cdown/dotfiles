@@ -1,3 +1,0 @@
-#!/bin/bash
-
-ssh -C2qTnN -D 1337 "$@"  # shellcheck: disable=SC2029

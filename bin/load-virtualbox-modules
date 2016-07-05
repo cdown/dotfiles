@@ -1,3 +1,0 @@
-#!/bin/bash
-
-sudo modprobe -a vboxdrv vboxnetadp vboxnetflt

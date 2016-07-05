@@ -1,5 +1,0 @@
-#!/bin/bash
-
-sudo systemctl stop ntpd
-sudo ntpdate 0.pool.ntp.org
-sudo systemctl start ntpd
