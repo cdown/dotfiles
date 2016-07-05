@@ -9,10 +9,18 @@ alias zhsub=fix-chinese-sub-encoding
 alias v=virtualenv-auto
 alias p=ipython
 alias u='udf && exec zsh -l'
-alias m=moshrc
 alias s=sshrc
 alias b='sudo intel-brightness'
 alias x='s -l root'
+
+m() {
+    if [ "$1" = dev ]; then
+        # We already have configs here
+        mosh "$@"
+    else
+        moshrc "$@"
+    fi
+}
 
 # virtualenvwrapper
 alias mv2='mkvirtualenv -p python2'
