@@ -1,0 +1,33 @@
+#!/bin/bash -e
+
+sort -n | awk '
+BEGIN {
+  i=0
+  t=0
+  print "count avg min p1 p5 p25 p50 p90 p95 p99 p99.9 max"
+}
+NR == 1 {
+  min = $1
+  max = $1
+}
+NR > 1 && $1 < min { min = $1 }
+NR > 1 && $1 > max { max = $1 }
+{
+  t += $1
+  s[i] = $1
+  i++
+}
+END {
+  print NR,
+  t/NR,
+  min,
+  s[int(NR * 0.01 - 0.5)],
+  s[int(NR * 0.05 - 0.5)],
+  s[int(NR * 0.25 - 0.5)],
+  s[int(NR * 0.50 - 0.5)],
+  s[int(NR * 0.90 - 0.5)],
+  s[int(NR * 0.95 - 0.5)],
+  s[int(NR * 0.99 - 0.5)],
+  s[int(NR * 0.999 - 0.5)],
+  max
+}' | column -t
