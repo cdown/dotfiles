@@ -14,7 +14,7 @@ syntax on
 
 
 let g:solarized_termtrans = 1
-colorscheme solarized
+silent! colorscheme solarized
 set background=dark
 
 
