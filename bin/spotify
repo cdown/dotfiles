@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This fixes a segfault, see
+# https://community.spotify.com/t5/Help-Desktop-Linux-Windows-Web/Segmentation-fault-on-Arch-Linux/td-p/1315725
+exec /usr/bin/spotify --force-device-scale-factor=1.0000001 "$@"
