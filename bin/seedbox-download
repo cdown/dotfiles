@@ -1,5 +1,0 @@
-#!/bin/bash
-
-while ! rsync -avP --timeout 500 "${@:3}" dian.chrisdown.name:/srv/rtorrent/data/"$1" "${2-.}"; do
-    sleep 5
-done
