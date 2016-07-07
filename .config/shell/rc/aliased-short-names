@@ -1,8 +1,8 @@
 #!/bin/sh
 
 alias coa=create-or-attach-tmux-session
-alias sbdl=seedbox-download
-alias sbls=seedbox-ls
+alias sbdl=dian-download
+alias sbls=dian-ls
 alias so=clean-env
 alias udf=update-dotfiles
 alias zhsub=fix-chinese-sub-encoding
