@@ -45,7 +45,8 @@ set! signon.rememberSignons=false
 " Not sure how, but even without the setting here ignorekeys seems to be sticky
 between sessions, which causes state problems...
 ignorekeys clear
-ignorekeys add -except=<Esc>,<C-o>,C,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,/ .*
+ignorekeys add -except=o,O,B,b,C .*app.strigo.io.*
+ignorekeys add -except=<Esc>,<C-o>,C,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,B,/ .*
 
 sanitize cache downloads formdata history -timespan 3
 
@@ -94,6 +95,7 @@ noremap b :js toggle_bottombar('on')<CR>b
 cnoremap <CR> <CR>:js toggle_bottombar('off')<CR>
 cnoremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
 noremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
+noremap B <Esc>:js toggle_bottombar('on')<CR>
 
 :js << EOF
 function toggle_bottombar(p) {
