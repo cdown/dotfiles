@@ -27,6 +27,8 @@ set yankencodedurl=true
 
 set! accessibility.accesskeycausesactivation=false
 set! browser.link.open_newwindow=1
+set! browser.download.useDownloadDir=true
+set! browser.download.folderList=1
 set! browser.rights.3.shown=true
 set! browser.startup.page=1
 set! browser.tabs.warnOnClose=false
