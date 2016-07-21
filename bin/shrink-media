@@ -14,7 +14,7 @@ for dir; do
     ( cd "$dir" && find . -type d -print0 ) | xargs -0 mkdir -p
 
     # TODO: remove syntax injection in last param
-    find "$dir" -name '*.jpg' -print0 |
+    (( NO_PHOTOS )) || find "$dir" -name '*.jpg' -print0 |
         parallel --bar -0 nice -n 19 \
             convert -interlace Plane \
             -resize "$MAX_DIMENSION"x"$MAX_DIMENSION" \
@@ -28,7 +28,7 @@ for dir; do
     done
 
     # x264 uses all processors already so don't need parallel
-    for file in "$dir"/**/*.mov; do
+    (( NO_VIDEOS )) || for file in "$dir"/**/*.mov; do
         mp4_filename=${file%.*}.mp4
         mp4_filename=${mp4_filename##"$dir"/}
 
