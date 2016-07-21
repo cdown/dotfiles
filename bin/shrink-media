@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+export LC_ALL=C
+
 shopt -s nullglob globstar
 set -o pipefail
 
@@ -14,9 +16,16 @@ for dir; do
     # TODO: remove syntax injection in last param
     find "$dir" -name '*.jpg' -print0 |
         parallel --bar -0 nice -n 19 \
-            convert -strip -interlace Plane \
+            convert -interlace Plane \
             -resize "$MAX_DIMENSION"x"$MAX_DIMENSION" \
             -quality "$PHOTO_QUALITY" -filter Lanczos '{}' "{= s:^${dir}/::; =}"
+
+    # Why do Chinese gallery apps only sort by mtime, sigh... :-(
+    i=0
+    for file in **/*.jpg; do
+        time="@$(( i++ ))"
+        touch -d "$time" -- "$file"
+    done
 
     # x264 uses all processors already so don't need parallel
     for file in "$dir"/**/*.mov; do
