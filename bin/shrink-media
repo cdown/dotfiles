@@ -32,6 +32,11 @@ for dir; do
         mp4_filename=${file%.*}.mp4
         mp4_filename=${mp4_filename##"$dir"/}
 
+        if (( ! NO_SKIP )) && [[ -f $mp4_filename ]]; then
+            printf '%s exists, skipping\n' "$mp4_filename" >&2
+            continue
+        fi
+
         # The trunc stuff is needed because x264 doesn't like odd numbers in
         # resolutions. The baseline x264 profile is used to avoid compatibility
         # issues with whatever media player Lin's parents use.
