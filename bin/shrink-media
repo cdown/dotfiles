@@ -9,6 +9,7 @@ set -o pipefail
 : "${MAX_DIMENSION:=1000}"
 : "${VIDEO_CRF:=32}"
 : "${PHOTO_QUALITY:=75}"
+: "${X264_PROFILE:=fast}"
 
 for dir; do
     ( cd "$dir" && find . -type d -print0 ) | xargs -0 mkdir -p
@@ -42,7 +43,8 @@ for dir; do
         # issues with whatever media player Lin's parents use.
         nice -n 19 \
             ffmpeg -i "$file" -c:v libx264 -profile:v baseline \
-                -vf "scale=$MAX_DIMENSION:trunc(ow/a/2)*2" -preset veryslow \
+                -vf "scale=$MAX_DIMENSION:trunc(ow/a/2)*2" \
+                -preset "${X264_PROFILE}" \
                 -crf "$VIDEO_CRF" -acodec aac -b:a 128k "$mp4_filename"
     done
 done
