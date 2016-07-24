@@ -2,6 +2,7 @@ inoremap <C-a> <Ins><C-a><Ins>
 
 nnoremap : ;
 
+nnoremap W :tabdetach<CR>
 nnoremap u :undo<CR>
 nnoremap x :tabonly<CR>
 nnoremap C :source ~/.vimperatorrc<CR>
@@ -48,7 +49,7 @@ set! signon.rememberSignons=false
 between sessions, which causes state problems...
 ignorekeys clear
 ignorekeys add -except=o,O,B,b,C .*app.strigo.io.*
-ignorekeys add -except=<Esc>,<C-o>,C,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,B,/ .*
+ignorekeys add -except=<Esc>,<C-o>,C,W,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,B,/ .*
 
 sanitize cache downloads formdata history -timespan 3
 
