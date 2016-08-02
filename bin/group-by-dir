@@ -1,0 +1,24 @@
+#!/bin/bash
+
+unset old_dirname
+temp=$(mktemp)
+
+trap 'rm -f "$temp"' EXIT
+
+find . -name '*.pdf' -print0 | sort -z > "$temp"
+
+exec {temp_fd}< "$temp"
+
+while read -u "$temp_fd" -r -d '' file; do
+    new_dirname="$(dirname "$file")"
+    echo "$old_dirname -> $new_dirname"
+    if [[ $old_dirname && $old_dirname != "$new_dirname" ]]; then
+        echo "Enter to continue"
+        read -r whycont
+        echo "$whycont"
+    fi
+    old_dirname="$new_dirname"
+    "$@" "$file" &
+done
+
+exec {temp_fd}<&-
