@@ -1,4 +1,0 @@
-#!/bin/bash -e
-
-card_name=$(zenity --entry --text 'Trello card to create')
-t card create -b 548a9cb41d2e93b1c99da6af -l 553d5e1c611bc8a1122a507b -n "$card_name"

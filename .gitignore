@@ -27,3 +27,4 @@
 /.pypirc
 /.s3cfg
 /bin/pushbullet-push
+/bin/trello-popup
