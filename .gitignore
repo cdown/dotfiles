@@ -20,6 +20,7 @@
 /.duply/github/conf
 /.duply/google-drive/conf
 /.duply/mail/conf
+/.duply/trello/conf
 /.irssi/personal/certs/oftc-cdown.pem
 /.irssi/personal/config
 /.irssi/personal/keepnick
