@@ -14,6 +14,7 @@
 /.config/msmtp/chris@chrisdown.name
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
+/.config/shell/rc/trello
 /.duply/bitbucket/_pre
 /.duply/bitbucket/conf
 /.duply/github/conf
@@ -22,7 +23,6 @@
 /.irssi/personal/certs/oftc-cdown.pem
 /.irssi/personal/config
 /.irssi/personal/keepnick
-/.irssi/personal/sasl.auth
 /.mpdscribble/mpdscribble.conf
 /.pypirc
 /.s3cfg
