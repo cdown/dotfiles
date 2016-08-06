@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+tzs=(
+    Current
+    America/Chicago
+    America/Los_Angeles
+    America/New_York
+    Asia/Singapore
+    Europe/London
+)
+
+for tz in "${tzs[@]}"; do
+    printf '%s: ' "$tz"
+
+    if [[ $tz == Current ]]; then
+        date
+    else
+        TZ="$tz" date
+    fi
+done
