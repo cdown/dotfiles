@@ -6,6 +6,7 @@ tzs=(
     America/Los_Angeles
     America/New_York
     Asia/Singapore
+    Asia/Tel_Aviv
     Europe/London
 )
 
