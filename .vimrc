@@ -12,6 +12,9 @@ let g:neocomplete#enable_at_startup = 1
 filetype plugin on
 syntax on
 
+let g:syntastic_mode_map = {
+  \ "mode": "active",
+  \ "passive_filetypes": ["cpp"] }
 
 let g:solarized_termtrans = 1
 silent! colorscheme solarized
