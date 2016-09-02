@@ -59,7 +59,7 @@ for file in "$location"/**/*; do
         if [[ -L ~/"$bare" ]]; then
             rm ~/"$bare"
         fi
-        mkdir -m700 -p ~/"$bare"
+        mkdir -m755 -p ~/"$bare"
     else
         link=$HOME/$bare
         real_link=$(readlink -f "$link")
