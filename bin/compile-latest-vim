@@ -1,0 +1,27 @@
+#!/bin/bash -e
+
+sudo yum install ncurses-devel
+
+code_dir=$HOME/local/code
+vim_dir=$code_dir/vim
+prefix=$(mktemp -d)
+
+mkdir -p "$code_dir"
+cd "$code_dir"
+
+if [[ -d $vim_dir ]]; then
+    cd "$vim_dir"
+    git "$@" fetch -p
+    git "$@" reset --hard '@{u}'
+else
+    git "$@" clone https://github.com/vim/vim.git
+fi
+
+cd "$vim_dir"
+
+./configure --prefix="$prefix" --with-features=huge --enable-cscope --enable-multibyte --enable-gui=no
+
+make -j
+make install
+
+sudo ln -sf "$prefix/bin/vim" /usr/local/bin/vim
