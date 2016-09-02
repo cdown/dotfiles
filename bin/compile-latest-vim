@@ -24,4 +24,4 @@ cd "$vim_dir"
 make -j
 make install
 
-sudo ln -sf "$prefix/bin/vim" /usr/local/bin/vim
+sudo cp "$prefix/bin/vim" /usr/local/bin/vim
