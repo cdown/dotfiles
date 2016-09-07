@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for env in pyenv rbenv ndenv; do
+for env in pyenv rbenv nodenv; do
     if command -v "$env" >/dev/null 2>&1; then
         eval "$("$env" init -)"
     fi
