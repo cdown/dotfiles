@@ -1,6 +1,10 @@
 #!/bin/bash -e
 
-sudo yum install ncurses-devel
+if command -v yum &>/dev/null; then
+    sudo yum install ncurses-devel
+else
+    sudo pacman -S ncurses
+fi
 
 code_dir=$HOME/local/code
 vim_dir=$code_dir/vim
