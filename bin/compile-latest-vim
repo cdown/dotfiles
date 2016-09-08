@@ -8,7 +8,7 @@ fi
 
 code_dir=$HOME/local/code
 vim_dir=$code_dir/vim
-prefix=$(mktemp -d)
+prefix="/opt/$USER/vim-$(date +%s)"
 
 mkdir -p "$code_dir"
 cd "$code_dir"
@@ -26,6 +26,6 @@ cd "$vim_dir"
 ./configure --prefix="$prefix" --with-features=huge --enable-cscope --enable-multibyte --enable-gui=no
 
 make -j
-make install
+sudo make install
 
-sudo cp -a "$prefix/bin/vim" /usr/local/bin/vim
+sudo ln -sfn "$prefix/bin/vim" /usr/local/bin/vim
