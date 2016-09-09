@@ -8,7 +8,8 @@ fi
 
 code_dir=$HOME/local/code
 vim_dir=$code_dir/vim
-prefix="/opt/$USER/vim-$(date +%s)"
+prefix_base_dir=/opt/$USER
+prefix=$(mktemp -u -d -p "$prefix_base_dir" -t "vim.XXXXXX")
 
 mkdir -p "$code_dir"
 cd "$code_dir"
