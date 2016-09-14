@@ -22,7 +22,8 @@ for config in ~/.config/mbsync/*; do
 
     for _ in {1..2}; do  # Run twice to catch up since first run is slow
         mbsync -c "$config" -a
-        NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" notmuch new
+        MAILDIR="$maildir_path" NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" \
+            notmuch new
     done
 done
 

@@ -4,9 +4,12 @@ mbsync_job_ids=()
 
 for config in ~/.config/mbsync/*; do
     config_name=${config##*/}
+    maildir=$HOME/Mail/${config_name^}
+
+    config_name=${config##*/}
     timeout -k 240s --foreground 180s ionice -c 2 -n 7 mbsync -c "$config" -a > "/tmp/mbsync-$config_name" 2>&1 &
     mbsync_job_ids+=("$!")
-    NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" notmuch new &
+    MAILDIR="$maildir" NOTMUCH_CONFIG="$HOME/.config/notmuch/$config_name" notmuch new &
 done
 
 wait "${mbsync_job_ids[@]}"  # notmuch can keep running in the bg after

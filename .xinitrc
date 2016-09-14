@@ -29,7 +29,7 @@ pgrep -u "$EUID" -x mpdscribble || mpdscribble &
 
 urxvtd -q -o &
 
-if [[ "$USER" == chris ]]; then
+if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
     {
         while ! urxvtc -title dev; do :; done
         for dir in ~/.irssi/*; do
@@ -40,10 +40,11 @@ if [[ "$USER" == chris ]]; then
 
         for account_type in "${!mutts[@]}"; do
             email="${mutts[$account_type]}"
+            maildir="$HOME/Mail/${account_type^}"
             if [[ -r ~/.config/mutt/accounts/"$email" ]]; then
                 urxvtc -title mail -e create-or-attach-tmux-session \
                     "mail-$account_type" \
-                    "EMAIL=\"$email\" NOTMUCH_BASENAME=\"$account_type\" start-mutt"
+                    "EMAIL='$email' NOTMUCH_BASENAME='$account_type' MAILDIR='$maildir' start-mutt"
             fi
         done
 

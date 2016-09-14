@@ -2,6 +2,7 @@
 
 : "${EMAIL?}"
 : "${NOTMUCH_BASENAME?}"
+: "${MAILDIR?}"
 
 NOTMUCH_CONFIG="$HOME/.config/notmuch/$NOTMUCH_BASENAME"
 export NOTMUCH_CONFIG
