@@ -28,11 +28,12 @@ set followhints=1
 set yankencodedurl=true
 
 set! accessibility.accesskeycausesactivation=false
-set! browser.link.open_newwindow=1
-set! browser.download.useDownloadDir=true
 set! browser.download.folderList=1
+set! browser.download.useDownloadDir=true
+set! browser.link.open_newwindow=1
 set! browser.rights.3.shown=true
 set! browser.startup.page=1
+set! browser.tabs.animate=false
 set! browser.tabs.warnOnClose=false
 set! browser.tabs.warnOnCloseOtherTabs=false
 set! browser.urlbar.doubleClickSelectsAll=false
@@ -40,11 +41,13 @@ set! extensions.hidtb.addtab_reopen=false
 set! extensions.hidtb.auto_hide=true
 set! extensions.hidtb.hide_delay=1000
 set! extensions.hidtb.toggle_key=112
+set! general.smoothScroll=false
 set! hidenavbar.autohide=true
 set! hidenavbar.hideonstart=1
 set! network.dnsCacheExpiration=0
 set! reader.parse-on-load.enabled=false
 set! signon.rememberSignons=false
+set! ui.submenuDelay=0
 
 " Not sure how, but even without the setting here ignorekeys seems to be sticky
 between sessions, which causes state problems...
@@ -53,35 +56,6 @@ ignorekeys add -except=o,O,B,b,C .*app.strigo.io.*
 ignorekeys add -except=<Esc>,<C-o>,C,W,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,B,/ .*
 
 sanitize cache downloads formdata history -timespan 3
-
-" perf
-
-set! browser.cache.memory.capacity=65536
-set! browser.display.show_image_placeholders=false
-set! browser.sessionhistory.max_total_viewers=0
-set! browser.tabs.animate=false
-set! config.trim_on_minimize=true
-set! content.interrupt.parsing=true
-set! content.max.tokenizing.time=2250000
-set! content.notify.backoffcount=5
-set! content.notify.interval=750000
-set! content.notify.ontimer=true
-set! content.switch.threshold=750000
-set! general.smoothScroll=false
-set! network.dns.disableIPv6=false
-set! network.http.max-connections-per-server=16
-set! network.http.max-connections=48
-set! network.http.max-persistent-connections-per-proxy=16
-set! network.http.max-persistent-connections-per-server=8
-set! network.http.pipelining.aggressive=true
-set! network.http.pipelining.maxrequests=8
-set! network.http.pipelining.ssl=true
-set! network.http.pipelining=true
-set! network.http.proxy.pipelining=true
-set! network.prefetch-next=true
-set! nglayout.initialpaint.delay=0
-set! plugin.expose_full_path=true
-set! ui.submenuDelay=0
 
 bmark https://www.google.co.uk/#q=%s -keyword=g
 bmark http://dj.iciba.com/%s-1.html -keyword=dj
