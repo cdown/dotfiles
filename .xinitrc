@@ -20,9 +20,8 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 xrdb -merge ~/.config/x/xresources/base
-case $USER in
-    chris|lin) xrdb -merge ~/.config/x/xresources/"$USER"
-esac
+personal_config=$HOME/.config/x/xresources/$USER
+[[ -f $personal_config ]] && xrdb -merge "$personal_config"
 
 pgrep -u "$EUID" -x mpd || mpd &
 pgrep -u "$EUID" -x mpdscribble || mpdscribble &
