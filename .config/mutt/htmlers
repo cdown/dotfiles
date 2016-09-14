@@ -9,6 +9,7 @@ group -group force_html \
     -rx [@.]tickettext\.co\.uk$ \
     -rx [@.]starwoodhotels\.com$ \
     -rx [@.]notonthehighstreet\.com$ \
+    -rx [@.]ryanair\.com$ \
     -rx [@.]linkedin\.com$
 
 message-hook . 'unalternative_order *; alternative_order text/plain text/html'
