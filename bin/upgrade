@@ -1,0 +1,17 @@
+#!/bin/bash -xe
+
+for cmd in nodenv pyenv rbenv; do
+    eval "$("$cmd" init -)"
+done
+
+cd /
+
+while read -r version; do
+    export PYENV_VERSION="$version"
+    pip list --outdated | awk '{ print $1 }' | xargs -d '\n' pip install -U
+done < ~/.python-version
+
+npm update -g
+gem update
+sudo -u makepkg EDITFILES=0 yaourt -Syua
+sudo pacdiff
