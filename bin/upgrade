@@ -8,7 +8,7 @@ cd /
 
 while read -r version; do
     export PYENV_VERSION="$version"
-    pip list --outdated | awk '{ print $1 }' | xargs -d '\n' pip install -U
+    pipdeptree | grep -P '^\w+' | xargs -d '\n' pip install -U
 done < ~/.python-version
 
 npm update -g
