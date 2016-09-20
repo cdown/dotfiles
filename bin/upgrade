@@ -11,7 +11,12 @@ while read -r version; do
     pipdeptree | grep -P '^\w+' | xargs -d '\n' pip install -U
 done < ~/.python-version
 
+# This one is safe without checking for explicit dependencies >=2.6.1, see
+# https://github.com/npm/npm/issues/6247
 npm update -g
+
+# TODO: Check safety of gem update
 gem update
+
 sudo -u makepkg EDITFILES=0 yaourt -Syua
 sudo pacdiff
