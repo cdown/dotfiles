@@ -112,7 +112,7 @@ _get_ps1() {
     local prompt_ender
 
     if [ "$ZSH_VERSION" ]; then
-        prompt_ender=%%
+        prompt_ender="%(?:%%:%{$(tput setaf 1)%}%%%{%{$(tput sgr0)%}%})"
     else
         prompt_ender=%
     fi
