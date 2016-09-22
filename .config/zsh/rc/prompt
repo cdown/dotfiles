@@ -2,9 +2,3 @@
 
 autoload -U promptinit
 promptinit
-
-RPROMPT='%{$(tput setaf 8)%}%*%{$(tput sgr0)%}'
-TMOUT=1
-TRAPALRM() {
-    zle reset-prompt
-}
