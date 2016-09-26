@@ -12,6 +12,7 @@ alias u='udf && exec zsh -l'
 alias s=sshrc
 alias b='sudo intel-brightness'
 alias x='s -l root'
+alias q='sudo '
 
 m() {
     if [ "$1" = dev ]; then
