@@ -127,6 +127,9 @@ for keymode in ['n', 'v']
   exe keymode . 'noremap <silent> <Leader>p :r ~/.vim/xfer<CR>'
 endfor
 
+" gV to highlight previously inserted text
+nnoremap gV `[v`]
+
 nnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>:w !xclip<CR><CR>:w !xclip -sel clip<CR><CR>'
 vnoremap <silent> <Leader>y :w! ~/.vim/xfer<CR>gv:w !xclip<CR><CR>gv:w !xclip -sel clip<CR><CR>'
 
