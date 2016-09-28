@@ -6,6 +6,7 @@ shopt -s nullglob
 : "${SLEEP_PERC:=5}"
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
+any_is_charging() { cat /sys/class/power_supply/BAT* | grep -q Charging; }
 
 dir="/var/tmp/battery-monitor.$USER"
 lockdir="$dir/.lock"
@@ -22,6 +23,10 @@ trap 'rmdir "$lockdir"' 0
 
 while (( first_run == 1 )) || sleep 60; do
     first_run=0
+
+    if any_is_charging; then
+        continue
+    fi
 
     full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
     now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
