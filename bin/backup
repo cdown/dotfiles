@@ -16,8 +16,10 @@ for backup_path in "${backup_paths[@]}"; do
     pre=$backup_path/_pre
     post=$backup_path/_post
 
-    [[ -x "$pre" ]] && "$pre"
+    if [[ -x "$pre" ]]; then "$pre"; fi
+
     duply "$backup_name" backup
     (( VERIFY )) && duply "$backup_name" verify
-    [[ -x "$post" ]] && "$post"
+
+    if [[ -x "$post" ]]; then "$post"; fi
 done
