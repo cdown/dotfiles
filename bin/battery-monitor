@@ -6,7 +6,9 @@ shopt -s nullglob
 : "${SLEEP_PERC:=5}"
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
-any_is_charging() { cat /sys/class/power_supply/BAT* | grep -q Charging; }
+any_is_charging() {
+    cat /sys/class/power_supply/BAT*/status | grep -q Charging
+}
 
 dir="/var/tmp/battery-monitor.$USER"
 lockdir="$dir/.lock"
