@@ -56,6 +56,7 @@ systemctl --user start mbsync.service
 fcitx &
 
 xbanish -i Mod4 &
+battery-monitor &
 
 if type synclient >/dev/null 2>&1; then
     # 2 finger click = right click
