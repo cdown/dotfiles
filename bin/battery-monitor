@@ -10,19 +10,6 @@ any_is_charging() {
     cat /sys/class/power_supply/BAT*/status | grep -q Charging
 }
 
-dir="/var/tmp/battery-monitor.$USER"
-lockdir="$dir/.lock"
-first_run=1
-
-mkdir -p "$dir" || exit
-
-if ! mkdir "$lockdir" >/dev/null 2>&1; then
-    echo "cannot continue, storage directory locked" >&2
-    exit 1
-fi
-
-trap 'rmdir "$lockdir"' 0
-
 while (( first_run == 1 )) || sleep 60; do
     first_run=0
 
