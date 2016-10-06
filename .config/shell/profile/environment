@@ -8,5 +8,6 @@ export VISUAL=vim
 export PYTHONDONTWRITEBYTECODE=1
 export MAILCAPS=$config_home/.config/mailcap/linux
 export PYTHONSTARTUP="$HOME/.pythonrc"
+export BROWSER=firefox
 
 umask 0022

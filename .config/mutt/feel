@@ -32,3 +32,6 @@ macro index S \
 macro index X \
       "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
       "search and reconstruct owning thread (using notmuch)"
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
