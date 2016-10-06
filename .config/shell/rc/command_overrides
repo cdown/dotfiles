@@ -22,6 +22,7 @@ alias tmux='tmux -f "$config_home/.tmux.conf"'
 # Do not disable raw control chars when running less
 alias less='less -R'
 
+alias gdb='gdb -q'
 alias sxiv='sxiv -b'
 alias ipython='ipython --no-banner'
 alias skype='apulse32 skype'
