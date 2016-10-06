@@ -9,6 +9,7 @@ alias grep="$(use_first_to_exist ggrep grep)"
 alias ls="$(use_first_to_exist gls ls) --color=auto -NAp --group-directories-first"
 alias sed="$(use_first_to_exist gsed sed)"
 alias awk="$(use_first_to_exist gawk awk)"
+alias diff="$(use_first_to_exist colordiff diff)"
 }
 
 # Disable sourcing systemwide vim configuration. Also set PYTHONPATH to
