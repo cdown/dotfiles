@@ -1,0 +1,33 @@
+set bell-style visible
+
+# Enable 8th bit input
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
+
+set show-all-if-unmodified on
+
+set editing-mode vi
+
+$if mode=vi
+  set keymap vi-insert
+  "jk": vi-movement-mode
+  "kj": vi-movement-mode
+  Control-a: beginning-of-line
+  Control-e: end-of-line
+  Control-n: next-history
+  Control-p: previous-history
+  Control-L: clear-screen
+  Control-k: kill-line
+  Control-w: unix-word-rubout
+  Control-d: delete-char
+
+  set keymap vi-command
+  Control-e: vi-append-eol
+  Control-a: vi-insert-beg
+  Control-w: unix-word-rubout
+  Control-d: delete-char
+$endif
+
+set keymap vi
