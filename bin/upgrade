@@ -1,5 +1,9 @@
 #!/bin/bash -xe
 
+if ! [[ -v TMUX ]]; then
+    exec tmux new-session -s upgrade "$0"
+fi
+
 for cmd in nodenv pyenv rbenv; do
     eval "$("$cmd" init -)"
 done
