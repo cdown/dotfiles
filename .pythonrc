@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+def _setup_readline():
+    import atexit
+    import os
+    import readline
+    import rlcompleter
+
+    history_path = os.path.expanduser("~/.python_history")
+
+    if not os.path.exists(history_path) and not os.path.isdir(history_path):
+        try:
+            open(history_path, 'w').close()
+        except IOError:
+            pass
+
+    if os.access(history_path, os.W_OK):
+        atexit.register(lambda x=history_path: readline.write_history_file(x))
+
+    if os.access(history_path, os.R_OK):
+        readline.read_history_file(history_path)
+
+    readline.parse_and_bind("tab: complete")
+    readline.set_history_length(100000)
+
+_setup_readline()
+
+# Default imports
+from pprint import pprint as pp
+import os
+import sys

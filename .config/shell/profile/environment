@@ -7,5 +7,6 @@ export PATH="/usr/share/bcc/tools:/opt/chefdk/bin:$config_home/local/bin:$config
 export VISUAL=vim
 export PYTHONDONTWRITEBYTECODE=1
 export MAILCAPS=$config_home/.config/mailcap/linux
+export PYTHONSTARTUP="$HOME/.pythonrc"
 
 umask 0022
