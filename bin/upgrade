@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
 if ! [[ -v TMUX ]]; then
-    exec tmux new-session -d -s upgrade "$0"
+    exec tmux new-session -s upgrade "$0"
 else
     session=$(tmux display-message -p '#S')
     tmux set-option -t "$session" remain-on-exit 1
