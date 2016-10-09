@@ -64,3 +64,13 @@ if id makepkg >/dev/null 2>&1; then
     # shellcheck disable=SC2032
     alias yaourt=yaourt-cd
 fi
+
+# Commands that should be run without any *env shims
+envless_cmds=(
+    berks vagrant chef chef-apply chef-client chef-shell chef-solo chef-vault
+    chef-zero
+)
+for cmd in "${envless_cmds[@]}"; do
+    # shellcheck disable=SC2139
+    alias "$cmd"='PATH=$(get-path-without-env) '"$cmd"
+done
