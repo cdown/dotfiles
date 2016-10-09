@@ -4,7 +4,7 @@ ulimit -n 4096
 
 # Otherwise pyenv shims will interfere with duplicity imports
 # Sadly duplicitly can't be pip installed :-(
-PATH="$(get-path-without-pyenv)"
+PATH="$(get-path-without-env)"
 export PATH
 
 if (( $# )); then

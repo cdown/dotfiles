@@ -1,3 +1,0 @@
-#!/bin/bash -e
-
-printf '%s' "$PATH" | awk -v RS=: -v ORS=: '!/pyenv/' | sed -e 's/^:*//' -e 's/:*$//'

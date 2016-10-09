@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+printf '%s' "$PATH" | awk -v RS=: -v ORS=: '!/env\/shims$/' | sed -e 's/^:*//' -e 's/:*$//'
