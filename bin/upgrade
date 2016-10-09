@@ -25,5 +25,7 @@ npm update -g
 # TODO: Check safety of gem update
 gem update
 
+vagrant plugin update
+
 sudo -u makepkg EDITFILES=0 yaourt -Syua
 sudo pacdiff
