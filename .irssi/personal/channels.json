@@ -17,7 +17,7 @@
             null
         ],
         "c": [
-            "centos",
+            "chef",
             null
         ],
         "d": [
@@ -62,6 +62,10 @@
         ],
         "z": [
             "zsh",
+            null
+        ],
+        "C": [
+            "centos",
             null
         ]
     },
