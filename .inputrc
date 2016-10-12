@@ -1,4 +1,4 @@
-set bell-style visible
+set bell-style none
 
 # Enable 8th bit input
 set meta-flag on
