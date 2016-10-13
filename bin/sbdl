@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sbfind | while read -r sb; do
+    while ! rsync -avP --timeout 500 "${@:3}" "$sb":/data/"$1" "${2-.}"; do
+        sleep 5
+    done
+done

@@ -1,0 +1,5 @@
+# !/bin/bash
+
+sbfind | while read -r sb; do
+    rsync "$sb":/data/"$1"
+done

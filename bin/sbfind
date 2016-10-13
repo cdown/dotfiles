@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dig +short txt sb.chrisdown.name | tr -d '"' | sort

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-rsync dian.chrisdown.name:/data/"$1"
