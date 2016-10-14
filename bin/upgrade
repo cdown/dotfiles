@@ -29,3 +29,5 @@ vagrant plugin update
 
 sudo -u makepkg EDITFILES=0 yaourt -Syua
 sudo pacdiff
+
+update-from-cm
