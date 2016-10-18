@@ -72,4 +72,4 @@ for scontrol in Master PCM; do
     amixer -q sset "$scontrol" 100%
 done
 
-exec dbus-launch --exit-with-session dwm > "/tmp/dwm-$USER.log" 2>&1
+exec dwm > "/tmp/dwm-$USER.log" 2>&1
