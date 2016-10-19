@@ -203,6 +203,14 @@ set statusline+=%*
 " Stock replies
 nnoremap <silent> <Leader>R gg:normal }<CR>jdG:r ~/.config/mutt/replies/recruiter<CR><Leader>f,i
 
+" Stuff to make working with unwrapped text easier
+for key in ['k', 'j']
+  exe 'noremap <buffer> <silent> ' . key . ' g' . key
+  exe 'onoremap <silent> ' . key . ' g' . key
+endfor
+nnoremap <silent> <Leader>W :set wrap<CR>:setlocal formatoptions-=t<CR>:set textwidth=0<CR>
+nnoremap <silent> <Leader>w :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
