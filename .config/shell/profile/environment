@@ -9,5 +9,6 @@ export PYTHONDONTWRITEBYTECODE=1
 export MAILCAPS=$config_home/.config/mailcap/linux
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export BROWSER=firefox
+export NSS_DEFAULT_DB_TYPE=sql
 
 umask 0022
