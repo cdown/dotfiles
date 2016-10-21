@@ -72,4 +72,6 @@ for scontrol in Master PCM; do
     amixer -q sset "$scontrol" 100%
 done
 
+xinput-toggle -r yubikey -d &
+
 exec dwm > "/tmp/dwm-$USER.log" 2>&1
