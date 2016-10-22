@@ -2,4 +2,4 @@
 
 shopt -s extglob
 shopt -s globstar
-shopt -s noclobber
+set -o noclobber
