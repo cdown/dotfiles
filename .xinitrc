@@ -74,4 +74,11 @@ done
 
 xinput-toggle -r yubikey -d &
 
+# TODO: this is a temporary hack while I have this X1 Carbon laptop rented out,
+# if this lasts more than a couple of weeks I should make an xkb layout mod
+# for this
+if grep -q 'X1 Carbon 2nd' /sys/devices/virtual/dmi/id/product_version; then
+    xmodmap ~/.config/xmodmap/x1-carbon
+fi
+
 exec dwm > "/tmp/dwm-$USER.log" 2>&1

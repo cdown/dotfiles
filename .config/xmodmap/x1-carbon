@@ -1,0 +1,5 @@
+clear control
+keycode 110 = Control_L
+keycode 115 = Control_R
+keycode 9 = Escape asciitilde
+add control = Control_R Control_L
