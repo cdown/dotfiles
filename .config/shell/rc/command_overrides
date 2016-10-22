@@ -68,7 +68,7 @@ fi
 # Commands that should be run without any *env shims
 envless_cmds=(
     berks vagrant chef chef-apply chef-client chef-shell chef-solo chef-vault
-    chef-zero knife duplicity duply
+    chef-zero knife duplicity duply reflector
 )
 for cmd in "${envless_cmds[@]}"; do
     # shellcheck disable=SC2139
