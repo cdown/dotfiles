@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# gsutli rsync does a bunch of checks we don't want, so this is a poor man's
+# `rsync --ignore-existing` :-)
+
+filter_headers() {
+    awk '!/^\+\+\+/ && !/^---/ && !/^@@/'
+}
+
+s3_prefix=s3://chrisdown-photos/
+gs_prefix=gs://chris-down-photos/chrisdown-photos/
+
+diff=$(RAW=1 bin/compare-photo-backups | filter_headers)
+
+# TODO: dedupe logic
+
+mapfile -t in_s3_only_no_prefix < <(
+    awk '/^\+/ { print substr($0, 2) }' <<< "$diff"
+)
+mapfile -t in_gs_only_no_prefix < <(
+    awk '/^\-/ { print substr($0, 2) }' <<< "$diff"
+)
+
+for file in "${in_s3_only_no_prefix[@]}"; do
+    full_s3_path="${s3_prefix}${file}"
+    full_gs_path="${gs_prefix}${file}"
+    gsutil cp "$full_s3_path" "$full_gs_path"
+done
+
+for file in "${in_gs_only_no_prefix[@]}"; do
+    full_s3_path="${s3_prefix}${file}"
+    full_gs_path="${gs_prefix}${file}"
+    gsutil cp "$full_gs_path" "$full_s3_path"
+done

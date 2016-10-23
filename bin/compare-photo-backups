@@ -15,7 +15,11 @@ gsutil ls -r s3://chrisdown-photos/"$subpath" |
 
 wait
 
-colordiff -u /tmp/google-comp /tmp/s3-comp
 
-printf '\nTotal lines:\n- %s\n- %s\n' "$(wc -l /tmp/google-comp)" \
-                                      "$(wc -l /tmp/s3-comp)"
+if (( RAW )); then
+    diff -u /tmp/google-comp /tmp/s3-comp
+else
+    colordiff -u /tmp/google-comp /tmp/s3-comp
+    printf '\nTotal lines:\n- %s\n- %s\n' "$(wc -l /tmp/google-comp)" \
+                                          "$(wc -l /tmp/s3-comp)"
+fi
