@@ -72,7 +72,7 @@ for scontrol in Master PCM; do
     amixer -q sset "$scontrol" 100%
 done
 
-for device in yubikey touchscreen; do
+for device in yubikey touchscreen trackpoint; do
     xinput-toggle -r "$device" -d &
 done
 
