@@ -1,15 +1,9 @@
 pcm.!default {
-    type plug
-    slave.pcm "asymed"
+   type hw
+   card 1
 }
 
-
-pcm.asymed {
-    type asym
-    playback.pcm {
-        @func getenv
-        vars [ ALSAPCM ]
-        default "dmix"
-    }
-    capture.pcm "dsnoop"
+ctl.!default {
+   type hw
+   card 0
 }
