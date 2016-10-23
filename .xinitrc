@@ -72,7 +72,9 @@ for scontrol in Master PCM; do
     amixer -q sset "$scontrol" 100%
 done
 
-xinput-toggle -r yubikey -d &
+for device in yubikey touchscreen; do
+    xinput-toggle -r "$device" -d &
+done
 
 # TODO: this is a temporary hack while I have this X1 Carbon laptop rented out,
 # if this lasts more than a couple of weeks I should make an xkb layout mod
