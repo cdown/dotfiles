@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sb=${1?}
+: "${SB?}"
 
-while ! rsync -avP --timeout 500 "${@:3}" "$sb":/data/"$1" "${2-.}"; do
+while ! rsync -avP --timeout 500 "${@:3}" "$SB":/data/"$1" "${2-.}"; do
     sleep 5
 done
