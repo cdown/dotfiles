@@ -10,7 +10,7 @@ filter_headers() {
 s3_prefix=s3://chrisdown-photos/
 gs_prefix=gs://chris-down-photos/chrisdown-photos/
 
-diff=$(RAW=1 bin/compare-photo-backups | filter_headers)
+diff=$(RAW=1 compare-photo-backups | filter_headers)
 
 # TODO: dedupe logic
 
