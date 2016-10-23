@@ -11,6 +11,7 @@ alias s=sshrc
 alias b='sudo intel-brightness'
 alias x='s -l root'
 alias q='sudo '
+alias mtp='sudo simple-mtpfs --device 1'
 
 m() {
     if [ "$1" = dev ]; then
