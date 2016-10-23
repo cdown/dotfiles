@@ -15,6 +15,7 @@ cd /
 
 while read -r version; do
     export PYENV_VERSION="$version"
+    pip install -U pip
     pipdeptree | grep -P '^\w+' | xargs -d '\n' pip install -U
 done < ~/.python-version
 
