@@ -208,8 +208,8 @@ for key in ['k', 'j']
   exe 'noremap <buffer> <silent> ' . key . ' g' . key
   exe 'onoremap <silent> ' . key . ' g' . key
 endfor
-nnoremap <silent> <Leader>R :set wrap<CR>:setlocal formatoptions-=t<CR>:set textwidth=0<CR>
-nnoremap <silent> <Leader>r :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
+nnoremap <silent> <Leader>E :set wrap<CR>:setlocal formatoptions-=t<CR>:set textwidth=0<CR>
+nnoremap <silent> <Leader>e :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
