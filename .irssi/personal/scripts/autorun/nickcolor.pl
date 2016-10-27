@@ -63,8 +63,9 @@ sub simple_hash {
   my ($string) = @_;
   chomp $string;
 
-  # Remove trailing _s from string since people often have them on rejoin
-  $string =~ s/_+$//;
+  # Remove anything after alnum from consideration, since often we have
+  # foo_away or foo|away or some other shite
+  $string =~ s/^([[:alnum:]]+).*$/\1/;
 
   my @chars = split //, $string;
   my $counter;
