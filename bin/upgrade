@@ -16,7 +16,8 @@ cd /
 while read -r version; do
     export PYENV_VERSION="$version"
     pip install -U pip
-    pipdeptree | grep -P '^\w+' | xargs -d '\n' pip install -U
+    pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
+        xargs -d '\n' pip install -U
 done < ~/.python-version
 
 # This one is safe without checking for explicit dependencies >=2.6.1, see
