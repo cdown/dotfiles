@@ -11,5 +11,5 @@ c.InteractiveShellApp.extensions = [
     'memory_profiler',
 ]
 c.InteractiveShellApp.exec_lines = ['%autoreload 2']
-c.InteractiveShell.colors = 'LightBG'
+c.InteractiveShell.colors = 'NoColor'
 c.InteractiveShell.confirm_exit = False
