@@ -32,6 +32,7 @@ set formatoptions=qrn
 set hlsearch
 set ignorecase
 set incsearch
+set linebreak
 set nofoldenable
 set nojoinspaces
 set nowrap
