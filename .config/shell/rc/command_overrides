@@ -24,6 +24,7 @@ alias less='less -R'
 
 alias sxiv='sxiv -b'
 alias ipython='ipython --no-banner'
+alias kill-skype='sudo docker rm "$(sudo docker stop "$(sudo docker ps -a -q --filter ancestor=sameersbn/skype --format="{{.ID}}")")"'
 
 # Do not pass a (potentially unsupported) locale when SSHing to random servers.
 # In mosh, a UTF-8 aware locale is needed, so we use en_US.UTF-8 because
