@@ -24,7 +24,6 @@ alias less='less -R'
 
 alias sxiv='sxiv -b'
 alias ipython='ipython --no-banner'
-alias skype='apulse32 skype'
 
 # Do not pass a (potentially unsupported) locale when SSHing to random servers.
 # In mosh, a UTF-8 aware locale is needed, so we use en_US.UTF-8 because
