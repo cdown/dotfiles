@@ -23,9 +23,6 @@ xrdb -merge ~/.config/x/xresources/base
 personal_config=$HOME/.config/x/xresources/$USER
 [[ -f $personal_config ]] && xrdb -merge "$personal_config"
 
-pgrep -u "$EUID" -x mpd || mpd &
-pgrep -u "$EUID" -x mpdscribble || mpdscribble &
-
 urxvtd -q -o &
 
 if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
@@ -51,6 +48,8 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
     } &
 fi
 
+systemctl --user start mpd.service
+systemctl --user start mpdscribble.service
 systemctl --user start mbsync.service
 systemctl --user start pulseaudio.service
 
