@@ -67,12 +67,6 @@ if type synclient >/dev/null 2>&1; then
         TapButton1=1
 fi
 
-# Interim solution until this gets set up with systemd
-for scontrol in Master PCM; do
-    amixer -q sset "$scontrol" unmute
-    amixer -q sset "$scontrol" 100%
-done
-
 for device in yubikey touchscreen trackpoint; do
     xinput-toggle -r "$device" -d &
 done
