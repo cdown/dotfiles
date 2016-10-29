@@ -52,6 +52,7 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
 fi
 
 systemctl --user start mbsync.service
+systemctl --user start pulseaudio.service
 
 fcitx &
 
