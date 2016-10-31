@@ -1,11 +1,23 @@
 {
     "freenode": {
+        "A": [
+            "/r/linuxadmin",
+            null
+        ],
         "G": [
             "gentoo",
             null
         ],
         "I": [
             "irssi",
+            null
+        ],
+        "L": [
+            "r/linux",
+            null
+        ],
+        "S": [
+            "#security",
             null
         ],
         "a": [
@@ -53,7 +65,7 @@
             null
         ],
         "s": [
-            "#security",
+            "systemd",
             null
         ],
         "v": [
