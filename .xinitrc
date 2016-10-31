@@ -12,7 +12,7 @@ export FREETYPE_PROPERTIES=truetype:interpreter-version=40
 
 services_to_start=(
     mpd mpdscribble mbsync pulseaudio fcitx xbanish battery-monitor xresources
-    urxvtd firefox
+    urxvtd
 )
 for service in "${services_to_start[@]}"; do
     systemctl --user start "$service"
@@ -43,6 +43,8 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
                     "EMAIL='$email' NOTMUCH_BASENAME='$account_type' MAILDIR='$maildir' start-mutt"
             fi
         done
+
+        firefox &
     } &
 fi
 
