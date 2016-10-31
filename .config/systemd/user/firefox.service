@@ -1,0 +1,4 @@
+[Service]
+ExecStart=firefox
+Restart=always
+Environment="NSS_DEFAULT_DB_TYPE=sql"
