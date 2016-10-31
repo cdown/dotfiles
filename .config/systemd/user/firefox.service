@@ -1,4 +1,4 @@
 [Service]
-ExecStart=firefox
+ExecStart=/usr/bin/firefox
 Restart=always
 Environment="NSS_DEFAULT_DB_TYPE=sql"
