@@ -1,2 +1,2 @@
 [Service]
-ExecStart=/usr/bin/urxvtd -q -o
+ExecStart=/usr/bin/urxvtd
