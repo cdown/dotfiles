@@ -14,11 +14,11 @@ alias mtp='sudo simple-mtpfs --device 1'
 
 alias ss='sudo systemctl start'
 alias st='sudo systemctl stop'
-alias sd='sudo systemctl status'
+alias sd='sudo systemctl -n 100 status'
 
 alias us='systemctl --user start'
 alias ut='systemctl --user stop'
-alias ud='systemctl --user status'
+alias ud='systemctl --user -n 100 status'
 
 m() {
     if [ "$1" = dev ]; then
