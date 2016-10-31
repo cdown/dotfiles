@@ -1,5 +1,4 @@
 [Unit]
-Description=mbsync
 After=network.target
 
 [Service]
