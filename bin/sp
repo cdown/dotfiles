@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps -p "$(pgrep -ox "${1?}")" -o lstart=
