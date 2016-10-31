@@ -10,18 +10,22 @@ any_is_charging() {
     cat /sys/class/power_supply/BAT*/status | grep -q Charging
 }
 
-if any_is_charging; then
-    exit 0
-fi
+while (( first_run == 1 )) || sleep 60; do
+    first_run=0
 
-full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
-now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
-perc=$(( now * 100 / full ))
+    if any_is_charging; then
+        continue
+    fi
 
-if (( perc <= WARN_PERC )); then
-    notify-send 'Reaching critical battery threshold'
-fi
+    full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
+    now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
+    perc=$(( now * 100 / full ))
 
-if (( perc <= SLEEP_PERC )); then
-    sudo sh -c 'printf mem > /sys/power/state'
-fi
+    if (( perc <= WARN_PERC )); then
+        notify-send 'Reaching critical battery threshold'
+    fi
+
+    if (( perc <= SLEEP_PERC )); then
+        sudo sh -c 'printf mem > /sys/power/state'
+    fi
+done
