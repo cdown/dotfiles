@@ -1,4 +1,4 @@
 [Service]
 Type=oneshot
-ExecStart=xset +fp /usr/share/fonts/local
-ExecStart=xset fp rehash
+ExecStart=/usr/bin/xset +fp /usr/share/fonts/local
+ExecStart=/usr/bin/xset fp rehash
