@@ -49,15 +49,12 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
     } &
 fi
 
-systemctl --user start mpd.service
-systemctl --user start mpdscribble.service
-systemctl --user start mbsync.service
-systemctl --user start pulseaudio.service
-
-fcitx &
-
-xbanish -i Mod4 &
-battery-monitor &
+services_to_start=(
+    mpd mpdscribble mbsync pulseaudio fcitx xbanish battery-monitor
+)
+for service in "${services_to_start[@]}"; do
+    systemctl --user start "$service"
+done
 
 if type synclient >/dev/null 2>&1; then
     # 2 finger click = right click
