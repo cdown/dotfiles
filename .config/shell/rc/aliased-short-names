@@ -12,6 +12,14 @@ alias x='s -l root'
 alias q='sudo '
 alias mtp='sudo simple-mtpfs --device 1'
 
+alias ss='sudo systemctl start'
+alias st='sudo systemctl stop'
+alias sd='sudo systemctl status'
+
+alias us='systemctl --user start'
+alias ut='systemctl --user stop'
+alias ud='systemctl --user status'
+
 m() {
     if [ "$1" = dev ]; then
         # We already have configs here
