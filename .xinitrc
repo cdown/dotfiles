@@ -1,6 +1,7 @@
 #!/bin/bash
 
-systemctl --user import-environment DISPLAY
+systemctl --user import-environment DISPLAY XAUTHORITY
+dbus-update-activation-environment DISPLAY XAUTHORITY
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
