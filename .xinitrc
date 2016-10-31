@@ -10,6 +10,13 @@ export XMODIFIERS=@im=fcitx
 # The Arch-specific FT2_SUBPIXEL_HINTING has been removed in freetype2-2.7-2.
 export FREETYPE_PROPERTIES=truetype:interpreter-version=40
 
+services_to_start=(
+    mpd mpdscribble mbsync pulseaudio fcitx xbanish battery-monitor xresources
+)
+for service in "${services_to_start[@]}"; do
+    systemctl --user start "$service"
+done
+
 declare -A mutts
 mutts=(
     [personal]=chris@chrisdown.name
@@ -19,10 +26,6 @@ type -p VBoxClient-all >/dev/null 2>&1 && VBoxClient-all &
 
 xset +fp /usr/share/fonts/local
 xset fp rehash
-
-xrdb -merge ~/.config/x/xresources/base
-personal_config=$HOME/.config/x/xresources/$USER
-[[ -f $personal_config ]] && xrdb -merge "$personal_config"
 
 urxvtd -q -o &
 
@@ -48,13 +51,6 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
         firefox &
     } &
 fi
-
-services_to_start=(
-    mpd mpdscribble mbsync pulseaudio fcitx xbanish battery-monitor
-)
-for service in "${services_to_start[@]}"; do
-    systemctl --user start "$service"
-done
 
 if type synclient >/dev/null 2>&1; then
     # 2 finger click = right click

@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+xrdb -merge ~/.config/x/xresources/base
+personal_config=$HOME/.config/x/xresources/$USER
+if [[ -f $personal_config ]]; then
+    xrdb -merge "$personal_config"
+fi
