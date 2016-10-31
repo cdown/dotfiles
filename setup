@@ -85,4 +85,8 @@ if (( "${#deleted[@]}" )); then
     fi
 fi
 
+if type systemctl >/dev/null 2>&1; then
+    systemctl --user daemon-reload
+fi
+
 git rev-parse HEAD > ~/.dfsha
