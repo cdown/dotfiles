@@ -37,6 +37,9 @@ case $1 in
         done
         xrandr --output "$main_display" --primary --auto
     ;;
+    x1)
+        xrandr --output "$main_display" --mode 1920x1080
+    ;;
     mirror)
         for display in "${external_displays[@]}"; do
             xrandr --output "$display" --auto
