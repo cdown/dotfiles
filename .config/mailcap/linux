@@ -1,5 +1,5 @@
 text/html; w3m -I %{charset} -T text/html -dump -o display_link_number=1; copiousoutput
-application/msword; docx2txt.pl < %s; copiousoutput
+application/msword; antiword %s; copiousoutput
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; docx2txt.pl < %s; copiousoutput
 application/vnd.oasis.opendocument.spreadsheet; localc %s
 image/*; sxiv -a -bf %s \; reset
