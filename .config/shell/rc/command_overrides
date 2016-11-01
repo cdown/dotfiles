@@ -74,3 +74,10 @@ for cmd in "${envless_cmds[@]}"; do
     # shellcheck disable=SC2139
     alias "$cmd"='PATH=$(get-path-without-env) '"$cmd"
 done
+
+for tool_full in /usr/share/bcc/tools/*; do
+    [[ -f "$tool_full" ]] || continue
+    tool="${tool_full##*/}"
+    # shellcheck disable=SC2139
+    alias "$tool"='PATH=$(get-path-without-env) sudo python2 "$(type -p '"$tool"')"'
+done
