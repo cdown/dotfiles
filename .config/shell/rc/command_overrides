@@ -79,5 +79,5 @@ for tool_full in /usr/share/bcc/tools/*; do
     [[ -f "$tool_full" ]] || continue
     tool="${tool_full##*/}"
     # shellcheck disable=SC2139
-    alias "$tool"='PATH=$(get-path-without-env) sudo python2 "$(type -p '"$tool"')"'
+    alias "$tool"='PATH=$(get-path-without-env) sudo python2 '"$tool_full"
 done
