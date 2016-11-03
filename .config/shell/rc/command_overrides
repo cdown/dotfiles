@@ -12,6 +12,9 @@ alias awk="$(use_first_to_exist gawk awk)"
 alias diff="$(use_first_to_exist colordiff diff)"
 }
 
+alias cp='cp -i'
+alias mv='mv -i'
+
 # Disable sourcing systemwide vim configuration. Also set PYTHONPATH to
 # include basedir so we can edit tests that get their sys.path munged by nose
 
