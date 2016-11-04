@@ -167,6 +167,8 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
   endfor
 
+  autocmd BufRead,BufNewFile ~/.local/share/nota/* set filetype=markdown
+
   " Update ctags on write
   autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
 augroup END
