@@ -8,11 +8,7 @@ case $USER in
         name='Lin Zhao'
     ;;
     *)
-        if (( FB )); then
-            email=cdown@fb.com
-        else
-            email=chris@chrisdown.name
-        fi
+        email=chris@chrisdown.name
         name='Chris Down'
     ;;
 esac
