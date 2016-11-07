@@ -5,7 +5,7 @@ if ! [[ $1 ]]; then
     exit 1
 fi
 
-main_display=eDP1
+main_display=eDP-1
 external_displays=()
 
 while read -r display; do
