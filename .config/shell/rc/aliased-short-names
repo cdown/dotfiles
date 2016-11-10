@@ -11,6 +11,7 @@ alias b='sudo intel-brightness'
 alias x='s -l root'
 alias q='sudo '
 alias mtp='sudo simple-mtpfs --device 1'
+alias lopri='nice -n 19 ionice -c2 -n7 '
 
 alias ss='sudo systemctl start'
 alias st='sudo systemctl stop'
