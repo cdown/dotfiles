@@ -2,7 +2,18 @@
 
 systemctl --user stop mbsync
 
-for config in ~/.config/mbsync/*; do
+if (( $# )); then
+    config_paths=( "${@/#/"$HOME/.config/.mbsync/"}" )
+else
+    config_paths=( ~/.config/mbsync/* )
+fi
+
+for config in "${config_paths[@]}"; do
+    if ! [[ -f $config ]]; then
+        printf '%s does not exist, skipping\n' "$config" >&2
+        continue
+    fi
+
     maildir_path=$(
         awk '$1 == "Path" { sub("~", ENVIRON["HOME"]); print $2 }' < "$config"
     )
