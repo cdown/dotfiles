@@ -3,7 +3,7 @@
 systemctl --user stop mbsync
 
 if (( $# )); then
-    config_paths=( "${@/#/"$HOME/.config/.mbsync/"}" )
+    config_paths=( "${@/#/"$HOME/.config/mbsync/"}" )
 else
     config_paths=( ~/.config/mbsync/* )
 fi
