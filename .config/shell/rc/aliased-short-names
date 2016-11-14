@@ -10,7 +10,6 @@ alias s=sshrc
 alias b='sudo intel-brightness'
 alias x='s -l root'
 alias q='sudo '
-alias mtp='sudo simple-mtpfs --device 1'
 alias lopri='nice -n 19 ionice -c2 -n7 '
 
 alias ss='sudo systemctl start'
@@ -32,6 +31,10 @@ m() {
 
 g(){
     gdb -q /proc/"${1?}"/exe "$1"
+}
+
+mtp() {
+    gvfs-mount -li | awk -F= '{if(index($2,"mtp") == 1)system("gvfs-mount "$2)}'
 }
 
 # virtualenvwrapper
