@@ -57,7 +57,7 @@ if type synclient >/dev/null 2>&1; then
         TapButton1=1
 fi
 
-for device in yubikey touchscreen trackpoint; do
+for device in yubikey touch trackpoint; do
     xinput-toggle -r "$device" -d &
 done
 
