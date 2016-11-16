@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+sudo docker rm "$(sudo docker stop "$(sudo docker ps -a -q --filter ancestor=sameersbn/skype --format="{{.ID}}")")"
+sudo systemctl stop docker

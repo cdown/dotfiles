@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+sudo systemctl start docker
+
+# Skype wrapper from sameersbn/skype
+exec /usr/local/bin/skype
