@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+device=${1?}
+
+fdisk -b 512 "$device" << 'EOF'
+o
+n
+p
+1
+
+
+t
+6
+w
+EOF
+
+mkudffs --media-type=hd --blocksize=512 /dev/"$device"1
