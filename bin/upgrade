@@ -1,7 +1,13 @@
 #!/bin/bash -xe
 
+log_dir=/var/log/upgrades/$USER
+log_file=$log_dir/$(LC_ALL=C date +%F-%T.%N)
+
+sudo mkdir -p -m0700 "$log_dir"
+sudo chown "$USER" "$log_dir"
+
 if ! [[ -v TMUX ]]; then
-    exec tmux new-session -s upgrade "$0"
+    exec tmux new-session -s upgrade -- script -c "$0" "$log_file"
 else
     session=$(tmux display-message -p '#S')
     tmux set-option -t "$session" remain-on-exit 1
