@@ -71,7 +71,7 @@ highlight Normal ctermbg=none
 " to tell which is the cursor and which is the match.
 highlight MatchParen ctermbg=darkmagenta ctermfg=black
 
-command FixFile :set fileencoding=utf-8 fileformat=unix nobomb
+command FixFile :set fileencoding=utf-8 fileformat=unix nobomb | %s/\r$//
 
 for directory in ["backup", "swap", "undo"]
   silent! call mkdir($HOME . "/.vim/" . directory, "p")
