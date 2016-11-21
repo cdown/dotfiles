@@ -11,6 +11,7 @@ alias b='sudo intel-brightness'
 alias x='s -l root'
 alias q='sudo '
 alias lopri='nice -n 19 ionice -c2 -n7 '
+alias pp='pdfpc -s -n right --disable-auto-grouping'
 
 alias ss='sudo systemctl start'
 alias st='sudo systemctl stop'
