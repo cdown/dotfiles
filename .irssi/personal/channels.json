@@ -16,6 +16,10 @@
             "r/linux",
             null
         ],
+        "R": [
+            "archlinux-arm",
+            null
+        ],
         "S": [
             "#security",
             null
