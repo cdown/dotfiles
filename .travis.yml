@@ -12,6 +12,7 @@ script:
   - find .config/bash -not -name dircolors -not -name '*.gpg' -type f -exec shellcheck -e SC1090,SC1091 -s bash {} +
   - find bin -not -name '*.gpg' -not -name format-udf -type f -exec shellcheck -e SC1090,SC1091,SC1071 -s bash {} +
   - '[[ -z "$(comm -23 <(bin/generate-gpg-gitignore) <(sort -u < .gitignore))" ]]'
+  - '[[ -z "$(comm -12 <(git ls-files | sort) <(sort -u < .gitignore))" ]]'
 
 matrix:
   fast_finish: true
