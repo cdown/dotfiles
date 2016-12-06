@@ -2,7 +2,10 @@ command -v ssh-agent >/dev/null 2>&1 || return
 [ -d ~/.ssh/keys ] || return
 [ "$(uname -s)" = Linux ] || return
 
-mkdir -m700 -p ~/.ssh/agents
+# We manually create both, so no need to worry about -m only applying to the
+# deepest
+# shellcheck disable=SC2174
+mkdir -m700 -p ~/.ssh ~/.ssh/agents
 
 # Execute in subshell to avoid polluting environment
 (

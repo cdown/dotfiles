@@ -8,7 +8,7 @@ cd "$dir"
 
 # shellcheck disable=SC1083
 git fetch -p
-git rebase -p @{u}
+git rebase -p '@{u}'
 
 git clean -dffx
 ./setup
