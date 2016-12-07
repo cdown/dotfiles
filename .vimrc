@@ -170,7 +170,8 @@ augroup filetype_settings
   autocmd BufRead,BufNewFile ~/.local/share/nota/* set filetype=markdown
 
   " Update ctags on write
-  autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
+  " Disabled for now due to perf
+  " autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
 augroup END
 
 
