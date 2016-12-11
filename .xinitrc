@@ -68,4 +68,9 @@ if grep -q 'X1 Carbon 2nd' /sys/devices/virtual/dmi/id/product_version; then
     while sleep 5; do xmodmap ~/.config/xmodmap/x1-carbon; done & 
 fi
 
+# Noam's keyboard which has Mod4 and Mod1 inverted
+if lsusb -d 04d9:0269 >/dev/null 2>&1; then
+    while sleep 5; do xmodmap ~/.config/xmodmap/noam; done &
+fi
+
 exec dwm > "/tmp/dwm-$USER.log" 2>&1
