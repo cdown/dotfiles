@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mv -- "${1?}"{,.orig}
+pdftocairo -pdf "$1".orig "$1"
