@@ -56,8 +56,6 @@ ignorekeys clear
 ignorekeys add -except=o,O,B,b,C .*app.strigo.io.*
 ignorekeys add -except=<Esc>,<C-o>,C,W,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,B,/ .*
 
-sanitize cache downloads formdata history -timespan 3
-
 bmark https://www.google.co.uk/#q=%s -keyword=g
 bmark http://dj.iciba.com/%s-1.html -keyword=dj
 bmark https://www.mdbg.net/chindict/chindict.php?page=worddict&wdrst=0&wdqb=%s -keyword=zw
