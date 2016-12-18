@@ -6,7 +6,6 @@ nnoremap W :tabdetach<CR>
 nnoremap u :undo<CR>
 nnoremap x :tabonly<CR>
 nnoremap C :source ~/.vimperatorrc<CR>
-nnoremap H :history -max=50<CR>;o
 
 qmark f https://facebook.com
 qmark g https://gmail.com
@@ -66,7 +65,7 @@ noremap o :js toggle_bottombar('on')<CR>o
 noremap O :js toggle_bottombar('on')<CR>O
 noremap t :js toggle_bottombar('on')<CR>t
 noremap T :js toggle_bottombar('on')<CR>T
-noremap H :js toggle_bottombar('on')<CR>H
+noremap H :js toggle_bottombar('on')<CR>:history -max=50<CR>;o
 noremap / :js toggle_bottombar('on')<CR>/
 noremap w :js toggle_bottombar('on')<CR>w
 noremap b :js toggle_bottombar('on')<CR>b
