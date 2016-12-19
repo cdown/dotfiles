@@ -6,7 +6,6 @@ nnoremap W :tabdetach<CR>
 nnoremap u :undo<CR>
 nnoremap x :tabonly<CR>
 nnoremap C :source ~/.vimperatorrc<CR>
-nnoremap H :history -max=50<CR>;o
 
 qmark f https://facebook.com
 qmark g https://gmail.com
@@ -59,3 +58,39 @@ ignorekeys add -except=<Esc>,<C-o>,C,W,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,B,/ .
 bmark https://www.google.co.uk/#q=%s -keyword=g
 bmark http://dj.iciba.com/%s-1.html -keyword=dj
 bmark https://www.mdbg.net/chindict/chindict.php?page=worddict&wdrst=0&wdqb=%s -keyword=zw
+
+"javascript to hide statusbar
+noremap ; :js toggle_bottombar('on')<CR>:
+noremap o :js toggle_bottombar('on')<CR>o
+noremap O :js toggle_bottombar('on')<CR>O
+noremap t :js toggle_bottombar('on')<CR>t
+noremap T :js toggle_bottombar('on')<CR>T
+noremap H :js toggle_bottombar('on')<CR>:history -max=50<CR>;o
+noremap / :js toggle_bottombar('on')<CR>/
+noremap w :js toggle_bottombar('on')<CR>w
+noremap b :js toggle_bottombar('on')<CR>b
+cnoremap <CR> <CR>:js toggle_bottombar('off')<CR>
+cnoremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
+noremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
+noremap B <Esc>:js toggle_bottombar('toggle')<CR>
+
+:js << EOF
+function toggle_bottombar(p) {
+    var bb = document.getElementById('liberator-bottombar');
+    if (!bb)
+        return;
+    if (p == 'on'){
+        bb.style.height = '';
+        bb.style.overflow = '';
+        return;
+    }
+    if (p == 'off'){
+        bb.style.height = '0px';
+        bb.style.overflow = 'hidden';
+        return;
+    }
+    bb.style.height = (bb.style.height == '') ? '0px' : '';
+    bb.style.overflow = (bb.style.height == '') ? '' : 'hidden';
+}
+toggle_bottombar();
+EOF
