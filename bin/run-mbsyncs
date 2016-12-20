@@ -2,7 +2,13 @@
 
 mbsync_job_ids=()
 
-for config in ~/.config/mbsync/*; do
+if (( $# )); then
+    config_paths=( "${@/#/"$HOME/.config/mbsync/"}" )
+else
+    config_paths=( ~/.config/mbsync/* )
+fi
+
+for config in "${config_paths[@]}"; do
     config_name=${config##*/}
     maildir=$HOME/Mail/${config_name^}
 
