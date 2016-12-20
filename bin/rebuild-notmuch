@@ -29,5 +29,3 @@ for config in ~/.config/notmuch/*; do
 done
 
 tmux attach -t "$session_name"
-
-systemctl --user start mbsync

@@ -37,5 +37,3 @@ for config in "${config_paths[@]}"; do
             notmuch new
     done
 done
-
-systemctl --user start mbsync
