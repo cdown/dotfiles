@@ -1,0 +1,18 @@
+#!/bin/bash
+
+(( UID )) || exec sudo "$0" "$@"
+
+exists() { command -v "${1?}" >/dev/null 2>&1; }
+
+port=${1?}
+
+if exists lsof; then
+    lsof -ni :"$port"
+elif exists netstat; then
+    netstat -np | grep ":$port\\b"
+elif exists ss; then
+    ss -np "sport = :$port || dport = :$port"
+else
+    echo "lsof/netstat/ss missing" >&2
+    exit 30
+fi
