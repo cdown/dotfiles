@@ -3,7 +3,6 @@
 set mailcap_path = ~/.config/mailcap/linux
 set strict_threads
 set sleep_time = 0
-set timeout = 3
 set delete
 set quit
 set pager_stop
