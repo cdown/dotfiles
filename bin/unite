@@ -2,6 +2,8 @@
 
 # TODO: make this shite work for ipv6
 
+(( UID )) || exec sudo "$0" "$@"
+
 lsof_output=$(lsof -P -i -n)
 mapfile -t rev_pids < <(<<< "$lsof_output" awk '$1 == "sshd" && $9 !~ /:22$/ && $10 == "(LISTEN)" { print $2 }' | sort | uniq)
 
