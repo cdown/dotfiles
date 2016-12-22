@@ -9,6 +9,7 @@ set quit
 set pager_stop
 set fast_reply
 set askcc
+unset confirmappend
 
 bind index Q quit
 bind index q noop
