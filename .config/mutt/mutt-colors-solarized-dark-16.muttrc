@@ -82,7 +82,7 @@ color index         cyan            black           "~v~(~p)"                   
 color index         yellow          red             "~v~(~D)"                   # thread with deleted (doesn't differentiate between all or partial)
 #color index         yellow          default         "~(~N)"                    # messages in threads with some unread
 #color index         green           default         "~S"                       # superseded messages
-#color index         red             default         "~T"                       # tagged messages
+color index         red             default         "~T"                       # tagged messages
 #color index         brightred       red             "~="                       # duplicated messages
 
 # message headers ------------------------------------------------------
