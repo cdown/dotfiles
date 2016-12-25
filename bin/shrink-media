@@ -6,7 +6,7 @@ shopt -s nullglob globstar
 set -o pipefail
 
 : "${1?}"
-: "${MAX_DIMENSION:=1000}"
+: "${MAX_DIMENSION:=1280}"
 : "${VIDEO_CRF:=32}"
 : "${PHOTO_QUALITY:=75}"
 : "${X264_PROFILE:=fast}"
