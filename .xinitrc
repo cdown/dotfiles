@@ -65,7 +65,11 @@ done
 # if this lasts more than a couple of weeks I should make an xkb layout mod
 # for this
 if grep -q 'X1 Carbon 2nd' /sys/devices/virtual/dmi/id/product_version; then
-    while sleep 5; do xmodmap ~/.config/xmodmap/x1-carbon; done & 
+    while sleep 5; do xmodmap ~/.config/xmodmap/x1-carbon; done &
 fi
+
+# Disable screen dimming
+xset dpms 0 0 0
+xset s off
 
 exec dwm > "/tmp/dwm-$USER.log" 2>&1
