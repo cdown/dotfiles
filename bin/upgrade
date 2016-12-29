@@ -8,9 +8,6 @@ sudo chown "$USER" "$log_dir"
 
 if ! [[ -v TMUX ]]; then
     exec tmux new-session -s upgrade -- script -c "$0" "$log_file"
-else
-    session=$(tmux display-message -p '#S')
-    tmux set-option -t "$session" remain-on-exit 1
 fi
 
 for cmd in nodenv pyenv rbenv; do
