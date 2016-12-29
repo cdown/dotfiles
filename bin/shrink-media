@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# Defaults are good for transferring to Lin's parents
+# For Flickr uploads:
+# NO_PHOTOS=1 NO_COMPRESS=1 VIDEO_CRF=23 X264_PROFILE=veryslow
 export LC_ALL=C
 
 shopt -s nullglob globstar
