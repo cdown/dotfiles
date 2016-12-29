@@ -41,6 +41,7 @@ mtp() {
 d() {
     tmux new-session -s "oneoff-${1?}-$(date +%Y%m%d%H%M%S)" -- "$@"
 }
+alias d='d '
 
 # virtualenvwrapper
 alias mv2='mkvirtualenv -p python2'
