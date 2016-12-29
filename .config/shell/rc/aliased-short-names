@@ -38,6 +38,10 @@ mtp() {
     gvfs-mount -li | awk -F= '{if(index($2,"mtp") == 1)system("gvfs-mount "$2)}'
 }
 
+d() {
+    tmux new-session -s "oneoff-${1?}-$(date +%Y%m%d%H%M%S)" -- "$@"
+}
+
 # virtualenvwrapper
 alias mv2='mkvirtualenv -p python2'
 alias mv3='mkvirtualenv -p python3'
