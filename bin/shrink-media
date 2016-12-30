@@ -57,7 +57,7 @@ if ! (( NO_COMPRESS )); then
     if password=$(pass photos); then
         extra_args=( "-p$password" )
     else
-        printf '%s\n' 'WARNING: No password available, not encrypting'
+        printf '%s\n' 'WARNING: No password available, not encrypting' >&2
     fi
 
     7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./*.mov ./*.jpg -mx0 \
