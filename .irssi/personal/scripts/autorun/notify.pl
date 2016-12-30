@@ -3,24 +3,26 @@ use Irssi;
 use vars qw($VERSION %IRSSI);
 
 sub notify {
-    my $msg = shift;
-    system('notify-send', $msg);
-    system('pushbullet-push', 'IRC highlight', $msg);
+    my ($title, $msg) = @_;
+    system('notify-send', $title, $msg);
+    system('pushbullet-push', $title, $msg);
 }
 
 sub print_text_notify {
     my ($event, $text, $nick_and_msg) = @_;
 
     if ($event->{level} & MSGLEVEL_HILIGHT) {
-        my $sender = $nick_and_msg;
-        $sender =~ s/^\<([^\>]+)\>.+/\1/;
-        notify("You were highlighted by $sender in " . ${event}->{target} . ".");
+        my $nick = $nick_and_msg;
+        my $msg = $nick_and_msg;
+        $nick =~ s/^\<([^\>]+)\>.+/\1/;
+        $msg =~ s/^.*?\> (.*)$/\1/;
+        notify("HLed by $nick in " . ${event}->{target}, $msg);
     }
 }
 
 sub message_private_notify {
     my ($server, $msg, $nick, $address) = @_;
-    notify("You were private messaged by $nick.")
+    notify("PMed by $nick", $msg)
 }
 
 Irssi::signal_add('print text', 'print_text_notify');
