@@ -5,6 +5,7 @@ use vars qw($VERSION %IRSSI);
 sub notify {
     my $msg = shift;
     system('notify-send', $msg);
+    system('pushbullet-push', 'IRC highlight', $msg);
 }
 
 sub print_text_notify {
