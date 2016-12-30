@@ -8,15 +8,18 @@ sub notify {
 }
 
 sub print_text_notify {
-    my $event = shift;
+    my ($event, $text, $nick_and_msg) = @_;
 
     if ($event->{level} & MSGLEVEL_HILIGHT) {
-        notify('You were highlighted.');
+        my $sender = $nick_and_msg;
+        $sender =~ s/^\<([^\>]+)\>.+/\1/;
+        notify("You were highlighted by $sender in " . ${event}->{target} . ".");
     }
 }
 
 sub message_private_notify {
-    notify('You were private messaged.')
+    my ($server, $msg, $nick, $address) = @_;
+    notify("You were private messaged by $nick.")
 }
 
 Irssi::signal_add('print text', 'print_text_notify');
