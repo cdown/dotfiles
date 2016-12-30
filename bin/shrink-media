@@ -53,5 +53,5 @@ for dir; do
 done
 
 if ! (( NO_COMPRESS )); then
-    7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./*.mov ./*.jpg -mx0
+    7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./*.mp4 ./*.jpg -mx0
 fi
