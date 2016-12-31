@@ -1,11 +1,20 @@
 use strict;
+use POSIX;
 use Irssi;
 use vars qw($VERSION %IRSSI);
 
 sub notify {
     my ($title, $msg) = @_;
-    system('notify-send', $title, $msg);
-    system('pushbullet-push', $title, $msg);
+
+    my $pid = fork();
+
+    if (!defined($pid)) {
+        Irssi::print("Couldn't fork in notify.pl");
+    } elsif ($pid == 0) {
+        system('notify-send', $title, $msg);
+        system('pushbullet-push', $title, $msg);
+        POSIX::_exit(1);
+    }
 }
 
 sub print_text_notify {
