@@ -72,6 +72,7 @@ _hostname_prompt() {
 
     case $(hostname) in
         dev*) displayed_hostname=dev ;;
+        chrisdown.name) displayed_hostname=chrisdown.name ;;
         *) displayed_hostname=$real_hostname ;;
     esac
 
