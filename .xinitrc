@@ -1,7 +1,9 @@
 #!/bin/bash
 
-systemctl --user import-environment DISPLAY XAUTHORITY PATH
-dbus-update-activation-environment DISPLAY XAUTHORITY PATH
+shared_env=(DISPLAY XAUTHORITY PATH SSH_AGENT_PID SSH_AUTH_SOCK)
+
+systemctl --user import-environment "${shared_env[@]}"
+dbus-update-activation-environment "${shared_env[@]}"
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -31,6 +33,11 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
         while ! urxvtc -title dev; do :; done
         for dir in ~/.irssi/*; do
             irc_type=${dir##*/}
+
+            if systemctl --user list-units | grep -qw "ircfwd-$irc_type.service"; then
+                systemctl --user start ircfwd-$irc_type.service
+            fi
+
             urxvtc -title irc -e create-or-attach-tmux-session irc-"$irc_type" \
                 "while irssi --home=\"$dir\"; do :; done"
         done
