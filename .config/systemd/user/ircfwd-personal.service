@@ -5,7 +5,7 @@ After=network.target network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ssh -vv -o ExitOnForwardFailure=yes -o BatchMode=yes -o ConnectTimeout=5 -o ServerAliveInterval=30 -N -L 62123:irc.freenode.net:6697 cd
+ExecStart=/usr/bin/ssh -vv -o ExitOnForwardFailure=yes -o BatchMode=yes -o ConnectTimeout=5 -o ServerAliveInterval=30 -N -L 62123:irc.example.com:6697 cd
 KillSignal=SIGINT
 Restart=always
 RestartSec=5
