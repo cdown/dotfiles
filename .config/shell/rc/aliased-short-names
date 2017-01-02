@@ -13,6 +13,7 @@ alias q='sudo '
 alias lopri='nice -n 19 ionice -c2 -n7 '
 alias pp='pdfpc -s -n right --disable-auto-grouping'
 alias scan='sudo nmap -n -PN -sT -sU -p-'
+alias k='q apt-get update && q apt-get dist-upgrade && q apt-get autoremove'
 
 alias ss='sudo systemctl start'
 alias st='sudo systemctl stop'
