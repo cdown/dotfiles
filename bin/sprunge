@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $1 ]]; then
-    curl http://sprunge.us/"${1##*/}"
+    curl -s http://sprunge.us/"${1##*/}"
 else
     # Avoid curl timeout, "x" needed to avoid stripping trailing newlines
     stdin=$(cat; printf x)
