@@ -1,3 +1,9 @@
 #!/bin/bash
 
-curl -F "sprunge=<-" http://sprunge.us
+if [[ $1 ]]; then
+    curl http://sprunge.us/"${1##*/}"
+else
+    # Avoid curl timeout, "x" needed to avoid stripping trailing newlines
+    stdin=$(cat; printf x)
+    curl -F "sprunge=<-" http://sprunge.us <<< "${stdin%x}"
+fi
