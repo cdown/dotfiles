@@ -19,7 +19,6 @@
 /.duply/bitbucket/conf
 /.duply/github/conf
 /.duply/google-drive/conf
-/.duply/mail/conf
 /.duply/mozilla/conf
 /.duply/trello/conf
 /.irssi/personal/certs/oftc-cdown.pem
@@ -28,6 +27,7 @@
 /.mpdscribble/mpdscribble.conf
 /.pypirc
 /.s3cfg
+/.ssh/keys/personal
 /bin/pushbullet-push
 /bin/trello-backup
 /bin/trello-popup
