@@ -10,7 +10,7 @@ if ! [[ -v TMUX ]]; then
     exec tmux new-session -s upgrade -- script -c "$0" "$log_file"
 fi
 
-for cmd in nodenv pyenv rbenv; do
+for cmd in nodenv pyenv rbenv plenv; do
     eval "$("$cmd" init -)"
 done
 
@@ -29,6 +29,8 @@ npm update -g
 
 # TODO: Check safety of gem update
 gem update
+
+cpan-outdated -p | cpanm
 
 vagrant plugin update
 
