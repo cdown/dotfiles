@@ -222,3 +222,5 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_pylint_args = '--rcfile=' . $HOME . '/.config/pylint/syntastic'
 let g:syntastic_python_flake8_args = '--max-complexity=5'
 let g:syntastic_aggregate_errors = 0
+
+let g:GPGDefaultRecipients=["0xDF8D21B616118070"]
