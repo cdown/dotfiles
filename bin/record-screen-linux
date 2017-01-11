@@ -3,6 +3,10 @@
 read -r x y width height geometry id < <(slop -f "%x %y %w %h %g %i")
 maim -g "$geometry" -i "$id"
 
+extra_args=()
+
+(( LOSSLESS )) && extra_args+=(-qp 0 -preset ultrafast)
+
 ffmpeg \
     -f x11grab \
     -r 25 \
@@ -10,4 +14,5 @@ ffmpeg \
     -i ":0.0+$x,$y" \
     -vcodec libx264 \
     -threads 0 \
+    "${extra_args[@]}" \
     "$1"
