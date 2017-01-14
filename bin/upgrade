@@ -30,7 +30,7 @@ npm update -g
 # TODO: Check safety of gem update
 gem update
 
-cpan-outdated -p | cpanm
+cpan-outdated -p | cpanm -n
 
 vagrant plugin update
 
