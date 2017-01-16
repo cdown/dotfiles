@@ -16,6 +16,7 @@ qmark r https://forecast.io
 qmark d https://drive.google.com
 qmark q https://quip.com
 qmark x https://www.myfitnesspal.com/food/diary
+qmark a https://trello.com/b/GgLMyI52/
 
 " Enable search engine suggestions
 set complete=Sl
