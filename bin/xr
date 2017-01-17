@@ -24,6 +24,10 @@ case $1 in
         xrandr --output "$main_display" --off
         xrandr --output "${external_displays[0]}" --primary --auto
     ;;
+    external-vertical)
+        xrandr --output "$main_display" --off
+        xrandr --output "${external_displays[0]}" --primary --rotate left --auto
+    ;;
     external-*)
         direction="${1#external-}"
         [[ $direction == right || $direction == left ]] && direction+=-of
