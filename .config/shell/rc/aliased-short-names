@@ -51,3 +51,5 @@ alias mv3='mkvirtualenv -p python3'
 alias wo=workon
 
 alias gt=grep-tids
+
+alias gam='xgamma -gamma 3'
