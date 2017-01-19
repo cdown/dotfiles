@@ -1,7 +1,7 @@
 #!/bin/sh
 
 for env in pyenv rbenv nodenv plenv; do
-    if command -v "$env" >/dev/null 2>&1 && "$env" 2>&1 | grep 'Some useful'; then
+    if command -v "$env" >/dev/null 2>&1 && "$env" 2>&1 | grep -q 'Some useful'; then
         eval "$("$env" init -)"
     fi
 done
