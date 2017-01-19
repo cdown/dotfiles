@@ -12,7 +12,7 @@ sub notify {
         Irssi::print("Couldn't fork in notify.pl");
     } elsif ($pid == 0) {
         system('notify-send', $title, $msg);
-        system('pushbullet-push', $title, $msg);
+        system('pushover-push', $title, $msg);
         POSIX::_exit(1);
     }
 }
