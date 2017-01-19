@@ -29,5 +29,6 @@
 /.s3cfg
 /.ssh/keys/personal
 /bin/pushbullet-push
+/bin/pushover-push
 /bin/trello-backup
 /bin/trello-popup
