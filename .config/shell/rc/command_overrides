@@ -12,6 +12,11 @@ alias awk="$(use_first_to_exist gawk awk)"
 alias diff="$(use_first_to_exist colordiff diff)"
 }
 
+wdiff() {
+    # shellcheck disable=SC2091
+    wdiff "$@" | "$(use_first_to_exist colordiff cat)"
+}
+
 alias cp='cp -i'
 alias mv='mv -i'
 
