@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wdiff <(pdftotext "${1?}" -) <(pdftotext "${2?}" -) | colordiff
