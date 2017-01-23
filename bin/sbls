@@ -1,7 +1,3 @@
 #!/bin/bash
 
-sbfind | while read -r sb; do
-    printf '%s:\n\n ' "$sb"
-    rsync "$sb":/data/"$1"
-    printf '\n\n'
-done
+rsync cd:/srv/downloads/"$1"
