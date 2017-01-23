@@ -33,7 +33,7 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
         for dir in ~/.irssi/*; do
             irc_type=${dir##*/}
             urxvtc -title irc -e create-or-attach-tmux-session irc-"$irc_type" \
-                "while irssi --home=\"$dir\"; do :; done"
+                "while :; do irssi --home=\"$dir\"; done"
         done
 
         for account_type in "${!mutts[@]}"; do

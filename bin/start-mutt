@@ -9,8 +9,4 @@ export NOTMUCH_CONFIG
 
 while :; do
     mutt
-    # Sometimes Mutt segfaults (lol), in that case we should just restart
-    # anyway
-    # shellcheck disable=SC2181
-    (( $? != 139 && $? != 0 )) && exit "$?"
 done
