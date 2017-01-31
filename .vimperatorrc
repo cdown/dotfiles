@@ -7,8 +7,8 @@ nnoremap u :undo<CR>
 nnoremap x :tabonly<CR>
 nnoremap C :source ~/.vimperatorrc<CR>
 
-nnoremap P :set! permissions.default.image 2<CR>
-nnoremap p :set! permissions.default.image 1<CR>
+nnoremap P :set! permissions.default.image=2<CR>
+nnoremap p :set! permissions.default.image=1<CR>
 
 qmark f https://facebook.com
 qmark g https://gmail.com
