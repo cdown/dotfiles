@@ -7,6 +7,9 @@ nnoremap u :undo<CR>
 nnoremap x :tabonly<CR>
 nnoremap C :source ~/.vimperatorrc<CR>
 
+nnoremap P :set! permissions.default.image 2<CR>
+nnoremap p :set! permissions.default.image 1<CR>
+
 qmark f https://facebook.com
 qmark g https://gmail.com
 qmark u https://unix.stackexchange.com
@@ -46,6 +49,7 @@ set! hidenavbar.autohide=true
 set! hidenavbar.hideonstart=1
 set! network.dnsCacheExpiration=0
 set! network.proxy.socks_remote_dns=true
+set! permissions.default.image=1
 set! reader.parse-on-load.enabled=false
 set! signon.rememberSignons=false
 set! ui.submenuDelay=0
