@@ -1,0 +1,23 @@
+#!/bin/bash
+
+action=${1?}
+
+system_services=(atop)
+user_services=(mpd mpdscribble clipmenud)
+processes=(firefox spotify)
+
+case $action in
+    on)
+        sudo systemctl stop "${system_services[@]}"
+        systemctl --user stop "${user_services[@]}"
+        for process in "${processes[@]}"; do
+            pkill -x "$process"
+        done
+        sudo intel-brightness 30
+    ;;
+    off)
+        sudo systemctl start "${system_services[@]}"
+        systemctl --user start "${user_services[@]}"
+        sudo intel-brightness 100
+    ;;
+esac
