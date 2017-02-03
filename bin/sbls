@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rsync cd:/srv/downloads/"$1"
+rsync copy@cd:/srv/downloads/"$1"
