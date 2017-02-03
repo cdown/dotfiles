@@ -14,6 +14,8 @@ sub notify {
         system('notify-send', $title, $msg);
         system('pushover-push', $title, $msg);
         POSIX::_exit(1);
+    } else {
+        Irssi::pidwait_add($pid);
     }
 }
 
