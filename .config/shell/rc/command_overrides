@@ -83,3 +83,5 @@ for tool_full in /usr/share/bcc/tools/*; do
     # shellcheck disable=SC2139
     alias "$tool"='PATH=$(get-path-without-env) sudo python2 '"$tool_full"
 done
+
+alias pkgfile='pacman -Fo'
