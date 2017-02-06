@@ -49,7 +49,6 @@ set! hidenavbar.autohide=true
 set! hidenavbar.hideonstart=1
 set! network.dnsCacheExpiration=0
 set! network.proxy.socks_remote_dns=true
-set! permissions.default.image=2
 set! reader.parse-on-load.enabled=false
 set! signon.rememberSignons=false
 set! ui.submenuDelay=0
