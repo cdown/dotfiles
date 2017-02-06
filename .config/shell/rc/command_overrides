@@ -84,4 +84,4 @@ for tool_full in /usr/share/bcc/tools/*; do
     alias "$tool"='PATH=$(get-path-without-env) sudo python2 '"$tool_full"
 done
 
-alias pkgfile='pacman -Fo'
+alias pkgfile='pacman -Fs'
