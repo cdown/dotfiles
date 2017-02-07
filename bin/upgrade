@@ -34,7 +34,7 @@ cpan-outdated -p | cpanm -n
 
 vagrant plugin update
 
-sudo -u makepkg EDITFILES=0 yaourt -Syua
+sudo -u makepkg pacaur -Syu
 sudo pacdiff
 
 update-from-cm
