@@ -10,4 +10,4 @@ git clone --recursive git://github.com/cdown/ansible-personal.git "$playbook_dir
 # shellcheck disable=SC2164
 cd "$playbook_dir"
 
-sudo ansible-playbook -i localhost, -v setup.yml
+./run
