@@ -1,5 +1,0 @@
-#!/bin/bash
-
-for major in 2 3; do
-    pyenv install -l | awk '$1 ~ /^'"$major"'.[0-9.]+$/ { print $1 }' | tail -1
-done

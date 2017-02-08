@@ -1,0 +1,20 @@
+#!/bin/bash
+
+get_last_ver() {
+    awk '$1 ~ /^[0-9.]+$/ { print $1 }' | sort -n | tail -1
+}
+
+printf '%s:\n\n' Python
+
+for major in 2 3; do
+    pyenv install -l | awk '$1 ~ /^'"$major"'.[0-9.]+$/ { print $1 }' | tail -1
+done
+
+printf '\n%s:\n\n' Ruby
+rbenv install -l | get_last_ver
+
+printf '\n%s:\n\n' Perl
+plenv install -l | get_last_ver
+
+printf '\n%s:\n\n' Node
+nodenv install -l | get_last_ver
