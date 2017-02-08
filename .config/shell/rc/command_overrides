@@ -62,7 +62,9 @@ if id makepkg >/dev/null 2>&1; then
     # binary (not the alias) after sudoing
 
     # shellcheck disable=SC2033
-    pacaur-cd() ( cd / && sudo -u makepkg pacaur "$@" )
+    pacaur-cd() (
+        cd / && PATH=$(get-path-without-pyenv) sudo -u makepkg pacaur "$@"
+    )
     # shellcheck disable=SC2032
     alias pacaur=pacaur-cd
 fi
