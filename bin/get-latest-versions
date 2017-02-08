@@ -4,17 +4,19 @@ get_last_ver() {
     awk '$1 ~ /^[0-9.]+$/ { print $1 }' | sort -n | tail -1
 }
 
-printf '%s:\n\n' Python
+get_latest() {
+    cmd=${1?}
+    var_prefix=${2?}
+
+    printf '%s_version: ' "$var_prefix"
+    "$cmd" install -l | get_last_ver
+}
 
 for major in 2 3; do
+    printf 'python_%d_version: ' "$major" 
     pyenv install -l | awk '$1 ~ /^'"$major"'.[0-9.]+$/ { print $1 }' | tail -1
 done
 
-printf '\n%s:\n\n' Ruby
-rbenv install -l | get_last_ver
-
-printf '\n%s:\n\n' Perl
-plenv install -l | get_last_ver
-
-printf '\n%s:\n\n' Node
-nodenv install -l | get_last_ver
+get_latest nodenv node
+get_latest rbenv ruby
+get_latest plenv perl
