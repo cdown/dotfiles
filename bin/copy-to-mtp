@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec rsync -rvlc --inplace --progress -T "$@"
