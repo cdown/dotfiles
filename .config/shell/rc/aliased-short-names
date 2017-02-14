@@ -26,12 +26,7 @@ alias ut='systemctl --user stop'
 alias ud='systemctl --user -n 100 status'
 
 m() {
-    if [ "$1" = dev ]; then
-        # We already have configs here
-        mosh "$@"
-    else
-        moshrc "$@"
-    fi
+    moshrc "$@"
 }
 
 g(){
