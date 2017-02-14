@@ -1,6 +1,8 @@
 #!/bin/sh
 
-alias coa=create-or-attach-tmux-session
+# shellcheck disable=SC2139,SC2154
+alias coa="TMUX_CONFIG=$config_home/.tmux.conf create-or-attach-tmux-session"
+
 alias so=clean-env
 alias udf=update-dotfiles
 alias zhsub=fix-chinese-sub-encoding
