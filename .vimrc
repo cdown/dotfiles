@@ -185,6 +185,9 @@ augroup modechange_settings
   autocmd BufReadPre,FileReadPre * let @/ = ''
 
   autocmd InsertLeave * setlocal nopaste
+
+  " Jump to last position in file
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup END
 
 
