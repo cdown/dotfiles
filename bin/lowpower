@@ -8,6 +8,7 @@ processes=(firefox spotify)
 
 case $action in
     on)
+        sudo powerdown
         sudo systemctl stop "${system_services[@]}"
         systemctl --user stop "${user_services[@]}"
         for process in "${processes[@]}"; do
