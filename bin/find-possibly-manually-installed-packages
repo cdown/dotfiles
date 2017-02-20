@@ -1,0 +1,22 @@
+#!/bin/bash
+
+mapfile -t pkgs < <(pacman -Qqe)
+mapfile -t _base < <(pacman -Qqg base base-devel fcitx-im)
+
+# Put all base packages in an array so we don't have to loop each time
+declare -A base
+for pkg in "${_base[@]}"; do
+    base["$pkg"]=1
+done
+
+manual=()
+
+for pkg in "${pkgs[@]}"; do
+    if ! grep -RFqw -- "$pkg" ~/git/ansible-desktop/tasks; then
+        if ! (( base["$pkg"] )); then
+            manual+=( "$pkg" )
+        fi
+    fi
+done
+
+printf '%s\n' "${manual[@]}"
