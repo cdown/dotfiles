@@ -13,7 +13,8 @@ manual=()
 
 for pkg in "${pkgs[@]}"; do
     if ! grep -RFqw -- "$pkg" ~/git/ansible-desktop/tasks; then
-        if ! (( base["$pkg"] )); then
+        if ! (( base["$pkg"] )) && [[ "$pkg" != linux ]] &&
+             [[ "$pkg" != linux-* ]]; then
             manual+=( "$pkg" )
         fi
     fi
