@@ -15,7 +15,9 @@ for pkg in "${pkgs[@]}"; do
     if ! grep -RFqw -- "$pkg" ~/git/ansible-desktop/tasks; then
         if ! (( base["$pkg"] )) && [[ "$pkg" != linux ]] &&
              [[ "$pkg" != linux-* ]]; then
-            manual+=( "$pkg" )
+            if LC_ALL=C pacman -Qi "$pkg" | grep 'Required By' | grep -q 'None$'; then
+                manual+=( "$pkg" )
+            fi
         fi
     fi
 done
