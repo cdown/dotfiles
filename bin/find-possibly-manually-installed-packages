@@ -1,5 +1,10 @@
 #!/bin/bash
 
+playbook_dir=$(mktemp -ud)
+
+trap 'cd /; rm -rf "$playbook_dir"' 0
+git clone git://github.com/cdown/ansible-desktop.git "$playbook_dir"
+
 mapfile -t pkgs < <(pacman -Qqe)
 mapfile -t _base < <(pacman -Qqg base base-devel fcitx-im)
 
@@ -12,7 +17,7 @@ done
 manual=()
 
 for pkg in "${pkgs[@]}"; do
-    if ! grep -RFqw -- "$pkg" ~/git/ansible-desktop/tasks; then
+    if ! grep -RFqw -- "$pkg" "$playbook_dir/tasks"; then
         if ! (( base["$pkg"] )) && [[ "$pkg" != linux ]] &&
              [[ "$pkg" != linux-* ]]; then
             if LC_ALL=C pacman -Qi "$pkg" | grep 'Required By' | grep -q 'None$'; then
