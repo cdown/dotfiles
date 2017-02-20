@@ -7,6 +7,10 @@
 NOTMUCH_CONFIG="$HOME/.config/notmuch/$NOTMUCH_BASENAME"
 export NOTMUCH_CONFIG
 
+# notmuch relies on some Perl libs
+PATH=$(get-path-without-env)
+export PATH
+
 while :; do
     mutt
 done
