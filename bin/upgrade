@@ -37,7 +37,7 @@ vagrant plugin update
 while pkgs=$(find-possibly-manually-installed-packages); do
     # All packages are spit by IFS.
     # shellcheck disable=SC2086
-    pacman -Rns $pkgs
+    sudo pacman -Rns $pkgs
 done
 
 sudo -u makepkg pacaur -Syu
