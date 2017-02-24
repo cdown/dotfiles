@@ -38,3 +38,9 @@ sudo -u makepkg pacaur -Syu
 sudo pacdiff
 
 update-from-cm
+
+while pkgs=$(find-possibly-manually-installed-packages); do
+    # All packages are spit by IFS.
+    # shellcheck disable=SC2086
+    pacman -Rns $pkgs
+done
