@@ -27,4 +27,7 @@ for pkg in "${pkgs[@]}"; do
     fi
 done
 
-printf '%s\n' "${manual[@]}"
+if (( ${#manual[@]} )); then
+    printf '%s\n' "${manual[@]}"
+    exit 1
+fi
