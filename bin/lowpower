@@ -3,7 +3,8 @@
 action=${1?}
 
 system_services=(atop)
-user_services=(mpd mpdscribble clipmenud)
+user_services=(mpd mpdscribble clipmenud fcitx xbanish)
+
 processes=(firefox spotify)
 
 case $action in
@@ -20,5 +21,9 @@ case $action in
         sudo systemctl start "${system_services[@]}"
         systemctl --user start "${user_services[@]}"
         sudo intel-brightness 100
+    ;;
+    super)
+        "$0" on
+        tmux kill-server
     ;;
 esac
