@@ -16,15 +16,15 @@ case $action in
             pkill -x "$process"
         done
         sudo intel-brightness 30
+
+        # Takes a non-trivial amount of power according to powertop, see power
+        # estimate when plugged in
+        sudo ip link del docker0
     ;;
     off)
         sudo systemctl start "${system_services[@]}"
         systemctl --user start "${user_services[@]}"
         sudo intel-brightness 100
-
-        # Takes a non-trivial amount of power according to powertop, see power
-        # estimate when plugged in
-        sudo ip link del docker0
     ;;
     super)
         "$0" on
