@@ -29,6 +29,17 @@ case $action in
     super)
         "$0" on
         tmux kill-server
-        sudo modprobe -r iwlwifi
+
+        # TODO: support more than just iwlwifi
+        mapfile -t wl_slots < <(
+            sudo lshw -c network -businfo |
+                awk '$2 ~ /^wl/ { print $1 }' | awk -F@ '{ print $2 }'
+        )
+        for dev in "${wl_slots[@]}"; do
+            sudo tee <<< auto > /dev/null \
+                /sys/bus/pci/devices/"$dev"/power/control
+            sudo tee <<< "$dev" > /dev/null \
+                /sys/bus/pci/drivers/iwlwifi/unbind
+        done
     ;;
 esac
