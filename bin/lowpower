@@ -45,7 +45,7 @@ case $action in
         )
 
         if (( ${#wl_slots[@]} )); then
-            printf '%s\n' "${wl_slots[@]}" | tee "$dev_file" >/dev/null
+            printf '%s\n' "${wl_slots[@]}" | sudo tee "$dev_file" >/dev/null
         fi
 
         for dev in "${wl_slots[@]}"; do
