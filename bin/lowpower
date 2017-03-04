@@ -7,6 +7,8 @@ user_services=(mpd mpdscribble clipmenud fcitx xbanish)
 
 processes=(firefox spotify)
 
+dev_file=/var/tmp/unbound_devices
+
 case $action in
     on)
         sudo powerdown
@@ -25,6 +27,12 @@ case $action in
         sudo systemctl start "${system_services[@]}"
         systemctl --user start "${user_services[@]}"
         sudo intel-brightness 100
+
+        mapfile -t wl_slots < "$dev_file"
+        for dev in "${wl_slots[@]}"; do
+            sudo tee <<< "$dev" > /dev/null \
+                /sys/bus/pci/drivers/iwlwifi/bind
+        done
     ;;
     super)
         "$0" on
@@ -35,6 +43,11 @@ case $action in
             sudo lshw -c network -businfo |
                 awk '$2 ~ /^wl/ { print $1 }' | awk -F@ '{ print $2 }'
         )
+
+        if (( ${#wl_slots[@]} )); then
+            printf '%s\n' "${wl_slots[@]}" | tee "$dev_file" >/dev/null
+        fi
+
         for dev in "${wl_slots[@]}"; do
             sudo tee <<< auto > /dev/null \
                 /sys/bus/pci/devices/"$dev"/power/control
