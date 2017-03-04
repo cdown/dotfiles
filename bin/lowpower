@@ -21,9 +21,14 @@ case $action in
         sudo systemctl start "${system_services[@]}"
         systemctl --user start "${user_services[@]}"
         sudo intel-brightness 100
+
+        # Takes a non-trivial amount of power according to powertop, see power
+        # estimate when plugged in
+        ip link del docker0
     ;;
     super)
         "$0" on
         tmux kill-server
+        sudo modprobe -r iwlwifi
     ;;
 esac
