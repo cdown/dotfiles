@@ -4,5 +4,6 @@
 # find a decent SLOC counter that did not count docstrings as code.
 
 sed -r -e '/^\s*$/d' -e '/^\s*#.*$/d' \
+       -e '/^\s*\S?'"'''.*'''"'$/d' \
        -e '/^\s*\S?'"'''"'/,/^\s*'"'''"'$/d' \
        -e '/^\s*\S?"""$/,/^\s*"""$/d' < "$1" | wc -l
