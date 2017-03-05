@@ -50,3 +50,5 @@ alias wo=workon
 alias gt=grep-tids
 
 alias gam='xgamma -gamma 3'
+
+alias fix-netctl='q rm /run/network/wpa_supplicant_wlp4s0.conf'  # lol
