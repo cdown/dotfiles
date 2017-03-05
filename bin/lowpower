@@ -22,6 +22,9 @@ case $action in
         # Takes a non-trivial amount of power according to powertop, see power
         # estimate when plugged in
         sudo ip link del docker0
+
+        sudo tee <<< powersave > /dev/null \
+            /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ;;
     off)
         sudo systemctl start "${system_services[@]}"
@@ -33,6 +36,9 @@ case $action in
             sudo tee <<< "$dev" > /dev/null \
                 /sys/bus/pci/drivers/iwlwifi/bind
         done
+
+        sudo tee <<< performance > /dev/null \
+            /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ;;
     super)
         "$0" on
