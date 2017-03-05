@@ -18,35 +18,16 @@ for service in "${services_to_start[@]}"; do
     systemctl --user start "$service"
 done
 
-declare -A mutts
-mutts=(
-    [personal]=chris@chrisdown.name
-)
-
 type -p VBoxClient-all >/dev/null 2>&1 && VBoxClient-all &
 
 urxvtd -q -o &
 
 if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
     {
-        while ! urxvtc -title dev; do :; done
-        for dir in ~/.irssi/*; do
-            irc_type=${dir##*/}
-            urxvtc -title irc -e create-or-attach-tmux-session irc-"$irc_type" \
-                "while :; do irssi --home=\"$dir\"; done"
-        done
-
-        for account_type in "${!mutts[@]}"; do
-            email="${mutts[$account_type]}"
-            maildir="$HOME/Mail/${account_type^}"
-            if [[ -r ~/.config/mutt/accounts/"$email" ]]; then
-                urxvtc -title mail -e create-or-attach-tmux-session \
-                    "mail-$account_type" \
-                    "EMAIL='$email' NOTMUCH_BASENAME='$account_type' MAILDIR='$maildir' start-mutt"
-            fi
-        done
-
         firefox &
+        while ! urxvtc -title dev; do :; done
+        start-irssis
+        start-mutts
     } &
 fi
 
