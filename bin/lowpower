@@ -7,8 +7,6 @@ user_services=(mpd mpdscribble clipmenud fcitx xbanish)
 
 processes=(firefox spotify)
 
-dev_file=/var/tmp/unbound_devices
-
 case $action in
     on)
         sudo powerdown
@@ -31,14 +29,10 @@ case $action in
         systemctl --user start "${user_services[@]}"
         sudo intel-brightness 100
 
-        mapfile -t wl_slots < "$dev_file"
-        for dev in "${wl_slots[@]}"; do
-            sudo tee <<< "$dev" > /dev/null \
-                /sys/bus/pci/drivers/iwlwifi/bind
-        done
-
         sudo tee <<< performance > /dev/null \
             /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+        sudo rfkill unblock all
 
         pgrep -x mutt || start-mutts
         pgrep -x irssi || start-irssis
@@ -46,22 +40,6 @@ case $action in
     super)
         "$0" on
         tmux kill-server
-
-        # TODO: support more than just iwlwifi
-        mapfile -t wl_slots < <(
-            sudo lshw -c network -businfo |
-                awk '$2 ~ /^wl/ { print $1 }' | awk -F@ '{ print $2 }'
-        )
-
-        if (( ${#wl_slots[@]} )); then
-            printf '%s\n' "${wl_slots[@]}" | sudo tee "$dev_file" >/dev/null
-        fi
-
-        for dev in "${wl_slots[@]}"; do
-            sudo tee <<< auto > /dev/null \
-                /sys/bus/pci/devices/"$dev"/power/control
-            sudo tee <<< "$dev" > /dev/null \
-                /sys/bus/pci/drivers/iwlwifi/unbind
-        done
+        sudo rfkill block all
     ;;
 esac
