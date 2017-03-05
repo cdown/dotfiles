@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# A super dumb Python sloc counter. Basically only created because I couldn't
+# find a decent SLOC counter that did not count docstrings as code.
+
+sed -r -e '/^\s*$/d' -e '/^\s*#.*$/d' \
+       -e '/^\s*\S?'"'''"'/,/^\s*'"'''"'$/d' \
+       -e '/^\s*\S?"""$/,/^\s*"""$/d' < "$1" | wc -l
