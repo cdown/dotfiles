@@ -158,7 +158,6 @@
 *.un~
 *.vrb
 *.war
-*.x86_64
 *.xccheckout
 *.xcuserstate
 *.xdy
