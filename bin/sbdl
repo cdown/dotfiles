@@ -1,5 +1,5 @@
 #!/bin/bash
 
-while ! rsync -avP --timeout 500 "${@:3}" copy@cd:/srv/downloads/"$1" "${2-.}"; do
+while ! rsync -avP --inplace --timeout 500 "${@:3}" copy@cd:/srv/downloads/"$1" "${2-.}"; do
     sleep 5
 done
