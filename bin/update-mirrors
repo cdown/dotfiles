@@ -3,5 +3,5 @@
 PATH="$(get-path-without-env)"
 export PATH
 
-sudo reflector "$@" \
+sudo reflector "$@" --verbose \
     -f 6 --protocol http --sort rate --save /etc/pacman.d/mirrorlist
