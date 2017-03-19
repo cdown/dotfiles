@@ -15,11 +15,11 @@ extra_args=()
 (( LOSSLESS )) && extra_args+=(-qp 0 -preset ultrafast)
 
 ffmpeg \
+    -video_size "$s" \
+    -framerate 25 \
     -f x11grab \
-    -r 25 \
-    -s "$s" \
     -i "$i" \
     -vcodec libx264 \
     -threads 0 \
     "${extra_args[@]}" \
-    "$1"
+    "${1?}"
