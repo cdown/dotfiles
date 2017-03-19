@@ -1,0 +1,17 @@
+#!/bin/bash
+
+palette=$(mktemp -u --suffix .png)
+input=${1?}
+output=${input%.*}.gif
+extra_args=()
+
+(( START_TIME )) && extra_args+=(-ss "$START_TIME")
+(( DURATION )) && extra_args+=(-t "$DURATION")
+
+trap EXIT 'rm -- "$palette"'
+
+ffmpeg -i "$input" "${extra_args[@]}" \
+    -vf fps=10,scale=320:-1:flags=lanczos,palettegen "$palette"
+
+ffmpeg -i "$input" -i "$palette" "${extra_args[@]}" -filter_complex \
+    "fps=10,scale=320:-1:flags=lanczos[x];[x][1:v]paletteuse" "$output"
