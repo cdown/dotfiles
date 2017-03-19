@@ -3,12 +3,12 @@
 file=${1?}
 
 if (( FULLSCREEN )); then
-    s=$(xrandr --current | awk '$2 ~ /*/ { print $1 }')
-    i=':0.0+0,0'
+    size=$(xdpyinfo | awk '$1 == "dimensions:" { print $2 }')
+    source=':0.0+0,0'
 else
     read -r x y width height < <(slop -f "%x %y %w %h")
-    s="$width"x"$height"
-    i=":0.0+$x,$y"
+    size="$width"x"$height"
+    source=":0.0+$x,$y"
 fi
 
 extra_args=()
@@ -16,10 +16,10 @@ extra_args=()
 (( LOSSLESS )) && extra_args+=(-qp 0 -preset ultrafast)
 
 ffmpeg \
-    -video_size "$s" \
+    -video_size "$size" \
     -framerate 25 \
     -f x11grab \
-    -i "$i" \
+    -i "$source" \
     -vcodec libx264 \
     -threads 0 \
     "${extra_args[@]}" \
