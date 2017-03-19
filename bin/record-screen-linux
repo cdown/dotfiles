@@ -1,7 +1,14 @@
 #!/bin/bash
 
-read -r x y width height geometry id < <(slop -f "%x %y %w %h %g %i")
-maim -g "$geometry" -i "$id"
+if (( FULLSCREEN )); then
+    s=$(xrandr --current | awk '$2 ~ /*/ { print $1 }')
+    i=':0.0+0,0'
+else
+    read -r x y width height geometry id < <(slop -f "%x %y %w %h %g %i")
+    maim -g "$geometry" -i "$id"
+    s="$width"x"$height"
+    i=":0.0+$x,$y"
+fi
 
 extra_args=()
 
@@ -10,8 +17,8 @@ extra_args=()
 ffmpeg \
     -f x11grab \
     -r 25 \
-    -s "$width"x"$height" \
-    -i ":0.0+$x,$y" \
+    -s "$s" \
+    -i "$i" \
     -vcodec libx264 \
     -threads 0 \
     "${extra_args[@]}" \
