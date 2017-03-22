@@ -3,15 +3,13 @@
 palette=$(mktemp -u --suffix .png)
 input=${1?}
 output=${input%.*}.gif
+filters='fps=15'
 extra_args=()
 
 (( START_TIME )) && extra_args+=(-ss "$START_TIME")
 (( DURATION )) && extra_args+=(-t "$DURATION")
 
-trap EXIT 'rm -- "$palette"'
+trap 'rm -- "$palette"' EXIT
 
-ffmpeg -i "$input" "${extra_args[@]}" \
-    -vf fps=10,scale=320:-1:flags=lanczos,palettegen "$palette"
-
-ffmpeg -i "$input" -i "$palette" "${extra_args[@]}" -filter_complex \
-    "fps=10,scale=320:-1:flags=lanczos[x];[x][1:v]paletteuse" "$output"
+ffmpeg "${extra_args[@]}" -i "$input" -vf "$filters,palettegen" -y "$palette"
+ffmpeg "${extra_args[@]}" -i "$input" -i "$palette" -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$output"
