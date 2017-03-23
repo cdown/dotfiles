@@ -11,7 +11,7 @@ ILLEGAL_KEYS = (
     'u', '/',
 
     # Stops arrow keys from working
-    'O'
+    'O',
 )
 
 
@@ -34,11 +34,17 @@ def main():
     # Can't use enumerate() easily here because of nested loops
     window_id = 50
 
+    seen_keys = set()
+
     # Config should look like network -> key -> (channel, pass or None)
     for network, channel_config in sorted(config.items()):
         for key, (channel, password) in sorted(channel_config.items()):
             if key in ILLEGAL_KEYS:
                 raise ValueError("Illegal key: {}".format(key))
+
+            if key in seen_keys:
+                raise ValueError("Already saw key: {}".format(key))
+            seen_keys.add(key)
 
             keyboard_lines.append(
                 '{{ key = "meta-{key}"; id = "change_window"; '
