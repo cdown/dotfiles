@@ -11,7 +11,7 @@ tzs=(
 )
 
 for tz in "${tzs[@]}"; do
-    printf '%s: ' "$tz"
+    printf '%20s: ' "$tz"
 
     if [[ $tz == Current ]]; then
         date
