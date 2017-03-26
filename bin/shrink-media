@@ -32,7 +32,7 @@ for dir; do
     done
 
     # x264 uses all processors already so don't need parallel
-    (( NO_VIDEOS )) || for file in "$dir"/**/*.{mov,MOV,mp4,MP4,avi,AVI}; do
+    (( NO_VIDEOS )) || for file in "$dir"/**/*.{mov,MOV,mp4,MP4,avi,AVI,mts,MTS}; do
         mp4_filename=${file%.*}.mp4
         mp4_filename=${mp4_filename##"$dir"/}
 
