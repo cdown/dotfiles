@@ -33,6 +33,10 @@ for in_filename in *.{JP{,E}G,jp{,e}g}; do
             if ! [[ -e $new_filename ]]; then
                 out_filename=$new_filename
                 break
+            elif [[ $new_filename == "$in_filename" ]]; then
+                # We already renamed these ones, don't do it again. This avoids
+                # getting _3 images when there are only two.
+                continue 2
             else
                 last_filename=$new_filename
                 let i++
