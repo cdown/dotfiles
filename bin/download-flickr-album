@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec flickr_download -n title_increment -d "${1?album id missing}" -t
