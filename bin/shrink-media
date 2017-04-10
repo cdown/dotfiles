@@ -22,7 +22,7 @@ for dir; do
         parallel --bar -0 nice -n 19 \
             convert -interlace Plane \
             -resize "$MAX_DIMENSION"x"$MAX_DIMENSION" \
-            -quality "$PHOTO_QUALITY" -filter Lanczos '{}' "{= s:^${dir}/::; =}"
+            -quality "$PHOTO_QUALITY" -filter Lanczos '{}' "{= s:^${dir%/}/::; =}"
 
     # Why do Chinese gallery apps only sort by mtime, sigh... :-(
     i=0
