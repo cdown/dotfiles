@@ -3,7 +3,11 @@
 action=${1?}
 
 system_services=(atop)
-user_services=(mpd mpdscribble clipmenud fcitx xbanish)
+user_services=(
+    mpd mpdscribble clipmenud fcitx xbanish gvfs-daemon gvfs-metadata
+    gvfs-mtp-volume-monitor gvfs-udisks2-volume-monitor pulseaudio
+    xfce4-notifyd
+)
 
 processes=(firefox spotify)
 
