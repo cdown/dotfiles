@@ -45,5 +45,6 @@ case $action in
         "$0" on
         tmux kill-server
         sudo rfkill block all
+        sudo netctl stop-all
     ;;
 esac
