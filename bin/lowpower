@@ -2,7 +2,7 @@
 
 action=${1?}
 
-system_services=(atop)
+system_services=(atop org.cups.cupsd cronie ntpd acpid systemd-journald)
 user_services=(
     mpd mpdscribble clipmenud fcitx xbanish gvfs-daemon gvfs-metadata
     gvfs-mtp-volume-monitor gvfs-udisks2-volume-monitor pulseaudio
