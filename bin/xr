@@ -31,10 +31,10 @@ case $1 in
         xrandr --output DP-1 --auto --primary
 
         # This monitor doesn't support 2560x1600/60 over HDMI by default
-        # shellcheck disable=SC2086
         xrandr --output HDMI-2 --mode 1920x1200  # Force release
         xrandr --delmode HDMI-2 "$name" || true
         xrandr --rmmode "$name" || true
+        # shellcheck disable=SC2086
         xrandr --newmode "$name" $args
         xrandr --addmode HDMI-2 "$name"
         xrandr --output HDMI-2 --mode "$name" --right-of DP-1
