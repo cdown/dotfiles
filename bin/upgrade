@@ -35,7 +35,7 @@ gem update
 
 cpan-outdated -p | cpanm -n
 
-vagrant plugin update
+command -v vagrant &>/dev/null && vagrant plugin update
 
 while ! pkgs=$(find-possibly-manually-installed-packages); do
     # All packages are spit by IFS.
