@@ -12,8 +12,9 @@ alias awk="$(use_first_to_exist gawk awk)"
 alias diff="$(use_first_to_exist colordiff diff)"
 }
 
-alias cp='cp -i'
-alias mv='mv -i'
+alias cp='cp --backup=numbered'
+alias mv='mv --backup=numbered'
+alias ln='ln --backup=numbered'
 
 alias startx='exec startx &>| /tmp/startx-$USER'
 
