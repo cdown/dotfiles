@@ -65,7 +65,7 @@ sub simple_hash {
 
   # Remove anything after alnum from consideration, since often we have
   # foo_away or foo|away or some other shite
-  $string =~ s/[^a-zA-Z]//g
+  $string =~ s/[^a-zA-Z]//g;
 
   my @chars = split //, $string;
   my $counter;
