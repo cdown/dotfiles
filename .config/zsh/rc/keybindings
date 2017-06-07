@@ -25,9 +25,6 @@
 [[ "$terminfo[khome]" == "^[O"* ]] && bindkey -M emacs "${terminfo[khome]/O/[}" beginning-of-line
 [[ "$terminfo[kend]" == "^[O"* ]] && bindkey -M emacs "${terminfo[kend]/O/[}" end-of-line
 
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
-
 if [[ -n ${terminfo[smkx]} ]]; then
     zle-line-init() {
         echoti smkx
@@ -43,3 +40,6 @@ if [[ -n ${terminfo[rmkx]} ]]; then
 fi
 
 bindkey -e
+
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
