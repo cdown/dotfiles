@@ -12,7 +12,10 @@ sub notify {
         Irssi::print("Couldn't fork in notify.pl");
     } elsif ($pid == 0) {
         system('notify-send', $title, $msg);
-        system('pushover-push', $title, $msg);
+        my $idle_time = `xprintidle`;
+        if ($idle_time > 20000) {
+            system('pushover-push', $title, $msg);
+        }
         POSIX::_exit(1);
     } else {
         Irssi::pidwait_add($pid);
