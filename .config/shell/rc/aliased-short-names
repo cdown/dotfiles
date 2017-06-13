@@ -56,3 +56,4 @@ alias wipe-disk='shred --verbose --random-source=/dev/urandom -n1'
 
 alias chinese-only='srt lines-matching -m hanzidentifier -f hanzidentifier.has_chinese'
 alias strip-html="srt process -m re -f 'lambda sub: re.sub("'"<[^<]+?>", "", sub'")'"
+alias simplify='cconv -f utf-8 -t utf-8-cn'
