@@ -1,6 +1,7 @@
 use strict;
 use POSIX;
 use Irssi;
+use HTML::Escape qw/escape_html/;
 use vars qw($VERSION %IRSSI);
 
 sub notify {
@@ -11,11 +12,7 @@ sub notify {
     if (!defined($pid)) {
         Irssi::print("Couldn't fork in notify.pl");
     } elsif ($pid == 0) {
-        system('notify-send', $title, $msg);
-        my $idle_time = `xprintidle`;
-        if ($idle_time > 20000) {
-            system('pushover-push', $title, $msg);
-        }
+        system('notify-send', $title, escape_html($msg));
         POSIX::_exit(1);
     } else {
         Irssi::pidwait_add($pid);
