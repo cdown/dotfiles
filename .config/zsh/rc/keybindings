@@ -43,3 +43,6 @@ bindkey -e
 
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+
+bindkey "^[Od" backward-word
+bindkey "^[Oc" forward-word
