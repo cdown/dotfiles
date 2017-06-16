@@ -1,8 +1,15 @@
 use strict;
 use POSIX;
 use Irssi;
-use HTML::Escape qw/escape_html/;
 use vars qw($VERSION %IRSSI);
+
+sub crappy_escape_html {
+    # This is no HTML::Escape, but it's good enough for notify-send.
+    my ($text) = @_;
+    $text =~ s/</&lt;/g;
+    $text =~ s/>/&gt;/g;
+    return $text;
+}
 
 sub notify {
     my ($title, $msg) = @_;
@@ -11,8 +18,11 @@ sub notify {
 
     if (!defined($pid)) {
         Irssi::print("Couldn't fork in notify.pl");
-    } elsif ($pid == 0) {
-        system('notify-send', $title, escape_html($msg));
+        return;
+    }
+
+    if ($pid == 0) {
+        system('notify-send', $title, crappy_escape_html($msg));
         POSIX::_exit(1);
     } else {
         Irssi::pidwait_add($pid);
