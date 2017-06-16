@@ -7,9 +7,9 @@ sub crappy_escape_html {
     # notify-send doesn't take real HTML, so this isn't really escape_html
     # since some of those things we don't want to escape.
     my ($text) = @_;
+    $text =~ s/&/&amp;/g;
     $text =~ s/</&lt;/g;
     $text =~ s/>/&gt;/g;
-    $text =~ s/&/&amp;/g;
     return $text;
 }
 
