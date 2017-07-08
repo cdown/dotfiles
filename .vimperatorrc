@@ -64,6 +64,7 @@ ignorekeys add -except=<Esc>,<C-o>,C,W,y,x,H,b,u,n,N,r,d,f,F,g,o,O,t,w,;,:,B,/,p
 
 bmark https://www.google.co.uk/#q=%s -keyword=g
 bmark http://dj.iciba.com/%s-1.html -keyword=dj
+bmark http://www.jukuu.com/search.php?q=%s -keyword=jk
 bmark https://www.mdbg.net/chindict/chindict.php?page=worddict&wdrst=0&wdqb=%s -keyword=zw
 bmark https://tatoeba.org/eng/sentences/search?from=eng&to=cmn&query=%s -keyword=tat
 bmark https://tatoeba.org/eng/sentences/search?from=cmn&to=eng&query=%s -keyword=tatr
