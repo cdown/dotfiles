@@ -11,4 +11,4 @@ while IFS='|' read -r file start end; do
     printf "file '%s'\n" "$out_file" >> out_order
 done
 
-ffmpeg -f concat -safe 0 -i out_order -c:v libx264 -profile:v baseline -vf "scale=1280:720" -preset faster -crf 23 -acodec aac -b:a 128k out.mp4
+ffmpeg -f concat -safe 0 -i out_order -max_muxing_queue_size 1000 -c:v libx264 -profile:v baseline -vf "scale=1280:720" -preset faster -crf 23 -acodec aac -b:a 128k out.mp4
