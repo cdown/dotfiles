@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+: > out_order
+
+while IFS='|' read -r file start end; do
+    start=$(TZ=UTC date -d "1970-01-01 00:$start" +%s)
+    end=$(TZ=UTC date -d "1970-01-01 00:$end" +%s)
+    diff=$(( end - start ))
+    out_file=${file%.*}_cut.${file##*.}
+    ffmpeg -y -i "$file" -ss "$start" -t "$diff" -vcodec copy -acodec copy "$out_file"</dev/null
+    printf "file '%s'\n" "$out_file" >> out_order
+done
+
+ffmpeg -f concat -safe 0 -i out_order -c:v libx264 -profile:v baseline -vf "scale=1280:720" -preset faster -crf 23 -acodec aac -b:a 128k out.mp4
