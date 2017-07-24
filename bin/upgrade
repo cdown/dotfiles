@@ -1,5 +1,9 @@
 #!/bin/bash -xe
 
+exists() {
+    command -v "$@" >/dev/null 2>&1
+}
+
 log_dir=/var/log/upgrades/$USER
 log_file=$log_dir/$(LC_ALL=C date +%F-%T.%N)
 
@@ -14,28 +18,31 @@ else
 fi
 
 for cmd in nodenv pyenv rbenv plenv; do
+    exists "$cmd" || continue
     eval "$("$cmd" init -)"
 done
 
 cd /
 
-while read -r version; do
-    export PYENV_VERSION="$version"
-    pip install -U pip
-    pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
-        xargs -d '\n' pip install -U
-done < ~/.python-version
+if exists pyenv; then
+    while read -r version; do
+        export PYENV_VERSION="$version"
+        pip install -U pip
+        pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
+            xargs -d '\n' pip install -U
+    done < ~/.python-version
+fi
 
 # This one is safe without checking for explicit dependencies >=2.6.1, see
 # https://github.com/npm/npm/issues/6247
-npm update -g
+exists npm && npm update -g
 
 # TODO: Check safety of gem update
-gem update
+exists gem && gem update
 
-cpan-outdated -p | cpanm -n
+exists cpanm && cpan-outdated -p | cpanm -n
 
-command -v vagrant &>/dev/null && vagrant plugin update
+exists vagrant && vagrant plugin update
 
 while ! pkgs=$(find-possibly-manually-installed-packages); do
     # All packages are spit by IFS.
