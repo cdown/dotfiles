@@ -98,5 +98,11 @@
             "suckless",
             null
         ]
+    },
+    "mozilla": {
+        "r": [
+            "rust",
+            null
+        ]
     }
 }
