@@ -58,3 +58,5 @@ alias chinese-only='srt lines-matching -m hanzidentifier -f hanzidentifier.has_c
 alias strip-html="srt process -m re -f 'lambda sub: re.sub("'"<[^<]+?>", "", sub'")'"
 alias strip-format="srt process -m re -f 'lambda sub: re.sub("'"{[^{]+?}", "", sub'")'"
 alias simplify='cconv -f utf-8 -t utf-8-cn'
+
+alias rustfmt='rustfmt --config-path ~/.config/rustfmt'
