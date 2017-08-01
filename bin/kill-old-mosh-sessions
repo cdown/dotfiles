@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mapfile -t parent_pids < <(parent-pids)
-mapfile -t mosh_pids < <(pgrep mosh-server)
+mapfile -t mosh_pids < <(pgrep -U "$USERNAME" mosh-server)
 
 for mosh_pid in "${mosh_pids[@]}"; do
     for parent_pid in "${parent_pids[@]}"; do
