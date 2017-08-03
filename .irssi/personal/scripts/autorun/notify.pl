@@ -25,7 +25,7 @@ sub notify {
 
     if ($pid == 0) {
         system('notify-send', $title, crappy_escape_html($msg));
-        system('pushover-push', $title, $msg, "1");
+        system('if-locked', 'pushover-push', $title, $msg, "1");
         POSIX::_exit(1);
     } else {
         Irssi::pidwait_add($pid);
