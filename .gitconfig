@@ -14,3 +14,13 @@
     why-ignore = check-ignore -v
 [diff "gpg"]
     textconv = gpg -q --no-tty --decrypt
+
+[url "https://github/"]
+    insteadOf = "gh:"
+[url "git@github.com:"]
+    pushInsteadOf = "gh:"
+
+[url "https://aur.archlinux.org/"]
+    insteadOf = "aur:"
+[url "ssh+git://aur4.archlinux.org/"]
+    pushInsteadOf = "aur:"
