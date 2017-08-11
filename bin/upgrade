@@ -45,7 +45,7 @@ exists cpanm && cpan-outdated -p | cpanm -n
 exists vagrant && vagrant plugin update
 
 # shellcheck disable=SC2046
-pacman -Rns $(pacman -Qqtd)
+sudo -u makepkg pacman -Rns $(pacman -Qqtd)
 
 while ! pkgs=$(find-possibly-manually-installed-packages); do
     # All packages are spit by IFS.
