@@ -57,3 +57,4 @@ sudo -u makepkg pacaur -Syu
 sudo pacdiff
 
 update-from-cm
+update-dotfiles
