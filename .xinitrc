@@ -12,8 +12,13 @@ export FREETYPE_PROPERTIES=truetype:interpreter-version=40
 
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx xbanish battery-monitor xresources
-    clipmenud prompter
+    clipmenud
 )
+
+if [[ $USER == cdown || $USER == chris ]]; then
+    services_to_start+=(prompter)
+fi
+
 for service in "${services_to_start[@]}"; do
     systemctl --user start "$service"
 done
