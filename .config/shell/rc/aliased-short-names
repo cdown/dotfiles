@@ -41,6 +41,10 @@ d() {
 }
 alias d='d '
 
+transfer() {
+    curl --upload-file "${1?}" https://transfer.sh
+}
+
 # virtualenvwrapper
 alias mv2='mkvirtualenv -p "$(command -v python2)"'
 alias mv3='mkvirtualenv -p "$(command -v python3)"'
