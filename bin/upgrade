@@ -56,7 +56,7 @@ while ! pkgs=$(find-possibly-manually-installed-packages); do
     sudo pacman -Rns $pkgs
 done
 
-sudo -u makepkg pacaur -Syu
+sudo -u makepkg pacaur --noconfirm --noedit -Syu
 sudo pacdiff
 
 update-from-cm
