@@ -63,7 +63,21 @@ case $1 in
         xrandr --output "$main_display" --primary --auto
     ;;
     x1)
-        xrandr --output "$main_display" --mode 1920x1080
+        w=1920
+        h=1080
+        r=60
+
+        args=$(cvt -r "$w" "$h" "$r" | awk -F\" '!/^#/ { print $3; exit }')
+        name=${w}x${h}@${r}R
+
+        # Seems some X1 carbon models don't report this mode...
+        xrandr --output "$main_display" --mode 2560x1440  # Force release
+        xrandr --delmode "$main_display" "$name" || true
+        xrandr --rmmode "$name" || true
+        # shellcheck disable=SC2086
+        xrandr --newmode "$name" $args
+        xrandr --addmode "$main_display" "$name"
+        xrandr --output "$main_display" --mode "$name"
     ;;
     mirror)
         for display in "${external_displays[@]}"; do
