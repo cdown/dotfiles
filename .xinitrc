@@ -48,6 +48,23 @@ for device in yubikey touchscreen 'touch controller' trackpoint; do
     xinput-toggle -r "$device" -d &
 done
 
+# TODO: this is a temporary hack while I have this X1 Carbon laptop rented out,
+# if this lasts more than a couple of weeks I should make an xkb layout mod
+# for this
+if grep -q 'X1 Carbon 2nd' /sys/devices/virtual/dmi/id/product_version; then
+    while sleep 5; do xmodmap ~/.config/xmodmap/x1-carbon; done &
+fi
+
+# Swap cmd <-> alt on Apple keyboards + Noam's keyboard
+apple_keyboard=05ac:0250
+noam_keyboard=04d9:0269
+for id in "$apple_keyboard" "$noam_keyboard"; do
+    if lsusb -d "$id" >/dev/null 2>&1; then
+        while sleep 5; do xmodmap ~/.config/xmodmap/cmdalt; done &
+        break
+    fi
+done
+
 # Disable screen dimming
 xset dpms 0 0 0
 xset s off
