@@ -69,4 +69,4 @@ done
 xset dpms 0 0 0
 xset s off
 
-exec dwm > "/tmp/dwm-$USER.log" 2>&1
+exec "${WM:-dwm}" > "/tmp/dwm-$USER.log" 2>&1
