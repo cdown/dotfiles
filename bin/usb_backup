@@ -4,8 +4,7 @@
 
 map=backupusb
 mnt=$(mktemp -d)
-
-read -rp "Device: " device
+device=${1?}
 
 sudo cryptsetup -y -v luksFormat "$device"
 sudo cryptsetup open "$device" "$map"
