@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+# Back up critical data to USB
+
+map=backupusb
+mnt=$(mktemp -d)
+
+read -rp "Device: " device
+
+sudo cryptsetup -y -v luksFormat "$device"
+sudo cryptsetup open "$device" "$map"
+sudo mkfs.ext4 /dev/mapper/"$map"
+sudo mount /dev/mapper/"$map" "$mnt"
+sudo chown "$USER" "$mnt"
+
+sudo rsync -avHAXL \
+    ~/.mozilla ~/'Google Drive' ~/.password-store ~/.local/share/nota \
+    ~/git/dotfiles /etc/netctl \
+    "$mnt"
+
+gpg --export-secret-keys -a 0xDF8D21B616118070 > "$mnt"/gpg
+
+echo "$mnt"
