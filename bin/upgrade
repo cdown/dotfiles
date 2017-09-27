@@ -20,7 +20,7 @@ fi
 
 root_fs=$(df --output=fstype / | tail -1)
 case $root_fs in
-    btrfs) snap / "$name" ;;
+    btrfs) snap / "upgrade-$name" ;;
     *)
         echo "WARNING: not creating btrfs snapshot as fs is not btrfs (it's $root_fs)" >&2
         sleep 5
