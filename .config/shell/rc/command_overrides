@@ -27,7 +27,7 @@ alias tmux='tmux -f "$config_home/.tmux.conf"'
 alias tmux-dev='TMUX_CONFIG="$config_home/.tmux.conf" tmux-dev'
 
 # Do not disable raw control chars when running less
-alias less='less -R'
+alias less='less -r'
 
 alias sxiv='sxiv -b'
 alias ipython='ipython --no-banner'
