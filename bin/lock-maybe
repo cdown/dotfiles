@@ -7,9 +7,13 @@ mpv_running() {
     pgrep -x mpv >/dev/null
 }
 
-if mpv_running || youtube_running; then
-    print '%s\n' 'Not running screensaver, media player running' >&2
-    exit 0
-fi
+echo 'Considering whether to lock'
 
-exec "$@"
+if mpv_running || youtube_running; then
+    echo 'Not running screensaver, media player running'
+else
+    printf 'Running screensaver:'
+    printf ' %q' "$@"
+    printf '\n'
+    exec "$@"
+fi
