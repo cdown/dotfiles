@@ -1,3 +1,3 @@
 [Service]
-ExecStart=/usr/sbin/xautolock -time 1 -locker /bin/slock
+ExecStart=/usr/sbin/xautolock -time 1 -locker "%h/bin/lock-maybe /bin/slock"
 Restart=always

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+youtube_running() {
+    xwininfo -tree -root | grep -qai youtube
+}
+mpv_running() {
+    pgrep -x mpv >/dev/null
+}
+
+if mpv_running || youtube_running; then
+    print '%s\n' 'Not running screensaver, media player running' >&2
+    exit 0
+fi
+
+exec "$@"
