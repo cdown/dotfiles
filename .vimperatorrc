@@ -56,6 +56,9 @@ set! signon.rememberSignons=false
 set! ui.submenuDelay=0
 set! xpinstall.signatures.required=false
 
+" Seeing if disabling HW accel eases stalls
+set! layers.acceleration.force-enabled=false
+
 " Not sure how, but even without the setting here ignorekeys seems to be sticky
 between sessions, which causes state problems...
 ignorekeys clear
