@@ -5,7 +5,8 @@ exists() {
 }
 
 log_dir=/var/log/upgrades/$USER
-log_file=$log_dir/$(LC_ALL=C date +%F-%T.%N)
+name=$(LC_ALL=C date +%F-%T.%N)
+log_file=$log_dir/$name
 
 sudo mkdir -p -m0700 "$log_dir"
 sudo chown "$USER" "$log_dir"
@@ -16,6 +17,15 @@ else
     session=$(tmux display-message -p '#S')
     tmux set-option -t "$session" remain-on-exit 1
 fi
+
+root_fs=$(df --output=fstype / | tail -1)
+case $root_fs in
+    btrfs) snap / "$name" ;;
+    *)
+        echo "WARNING: not creating btrfs snapshot as fs is not btrfs (it's $root_fs)" >&2
+        sleep 5
+    ;;
+esac
 
 for cmd in nodenv pyenv rbenv plenv; do
     exists "$cmd" || continue
