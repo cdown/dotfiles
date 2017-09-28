@@ -92,3 +92,9 @@ done
 
 alias pkgfile='pacman -Fs'
 alias dmesg='dmesg -T --color=always | less -R'
+
+nolock() {
+    time=${1:-30 minutes}
+    touch -d "$time" /tmp/lockguard
+    echo "Lock disabled for $time"
+}

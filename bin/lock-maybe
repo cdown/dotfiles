@@ -1,16 +1,24 @@
 #!/bin/bash
 
+guard=/tmp/lockguard
+
 youtube_running() {
     xwininfo -tree -root | grep -qai youtube
 }
 mpv_running() {
     pgrep -x mpv >/dev/null
 }
+blacklisted() {
+    [[ -f $guard ]] || return 1
+    (( $(stat -c %Y "$guard") > $(date +%s) ))
+}
 
 echo 'Considering whether to lock'
 
 if mpv_running || youtube_running; then
     echo 'Not running screensaver, media player running'
+elif blacklisted; then
+    echo 'Blacklisted from running'
 else
     printf 'Running screensaver:'
     printf ' %q' "$@"
