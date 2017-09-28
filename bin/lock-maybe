@@ -8,6 +8,9 @@ youtube_running() {
 mpv_running() {
     pgrep -x mpv >/dev/null
 }
+external_monitor_connected() {
+    xrandr | grep -q -e '^HDMI-[0-9] connected' -e '^DP-[0-9] connected'
+}
 blacklisted() {
     [[ -f $guard ]] || return 1
     (( $(stat -c %Y "$guard") > $(date +%s) ))
@@ -19,6 +22,8 @@ if mpv_running || youtube_running; then
     echo 'Not running screensaver, media player running'
 elif blacklisted; then
     echo 'Blacklisted from running'
+elif external_monitor_connected; then
+    echo 'External monitor connected'
 else
     printf 'Running screensaver:'
     printf ' %q' "$@"
