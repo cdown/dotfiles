@@ -3,3 +3,4 @@
 time=${1:-30 minutes}
 touch -d "$time" /tmp/lockguard
 echo "Lock disabled for $time"
+notify-send "Lock disabled for $time"
