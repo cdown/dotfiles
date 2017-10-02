@@ -1,0 +1,5 @@
+#!/bin/bash
+
+time=${1:-30 minutes}
+touch -d "$time" /tmp/lockguard
+echo "Lock disabled for $time"
