@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+shopt -s nullglob
+
+logs=("/var/log/upgrades/$USER/"*)
+lastlog=${logs[-1]}
+
+less -r +/'Starting full system upgrade' "$lastlog"
