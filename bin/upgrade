@@ -32,7 +32,7 @@ case $root_fs in
         sudo btrfs subvolume list /snapshots/ |
             awk '$NF ~ /\/upgrade-/ { print "/" $NF }' |
             sort -r | tail -n +4 |
-            xargs -d '\n' sudo btrfs subvolume delete -v
+            xargs -r -d '\n' sudo btrfs subvolume delete -v
     ;;
     *)
         echo "WARNING: not creating btrfs snapshot as fs is not btrfs (it's $root_fs)" >&2
