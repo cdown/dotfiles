@@ -7,6 +7,12 @@ ulimit -n 4096
 PATH="$(get-path-without-env)"
 export PATH
 
+backup_type=backup
+if (( PURGE )); then
+    backup_type=full
+    VERIFY=1
+fi
+
 if (( $# )); then
     backup_paths=( "${@/#/"$HOME/.duply/"}" )
 else
@@ -20,8 +26,9 @@ for backup_path in "${backup_paths[@]}"; do
 
     if [[ -x "$pre" ]]; then "$pre"; fi
 
-    duply "$backup_name" backup
+    duply "$backup_name" "$backup_type"
     (( VERIFY )) && duply "$backup_name" verify
+    (( PURGE )) && duply "$backup_name" purge --force
 
     if [[ -x "$post" ]]; then "$post"; fi
 done
