@@ -14,6 +14,8 @@ diff=$(RAW=1 compare-photo-backups | filter_headers)
 
 # TODO: dedupe logic
 
+(( DRYRUN )) && prefix=echo || prefix=command
+
 mapfile -t in_s3_only_no_prefix < <(
     awk '/^\+/ { print substr($0, 2) }' <<< "$diff"
 )
@@ -24,11 +26,11 @@ mapfile -t in_gs_only_no_prefix < <(
 for file in "${in_s3_only_no_prefix[@]}"; do
     full_s3_path="${s3_prefix}${file}"
     full_gs_path="${gs_prefix}${file}"
-    gsutil cp "$full_s3_path" "$full_gs_path"
+    "$prefix" gsutil cp "$full_s3_path" "$full_gs_path"
 done
 
 for file in "${in_gs_only_no_prefix[@]}"; do
     full_s3_path="${s3_prefix}${file}"
     full_gs_path="${gs_prefix}${file}"
-    gsutil cp "$full_gs_path" "$full_s3_path"
+    "$prefix" gsutil cp "$full_gs_path" "$full_s3_path"
 done
