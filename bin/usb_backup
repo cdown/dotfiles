@@ -14,7 +14,7 @@ sudo chown "$USER" "$mnt"
 
 sudo rsync -avHAX \
     ~/.mozilla ~/'Google Drive' ~/.password-store ~/.local/share/nota \
-    /etc/netctl \
+    /etc/netctl /etc/wpa_supplicant \
     "$mnt"
 
 # This may be a symlink, but we don't generally want -L, so
