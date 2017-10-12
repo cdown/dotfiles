@@ -15,7 +15,7 @@ services_to_start=(
 )
 
 if [[ $USER == cdown || $USER == chris ]]; then
-    services_to_start+=(prompter xautolock)
+    services_to_start+=(prompter)
 fi
 
 for service in "${services_to_start[@]}"; do
