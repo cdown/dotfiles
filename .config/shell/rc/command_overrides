@@ -91,4 +91,4 @@ for tool_full in /usr/share/bcc/tools/*; do
 done
 
 alias pkgfile='pacman -Fs'
-alias dmesg='dmesg -T --color=always | less -R'
+alias dmesg='dmesg -T --color=always | less -R +G'
