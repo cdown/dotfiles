@@ -1,3 +1,4 @@
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/tmux start-server
+# See https://github.com/tmux/tmux/issues/182 for why we can't use start-server
+ExecStart=/usr/bin/tmux new-session -A -s _systemd cat
