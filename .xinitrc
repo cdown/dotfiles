@@ -12,6 +12,7 @@ export FREETYPE_PROPERTIES=truetype:interpreter-version=40
 
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx xbanish battery-monitor xresources
+    tmux
 )
 
 if [[ $USER == cdown || $USER == chris ]]; then
