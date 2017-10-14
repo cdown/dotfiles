@@ -12,7 +12,7 @@ export FREETYPE_PROPERTIES=truetype:interpreter-version=40
 
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx xbanish battery-monitor xresources
-    tmux
+    tmux urxvtd
 )
 
 if [[ $USER == cdown || $USER == chris ]]; then
@@ -24,8 +24,6 @@ for service in "${services_to_start[@]}"; do
 done
 
 type -p VBoxClient-all >/dev/null 2>&1 && VBoxClient-all &
-
-urxvtd -q -o &
 
 if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
     {
