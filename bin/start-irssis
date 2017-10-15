@@ -2,6 +2,6 @@
 
 for dir in ~/.irssi/*; do
     irc_type=${dir##*/}
-    urxvtc -title irc -e create-or-attach-tmux-session irc-"$irc_type" \
+    urxvtc -title irc -e exec create-or-attach-tmux-session irc-"$irc_type" \
         "while :; do irssi --home=\"$dir\"; done"
 done
