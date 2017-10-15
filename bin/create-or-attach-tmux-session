@@ -3,7 +3,7 @@
 tmux_args=( -f "${TMUX_CONFIG:-"$HOME"/.tmux.conf}" )
 
 if [ "$1" ]; then
-    tmux "${tmux_args[@]}" new-session -A -s "$@"
+    exec tmux "${tmux_args[@]}" new-session -A -s "$@"
 else
-    tmux "${tmux_args[@]}" ls
+    exec tmux "${tmux_args[@]}" ls
 fi
