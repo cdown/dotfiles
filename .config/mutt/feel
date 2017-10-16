@@ -1,6 +1,7 @@
 # vim: ft=muttrc
 
 set mailcap_path = ~/.config/mailcap/linux
+set editor = vim
 set strict_threads
 set sleep_time = 0
 set delete
