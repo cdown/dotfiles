@@ -12,7 +12,8 @@ export FREETYPE_PROPERTIES=truetype:interpreter-version=40
 
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx battery-monitor xresources
-    tmux urxvtd
+    tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
+    xinput-disable@'touch controller' xinput-disable@trackpoint
 )
 
 if [[ $USER == cdown || $USER == chris ]]; then
@@ -41,10 +42,6 @@ if type synclient >/dev/null 2>&1; then
         AccelFactor=0 MinSpeed=1.4 HorizTwoFingerScroll=1 PalmDetect=1 \
         TapButton1=1
 fi
-
-for device in yubikey touchscreen 'touch controller' trackpoint; do
-    xinput-toggle -r "$device" -d &
-done
 
 # Disable screen dimming
 xset dpms 0 0 0
