@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+# make-bios-usb n1wur14w.iso /dev/sdX
+
+iso=${1?iso missing}
+device=${2?device missing}
+
+pacaur --noconfirm --noedit -S geteltorito
+geteltorito.pl "$iso" > "$device"
+pacaur -Rns geteltorito
