@@ -1,11 +1,13 @@
 #!/bin/bash
 
-systemctl --user import-environment DISPLAY XAUTHORITY PATH
-dbus-update-activation-environment DISPLAY XAUTHORITY PATH
-
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+
+to_export=(DISPLAY XAUTHORITY PATH GTK_IM_MODULE QT_IM_MODULE XMODIFIERS)
+
+systemctl --user import-environment "${to_export[@]}"
+dbus-update-activation-environment "${to_export[@]}"
 
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx battery-monitor xresources
