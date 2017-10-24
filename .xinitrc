@@ -14,6 +14,7 @@ services_to_start=(
     mpd mpdscribble pulseaudio fcitx battery-monitor xresources
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
     xinput-disable@'touch controller' xinput-disable@trackpoint synclient
+    vboxclient
 )
 
 if [[ $USER == cdown || $USER == chris ]]; then
@@ -23,8 +24,6 @@ fi
 for service in "${services_to_start[@]}"; do
     systemctl --user start "$service"
 done
-
-type -p VBoxClient-all >/dev/null 2>&1 && VBoxClient-all &
 
 if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
     {
