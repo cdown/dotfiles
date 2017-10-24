@@ -17,18 +17,11 @@ services_to_start=(
 )
 
 if [[ $USER == cdown || $USER == chris ]]; then
-    services_to_start+=(prompter)
+    services_to_start+=(prompter irssi mutt)
 fi
 
 for service in "${services_to_start[@]}"; do
     systemctl --user start "$service"
 done
-
-if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
-    {
-        start-irssis
-        start-mutts
-    } &
-fi
 
 exec "${WM:-dwm}" > "/tmp/dwm-$USER.log" 2>&1
