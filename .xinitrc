@@ -7,9 +7,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-# The Arch-specific FT2_SUBPIXEL_HINTING has been removed in freetype2-2.7-2.
-export FREETYPE_PROPERTIES=truetype:interpreter-version=40
-
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx battery-monitor xresources
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
