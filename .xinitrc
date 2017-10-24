@@ -26,8 +26,6 @@ done
 
 if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
     {
-        firefox &
-        while ! urxvtc -title dev; do :; done
         start-irssis
         start-mutts
     } &
