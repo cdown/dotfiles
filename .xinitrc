@@ -13,7 +13,7 @@ export FREETYPE_PROPERTIES=truetype:interpreter-version=40
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx battery-monitor xresources
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
-    xinput-disable@'touch controller' xinput-disable@trackpoint
+    xinput-disable@'touch controller' xinput-disable@trackpoint synclient
 )
 
 if [[ $USER == cdown || $USER == chris ]]; then
@@ -33,14 +33,6 @@ if [[ "$USER" == chris ]] || [[ $USER == cdown ]]; then
         start-irssis
         start-mutts
     } &
-fi
-
-if type synclient >/dev/null 2>&1; then
-    # 2 finger click = right click
-    synclient \
-        TapButton2=3 VertScrollDelta=350 HorizScrollDelta=350 \
-        AccelFactor=0 MinSpeed=1.4 HorizTwoFingerScroll=1 PalmDetect=1 \
-        TapButton1=1
 fi
 
 # Disable screen dimming
