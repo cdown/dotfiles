@@ -12,7 +12,7 @@ dbus-update-activation-environment "${to_export[@]}"
 services_to_start=(
     mpd mpdscribble pulseaudio fcitx battery-monitor xresources
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
-    xinput-disable@'touch controller' xinput-disable@trackpoint synclient
+    xinput-disable@screen xinput-disable@trackpoint synclient
     vboxclient no-dpms no-screensaver
 )
 
