@@ -10,7 +10,6 @@ export PATH
 backup_type=backup
 if (( PURGE )); then
     backup_type=full
-    VERIFY=1
 fi
 
 if (( $# )); then
