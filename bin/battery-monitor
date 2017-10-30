@@ -7,25 +7,21 @@ shopt -s nullglob
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
 any_is_charging() {
-    cat /sys/class/power_supply/BAT*/status | grep -q Charging
+    cat /sys/class/power_supply/BAT*/status | grep -q -e Charging -e Full
 }
 
-while (( first_run == 1 )) || sleep 60; do
-    first_run=0
+if any_is_charging; then
+    exit 0
+fi
 
-    if any_is_charging; then
-        continue
-    fi
+full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
+now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
+perc=$(( now * 100 / full ))
 
-    full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
-    now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
-    perc=$(( now * 100 / full ))
+if (( perc <= WARN_PERC )); then
+    notify-send 'Reaching critical battery threshold'
+fi
 
-    if (( perc <= WARN_PERC )); then
-        notify-send 'Reaching critical battery threshold'
-    fi
-
-    if (( perc <= SLEEP_PERC )); then
-        sudo sh -c 'printf mem > /sys/power/state'
-    fi
-done
+if (( perc <= SLEEP_PERC )); then
+    sudo sh -c 'printf mem > /sys/power/state'
+fi
