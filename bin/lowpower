@@ -9,7 +9,7 @@ user_services=(
     xfce4-notifyd
 )
 
-processes=(firefox spotify)
+processes=(chromium spotify)
 
 case $action in
     on)
