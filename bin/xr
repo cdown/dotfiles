@@ -34,12 +34,13 @@ case $1 in
         xrandr --output HDMI-2 --mode 1920x1200  # Force release
         xrandr --delmode HDMI-2 "$name" || true
         xrandr --rmmode "$name" || true
+
+        xrandr --output "$main_display" --auto --right-of DP-1
+
         # shellcheck disable=SC2086
         xrandr --newmode "$name" $args
         xrandr --addmode HDMI-2 "$name"
-        xrandr --output HDMI-2 --mode "$name" --right-of DP-1
-
-        xrandr --output eDP-1 --off
+        xrandr --output HDMI-2 --mode "$name" --right-of "$main_display"
     ;;
     external-only)
         xrandr --output "$main_display" --off
