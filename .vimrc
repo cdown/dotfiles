@@ -213,8 +213,8 @@ nnoremap <silent> <Leader>R gg:normal }<CR>jdG:r ~/.config/mutt/replies/recruite
 
 " Stuff to make working with unwrapped text easier
 for key in ['k', 'j']
-  exe 'noremap <buffer> <silent> ' . key . ' g' . key
-  exe 'onoremap <silent> ' . key . ' g' . key
+  exe 'noremap <buffer> <silent> <expr> ' . key . ' v:count ? ''' . key . ''' : ''g' . key . ''''
+  exe 'onoremap <silent> <expr> ' . key . ' v:count ? ''' . key . ''' : ''g' . key . ''''
 endfor
 nnoremap <silent> <Leader>E :set wrap<CR>:setlocal formatoptions-=t<CR>:set textwidth=0<CR>
 nnoremap <silent> <Leader>e :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
