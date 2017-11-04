@@ -189,6 +189,9 @@ augroup modechange_settings
 
   " Jump to last position in file
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+  " Balance splits on window resize
+  autocmd VimResized * wincmd =
 augroup END
 
 
