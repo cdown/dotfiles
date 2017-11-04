@@ -29,6 +29,7 @@ set cursorcolumn
 set cursorline
 set expandtab
 set formatoptions=qrn
+set gdefault
 set hlsearch
 set ignorecase
 set incsearch
