@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+tar -I zstd -cvf - "${1?}" | split --bytes=14600M - "${2?}".
