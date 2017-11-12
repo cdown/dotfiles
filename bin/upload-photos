@@ -19,12 +19,12 @@ extra_args=''
 if (( FORCE_S3CMD )); then
     # gsutil is b0rked, fall back to s3cmd
     tmux new-session -d -s "$session_name" \
-        "while ! PYENV_VERSION=2.7.13 s3cmd sync -r . 's3://chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
+        "while ! PYENV_VERSION=2.7.14 s3cmd sync -r . 's3://chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
 else
     tmux new-session -d -s "$session_name" \
-        "while ! PYENV_VERSION=2.7.13 gsutil $extra_args rsync -r . 's3://chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
+        "while ! PYENV_VERSION=2.7.14 gsutil $extra_args rsync -r . 's3://chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
     tmux split-window -h -t "$session_name:1" \
-        "while ! PYENV_VERSION=2.7.13 gsutil $extra_args rsync -r . 'gs://chris-down-photos/chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
+        "while ! PYENV_VERSION=2.7.14 gsutil $extra_args rsync -r . 'gs://chris-down-photos/chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
 fi
 
 tmux attach -t "$session_name"

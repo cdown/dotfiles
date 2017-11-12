@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PYENV_VERSION=2.7.13
+export PYENV_VERSION=2.7.14
 
 subpath="$1"
 
