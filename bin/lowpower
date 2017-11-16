@@ -2,11 +2,9 @@
 
 action=${1?}
 
-system_services=(atop org.cups.cupsd cronie ntpd acpid systemd-journald)
+system_services=(systemd-timesyncd)
 user_services=(
-    mpd mpdscribble fcitx gvfs-daemon gvfs-metadata
-    gvfs-mtp-volume-monitor gvfs-udisks2-volume-monitor pulseaudio
-    xfce4-notifyd
+    mpd mpdscribble fcitx pulseaudio
 )
 
 processes=(chromium spotify)
