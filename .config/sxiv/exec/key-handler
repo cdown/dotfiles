@@ -15,6 +15,6 @@ case $key_combo in
     C-l) rotate 270 ;;
     C-r) rotate 90 ;;
     C-s)
-        printf '%s\n' "${files[@]}" | tee /tmp/sxivfiles | xclip -sel clip
+        readlink -f "${files[@]}" | tee /tmp/sxivfiles | xclip -sel clip
     ;;
 esac
