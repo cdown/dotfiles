@@ -1,0 +1,8 @@
+#!/bin/bash
+
+printf 'dmesg: '; dmesg | sprunge
+printf 'lastupgrade: '; lastupgrade | grep -v '^Removing ' | sprunge
+printf 'pacman: '; sprunge < /var/log/pacman.log
+printf 'journalctl: '; sudo journalctl -n 1000 | sprunge
+printf 'atop: '; atop 2 5 | sprunge
+printf 'screenshot: '; screenshot --all --upload
