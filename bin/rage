@@ -4,5 +4,6 @@ printf 'dmesg: '; dmesg | sprunge
 printf 'lastupgrade: '; lastupgrade | grep -v '^Removing ' | sprunge
 printf 'pacman: '; sprunge < /var/log/pacman.log
 printf 'journalctl: '; sudo journalctl -n 1000 | sprunge
-printf 'atop: '; atop 2 5 | sprunge
+printf 'atop (will take 10 seconds): '; atop 2 5 | sprunge
+printf 'units: '; { sudo systemctl list-units; sudo systemctl list-timers; } | sprunge
 printf 'screenshot: '; screenshot --all --upload
