@@ -24,4 +24,10 @@ notify-send 'Screenshot taken'
 xclip -sel clip <<< "$file"
 xclip -sel primary <<< "$file"
 
-printf '%s\n' "$file"
+
+if [[ $2 == "--upload" ]]; then
+    curl --upload-file "$file" https://transfer.sh/"${file##*/}"
+    echo
+else
+    printf '%s\n' "$file"
+fi
