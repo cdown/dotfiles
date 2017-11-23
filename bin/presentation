@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# designed to be used as WM=presentation startx
+
+loimpress
+exec openbox

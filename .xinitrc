@@ -16,7 +16,7 @@ services_to_start=(
     vboxclient no-dpms no-screensaver
 )
 
-if [[ $USER == cdown || $USER == chris ]]; then
+if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     services_to_start+=(prompter irssi mutt)
 fi
 
