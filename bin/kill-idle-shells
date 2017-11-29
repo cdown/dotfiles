@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mapfile -t shell_pids < <(pgrep -P "$(pgrep -nx urxvtd)")
+idle_shells=()
+
+for pid in "${shell_pids[@]}"; do
+    # For reasons I don't totally understand, when HUPing one shell, another
+    # shell gets reparented to others, which prevents them from being reaped if
+    # we do the reaping in place. As such we work out who to reap first, and
+    # then reap them later.
+    [[ "$(cat /proc/"$pid"/comm)" == @(zsh|bash) ]] || continue
+    pgrep -P "$pid" &>/dev/null || idle_shells+=( "$pid" )
+done
+
+for pid in "${idle_shells[@]}"; do
+    kill -HUP "$pid"
+done
