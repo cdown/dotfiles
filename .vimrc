@@ -175,6 +175,7 @@ augroup filetype_settings
   " autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
 augroup END
 
+nnoremap <C-l> <C-l>zz
 
 augroup modechange_settings
   autocmd!
