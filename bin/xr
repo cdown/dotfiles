@@ -28,7 +28,7 @@ case $1 in
         args=$(cvt -r "$w" "$h" "$r" | awk -F\" '!/^#/ { print $3; exit }')
         name=${w}x${h}@${r}R
 
-        xrandr --output DP-1 --auto --primary
+        xrandr --output DP-1 --auto --rotate right --primary
 
         # This monitor doesn't support 2560x1600/60 over HDMI by default
         xrandr --output HDMI-2 --mode 1920x1200  # Force release
