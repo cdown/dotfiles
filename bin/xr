@@ -5,7 +5,7 @@ if ! [[ $1 ]]; then
     exit 1
 fi
 
-main_display=eDP-1
+main_display=eDP1
 external_displays=()
 
 while read -r display; do
@@ -28,18 +28,18 @@ case $1 in
         args=$(cvt -r "$w" "$h" "$r" | awk -F\" '!/^#/ { print $3; exit }')
         name=${w}x${h}@${r}R
 
-        xrandr --output DP-1 --auto --rotate right --primary
+        xrandr --output DP1 --auto --rotate right --primary
 
         # This monitor doesn't support 2560x1600/60 over HDMI by default
-        xrandr --output HDMI-2 --mode 1920x1200  # Force release
-        xrandr --delmode HDMI-2 "$name" || true
+        xrandr --output HDMI2 --mode 1920x1200  # Force release
+        xrandr --delmode HDMI2 "$name" || true
         xrandr --rmmode "$name" || true
         # shellcheck disable=SC2086
         xrandr --newmode "$name" $args
-        xrandr --addmode HDMI-2 "$name"
-        xrandr --output HDMI-2 --mode "$name" --right-of DP-1
+        xrandr --addmode HDMI2 "$name"
+        xrandr --output HDMI2 --mode "$name" --right-of DP1
 
-        xrandr --output eDP-1 --off
+        xrandr --output eDP1 --off
     ;;
     external-only)
         xrandr --output "$main_display" --off
