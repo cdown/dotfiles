@@ -37,7 +37,7 @@ case $1 in
         # shellcheck disable=SC2086
         xrandr --newmode "$name" $args
         xrandr --addmode HDMI2 "$name"
-        xrandr --output HDMI2 --mode "$name" --right-of DP1
+        xrandr --output HDMI2 --mode "$name" --right-of DP1 --rotate right
 
         xrandr --output eDP1 --off
     ;;
