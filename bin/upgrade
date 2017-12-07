@@ -91,7 +91,12 @@ while ! pkgs=$(find-possibly-manually-installed-packages "$ansible_type"); do
     sudo pacman -Rns $pkgs
 done
 
-sudo -u makepkg pacaur --noconfirm --noedit -Syu
+if command -v pacaur >/dev/null 2>&1; then
+    sudo -u makepkg pacaur --noconfirm --noedit -Syu
+else
+    sudo pacman --noconfirm -Syu
+fi
+
 sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew
 sudo pacdiff
 
