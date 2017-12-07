@@ -14,9 +14,9 @@ if [[ -f $ansible_type_file ]]; then
 else
     echo "WARNING: ansible type unset, guessing based on whether in X"
     if [[ $DISPLAY ]]; then
-        ansible_type=server
-    else
         ansible_type=desktop
+    else
+        ansible_type=server
     fi
 fi
 
