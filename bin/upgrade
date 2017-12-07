@@ -101,4 +101,7 @@ sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew
 sudo pacdiff
 
 update-from-cm "$ansible_type"
-update-dotfiles
+
+if [[ -d $HOME/git/dotfiles ]]; then
+    update-dotfiles
+fi
