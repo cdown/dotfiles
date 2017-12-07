@@ -95,5 +95,5 @@ sudo -u makepkg pacaur --noconfirm --noedit -Syu
 sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew
 sudo pacdiff
 
-update-from-cm
+update-from-cm "$ansible_type"
 update-dotfiles
