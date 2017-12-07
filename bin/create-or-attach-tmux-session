@@ -1,9 +1,7 @@
 #!/bin/bash
 
-tmux_args=( -f "${TMUX_CONFIG:-"$HOME"/.tmux.conf}" )
-
 if [ "$1" ]; then
-    exec tmux "${tmux_args[@]}" new-session -A -s "$@"
+    exec tmux new-session -A -s "$@"
 else
-    exec tmux "${tmux_args[@]}" ls
+    exec tmux ls
 fi

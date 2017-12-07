@@ -2,7 +2,6 @@
 
 repo=${1?repo required}
 session_name=$(perl -pe 's/[^[:alpha:][:digit:]-\n]/_/g' <<< "${repo##*/}")
-tmux_args=( -f "${TMUX_CONFIG?}" )
 
 # set -e is already set, so...
 # shellcheck disable=SC2164
@@ -10,11 +9,11 @@ cd "$repo"
 
 # We actually want to expand within tmux here
 # shellcheck disable=SC2016
-tmux "${tmux_args[@]}" new-session -d -s "$session_name" 'while sshrc-shell-maybe; do :; done'
-tmux "${tmux_args[@]}" rename-window -t "$session_name:1" dev
-tmux "${tmux_args[@]}" new-window -t "$session_name" -n update sleep-update
-tmux "${tmux_args[@]}" select-window -t "$session_name:1"
+tmux new-session -d -s "$session_name" 'while sshrc-shell-maybe; do :; done'
+tmux rename-window -t "$session_name:1" dev
+tmux new-window -t "$session_name" -n update sleep-update
+tmux select-window -t "$session_name:1"
 
 if [[ $2 != -n ]]; then
-    tmux "${tmux_args[@]}" attach -t "$session_name"
+    tmux attach -t "$session_name"
 fi
