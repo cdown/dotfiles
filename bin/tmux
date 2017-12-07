@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+config_file="$SSHHOME/.sshrc.d/.tmux.conf"
+
+if [[ -e $config_file ]]; then
+    exec /usr/bin/tmux -f "$config_file" "$@"
+else
+    exec /usr/bin/tmux "$@"
+fi
