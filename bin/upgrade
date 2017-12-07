@@ -7,6 +7,18 @@ exists() {
 log_dir=/var/log/upgrades/$USER
 name=$(LC_ALL=C date +%F-%T.%N)
 log_file=$log_dir/$name
+ansible_type_file=/.ansibletype
+
+if [[ -f $ansible_type_file ]]; then
+    read -r ansible_type < "$ansible_type_file"
+else
+    echo "WARNING: ansible type unset, guessing based on whether in X"
+    if [[ $DISPLAY ]]; then
+        ansible_type=server
+    else
+        ansible_type=desktop
+    fi
+fi
 
 sudo mkdir -p -m0700 "$log_dir"
 sudo chown "$USER" "$log_dir"
@@ -73,7 +85,7 @@ while pkgs=$(pacman -Qqtd); do
     sudo pacman -Rns $pkgs
 done
 
-while ! pkgs=$(find-possibly-manually-installed-packages); do
+while ! pkgs=$(find-possibly-manually-installed-packages "$ansible_type"); do
     # All packages are spit by IFS.
     # shellcheck disable=SC2086
     sudo pacman -Rns $pkgs
