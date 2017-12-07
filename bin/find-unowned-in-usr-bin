@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pacman -Qo -- /usr/bin/* 2> >(awk '/No package owns/ { print $NF }') >/dev/null
