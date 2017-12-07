@@ -92,7 +92,7 @@ while ! pkgs=$(find-possibly-manually-installed-packages "$ansible_type"); do
 done
 
 mapfile -t unowned < <(find-unowned-in-usr-bin)
-(( "${#unowned[@]}" )) && rm -i "${unowned[@]}"
+(( "${#unowned[@]}" )) && sudo rm -i "${unowned[@]}"
 
 if command -v pacaur >/dev/null 2>&1; then
     sudo -u makepkg pacaur --noconfirm --noedit -Syu
