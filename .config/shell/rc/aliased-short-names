@@ -61,3 +61,5 @@ alias strip-format="srt process -m re -f 'lambda sub: re.sub("'"{[^{]+?}", "", s
 alias simplify='cconv -f utf-8 -t utf-8-cn'
 
 alias rustfmt='rustfmt --config-path ~/.config/rustfmt'
+
+alias pw='LC_ALL=C tr -dc a-zA-Z0-9 < /dev/urandom | head -c 20; echo'
