@@ -43,7 +43,7 @@ set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
 set softtabstop=4
-set synmaxcol=400
+set synmaxcol=1000
 set tabstop=4
 set textwidth=79
 set viminfo='20,<1000,s1000
