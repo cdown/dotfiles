@@ -14,7 +14,7 @@ syntax on
 
 let g:syntastic_mode_map = {
   \ "mode": "active",
-  \ "passive_filetypes": ["cpp"] }
+  \ "passive_filetypes": ["cpp", "xml"] }
 
 let g:solarized_termtrans = 1
 silent! colorscheme solarized
