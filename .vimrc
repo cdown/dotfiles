@@ -12,10 +12,6 @@ let g:neocomplete#enable_at_startup = 1
 filetype plugin on
 syntax on
 
-let g:syntastic_mode_map = {
-  \ "mode": "active",
-  \ "passive_filetypes": ["cpp", "xml"] }
-
 let g:solarized_termtrans = 1
 silent! colorscheme solarized
 set background=dark
@@ -150,10 +146,6 @@ augroup filetype_settings
 
   autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS set filetype=python
 
-  " Disable unused variable warnings on PKGBUILD, and force to type 'bash'
-  autocmd BufNewFile,BufReadPost PKGBUILD let b:syntastic_sh_shellcheck_args = '-e SC2034 -s bash'
-
-
   " Seek past headers, since usually we don't want to edit them
   autocmd FileType mail normal }
   autocmd FileType mail setlocal formatoptions+=rw
@@ -207,11 +199,6 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
-" Syntastic settings from the README
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " Stock replies
 nnoremap <silent> <Leader>R gg:normal }<CR>jdG:r ~/.config/mutt/replies/recruiter<CR><Leader>f,i
 
@@ -222,13 +209,5 @@ for key in ['k', 'j']
 endfor
 nnoremap <silent> <Leader>E :set wrap<CR>:setlocal formatoptions-=t<CR>:set textwidth=0<CR>
 nnoremap <silent> <Leader>e :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_pylint_args = '--rcfile=' . $HOME . '/.config/pylint/syntastic'
-let g:syntastic_python_flake8_args = '--max-complexity=5'
-let g:syntastic_aggregate_errors = 0
 
 let g:GPGDefaultRecipients=["0xDF8D21B616118070"]
