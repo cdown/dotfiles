@@ -12,7 +12,7 @@ alias awk="$(use_first_to_exist gawk awk)"
 alias diff="$(use_first_to_exist colordiff diff)"
 }
 
-alias cp='cp --backup=numbered'
+alias cp='cp --backup=numbered --reflink=auto --sparse=always'
 alias mv='mv --backup=numbered'
 alias ln='ln --backup=numbered'
 
