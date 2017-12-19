@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: make this shite work for ipv6
-
 (( UID )) && exec sudo "$0" "$@"
 
 lsof_output=$(lsof -P -i -n)
@@ -10,12 +8,11 @@ mapfile -t rev_pids < <(<<< "$lsof_output" awk '$1 == "sshd" && $9 !~ /:22$/ && 
 for pid in "${rev_pids[@]}"; do
     from_ip=$(<<< "$lsof_output" \
         awk -v pid="$pid" '$2 == pid && $10 == "(ESTABLISHED)" { print $9; exit }' |
-        awk -F'>' '{ print $NF }' | awk -F: '{ print $1 }'
+        awk -F'>' '{ print $NF }'
     )
     to_port=$(<<< "$lsof_output" \
         awk -v pid="$pid" '$2 == pid && $10 == "(LISTEN)" { print $9; exit }' |
         awk -F: '{ print $NF }'
     )
-    ptr=$(dig +short -x "$from_ip")
-    printf 'Port %s goes to %s (%s)\n' "$to_port" "$from_ip" "$ptr"
+    printf 'Port %s goes to %s\n' "$to_port" "$from_ip"
 done
