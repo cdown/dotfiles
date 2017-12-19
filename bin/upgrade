@@ -18,6 +18,7 @@ else
     else
         ansible_type=server
     fi
+    sudo tee <<< "$ansible_type" > /dev/null /.ansibletype
 fi
 
 sudo mkdir -p -m0700 "$log_dir"
