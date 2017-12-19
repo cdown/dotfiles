@@ -1,0 +1,5 @@
+if ! [ "$SSH_CLIENT" ]; then
+    if ! [ -f /opt/revkey ]; then
+        echo "/opt/revkey is missing" >&2
+    fi
+fi
