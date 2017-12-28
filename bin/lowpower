@@ -2,47 +2,29 @@
 
 action=${1?}
 
-system_services=(systemd-timesyncd)
-user_services=(
-    mpd mpdscribble fcitx pulseaudio
-)
-
 processes=(chromium spotify)
 
 case $action in
     on)
         sudo powerdown
-        sudo systemctl stop "${system_services[@]}"
-        systemctl --user stop "${user_services[@]}"
+        wineserver -k
         for process in "${processes[@]}"; do
             pkill -x "$process"
         done
         sudo intel-brightness 30
 
-        # Takes a non-trivial amount of power according to powertop, see power
-        # estimate when plugged in
-        sudo ip link del docker0
-
-        sudo tee <<< powersave > /dev/null \
-            /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ;;
     off)
-        sudo systemctl start "${system_services[@]}"
-        systemctl --user start "${user_services[@]}"
+        sudo powerup
         sudo intel-brightness 100
-
-        sudo tee <<< performance > /dev/null \
-            /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-
         sudo rfkill unblock all
-
         pgrep -x mutt || start-mutts
         pgrep -x irssi || start-irssis
     ;;
     super)
         "$0" on
         tmux kill-server
-        sudo rfkill block all
         sudo netctl stop-all
+        sudo rfkill block all
     ;;
 esac
