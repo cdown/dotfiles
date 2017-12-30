@@ -1,7 +1,5 @@
 #!/bin/bash
 
-file=$(printf '%q ' "$1")
-
-while ! rsync -avP --inplace --timeout 500 "${@:3}" cd:/srv/downloads/"$file" "${2-.}"; do
+while ! rsync -avP --inplace --timeout 500 "${@:3}" cd:/srv/downloads/"$1" "${2-.}"; do
     sleep 5
 done

@@ -1,5 +1,3 @@
 #!/bin/bash
 
-file=$(printf '%q ' "$1")
-
-rsync cd:/srv/downloads/"$file"
+rsync cd:/srv/downloads/"$1"
