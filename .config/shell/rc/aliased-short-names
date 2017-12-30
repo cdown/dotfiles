@@ -26,6 +26,8 @@ alias ud='systemctl --user -n 100 status'
 alias mtp-on='mtpfs -o allow_other /mnt/mtp'
 alias mtp-off='fusermount -u /mnt/mtp'
 
+alias pngquant='pngquant -f --ext .png'
+
 m() {
     moshrc "$@"
 }
