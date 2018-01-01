@@ -24,4 +24,9 @@ for service in "${services_to_start[@]}"; do
     systemctl --user start "$service"
 done
 
+# For unknown reasons, this doesn't work from a systemd user unit even with
+# DISPLAY set, and wmname correctly showing "LG3D" in X -- Matlab still opens
+# to a grey screen.
+wmname LG3D &
+
 exec "${WM:-dwm}" > "/tmp/dwm-$USER.log" 2>&1
