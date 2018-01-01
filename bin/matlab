@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec sudo unshare -m -p -U sudo -u "$USER" ~/MATLAB/bin/matlab
