@@ -1,0 +1,5 @@
+# Without this, Matlab and other Java applications are totally grey
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/wmname LG3D
