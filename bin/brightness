@@ -2,7 +2,21 @@
 
 req_brightness_perc=${1?arg 1 should be brightness percent}
 
-backlight_dir=/sys/class/backlight/intel_backlight
+backlight_dirs=(intel_backlight nv_backlight)
+
+for dir in "${backlight_dirs[@]}"; do
+    full_dir=/sys/class/backlight/"$dir"
+    if [[ -d $full_dir ]]; then
+        backlight_dir=$full_dir
+        break
+    fi
+done
+
+if ! [[ $backlight_dir ]]; then
+    echo "No backlight dir found" >&2
+    exit 1
+fi
+
 read -r max_brightness < "$backlight_dir/max_brightness"
 
 # Bash only works with integers

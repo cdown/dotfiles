@@ -11,12 +11,12 @@ case $action in
         for process in "${processes[@]}"; do
             pkill -x "$process"
         done
-        sudo intel-brightness 30
+        sudo brightness 30
 
     ;;
     off)
         sudo powerup
-        sudo intel-brightness 100
+        sudo brightness 100
         sudo rfkill unblock all
         pgrep -x mutt || start-mutts
         pgrep -x irssi || start-irssis
