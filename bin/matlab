@@ -1,4 +1,4 @@
 #!/bin/bash -e
 
 wmname LG3D
-exec ~/MATLAB/bin/matlab "$@"
+exec ~/MATLAB/bin/matlab -nosplash -desktop "$@"
