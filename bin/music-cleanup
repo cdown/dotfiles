@@ -10,10 +10,10 @@ files=( "$@" )
 for file in "${files[@]}"; do
     out=$(id3v2 -l "$file")
 
-    if <<< "$out" grep -q 'No ID3v2 tag'; do
+    if <<< "$out" grep -q 'No ID3v2 tag'; then
         id3v2 --convert "$file" >/dev/null
         out=$(id3v2 -l "$file")
-    done
+    fi
 
     artist=$(<<< "$out" grep '^TPE1 ' | sed 's/^[^:]*: //')
     album=$(<<< "$out" grep '^TALB ' | sed 's/^[^:]*: //')
