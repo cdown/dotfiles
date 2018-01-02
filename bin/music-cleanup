@@ -27,3 +27,5 @@ done
 # Remove empty dirs, and their empty parents, etc
 
 find "$music_base_dir" -depth -exec rmdir {} \; 2>/dev/null
+
+mpc update
