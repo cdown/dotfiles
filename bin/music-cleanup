@@ -1,0 +1,29 @@
+#!/bin/bash -e
+
+shopt -s nullglob globstar
+
+music_base_dir=$HOME/Music
+
+files=( "$@" )
+(( "${#files[@]}" )) || files=( "$music_base_dir"/**/*.mp3 )
+
+for file in "${files[@]}"; do
+    out=$(id3v2 -l "$file")
+    artist=$(<<< "$out" grep '^TPE1 ' | sed 's/^[^:]*: //')
+    album=$(<<< "$out" grep '^TALB ' | sed 's/^[^:]*: //')
+    tracknumber=$(<<< "$out" grep '^TRCK ' | sed 's/^[^:]*: //' | sed 's/^0*//')
+    title=$(<<< "$out" grep '^TIT2 ' | sed 's/^[^:]*: //')
+
+    album_dir=$music_base_dir/$artist/$album
+    mkdir -p "$album_dir"
+
+    new_fn="$album_dir/$(printf '%02d' "$tracknumber") $title.mp3"
+
+    [[ "$(readlink -f "$file")" == "$(readlink -f "$new_fn")" ]] && continue
+
+    mv -- "$file" "$new_fn"
+done
+
+# Remove empty dirs, and their empty parents, etc
+
+find "$music_base_dir" -depth -exec rmdir {} \; 2>/dev/null
