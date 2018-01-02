@@ -22,12 +22,6 @@ for file do
 
     mkdir -p "$album_dir"
 
-
-    parallel --bar -0 \
-        convert -interlace Plane \
-        -resize "$MAX_DIMENSION"x"$MAX_DIMENSION" \
-        -quality "$PHOTO_QUALITY" -filter Lanczos '{}' "{= s:^${dir%/}/::; =}"
-
     flac --decode --stdout "$file" |
         lame --preset extreme --add-id3v2 \
             --ta "$artist" \
