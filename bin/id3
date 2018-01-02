@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+# id3v2 doesn't set encoding by default for tags, so we need to shove stuff
+# into iso8859-1.
+
+args=()
+
+for arg do
+    if [[ $arg == *.mp3 ]] || [[ $arg == --* ]]; then
+        args+=( "$arg" )
+    else
+        args+=("$(iconv -f UTF8 -t iso8859-1 <<< "$arg")")
+    fi
+done
+
+exec id3v2 "${args[@]}"
