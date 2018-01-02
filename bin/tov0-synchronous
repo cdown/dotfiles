@@ -2,14 +2,10 @@
 
 # A small script to go FLAC -> V0.
 
-music_base_dir=$HOME/Music
-
 get_tag() {
     metaflac --show-tag "${1?tag missing}" "${2?file missing}" |
         sed 's/^[^=]*=//g'
 }
-
-mkdir -p "$music_base_dir"
 
 for file do
     artist=$(get_tag artist "$file")
@@ -17,10 +13,6 @@ for file do
     tracknumber=$(get_tag tracknumber "$file" | sed 's/^0*//')
     title=$(get_tag title "$file")
     year=$(get_tag year "$file")
-
-    album_dir=$music_base_dir/$artist/$album
-
-    mkdir -p "$album_dir"
 
     flac --decode --stdout "$file" |
         lame --preset extreme --add-id3v2 \
@@ -30,5 +22,5 @@ for file do
             --tt "$title" \
             --ty "$year" \
             - \
-            "$album_dir/$(printf '%02d' "$tracknumber") $title.mp3"
+            "${file%.flac}.mp3"
 done
