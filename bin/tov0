@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+printf '%s\0' "$@" | parallel --bar -0 tov0-synchronous '{}'
