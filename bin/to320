@@ -23,7 +23,7 @@ for file do
     mkdir -p "$album_dir"
 
     flac --decode --stdout "$file" |
-        lame --preset extreme --add-id3v2 \
+        lame --preset insane --add-id3v2 \
             --ta "$artist" \
             --tl "$album" \
             --tn "$tracknumber" \
