@@ -20,10 +20,10 @@ for file in "${files[@]}"; do
     tracknumber=$(<<< "$out" grep -a '^TRCK ' | sed 's/^[^:]*: //' | sed 's/^0*//')
     title=$(<<< "$out" grep -a '^TIT2 ' | sed 's/^[^:]*: //')
 
-    album_dir=$music_base_dir/$artist/$album
+    album_dir=$music_base_dir/${artist/\//_}/${album/\//_}
     mkdir -p "$album_dir"
 
-    new_fn="$album_dir/$(printf '%02d' "$tracknumber") $title.mp3"
+    new_fn="$album_dir/$(printf '%02d' "$tracknumber") "${title/\//_}".mp3"
 
     [[ "$(readlink -f "$file")" == "$(readlink -f "$new_fn")" ]] && continue
 
