@@ -17,7 +17,7 @@ for file in "${files[@]}"; do
 
     artist=$(<<< "$out" grep -a '^TPE1 ' | sed 's/^[^:]*: //')
     album=$(<<< "$out" grep -a '^TALB ' | sed 's/^[^:]*: //')
-    tracknumber=$(<<< "$out" grep -a '^TRCK ' | sed 's/^[^:]*: //' | sed 's/^0*//')
+    tracknumber=$(<<< "$out" grep -a '^TRCK ' | sed 's/^[^:]*: //' | sed 's/^0*//' | sed 's/\/.*//')
     title=$(<<< "$out" grep -a '^TIT2 ' | sed 's/^[^:]*: //')
 
     album_dir=$music_base_dir/${artist/\//_}/${album/\//_}
