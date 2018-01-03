@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec adb push --sync Music/ /sdcard/Music/
