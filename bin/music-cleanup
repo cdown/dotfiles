@@ -2,6 +2,11 @@
 
 shopt -s nullglob globstar
 
+missing() {
+    echo "missing ${1?missing param}"
+    exit 1
+}
+
 music_base_dir=$HOME/Music
 
 files=( "$@" )
@@ -19,6 +24,11 @@ for file in "${files[@]}"; do
     album=$(<<< "$out" grep -a '^TALB ' | sed 's/^[^:]*: //')
     tracknumber=$(<<< "$out" grep -a '^TRCK ' | sed 's/^[^:]*: //' | sed 's/^0*//' | sed 's/\/.*//')
     title=$(<<< "$out" grep -a '^TIT2 ' | sed 's/^[^:]*: //')
+
+    [[ $artist ]] || missing artist
+    [[ $album ]] || missing album
+    [[ $tracknumber ]] || missing tracknumber
+    [[ $title ]] || missing title
 
     album_dir=$music_base_dir/${artist/\//_}/${album/\//_}
     mkdir -p "$album_dir"
