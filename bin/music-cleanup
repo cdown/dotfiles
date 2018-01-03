@@ -13,12 +13,8 @@ files=( "$@" )
 (( "${#files[@]}" )) || files=( "$music_base_dir"/**/*.mp3 )
 
 for file in "${files[@]}"; do
+    id3v2 --convert "$file" >/dev/null
     out=$(id3v2 -l "$file")
-
-    if <<< "$out" grep -a -q 'No ID3v2 tag'; then
-        id3v2 --convert "$file" >/dev/null
-        out=$(id3v2 -l "$file")
-    fi
 
     artist=$(<<< "$out" grep -a '^TPE1 ' | sed 's/^[^:]*: //')
     album=$(<<< "$out" grep -a '^TALB ' | sed 's/^[^:]*: //')
