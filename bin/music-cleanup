@@ -15,7 +15,7 @@ files=( "$@" )
 for file in "${files[@]}"; do
     # The id3v2 tool *really* doesn't handle Chinese characters well :-( Need
     # to do these manually with easytag
-    dir=$(file%/*}
+    dir=${file%/*}
     [[ -f $dir/.noauto ]] && continue
 
     id3v2 --convert "$file" >/dev/null
