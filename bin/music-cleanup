@@ -31,10 +31,10 @@ for file in "${files[@]}"; do
     [[ $tracknumber ]] || missing tracknumber
     [[ $title ]] || missing title
 
-    album_dir=$music_base_dir/${artist/\//_}/${album/\//_}
+    album_dir=$music_base_dir/${artist//\//_}/${album//\//_}
     mkdir -p "$album_dir"
 
-    new_fn="$album_dir/$(printf '%02d' "$tracknumber") ${title/\//_}.mp3"
+    new_fn="$album_dir/$(printf '%02d' "$tracknumber") ${title//\//_}.mp3"
 
     [[ "$(readlink -f "$file")" == "$(readlink -f "$new_fn")" ]] && continue
 
