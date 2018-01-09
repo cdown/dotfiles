@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+# only tested with m4a
+
+for file do
+    echo "Processing $file" >&2
+
+    artist=$(kid3-cli -c 'get artist' "$file")
+    album=$(kid3-cli -c 'get album' "$file")
+    title=$(kid3-cli -c 'get title' "$file")
+    tracknumber=$(kid3-cli -c 'get tracknumber' "$file")
+
+    new_file="$file.orig"
+
+    mv -- "$file" "$new_file"
+    ffmpeg -i "$new_file" -map_metadata -1 -vn -c:a copy "$file"
+
+    kid3-cli \
+        -c "set artist \"$artist\"" \
+        -c "set album \"$album\"" \
+        -c "set tracknumber \"$tracknumber\"" \
+        -c "set title \"$title\"" \
+        "$file"
+done
