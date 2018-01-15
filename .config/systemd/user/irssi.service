@@ -1,3 +1,6 @@
+[Unit]
+ConditionPathExists=/usr/bin/irssi
+
 [Service]
 ExecStart=/bin/sh -c "exec %h/bin/start-irssis"
 Restart=on-failure

@@ -1,3 +1,6 @@
+[Unit]
+ConditionPathExists=/usr/bin/mutt
+
 [Service]
 ExecStart=/bin/sh -c "exec %h/bin/start-mutts"
 Restart=on-failure
