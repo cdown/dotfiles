@@ -5,10 +5,17 @@ if ! [[ $1 ]]; then
     exit 1
 fi
 
-main_displays=(eDP1 LVDS-1)
-main_display=eDP1  # backup
+main_displays=(eDP-1 LVDS-1)
+main_display=eDP-1  # backup
 for disp in "${main_displays[@]}"; do
-    if xrandr | grep -qw "$disp"; then
+    if xrandr | grep -qw -e "$disp"; then
+        main_display="$disp"
+        break
+    fi
+
+    # Intel driver provides these without dashes, compared to KMS with
+    intel_disp="${disp//-/}"
+    if xrandr | grep -qw -e "$intel_disp"; then
         main_display="$disp"
         break
     fi
