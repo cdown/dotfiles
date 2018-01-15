@@ -9,8 +9,12 @@ sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
 any_is_charging() {
     cat /sys/class/power_supply/BAT*/status | grep -q -e Charging -e Full
 }
+any_battery_exists() {
+    batteries=(/sys/class/power_supply/BAT*)
+    (( "${#batteries[@]}" ))
+}
 
-if any_is_charging; then
+if ! any_battery_exists || any_is_charging; then
     exit 0
 fi
 
