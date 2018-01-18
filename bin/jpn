@@ -3,4 +3,4 @@
 # Wrapper around Jupyter notebook for systemd
 
 eval "$(pyenv init -)"
-exec jupyter notebook --ip 127.0.0.1 --port 8888
+exec jupyter notebook -y --ip 127.0.0.1 --port 8888 --no-browser
