@@ -1,3 +1,4 @@
 [Service]
+WorkingDirectory=%h/Notebooks
 ExecStart=/bin/sh -c "exec %h/bin/jpn"
 Restart=always
