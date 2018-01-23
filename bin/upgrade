@@ -1,5 +1,10 @@
 #!/bin/bash -xe
 
+if ! (( UID )); then
+    echo "Please don't run this as root, things will break :-)" >&2
+    exit 1
+fi
+
 exists() {
     command -v "$@" >/dev/null 2>&1
 }
