@@ -1,4 +1,5 @@
 #!/bin/bash
 
-aws cloudfront create-invalidation --distribution-id=E3JFDQ2QEF0HR7 --paths "/*"
-aws cloudfront create-invalidation --distribution-id=E3PXQXBK6DFKDU --paths "/*"
+for dist in E3JFDQ2QEF0HR7 E3PXQXBK6DFKDU E2AU1PIBLEGWPF; do
+    aws cloudfront create-invalidation --distribution-id="$dist" --paths "/*"
+done
