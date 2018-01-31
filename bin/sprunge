@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [[ $1 ]]; then
-    curl -s http://sprunge.us/"${1##*/}"
+    curl -s http://ix.io/"${1##*/}"
 else
     # Avoid curl timeout, "x" needed to avoid stripping trailing newlines
     stdin=$(cat; printf x)
-    curl -F "sprunge=<-" http://sprunge.us <<< "${stdin%x}"
+    curl -F 'f:1=<-' ix.io <<< "${stdin%x}"
 fi
