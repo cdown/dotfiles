@@ -5,7 +5,7 @@ if ! [[ $1 ]]; then
     exit 1
 fi
 
-main_displays=(eDP-1 LVDS-1)
+main_displays=(eDP-1 LVDS-1 LVDS-0)
 main_display=eDP-1  # backup
 for disp in "${main_displays[@]}"; do
     if xrandr | grep -qw -e "$disp"; then
