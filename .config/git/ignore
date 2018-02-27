@@ -355,3 +355,5 @@ ui_*.h
 var/
 venv*/
 xcuserdata
+.htoprc
+.config/htop/htoprc
