@@ -6,7 +6,7 @@ export PAGER=less
 export VISUAL=vim
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONSTARTUP="$HOME/.pythonrc"
-export BROWSER=chromium
+export BROWSER=google-chrome-stable
 export NSS_DEFAULT_DB_TYPE=sql
 
 # Allow $config home, which comes from shell init

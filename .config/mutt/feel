@@ -27,7 +27,7 @@ bind index G last-entry
 macro index L '<limit>all<enter>'
 macro attach s '<save-entry><bol>/tmp/<eol>'
 macro attach S '<save-entry><bol>~/Downloads/<eol>'
-macro attach B '<pipe-message>cat > /tmp/mutt.html; chromium --incognito /tmp/mutt.html<enter>'
+macro attach B '<pipe-message>cat > /tmp/mutt.html; google-chrome-stable --incognito /tmp/mutt.html<enter>'
 
 macro index S \
       "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \

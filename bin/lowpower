@@ -2,7 +2,7 @@
 
 action=${1?}
 
-processes=(chromium spotify)
+processes=(chrome spotify)
 
 case $action in
     on)

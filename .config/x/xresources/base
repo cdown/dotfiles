@@ -12,7 +12,7 @@ URxvt.secondaryScroll: 0
 
 URxvt.perl-ext-common:      default,clipboard,url-select
 URxvt.clipboard.autocopy:   true
-URxvt.url-select.launcher:  chromium
+URxvt.url-select.launcher:  google-chrome-stable
 URxvt.url-select.underline: true
 
 URxvt.searchable-scrollback: M-slash
