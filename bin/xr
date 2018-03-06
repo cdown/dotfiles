@@ -30,7 +30,8 @@ done < <(
 )
 
 if (( ${#external_displays[@]} == 0 )); then
-    printf '%s\n' 'WARNING: No external displays detected' >&2
+    printf '%s\n' 'WARNING: No external displays detected, refusing to continue' >&2
+    exit 1
 fi
 
 case $1 in
