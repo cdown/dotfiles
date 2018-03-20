@@ -1,2 +1,3 @@
 [Timer]
 OnUnitActiveSec=30min
+OnActiveSec=30min
