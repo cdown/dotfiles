@@ -71,6 +71,10 @@ case $1 in
         xrandr --output "$main_display" --auto --primary
         xrandr --output "${external_displays[0]}" --"$direction" "$main_display" --auto
     ;;
+    tv)
+        xrandr --output "$main_display" --auto --primary
+        xrandr --output "${external_displays[0]}" --above "$main_display" --mode 1920x1080i
+    ;;
     internal)
         for display in "${external_displays[@]}"; do
             xrandr --output "$display" --off
