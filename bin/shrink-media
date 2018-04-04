@@ -12,7 +12,7 @@ set -o pipefail
 : "${MAX_DIMENSION:=1280}"
 : "${VIDEO_CRF:=32}"
 : "${PHOTO_QUALITY:=75}"
-: "${X264_PROFILE:=faster}"
+: "${X264_PROFILE:=slow}"
 
 for dir; do
     ( cd "$dir" && find . -type d -print0 ) | xargs -0 mkdir -p
