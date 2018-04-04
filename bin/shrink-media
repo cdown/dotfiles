@@ -2,7 +2,7 @@
 
 # Defaults are good for transferring to Lin's parents
 # For Flickr uploads:
-# NO_PHOTOS=1 NO_COMPRESS=1 VIDEO_CRF=23 X264_PROFILE=veryslow
+# NO_PHOTOS=1 NO_COMPRESS=1 VIDEO_CRF=23
 export LC_ALL=C
 
 shopt -s nullglob globstar
@@ -12,7 +12,7 @@ set -o pipefail
 : "${MAX_DIMENSION:=1280}"
 : "${VIDEO_CRF:=32}"
 : "${PHOTO_QUALITY:=75}"
-: "${X264_PROFILE:=fast}"
+: "${X264_PROFILE:=faster}"
 
 for dir; do
     ( cd "$dir" && find . -type d -print0 ) | xargs -0 mkdir -p
