@@ -16,7 +16,7 @@ for disp in "${main_displays[@]}"; do
     # Intel driver provides these without dashes, compared to KMS with
     intel_disp="${disp//-/}"
     if xrandr | grep -qw -e "$intel_disp"; then
-        main_display="$disp"
+        main_display="$intel_disp"
         break
     fi
 done
