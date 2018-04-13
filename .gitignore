@@ -24,6 +24,7 @@
 /.flickr_download
 /.flickr_token
 /.irssi/personal/certs/oftc-cdown.pem
+/.irssi/personal/channels.json
 /.irssi/personal/config
 /.irssi/personal/keepnick
 /.mpdscribble/mpdscribble.conf
