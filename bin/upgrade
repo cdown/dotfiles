@@ -68,7 +68,8 @@ cd /
 if exists pyenv; then
     while read -r version; do
         export PYENV_VERSION="$version"
-        pip install -U pip
+        # pipdeptree uses get_installed_distributions which disappeared in 10
+        pip install pip==9.0.3
         pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
             xargs -d '\n' pip install -U
     done < ~/.python-version
