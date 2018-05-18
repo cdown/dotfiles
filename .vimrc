@@ -34,6 +34,7 @@ set nojoinspaces
 set nowrap
 set number
 set relativenumber
+set shiftround
 set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
