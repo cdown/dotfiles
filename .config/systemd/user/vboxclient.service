@@ -2,6 +2,5 @@
 ConditionVirtualization=oracle
 
 [Service]
-Type=oneshot
 ExecStart=/usr/bin/VBoxClient-all
 Restart=on-failure
