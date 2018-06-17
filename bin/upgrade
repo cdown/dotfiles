@@ -44,7 +44,7 @@ sudo rsync -avHAX /boot/ /bootcopy/
 root_fs=$(df --output=fstype / | tail -1)
 case $root_fs in
     btrfs)
-        snap / "upgrade-$name"
+        btrfs-snap / "upgrade-$name"
 
         # only keep 10 newest upgrade snapshots
         sudo btrfs subvolume list /snapshots/ |
