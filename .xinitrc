@@ -19,7 +19,7 @@ services_to_start=(
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     services_to_start+=(prompter irssi mutt mpdscribble)
 elif [[ $USER == lin ]]; then
-    services_to_start+=(jupyter-notebook)
+    services_to_start+=(jupyter-notebook unscrew-xorg)
 fi
 
 for service in "${services_to_start[@]}"; do
