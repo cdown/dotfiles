@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# For reasons unknown, on Lin's W530 sometimes the nvidia driver sets mode NULL
+# and then ever single attempt to change screen states results in BadValue on
+# RRSetScreenSize. This is not recoverable it seems, but at least it is
+# detectable.
+
+get_num_monitors() {
+    xrandr --listmonitors | head -1 | awk '{ print $NF }'
+}
+
+remediate_xorg_stuck() {
+    if ! xrandr --output VGA-0 --auto; then
+        # Ok, we really can't do anything. Kill X.
+        pkill X
+    fi
+}
+
+if ! (( "$(get_num_monitors)" )); then
+    # Just in case we checked at a bad time, check again...
+    sleep 1
+    if ! (( "$(get_num_monitors)" )); then
+        remediate_xorg_stuck
+    fi
+fi
