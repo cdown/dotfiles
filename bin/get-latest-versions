@@ -8,6 +8,8 @@ get_latest() {
     cmd=${1?}
     var_prefix=${2?}
 
+    command -v "$cmd" >/dev/null 2>&1 || return 1
+
     printf '%s_version: ' "$var_prefix"
     "$cmd" install -l | get_last_ver
 }
