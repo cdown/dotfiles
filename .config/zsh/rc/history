@@ -1,5 +1,8 @@
 #!/bin/zsh
 
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=2500
+HISTSIZE=50000
 SAVEHIST=$HISTSIZE
+
+setopt append_history
+setopt hist_ignore_space
