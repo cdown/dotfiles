@@ -5,6 +5,4 @@
 iso=${1?iso missing}
 device=${2?device missing}
 
-pacaur --noconfirm --noedit -S geteltorito
 geteltorito.pl "$iso" | sudo tee "$device" >/dev/null
-pacaur -Rns geteltorito
