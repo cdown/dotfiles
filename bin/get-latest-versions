@@ -4,6 +4,10 @@ get_last_ver() {
     awk '$1 ~ /^[0-9.]+$/ { print $1 }' | sort -V | tail -1
 }
 
+exclude_experimental_perl_versions() {
+    awk -F. '($2 % 2 == 0)'
+}
+
 get_latest() {
     cmd=${1?}
     var_prefix=${2?}
@@ -11,7 +15,12 @@ get_latest() {
     command -v "$cmd" >/dev/null 2>&1 || return 1
 
     printf '%s_version: ' "$var_prefix"
-    "$cmd" install -l | get_last_ver
+
+    if [[ $var_prefix == perl ]]; then
+        "$cmd" install -l | exclude_experimental_perl_versions | get_last_ver
+    else
+        "$cmd" install -l | get_last_ver
+    fi
 }
 
 for major in 2 3; do
