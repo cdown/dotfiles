@@ -10,5 +10,5 @@ else
 fi
 
 while sleep "${1:-300}"; do
-    "${cmd[@]}"
+    timeout -k 20 900 "${cmd[@]}"
 done
