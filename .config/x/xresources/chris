@@ -1,4 +1,6 @@
-URxvt.font: xft:Terminus:size=6, xft:Symbola
+URxvt.font: xft:scientifica:size=6, xft:Symbola
 
-URxvt.keysym.C-9: command:\033]50;xft:Terminus:pixelsize=40\007
-URxvt.keysym.C-0: command:\033]50;xft:Terminus:pixelsize=6\007
+URxvt.keysym.C-9: command:\033]50;xft:Terminus:size=40\007
+URxvt.keysym.C-0: command:\033]50;xft:scientifica:size=6\007
+
+URxvt.letterSpace: 1
