@@ -1,0 +1,19 @@
+#!/bin/bash
+
+upgrade_dir=/var/log/upgrades
+
+shopt -s nullglob
+
+for dir in "$upgrade_dir/$USER"/*; do
+    # This is just running through to get the last
+    :
+done
+
+last_upgrade_epoch=$(date +%s -d "$(sed 's/\(.*\)-/\1 /' <<< "${dir##*/}")")
+acceptable_upgrade_epoch=$(date +%s -d '3 days ago')
+
+if (( last_upgrade_epoch < acceptable_upgrade_epoch )); then
+    notify-send -- 'Upgrade due' "It looks like you didn't upgrade in the last 3 days."
+else
+    printf 'Not notifying, last upgrade epoch is only %d but we need before %d\n' "$last_upgrade_epoch" "$acceptable_upgrade_epoch" >&2
+fi
