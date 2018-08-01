@@ -10,10 +10,10 @@ for dir in "$upgrade_dir/$USER"/*; do
 done
 
 last_upgrade_epoch=$(date +%s -d "$(sed 's/\(.*\)-/\1 /' <<< "${dir##*/}")")
-acceptable_upgrade_epoch=$(date +%s -d '3 days ago')
+acceptable_upgrade_epoch=$(date +%s -d '2 days ago')
 
 if (( last_upgrade_epoch < acceptable_upgrade_epoch )); then
-    notify-send -- 'Upgrade due' "It looks like you didn't upgrade in the last 3 days."
+    notify-send -- 'Upgrade due' "It looks like you didn't upgrade in the last 2 days."
 else
     printf 'Not notifying, last upgrade epoch is only %d but we need before %d\n' "$last_upgrade_epoch" "$acceptable_upgrade_epoch" >&2
 fi
