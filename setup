@@ -76,13 +76,7 @@ if [[ -f ~/.dfsha ]]; then
 fi
 
 if (( "${#deleted[@]}" )); then
-    printf 'Files removed since last setup:\n'
-    printf '  ~/%q\n' "${deleted[@]}"
-    printf '\nRemove files from home directory? '
-    read -r delete_reply
-    if [[ $delete_reply == [yY] ]]; then
-        ( cd && rm -r "${deleted[@]}" )
-    fi
+    ( cd && rm -r "${deleted[@]}" )
 fi
 
 # We check systemctl status as it's possible for other users we don't have a
