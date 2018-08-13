@@ -119,11 +119,14 @@ sudo update-from-cm "$ansible_type"
 # username from /home/X), but at least works for now. To make it more robust we
 # should store the user list somewhere.
 update-dotfiles
+sudo -i -u root bin/update-dotfiles
 for homedir in /home/*; do
     # This is quite brittle, we should consider moving this to Ansible
     user=${homedir##*/}
-    # cdown needs SSH agent connection which we don't have
-    if [[ $user != cdown ]] && [[ -d $homedir/git/dotfiles ]]; then
-        sudo -i -u "$user" update-dotfiles
+    # cdown needs SSH agent connection which we don't have. We must sudo to the
+    # user since their homedir might not be readable.
+    if [[ $user != cdown ]] && sudo -u "$user" bash -c '[[ -d $HOME/git/dotfiles ]]'; then
+        sudo -i -u "$user" bin/update-dotfiles
     fi
 done
+
