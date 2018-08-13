@@ -85,7 +85,9 @@ if (( "${#deleted[@]}" )); then
     fi
 fi
 
-if type systemctl >/dev/null 2>&1; then
+# We check systemctl status as it's possible for other users we don't have a
+# session
+if type systemctl >/dev/null 2>&1 && systemctl >/dev/null; then
     systemctl --user daemon-reload
     systemctl --user reset-failed
 fi
