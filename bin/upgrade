@@ -115,6 +115,11 @@ sudo pacdiff
 
 sudo update-from-cm "$ansible_type"
 
-if [[ -d $HOME/git/dotfiles ]]; then
-    update-dotfiles
-fi
+# This method is not guaranteed to work (eg. because it tries to extract the
+# username from /home/X), but at least works for now. To make it more robust we
+# should store the user list somewhere.
+for homedir in /home/*; do
+    if [[ -d $homedir/git/dotfiles ]]; then
+        sudo -i -u "${homedir##*/}" update-dotfiles
+    fi
+done
