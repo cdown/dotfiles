@@ -2,6 +2,9 @@
 
 upgrade_dir=/var/log/upgrades
 
+max_days=2
+max_packages=15
+
 shopt -s nullglob
 
 for dir in "$upgrade_dir/$USER"/*; do
@@ -10,10 +13,19 @@ for dir in "$upgrade_dir/$USER"/*; do
 done
 
 last_upgrade_epoch=$(date +%s -d "$(sed 's/\(.*\)-/\1 /' <<< "${dir##*/}")")
-acceptable_upgrade_epoch=$(date +%s -d '2 days ago')
+acceptable_upgrade_epoch=$(date +%s -d "$max_days days ago")
 
 if (( last_upgrade_epoch < acceptable_upgrade_epoch )); then
-    notify-send -- 'Upgrade due' "It looks like you didn't upgrade in the last 2 days."
+    notify-send -- 'Upgrade due' "It looks like you didn't upgrade in the last $max_days days."
+    exit
 else
-    printf 'Not notifying, last upgrade epoch is only %d but we need before %d\n' "$last_upgrade_epoch" "$acceptable_upgrade_epoch" >&2
+    printf 'Not notifying for time basis, last upgrade epoch is only %d but we need before %d\n' "$last_upgrade_epoch" "$acceptable_upgrade_epoch" >&2
+fi
+
+num_packages=$(checkupdates | wc -l)
+
+if (( num_packages > max_packages )); then
+    notify-send -- 'Upgrade due' "More than $max_packages packages are pending upgrade."
+else
+    printf 'Not notifying for packages basis, pending upgrade for %d packages but we need at least %d\n' "$num_packages" "$max_packages" >&2
 fi
