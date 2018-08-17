@@ -1,0 +1,34 @@
+#!/bin/bash -e
+
+exists() {
+    command -v "$@" >/dev/null 2>&1
+}
+
+for cmd in nodenv pyenv rbenv plenv; do
+    exists "$cmd" || continue
+    eval "$("$cmd" init -)"
+done
+
+cd /
+
+if exists pyenv; then
+    while read -r version; do
+        export PYENV_VERSION="$version"
+        pip install -U pip
+        pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
+            xargs -d '\n' pip install -U
+    done < ~/.python-version
+fi
+
+# This one is safe without checking for explicit dependencies >=2.6.1, see
+# https://github.com/npm/npm/issues/6247
+exists npm && npm update -g
+
+# TODO: Check safety of gem update
+exists gem && gem update
+
+exists cpanm && cpan-outdated -p | cpanm -n
+
+exists vagrant && vagrant plugin update
+
+exists rustup && rustup update
