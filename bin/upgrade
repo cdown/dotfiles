@@ -96,5 +96,9 @@ for user in cdown lin root; do
     if "${escalation_cmd[@]}" bash -c 'cd git/dotfiles && git remote -v | grep -q git://'; then
         "${escalation_cmd[@]}" bin/update-dotfiles
     fi
-    "${escalation_cmd[@]}" bin/upgrade-envs
+
+    if [[ "$user" != root ]]; then
+        # root doesn't have envs, only dotfiles
+        "${escalation_cmd[@]}" bin/upgrade-envs
+    fi
 done
