@@ -1,4 +1,7 @@
-#!/bin/bash -e
+#!/bin/bash
+
+set -e
+set -x
 
 exists() {
     command -v "$@" >/dev/null 2>&1
