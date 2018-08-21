@@ -40,6 +40,7 @@ set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
 set softtabstop=4
+set spelllang=en_gb
 set synmaxcol=1000
 set tabstop=4
 set textwidth=79
@@ -163,6 +164,10 @@ augroup filetype_settings
   for filetype in ['gitcommit', 'mail']
     exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
   endfor
+
+  for filetype in ['tex', 'plaintex']
+    exe 'autocmd FileType ' . filetype . ' setlocal spell'
+  endfo
 
   autocmd BufRead,BufNewFile ~/.local/share/nota/* set filetype=markdown
 
