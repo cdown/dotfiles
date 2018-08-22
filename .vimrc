@@ -150,6 +150,7 @@ augroup filetype_settings
   autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
   autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS set filetype=python
+  autocmd BufNewFile,BufReadPost *.lalrpop set filetype=rust
 
   " Seek past headers, since usually we don't want to edit them
   autocmd FileType mail normal }
