@@ -357,3 +357,4 @@ venv*/
 xcuserdata
 .htoprc
 .config/htop/htoprc
+.perf.data*
