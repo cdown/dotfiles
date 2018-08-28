@@ -1,5 +1,6 @@
 /.aws/config
 /.boto
+/.cargo/credentials
 /.config/burp/burp.conf
 /.config/gcloud/.metricsUUID
 /.config/gcloud/application_default_credentials.json
