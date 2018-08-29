@@ -15,7 +15,7 @@ alias diff="$(use_first_to_exist colordiff diff)"
 alias cp='cp --backup=numbered --reflink=auto --sparse=always'
 alias mv='mv --backup=numbered'
 alias ln='ln --backup=numbered'
-alias rg='rg -i'
+alias rg='rg --hidden -i'
 
 alias startx='exec startx &>| /tmp/startx-$USER'
 
