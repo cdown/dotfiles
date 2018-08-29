@@ -92,5 +92,5 @@ done
 alias pkgfile='pacman -Fs'
 alias dmesg='dmesg -T --color=always | less -R +G'
 
-alias rustfmt='cargo +nightly fmt -- --config-path ~/.config/rustfmt'
+alias rustfmt='cargo +nightly fmt'
 alias clippy='cargo +nightly clippy'
