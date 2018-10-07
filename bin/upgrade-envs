@@ -17,7 +17,8 @@ cd /
 if exists pyenv; then
     while read -r version; do
         export PYENV_VERSION="$version"
-        pip install -U pip
+        # https://github.com/naiquevin/pipdeptree/issues/105
+        pip install -U pip==18.0
         pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
             xargs -d '\n' pip install -U
     done < ~/.python-version
