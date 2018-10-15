@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
-pacman -S meson ninja gperf docbook-xsl
+sudo pacman -S meson ninja gperf docbook-xsl
 arch-meson . --buildtype=debug build
 nice -n 20 ninja -C build
