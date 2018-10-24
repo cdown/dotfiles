@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/gpg"]
 	path = .vim/bundle/gpg
 	url = https://github.com/jamessan/vim-gnupg
+[submodule ".vim/bundle/abolish"]
+	path = .vim/bundle/abolish
+	url = https://github.com/tpope/vim-abolish
