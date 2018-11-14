@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/abolish"]
 	path = .vim/bundle/abolish
 	url = https://github.com/tpope/vim-abolish
+[submodule ".vim/bundle/yaifa"]
+	path = .vim/bundle/yaifa
+	url = https://github.com/vim-scripts/yaifa.vim.git
