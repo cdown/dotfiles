@@ -41,8 +41,12 @@ fi
 
 bindkey -e
 
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+bindkey "$(tput kcuu1)" history-beginning-search-backward
+bindkey "$(tput kcud1)" history-beginning-search-forward
 
-bindkey "^[Od" backward-word
-bindkey "^[Oc" forward-word
+# tmux doesn't handle these, see xterm_keys_modifiers in xterm-keys.c
+shift_left=$(tput kLFT 2>/dev/null)
+[[ $shift_left ]] && bindkey "$shift_left" backward-word
+
+shift_right=$(tput kRIT 2>/dev/null)
+[[ $shift_right ]] && bindkey "$shift_right" forward-word
