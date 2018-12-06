@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Base mp3 is from donation export from https://mynoise.net/NoiseMachines/rainNoiseGenerator.php?c=2&l=2420212127302925252300&m=&d=0
+# This is then cut +10 from beginning/-10 from end to get rid of fades, so it can be looped:
+#
+#   ffmpeg -i myNoise_RAIN_24202121273029252523_0_5.mp3 -vn -acodec copy -ss 00:10 -to 04:10 rain.mp3
+#
+# We play with --no-config to avoid normalisation settings that are mostly for video
+
+exec mpv --no-config --loop --no-audio-display --no-resume-playback ~/rain.mp3
