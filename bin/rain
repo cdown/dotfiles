@@ -6,5 +6,6 @@
 #   ffmpeg -i myNoise_RAIN_24202121273029252523_0_5.mp3 -vn -acodec copy -ss 00:10 -to 04:10 rain.mp3
 #
 # We play with --no-config to avoid normalisation settings that are mostly for video
+# You'll also want to go into Audacity or similar and cut off the silence
 
-exec mpv --quiet --no-config --loop --no-audio-display --no-resume-playback ~/rain.mp3
+exec mpv --quiet --no-config --loop-file --no-audio-display --no-resume-playback ~/rain.flac
