@@ -7,4 +7,4 @@
 #
 # We play with --no-config to avoid normalisation settings that are mostly for video
 
-exec mpv --no-config --loop --no-audio-display --no-resume-playback ~/rain.mp3
+exec mpv --quiet --no-config --loop --no-audio-display --no-resume-playback ~/rain.mp3
