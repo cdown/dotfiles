@@ -1,0 +1,7 @@
+# Base mp3 is from donation export from https://mynoise.net.
+# This is then cut in Audacity to make a reasonable loop.
+#
+# --no-config avoids audio normalisation settings that are mostly for video.
+
+[Service]
+ExecStart=/usr/bin/mpv --quiet --no-config --loop-file --no-audio-display --no-resume-playback %h/%i.flac

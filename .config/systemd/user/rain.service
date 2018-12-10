@@ -1,2 +1,0 @@
-[Service]
-ExecStart=/bin/sh -c "exec %h/bin/rain"
