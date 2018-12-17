@@ -71,10 +71,8 @@ done
 mapfile -t unowned < <(find-unowned-in-usr-bin)
 (( "${#unowned[@]}" )) && sudo rm -i "${unowned[@]}"
 
-if command -v pacaur >/dev/null 2>&1; then
-    # Not sure why this is suddenly an issue, but need EDITOR=cat for
-    # https://github.com/rmarquis/pacaur/commit/08bcfb8a92c8
-    sudo -u makepkg EDITOR=cat pacaur --noconfirm --noedit -Syu
+if command -v yay >/dev/null 2>&1; then
+    sudo -u makepkg yay --noconfirm --cleanafter -Syu
 else
     sudo pacman --noconfirm -Syu
 fi

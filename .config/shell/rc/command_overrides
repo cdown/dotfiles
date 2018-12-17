@@ -60,16 +60,16 @@ alias gdb='gdb -q'
 if id makepkg >/dev/null 2>&1; then
     alias pacman='PATH=$(get-path-without-env) sudo -u makepkg sudo pacman'
 
-    # The linter warns that "pacaur" is being passed over sudo, which won't
+    # The linter warns that "yay" is being passed over sudo, which won't
     # work, but this one is actually fine because we *want* to call the raw
     # binary (not the alias) after sudoing
 
     # shellcheck disable=SC2033
-    pacaur-cd() (
-        cd / && PATH=$(get-path-without-env) sudo -u makepkg EDITOR=vim pacaur "$@"
+    yay-cd() (
+        cd / && PATH=$(get-path-without-env) sudo -u makepkg yay "$@"
     )
     # shellcheck disable=SC2032
-    alias pacaur=pacaur-cd
+    alias yay=yay-cd
 fi
 
 # Commands that should be run without any *env shims
