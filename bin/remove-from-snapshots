@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+ent="${1?missing thing to delete}"
+full=$(readlink -f "$ent")
+
+rm -rf /snapshots/upgrade-*/"$full"
