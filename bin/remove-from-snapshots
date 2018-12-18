@@ -3,4 +3,9 @@
 ent="${1?missing thing to delete}"
 full=$(readlink -f "$ent")
 
+if ! [[ $full ]]; then
+    echo "readlink returned nothing" >&2
+    exit 1
+fi
+
 rm -rf /snapshots/upgrade-*/"$full"
