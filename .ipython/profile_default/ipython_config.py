@@ -2,12 +2,12 @@ c = get_config()
 
 c.TerminalIPythonApp.extensions = [
     'autoreload',
-    'line_profiler',
+    #'line_profiler',
     'memory_profiler',
 ]
 c.InteractiveShellApp.extensions = [
     'autoreload',
-    'line_profiler',
+    #'line_profiler',
     'memory_profiler',
 ]
 c.InteractiveShellApp.exec_lines = ['%autoreload 2']
