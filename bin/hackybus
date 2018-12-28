@@ -8,7 +8,7 @@ extract_bus_times() {
     grep -F -e '<span class="visually-hidden"><span>' -e '<span class="live-board-eta">' |
         sed 'N;s/\n/ /' |
         sed 's#<span class="visually-hidden"><span>\([^<]*\)</span>.*\(Due\|[0-9]\+ mins\).*#\1: \2#' |
-        sort -n
+        sort -n | uniq
 }
 
 declare -A bus_stops
