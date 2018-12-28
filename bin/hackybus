@@ -7,8 +7,8 @@
 extract_bus_times() {
     grep -F -e '<span class="visually-hidden"><span>' -e '<span class="live-board-eta">' |
         sed 'N;s/\n/ /' |
-        sed 's#<span class="visually-hidden"><span>\([^<]*\)</span>.*\(Due\|[0-9]\+ mins\).*#\1: \2#' |
-        sed 's/Due/0/' | sort -n | uniq
+        sed 's#<span class="visually-hidden"><span>\([^<]*\)</span>.*\(Due\|[0-9]\+ mins\?\).*#\1: \2#' |
+        sed 's/Due/0 mins/' | sort -n | uniq
 }
 
 declare -A bus_stops
@@ -17,7 +17,9 @@ bus_stops=(
     ["Lavender Road"]=https://tfl.gov.uk/bus/stop/490011252E/lavender-road/
 )
 
-for stop in "${!bus_stops[@]}"; do
+mapfile -d '' sorted_bus_stops < <(printf '%s\0' "${!bus_stops[@]}" | sort -z)
+
+for stop in "${sorted_bus_stops[@]}"; do
     url="${bus_stops["$stop"]}"
     printf '%s:\n\n' "$stop"
     curl -s "$url" | extract_bus_times
