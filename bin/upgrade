@@ -12,6 +12,8 @@ name=$(LC_ALL=C date +%F-%T.%N)
 log_file=$log_dir/$name
 ansible_type_file=/.ansibletype
 
+update-mirrors
+
 if [[ -f $ansible_type_file ]]; then
     read -r ansible_type < "$ansible_type_file"
 else
