@@ -5,4 +5,4 @@ export PATH
 
 sudo reflector "$@" --verbose \
     -c 'United Kingdom' -c 'Netherlands' -c 'United States' \
-    -f 6 --protocol http --sort rate --save /etc/pacman.d/mirrorlist
+    -a 6 -f 6 --protocol http --sort rate --save /etc/pacman.d/mirrorlist
