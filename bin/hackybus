@@ -1,0 +1,25 @@
+#!/bin/bash -e
+
+# TfL, why the fuck do you require a static IP address to get API access for
+# live buses? You just make people resort to this hacky bullshit and update it
+# when you change your website.
+
+extract_bus_times() {
+    grep -F -e '<span class="visually-hidden"><span>' -e '<span class="live-board-eta">' |
+        sed 'N;s/\n/ /' |
+        sed 's#<span class="visually-hidden"><span>\([^<]*\)</span>.*\(Due\|[0-9]\+ mins\).*#\1: \2#' |
+        sort -n
+}
+
+declare -A bus_stops
+bus_stops=(
+    ["Essex House"]=https://tfl.gov.uk/bus/stop/490006641W/essex-house/
+    ["Lavender Road"]=https://tfl.gov.uk/bus/stop/490011252E/lavender-road/
+)
+
+for stop in "${!bus_stops[@]}"; do
+    url="${bus_stops["$stop"]}"
+    printf '%s:\n\n' "$stop"
+    curl -s "$url" | extract_bus_times
+    printf '\n'
+done
