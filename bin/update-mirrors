@@ -4,5 +4,5 @@ PATH="$(get-path-without-env)"
 export PATH
 
 sudo reflector "$@" --verbose \
-    -c 'United Kingdom' -c 'Netherlands' -c 'United States' \
+    -c 'United Kingdom' -c 'Netherlands' -c 'United States' -c 'China' -c 'Canada' -c 'Australia' \
     -a 6 -f 6 --protocol http --sort rate --save /etc/pacman.d/mirrorlist
