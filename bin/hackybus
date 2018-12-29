@@ -22,6 +22,6 @@ mapfile -d '' sorted_bus_stops < <(printf '%s\0' "${!bus_stops[@]}" | sort -z)
 for stop in "${sorted_bus_stops[@]}"; do
     url="${bus_stops["$stop"]}"
     printf '%s:\n\n' "$stop"
-    curl -s "$url" | extract_bus_times
+    cat /tmp/q | extract_bus_times
     printf '\n'
 done
