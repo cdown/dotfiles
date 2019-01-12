@@ -8,6 +8,6 @@ fi
 path=$1
 dest=$2
 
-tar cf "$path" "$path".tar
+tar cf "$path.tar" "$path"
 split -b 4095m "$path".tar "$dest"/"${path##*/}".tar.split.
 rm -- "$path".tar
