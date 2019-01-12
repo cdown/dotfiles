@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 if (( $# != 2 )); then
     printf 'Usage: %s [path] [dest]\n' "$0" >&2
@@ -8,6 +8,6 @@ fi
 path=$1
 dest=$2
 
-tar pczf "$path" "$path".tar.gz
-split -b 4095m "$path".tar.gz "$dest"/"${path##*/}".tar.gz.split.
-rm -- "$path".tar.gz
+tar cf "$path" "$path".tar
+split -b 4095m "$path".tar "$dest"/"${path##*/}".tar.split.
+rm -- "$path".tar
