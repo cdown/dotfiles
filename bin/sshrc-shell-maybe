@@ -3,5 +3,5 @@
 if [[ $SSHHOME ]]; then
     exec "$SSHHOME/.sshrc.d/.sshrc"
 else
-    exec "$SHELL"
+    exec "$SHELL" "$@"
 fi
