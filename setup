@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-[[ $BASH_VERSION == 4.* ]] || exec /usr/local/bin/bash "$0" "$@"
-
 shopt -s dotglob extglob globstar nullglob
 
 git clean -dffx
