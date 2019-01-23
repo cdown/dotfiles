@@ -17,6 +17,9 @@ alias gp='git push'
 alias gs='git show --no-prefix'
 alias gst='git status'
 
+# git-send-patch style
+alias gsp='EMAIL=chris@chrisdown.name mutt -H'
+
 # Rebasing
 alias grp='git rebase -p'
 alias gri='grp -i'
