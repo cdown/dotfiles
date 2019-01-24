@@ -1,3 +1,4 @@
 #!/bin/bash -e
 
+export EMAIL=chris@chrisdown.name
 exec mutt -F ~/.config/mutt/rc-patch -H "$@"
