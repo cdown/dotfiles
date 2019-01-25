@@ -172,6 +172,9 @@ augroup filetype_settings
 
   autocmd BufRead,BufNewFile ~/.local/share/nota/* set filetype=markdown
 
+  autocmd BufRead,BufNewFile */git/linux-mmots/* setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab
+  autocmd BufRead,BufNewFile */git/systemd/* setlocal tabstop=8 shiftwidth=8 expandtab textwidth=109
+
   " Update ctags on write
   " Disabled for now due to perf
   " autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
