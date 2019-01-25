@@ -147,10 +147,10 @@ augroup filetype_settings
   autocmd!
 
   " By default, *.md is detected as modula2
-  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+  autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
 
-  autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS set filetype=python
-  autocmd BufNewFile,BufReadPost *.lalrpop set filetype=rust
+  autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS setlocal filetype=python
+  autocmd BufNewFile,BufReadPost *.lalrpop setlocal filetype=rust
 
   " Seek past headers, since usually we don't want to edit them
   autocmd FileType mail normal }
@@ -170,7 +170,7 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal spell'
   endfo
 
-  autocmd BufRead,BufNewFile ~/.local/share/nota/* set filetype=markdown
+  autocmd BufRead,BufNewFile ~/.local/share/nota/* setlocal filetype=markdown
 
   autocmd BufRead,BufNewFile */git/linux-mmots/* setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab
   autocmd BufRead,BufNewFile */git/systemd/* setlocal tabstop=8 shiftwidth=8 expandtab textwidth=109
