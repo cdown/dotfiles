@@ -175,9 +175,6 @@ augroup filetype_settings
   " Update ctags on write
   " Disabled for now due to perf
   " autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
-
-  " managed by vim-linux-coding-style
-  autocmd BufRead,BufNewFile ~/git/linux-mmots/* let b:yaifa_disabled=1
 augroup END
 
 nnoremap <C-l> <C-l>zz
@@ -224,5 +221,3 @@ nnoremap <silent> <Leader>E :set wrap<CR>:setlocal formatoptions-=t<CR>:set text
 nnoremap <silent> <Leader>e :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
 
 let g:GPGDefaultRecipients=["0xDF8D21B616118070"]
-
-let g:linuxsty_patterns = ["/usr/src/", "/linux", "/linux-mmots"]
