@@ -12,13 +12,13 @@ sudo mkfs.ext4 /dev/mapper/"$map"
 sudo mount /dev/mapper/"$map" "$mnt"
 sudo chown "$USER" "$mnt"
 
-sudo rsync -avHAX \
+sudo rsync -avHA \
     ~/.mozilla ~/'Google Drive' ~/.password-store ~/.local/share/nota \
     /etc/netctl /etc/wpa_supplicant \
     "$mnt"
 
 # This may be a symlink, but we don't generally want -L, so
-sudo rsync -avHAX ~/git/dotfiles/ "$mnt"/dotfiles/
+sudo rsync -avHA ~/git/dotfiles/ "$mnt"/dotfiles/
 
 gpg --export-secret-keys -a 0xDF8D21B616118070 > "$mnt"/gpg
 

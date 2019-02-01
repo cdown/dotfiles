@@ -39,7 +39,7 @@ update-mirrors
 # /boot is not on btrfs root. Copy its contents to / so it will be included in
 # the snapshot.
 sudo mkdir -p /bootcopy
-sudo rsync -avHAX /boot/ /bootcopy/
+sudo rsync -avHA /boot/ /bootcopy/
 
 root_fs=$(df --output=fstype / | tail -1)
 case $root_fs in
