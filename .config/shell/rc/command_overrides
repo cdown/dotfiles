@@ -91,6 +91,7 @@ done
 
 alias pkgfile='pacman -Fs'
 alias dmesg='dmesg -T --color=always | less -R +G'
+alias mksrcinfo='makepkg --printsrcinfo >| .SRCINFO'
 
 alias clippy='cargo +nightly-2018-10-07 clippy'
 alias hyperfine='sudo nice -n -20 sudo -u "$USER" hyperfine'
