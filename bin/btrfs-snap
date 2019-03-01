@@ -1,7 +1,10 @@
 #!/bin/bash -e
 
 # To restore:
-# mount -o subvol=/snapshots/upgrade-2019-03-01-11:18:40.685799077 /dev/mapper/cryptroot /foo
+#
+# 1. mount -o subvol=/snapshots/upgrade-2019-03-01-11:18:40.685799077 /dev/mapper/cryptroot /foo
+# 2. Check it looks good
+# 3. btrfs subvolume set-default [id] /dev/mapper/cryptroot
 
 source="${1?source missing}"
 name="${2?name missing}"
