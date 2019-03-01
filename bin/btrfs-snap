@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# To restore:
+# mount -o subvol=/snapshots/upgrade-2019-03-01-11:18:40.685799077 /dev/mapper/cryptroot /foo
+
 source="${1?source missing}"
 name="${2?name missing}"
 
