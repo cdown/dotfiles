@@ -32,6 +32,7 @@
 /.pypirc
 /.s3cfg
 /.ssh/keys/personal
+/bin/domaincheck
 /bin/pushbullet-push
 /bin/pushover-push
 /bin/trello-backup
