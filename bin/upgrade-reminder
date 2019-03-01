@@ -12,8 +12,14 @@ for dir in "$upgrade_dir/$USER"/*; do
     :
 done
 
-last_upgrade_epoch=$(date +%s -d "$(sed 's/\(.*\)-/\1 /' <<< "${dir##*/}")")
-acceptable_upgrade_epoch=$(date +%s -d "$max_days days ago")
+if [[ -v dir ]]; then
+    last_upgrade_epoch=$(date +%s -d "$(sed 's/\(.*\)-/\1 /' <<< "${dir##*/}")")
+    acceptable_upgrade_epoch=$(date +%s -d "$max_days days ago")
+else
+    # No upgrades yet, force one
+    last_upgrade_epoch=0
+    acceptable_upgrade_epoch=1
+fi
 
 if (( last_upgrade_epoch < acceptable_upgrade_epoch )); then
     notify-send -- 'Upgrade due' "It looks like you didn't upgrade in the last $max_days days."
