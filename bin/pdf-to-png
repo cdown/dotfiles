@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+pdf=${1?missing pdf}
+out_dir=${2?missing out_dir}
+
+convert -density 800 "$pdf" -resize 1920x1200 "$out_dir"/out.png
+
+# Now, Insert -> Media -> Photo Album
