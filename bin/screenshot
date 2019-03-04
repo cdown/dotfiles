@@ -5,11 +5,11 @@ mkdir -p ~/Screenshots
 file=$HOME/Screenshots/$(date +%F_%H%M%S_%N).png
 
 case $1 in
-    --select) maim -s "$file" ;;
-    --all) maim "$file" ;;
+    --select) maim -u -s "$file" ;;
+    --all) maim -u "$file" ;;
     --focused)
         focused_win=$(xprop -root | awk '/^_NET_ACTIVE_WINDOW/ { print $NF }')
-        maim -i "$focused_win" "$file"
+        maim -u -i "$focused_win" "$file"
     ;;
     *)
         echo 'Must pass an option.'
