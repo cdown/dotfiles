@@ -1,0 +1,6 @@
+#!/bin/bash
+
+slock &
+sleep 2
+sudo sh -c 'echo mem >| /sys/power/state'
+wait
