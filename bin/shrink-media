@@ -9,9 +9,9 @@ shopt -s nullglob globstar
 set -o pipefail
 
 : "${1?}"
-: "${MAX_DIMENSION:=1280}"
+: "${MAX_DIMENSION:=1920}"
 : "${VIDEO_CRF:=32}"
-: "${PHOTO_QUALITY:=75}"
+: "${PHOTO_QUALITY:=70}"
 : "${X264_PROFILE:=slow}"
 
 for dir; do
