@@ -53,13 +53,5 @@ for dir; do
 done
 
 if ! (( NO_COMPRESS )); then
-    extra_args=()
-    if password=$(pass photos); then
-        extra_args=( "-p$password" )
-    else
-        printf '%s\n' 'WARNING: No password available, not encrypting' >&2
-    fi
-
-    7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./*.mov ./*.jpg -mx0 \
-        "${extra_args[@]}"
+    7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./*.mov ./*.jpg -mx0
 fi
