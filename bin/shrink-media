@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# Go into the directory that should mimic the directory structure of the one
+# being shrunk.
+
 # Defaults are good for transferring to Lin's parents
 # For Flickr uploads:
 # NO_PHOTOS=1 NO_COMPRESS=1 VIDEO_CRF=23
