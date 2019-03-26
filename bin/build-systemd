@@ -1,4 +1,5 @@
 #!/bin/bash -e
 
-arch-meson . build --buildtype debug -Db_sanitize=address --optimization g
+meson build --buildtype debug -Db_sanitize=address --optimization g
 nice -n 20 ninja -C build
+nice -n 20 ninja -C build test
