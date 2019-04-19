@@ -1,2 +1,2 @@
-URxvt.font: xft:Inconsolata:size=14
+*.font: xft:Inconsolata:size=14
 URxvt.letterSpace: -1
