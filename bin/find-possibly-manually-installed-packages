@@ -7,7 +7,7 @@ trap 'cd /; rm -rf "$playbook_dir"' 0
 git clone git://github.com/cdown/ansible-"$ansible_type".git "$playbook_dir"
 
 mapfile -t pkgs < <(pacman -Qqe)
-mapfile -t _base < <(pacman -Qqg base base-devel fcitx-im)
+mapfile -t _base < <(pacman -Qqg base base-devel)
 
 # Put all base packages in an array so we don't have to loop each time
 declare -A base
