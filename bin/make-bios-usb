@@ -5,4 +5,7 @@
 iso=${1?iso missing}
 device=${2?device missing}
 
+# put old bios/dmi info in ~/lastbios, just in case shtf
+sudo dmidecode &> ~/lastbios
+
 geteltorito.pl "$iso" | sudo tee "$device" >/dev/null
