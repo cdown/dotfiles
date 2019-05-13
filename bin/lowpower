@@ -6,7 +6,6 @@ processes=(chrome spotify)
 
 case $action in
     on)
-        sudo powerdown
         wineserver -k
         for process in "${processes[@]}"; do
             pkill -x "$process"
@@ -15,7 +14,6 @@ case $action in
 
     ;;
     off)
-        sudo powerup
         sudo brightness 100
         sudo rfkill unblock all
         pgrep -x mutt || start-mutts
