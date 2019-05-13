@@ -82,7 +82,8 @@ fi
 sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew /etc/pulse/default.pa.pacnew /etc/pacman.conf.pacnew
 sudo pacdiff
 
-sudo update-from-cm "$ansible_type"
+# Manually set PATH to avoid getting wrong user for envs
+PATH=$(getconf PATH) sudo update-from-cm "$ansible_type"
 
 for user in cdown lin root; do
     # Don't break agent connection if this is the current user
