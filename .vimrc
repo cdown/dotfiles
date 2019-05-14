@@ -91,6 +91,8 @@ nnoremap Q <nop>
 " Do not show me man pages when I'm bad at pressing k
 nnoremap K <nop>
 
+" I'm very bad at pressing things
+nmap <F1> <nop>
 
 " Do not show command history window when :q gets entered in the wrong order
 map q: :q
