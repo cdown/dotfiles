@@ -34,8 +34,7 @@ exists cpanm && cpan-outdated -p | cpanm -n
 
 exists vagrant && vagrant plugin update
 
-# pinned for clippy/rustfmt
-exists rustup && rustup update stable && rustup update nightly-2018-10-07
+exists rustup && rustup update stable && rustup update nightly
 
 # `cargo install-update` is an optional extension
 cargo install-update --help >/dev/null 2>&1 && cargo install-update -a
