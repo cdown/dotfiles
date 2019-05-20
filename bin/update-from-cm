@@ -11,4 +11,5 @@ git clone --recursive git://github.com/cdown/ansible-"$ansible_type".git "$playb
 # shellcheck disable=SC2164
 cd "$playbook_dir"
 
-./run
+# Manually set PATH to avoid getting wrong user for envs
+PATH=$(getconf PATH) ./run
