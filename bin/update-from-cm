@@ -12,4 +12,4 @@ git clone --recursive git://github.com/cdown/ansible-"$ansible_type".git "$playb
 cd "$playbook_dir"
 
 # Manually set PATH to avoid getting wrong user for envs
-PATH=$(getconf PATH) ./run
+PATH=$(getconf PATH):/usr/local/bin ./run
