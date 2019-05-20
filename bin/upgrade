@@ -34,8 +34,6 @@ else
     tmux set-option -t "$session" remain-on-exit 1
 fi
 
-update-mirrors || true
-
 # /boot is not on btrfs root. Copy its contents to / so it will be included in
 # the snapshot.
 sudo mkdir -p /bootcopy
