@@ -47,9 +47,16 @@ transfer() {
 }
 
 # virtualenvwrapper
-alias mv2='mkvirtualenv -p "$(command -v python2)"'
-alias mv3='mkvirtualenv -p "$(command -v python3)"'
-alias wo=workon
+_VE_SOURCED=0
+ve_source() {
+    (( _VE_SOURCED )) && return
+
+    . /usr/bin/virtualenvwrapper.sh && _VE_SOURCED=1
+}
+
+alias mv2='ve_source && mkvirtualenv -p "$(command -v python2)"'
+alias mv3='ve_source && mkvirtualenv -p "$(command -v python3)"'
+alias wo='ve_source && workon'
 
 alias gt=grep-tids
 

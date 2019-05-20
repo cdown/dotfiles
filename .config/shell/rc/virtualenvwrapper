@@ -1,9 +1,0 @@
-# vim: ft=sh
-
-if [ -r /usr/bin/virtualenvwrapper.sh ]; then
-    # Arch
-    . /usr/bin/virtualenvwrapper.sh
-elif [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
-    # Debian
-    . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-fi
