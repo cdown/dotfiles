@@ -34,6 +34,29 @@ else
     tmux set-option -t "$session" remain-on-exit 1
 fi
 
+if ! (( UPDATED_DOTFILES )); then
+    for user in cdown lin root; do
+        # Don't break agent connection if this is the current user
+        if [[ $USER == "$user" ]]; then
+            escalation_cmd=()
+        else
+            escalation_cmd=(sudo -i -u "$user")
+        fi
+
+        # If we aren't using git://, we would would need an agent connection
+        if (( ${#escalation_cmd[@]} == 0 )) || "${escalation_cmd[@]}" bash -c 'cd git/dotfiles && git remote -v | grep -q git://'; then
+            "${escalation_cmd[@]}" bin/update-dotfiles
+        fi
+
+        if [[ "$user" != root ]]; then
+            # root doesn't have envs, only dotfiles
+            "${escalation_cmd[@]}" bin/upgrade-envs
+        fi
+    done
+
+    UPDATED_DOTFILES=1 exec "$0"
+fi
+
 # /boot is not on btrfs root. Copy its contents to / so it will be included in
 # the snapshot.
 sudo mkdir -p /bootcopy
@@ -81,22 +104,3 @@ sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew /etc/pu
 sudo pacdiff
 
 sudo update-from-cm "$ansible_type"
-
-for user in cdown lin root; do
-    # Don't break agent connection if this is the current user
-    if [[ $USER == "$user" ]]; then
-        escalation_cmd=()
-    else
-        escalation_cmd=(sudo -i -u "$user")
-    fi
-
-    # If we aren't using git://, we would would need an agent connection
-    if (( ${#escalation_cmd[@]} == 0 )) || "${escalation_cmd[@]}" bash -c 'cd git/dotfiles && git remote -v | grep -q git://'; then
-        "${escalation_cmd[@]}" bin/update-dotfiles
-    fi
-
-    if [[ "$user" != root ]]; then
-        # root doesn't have envs, only dotfiles
-        "${escalation_cmd[@]}" bin/upgrade-envs
-    fi
-done
