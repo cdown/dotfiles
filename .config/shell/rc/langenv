@@ -2,6 +2,6 @@
 
 for env in pyenv rbenv nodenv plenv; do
     if command -v "$env" >/dev/null 2>&1; then
-        eval "$("$env" init -)"
+        eval "$("$env" init - --no-rehash)"
     fi
 done
