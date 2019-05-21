@@ -34,7 +34,29 @@ else
     tmux set-option -t "$session" remain-on-exit 1
 fi
 
+# /boot is not on btrfs root. Copy its contents to / so it will be included in
+# the snapshot.
+sudo mkdir -p /bootcopy
+sudo rsync -avHA /boot/ /bootcopy/
+
 if ! (( UPDATED_DOTFILES )); then
+    root_fs=$(df --output=fstype / | tail -1)
+    case $root_fs in
+        btrfs)
+            btrfs-snap / "upgrade-$name"
+
+            # only keep 3 newest upgrade snapshots
+            sudo btrfs subvolume list /snapshots/ |
+                awk '$NF ~ /\/upgrade-/ { print "/" $NF }' |
+                sort -r | tail -n +4 |
+                xargs -r -d '\n' sudo btrfs subvolume delete -v
+        ;;
+        *)
+            echo "WARNING: not creating btrfs snapshot as fs is not btrfs (it's $root_fs)" >&2
+            sleep 5
+        ;;
+    esac
+
     for user in cdown lin root; do
         # Don't break agent connection if this is the current user
         if [[ $USER == "$user" ]]; then
@@ -56,28 +78,6 @@ if ! (( UPDATED_DOTFILES )); then
 
     UPDATED_DOTFILES=1 exec "$0"
 fi
-
-# /boot is not on btrfs root. Copy its contents to / so it will be included in
-# the snapshot.
-sudo mkdir -p /bootcopy
-sudo rsync -avHA /boot/ /bootcopy/
-
-root_fs=$(df --output=fstype / | tail -1)
-case $root_fs in
-    btrfs)
-        btrfs-snap / "upgrade-$name"
-
-        # only keep 3 newest upgrade snapshots
-        sudo btrfs subvolume list /snapshots/ |
-            awk '$NF ~ /\/upgrade-/ { print "/" $NF }' |
-            sort -r | tail -n +4 |
-            xargs -r -d '\n' sudo btrfs subvolume delete -v
-    ;;
-    *)
-        echo "WARNING: not creating btrfs snapshot as fs is not btrfs (it's $root_fs)" >&2
-        sleep 5
-    ;;
-esac
 
 while pkgs=$(pacman -Qqtd); do
     # All packages are spit by IFS.
