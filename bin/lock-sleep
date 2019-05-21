@@ -1,6 +1,6 @@
 #!/bin/bash
 
-physlock -s &
+lockphyslock -s &
 sleep 1
 sudo sh -c 'echo mem >| /sys/power/state'
 wait
