@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/abolish"]
 	path = .vim/bundle/abolish
 	url = https://github.com/tpope/vim-abolish
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim
