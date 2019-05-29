@@ -76,6 +76,7 @@ fi
 envless_cmds=(
     berks vagrant chef chef-apply chef-client chef-shell chef-solo chef-vault
     chef-zero knife duplicity duply reflector get_iplayer xelatex biber
+    latexindent
 )
 for cmd in "${envless_cmds[@]}"; do
     # shellcheck disable=SC2139
