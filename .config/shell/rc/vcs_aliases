@@ -17,6 +17,10 @@ alias gp='git push'
 alias gs='git show --no-prefix'
 alias gst='git status'
 
+gcopr() {
+    git fetch origin pull/"${1?need pr num}"/head:pr"$1" && gco pr"$1"
+}
+
 # git-send-patch style
 alias gsp='mutt-patch'
 
