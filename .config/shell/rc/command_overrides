@@ -95,3 +95,5 @@ alias dmesg='dmesg -T --color=always | less -R +G'
 alias mksrcinfo='makepkg --printsrcinfo >| .SRCINFO'
 
 alias hyperfine='sudo nice -n -20 sudo -u "$USER" hyperfine'
+
+alias ncdu='sudo ncdu -x --exclude /snapshots /'
