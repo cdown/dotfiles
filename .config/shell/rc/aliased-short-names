@@ -80,3 +80,5 @@ alias copy-music-to-s3='s3cmd sync -v -r --delete-removed ~/Music/ s3://chrisdow
 alias j='systemctl --user start jupyter-notebook'
 
 alias kt='ssh root@localhost -p 10022'
+
+alias e='PATH=$(get-path-without-env) '
