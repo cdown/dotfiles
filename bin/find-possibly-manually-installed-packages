@@ -21,9 +21,7 @@ for pkg in "${pkgs[@]}"; do
     if ! grep -RFqw -- "$pkg" "$playbook_dir/tasks"; then
         if ! (( base["$pkg"] )) && [[ "$pkg" != linux ]] &&
              [[ "$pkg" != linux-* ]]; then
-            if LC_ALL=C pacman -Qi "$pkg" | grep 'Required By' | grep -q 'None$'; then
-                manual+=( "$pkg" )
-            fi
+            manual+=( "$pkg" )
         fi
     fi
 done
