@@ -18,11 +18,8 @@ done
 manual=()
 
 for pkg in "${pkgs[@]}"; do
-    if ! grep -RFqw -- "$pkg" "$playbook_dir/tasks"; then
-        if ! (( base["$pkg"] )) && [[ "$pkg" != linux ]] &&
-             [[ "$pkg" != linux-* ]]; then
-            manual+=( "$pkg" )
-        fi
+    if ! grep -RFqw -- "$pkg" "$playbook_dir/tasks" && ! (( base["$pkg"] )); then
+        manual+=( "$pkg" )
     fi
 done
 
