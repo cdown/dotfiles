@@ -358,3 +358,4 @@ xcuserdata
 .htoprc
 .config/htop/htoprc
 .perf.data*
+*.pdfpc
