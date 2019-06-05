@@ -25,5 +25,4 @@ done
 
 if (( ${#manual[@]} )); then
     printf '%s\n' "${manual[@]}"
-    exit 1
 fi
