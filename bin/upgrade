@@ -87,7 +87,7 @@ if [[ $pkgs ]]; then
     read -r REPLY
     [[ $REPLY == y ]] || exit 1
     # All packages are spit by IFS.
-    # shellcheck disable=SC2046
+    # shellcheck disable=SC2086
     sudo pacman -D --asdeps $pkgs
 fi
 
