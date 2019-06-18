@@ -3,7 +3,7 @@
 action=${1?}
 
 processes=(chrome spotify)
-services=(bluetooth)
+services=(bluetooth "netctl-ifplugd@$(get-wired-interface)")
 
 case $action in
     on)
