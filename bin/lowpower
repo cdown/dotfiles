@@ -3,8 +3,8 @@
 action=${1?}
 
 processes=(chrome spotify)
-services=(bluetooth "netctl-ifplugd@$(get-wired-interface)")
-user_services=(clipmenud)
+services=(bluetooth "netctl-ifplugd@$(get-wired-interface)" fcitx systemd-journald)
+user_services=(clipmenud pulseaudio xfce4-notifyd mpdscribble)
 
 case $action in
     on)
