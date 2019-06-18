@@ -3,6 +3,7 @@
 action=${1?}
 
 processes=(chrome spotify)
+services=(bluetooth)
 
 case $action in
     on)
@@ -18,11 +19,13 @@ case $action in
         sudo rfkill unblock all
         pgrep -x mutt || start-mutts
         pgrep -x irssi || start-irssis
+        sudo systemctl start "${services[@]}"
     ;;
     super)
         "$0" on
         tmux kill-server
         sudo netctl stop-all
         sudo rfkill block all
+        sudo systemctl stop "${services[@]}"
     ;;
 esac
