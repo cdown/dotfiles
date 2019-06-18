@@ -4,6 +4,7 @@ action=${1?}
 
 processes=(chrome spotify)
 services=(bluetooth "netctl-ifplugd@$(get-wired-interface)")
+user_services=(clipmenud)
 
 case $action in
     on)
@@ -20,6 +21,7 @@ case $action in
         pgrep -x mutt || start-mutts
         pgrep -x irssi || start-irssis
         sudo systemctl start "${services[@]}"
+        systemctl --user start "${user_services[@]}"
     ;;
     super)
         "$0" on
@@ -27,5 +29,6 @@ case $action in
         sudo netctl stop-all
         sudo rfkill block all
         sudo systemctl stop "${services[@]}"
+        systemctl --user stop "${user_services[@]}"
     ;;
 esac
