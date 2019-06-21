@@ -28,7 +28,6 @@ alias vim='PYTHONPATH="$(vcs-root)" vim -u "$config_home/.vimrc" -N'
 # Do not disable raw control chars when running less
 alias less='less -R'
 
-alias sxiv='sxiv -b'
 alias ipython='ipython --no-banner'
 
 # Do not pass a (potentially unsupported) locale when SSHing to random servers.
