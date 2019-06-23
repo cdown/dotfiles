@@ -2,10 +2,7 @@
 
 # Go into the directory that should mimic the directory structure of the one
 # being shrunk.
-
 # Defaults are good for transferring to Lin's parents
-# For Flickr uploads:
-# NO_PHOTOS=1 NO_COMPRESS=1 VIDEO_CRF=23
 export LC_ALL=C
 
 shopt -s nullglob globstar
@@ -55,6 +52,6 @@ for dir; do
     done
 done
 
-if ! (( NO_COMPRESS )); then
-    7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./*.mov ./*.jpg -mx0
+if (( COMPRESS )); then
+    7z a shrunk-photos-"$(date +%Y-%m-%d)".zip ./* -mx0
 fi
