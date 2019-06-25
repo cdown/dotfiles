@@ -25,13 +25,13 @@ gcopr() {
 alias gsp='mutt-patch'
 
 # Rebasing
-alias grp='git rebase -p'
-alias gri='grp -i'
+alias grr='git rebase -r'
+alias gri='grr -i'
 alias grim='gri master@{u}'
-alias grpm='grp master@{u}'
+alias grrm='grr master@{u}'
 alias grid='gri develop@{u}'
-alias grpd='grp develop@{u}'
-alias gru='grp @{u}'
+alias grrd='grr develop@{u}'
+alias gru='grr @{u}'
 
 # Diffing
 git-diff-merge-base() {
@@ -58,7 +58,7 @@ alias gcaa='gca --amend'
 alias grh='git reset --hard'
 alias grhu='grh @{u}'
 alias gpf='gp -f'
-alias gu='gf && grpm'
+alias gu='gf && grrm'
 alias gcl='git clean -dffx'
 
 # Mercurial
