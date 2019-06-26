@@ -18,7 +18,7 @@ for dir; do
     ( cd "$dir" && find . -type d -print0 ) | xargs -0 mkdir -p
 
     # TODO: remove syntax injection in last param
-    (( NO_PHOTOS )) || find "$dir" -name '*.jpg' -print0 |
+    (( NO_PHOTOS )) || find "$dir" -iname '*.jpg' -print0 |
         parallel --bar -0 nice -n 19 \
             convert -interlace Plane \
             -resize "$MAX_DIMENSION"x"$MAX_DIMENSION" \
@@ -26,7 +26,7 @@ for dir; do
 
     # Why do Chinese gallery apps only sort by mtime, sigh... :-(
     i=0
-    for file in **/*.jpg; do
+    for file in **/*.{jpg,JPG}; do
         time="@$(( i++ ))"
         touch -d "$time" -- "$file"
     done
