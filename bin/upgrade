@@ -67,12 +67,12 @@ if ! (( UPDATED_DOTFILES )); then
 
         # If we aren't using git://, we would would need an agent connection
         if (( ${#escalation_cmd[@]} == 0 )) || "${escalation_cmd[@]}" bash -c 'cd git/dotfiles && git remote -v | grep -q git://'; then
-            "${escalation_cmd[@]}" bin/update-dotfiles
+            [[ -f bin/update-dotfiles ]] && "${escalation_cmd[@]}" bin/update-dotfiles
         fi
 
         if [[ "$user" != root ]]; then
             # root doesn't have envs, only dotfiles
-            "${escalation_cmd[@]}" bin/upgrade-envs
+            [[ -f bin/upgrade-envs ]] && "${escalation_cmd[@]}" bin/upgrade-envs
         fi
     done
 
