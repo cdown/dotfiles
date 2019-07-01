@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+for ass in *.ass; do
+    srt="${ass%.ass}.srt"
+    srt_temp="$srt.temp"
+    ffmpeg -y -i "$ass" "$srt"
+    srt process -m re -f 'lambda sub: re.sub("<[^<]+?>", "", sub)' \
+        -i "$srt" -o "$srt_temp"
+
+    # Weird numerical nonsense that ffmpeg does nothing with
+    srt lines-matching -v -m re -f 'lambda line: re.match(r".*[0-9] [0-9].*", line)' \
+        -i "$srt_temp" -o "$srt"
+
+    rm "$srt_temp"
+done
