@@ -82,3 +82,5 @@ alias j='systemctl --user start jupyter-notebook'
 alias kt='ssh root@localhost -p 10022'
 
 alias e='PATH=$(get-path-without-env) '
+
+alias pacman-recent='grep '\''\[ALPM\] \(removed\|installed\|upgraded\)'\'' /var/log/pacman.log'
