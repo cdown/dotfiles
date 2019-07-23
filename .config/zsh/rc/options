@@ -6,6 +6,7 @@ set -o complete_in_word
 set -o extendedglob
 set -o histappend
 set -o histignorealldups
+set -o histignorespace
 set -o interactivecomments
 set -o ksh_glob
 set -o no_bang_hist

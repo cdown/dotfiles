@@ -4,6 +4,6 @@ set +H
 
 HISTSIZE=50000
 HISTFILESIZE=$HISTSIZE
-HISTCONTROL=ignoredups
+HISTCONTROL=ignoreboth
 
 shopt -s histappend
