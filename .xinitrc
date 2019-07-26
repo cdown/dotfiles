@@ -13,8 +13,7 @@ services_to_start=(
     mpd pulseaudio fcitx battery-monitor.timer xresources
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
     xinput-disable@screen xinput-disable@trackpoint synclient
-    vboxclient no-dpms no-screensaver clipmenud
-    upgrade-reminder.timer
+    no-dpms no-screensaver clipmenud upgrade-reminder.timer
 )
 
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then

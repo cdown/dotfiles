@@ -1,6 +1,0 @@
-[Unit]
-ConditionVirtualization=oracle
-
-[Service]
-ExecStart=/usr/bin/VBoxClient-all
-Restart=on-failure
