@@ -1,0 +1,30 @@
+#!/bin/bash -ex
+
+device=${1?}
+user=u
+password=p
+
+sudo fdisk -l "$device"
+
+echo "Ctrl-C within 10 seconds if wrong"
+
+sleep 10
+
+if ! sudo hdparm -I "$device" | grep -Pq 'not\tfrozen'; then
+    printf '%s is frozen, try replug?\n' "$device" >&2
+    exit 1
+fi
+
+# Print estimated erase times
+sudo hdparm -I "$device" | grep for
+
+erase_type=security-erase
+if sudo hdparm -I "$device" | grep ENHANCED; then
+    erase_type=security-erase-enhanced
+fi
+
+sudo hdparm --user-master "$user" --security-set-pass "$password" "$device"
+
+date
+
+sudo hdparm --user-master "$user" --"$erase_type" "$password" "$device"
