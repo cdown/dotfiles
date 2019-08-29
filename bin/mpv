@@ -1,0 +1,5 @@
+#!/bin/sh
+
+/usr/bin/mpv "$@" &
+sudo renice -n -15 "$!"
+wait
