@@ -1,5 +1,0 @@
-#!/bin/sh
-
-/usr/bin/pulseaudio "$@" --daemonize=no &
-sudo renice -n -15 "$!"
-wait
