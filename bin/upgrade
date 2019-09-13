@@ -65,14 +65,14 @@ if ! (( UPDATED_DOTFILES )); then
             escalation_cmd=(sudo -i -u "$user")
         fi
 
-        # If we aren't using git://, we would would need an agent connection
-        if (( ${#escalation_cmd[@]} == 0 )) || "${escalation_cmd[@]}" bash -c 'cd git/dotfiles && git remote -v | grep -q git://'; then
-            [[ -f bin/update-dotfiles ]] && "${escalation_cmd[@]}" bin/update-dotfiles
-        fi
-
         if [[ "$user" != root ]]; then
             # root doesn't have envs, only dotfiles
             [[ -f bin/upgrade-envs ]] && "${escalation_cmd[@]}" bin/upgrade-envs
+        fi
+
+        # If we aren't using git://, we would would need an agent connection
+        if (( ${#escalation_cmd[@]} == 0 )) || "${escalation_cmd[@]}" bash -c 'cd git/dotfiles && git remote -v | grep -q git://'; then
+            [[ -f bin/update-dotfiles ]] && "${escalation_cmd[@]}" bin/update-dotfiles
         fi
     done
 
