@@ -4,12 +4,11 @@ date_fmt="%H:%M"
 
 tzs=(
     Current
-    America/Chicago
     America/Los_Angeles
     America/New_York
-    Asia/Singapore
-    Asia/Tel_Aviv
     Europe/London
+    Asia/Tel_Aviv
+    Asia/Singapore
 )
 
 max_tz_len() {
