@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-date_fmt="%H:%M"
-
 tzs=(
     Current
     America/Los_Angeles
@@ -25,9 +23,8 @@ for tz in "${tzs[@]}"; do
     printf "%${len}s: " "$tz"
 
     if [[ $tz == Current ]]; then
-        date +"$date_fmt"
-        echo
+        date
     else
-        TZ="$tz" date +"$date_fmt"
+        TZ="$tz" date
     fi
 done
