@@ -29,7 +29,7 @@ done < <(
         '$1 != main && $2 == "connected" { print $1 }'
 )
 
-if (( ${#external_displays[@]} == 0 )); then
+if (( ${#external_displays[@]} == 0 )) && [[ $1 != auto ]]; then
     printf '%s\n' 'WARNING: No external displays detected, refusing to continue' >&2
     exit 1
 fi
@@ -80,6 +80,9 @@ case $1 in
             xrandr --output "$display" --off
         done
         xrandr --output "$main_display" --primary --auto
+    ;;
+    auto)
+        xrandr --auto
     ;;
     x1)
         w=1920
