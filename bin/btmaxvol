@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+# We use PA to control volume, so max out bluetooth to start
+mac=$(bluetoothctl <<< devices | awk '$3 == "WH-1000XM3" { print $2 }' | sed 's/:/_/g')
+
+for (( i=0; i<100; i++ )); do
+    dbus-send --print-reply --system --dest=org.bluez /org/bluez/hci0/dev_"$mac" org.bluez.MediaControl1.VolumeUp >/dev/null
+done
