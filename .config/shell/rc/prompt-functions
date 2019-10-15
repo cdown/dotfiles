@@ -68,12 +68,8 @@ _hostname_prompt() {
         return
     fi
 
-    hostname=$(hostname)
-    case $hostname in
-        dev*) displayed_hostname=dev ;;
-        chrisdown.name) displayed_hostname=chrisdown.name ;;
-        *) displayed_hostname="${hostname%%.*}" ;;
-    esac
+    hostname=$(cat /etc/hostname)
+    displayed_hostname="${hostname%%.*}"
 
     colour_part 3 "$displayed_hostname"
 }
