@@ -144,8 +144,8 @@ vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
 " I only really use a single mark, so M to set it, m to retrieve it
-nnoremap M ma
-nnoremap m 'a
+nnoremap M mA
+nnoremap m 'A
 
 augroup filetype_settings
   " Clear this autocmd group so that the settings won't get loaded over and
