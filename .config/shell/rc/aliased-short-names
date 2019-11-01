@@ -34,7 +34,7 @@ m() {
 }
 
 g(){
-    gdb -q /proc/"${1?}"/exe "$1"
+    sudo gdb -q /proc/"${1?}"/exe "$1"
 }
 
 d() {
