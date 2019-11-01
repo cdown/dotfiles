@@ -143,6 +143,9 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" Q to go to mapping
+nnoremap Q '
+
 augroup filetype_settings
   " Clear this autocmd group so that the settings won't get loaded over and
   " over again
