@@ -157,6 +157,7 @@ augroup filetype_settings
 
   autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS setlocal filetype=python
   autocmd BufNewFile,BufReadPost *.lalrpop setlocal filetype=rust
+  autocmd BufNewFile,BufReadPost *.def setlocal filetype=c
 
   " Seek past headers, since usually we don't want to edit them
   autocmd FileType mail normal }
