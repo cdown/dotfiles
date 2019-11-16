@@ -19,7 +19,7 @@ esac
 
 pngquant -f --ext .png "$file"
 
-notify-send 'Screenshot taken'
+notify-send -u low 'Screenshot taken'
 
 xclip -sel clip <<< "$file"
 xclip -sel primary <<< "$file"

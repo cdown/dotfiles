@@ -23,7 +23,7 @@ now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
 perc=$(( now * 100 / full ))
 
 if (( perc <= WARN_PERC )); then
-    notify-send 'Reaching critical battery threshold'
+    notify-send -u critical 'Reaching critical battery threshold'
 fi
 
 if (( perc <= SLEEP_PERC )); then
