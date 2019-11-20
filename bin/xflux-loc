@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case ${1,,} in
+    london)    lat=51.50; lng=-0.12   ;;
+    ny)        lat=40.71; lng=-74.00  ;;
+    mpk)       lat=37.45; lng=-122.18 ;;
+    singapore) lat=1.36;  lng=103.92  ;;
+    beijing)   lat=39.92; lng=116.41  ;;
+esac
+
+exec xflux -l "$lat" -g "$lng" "$@"
