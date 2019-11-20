@@ -1,0 +1,6 @@
+#!/bin/bash
+
+tzlink=$(readlink -f /etc/localtime)
+tzlink=${tzlink#/usr/share/zoneinfo/}
+
+exec redshift-loc "$tzlink"

@@ -1,11 +1,15 @@
 #!/bin/bash
 
-case ${1,,} in
-    london)    lat=51.50; lng=-0.12   ;;
-    ny)        lat=40.71; lng=-74.00  ;;
-    mpk)       lat=37.45; lng=-122.18 ;;
-    singapore) lat=1.36;  lng=103.92  ;;
-    beijing)   lat=39.92; lng=116.41  ;;
+case $1 in
+    london|Europe/London)     lat=51.50; lng=-0.12   ;;
+    ny|America/New_York)      lat=40.71; lng=-74.00  ;;
+    mpk|America/Los_Angeles)  lat=37.45; lng=-122.18 ;;
+    singapore|Asia/Singapore) lat=1.36;  lng=103.92  ;;
+    beijing|Asia/Beijing)     lat=39.92; lng=116.41  ;;
+    *)
+        printf 'Unknown location: %s\n' "$1" >&2
+        exit 1
+    ;;
 esac
 
 exec redshift -l "$lat":"$lng"
