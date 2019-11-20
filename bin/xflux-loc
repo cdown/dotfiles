@@ -8,4 +8,4 @@ case ${1,,} in
     beijing)   lat=39.92; lng=116.41  ;;
 esac
 
-exec xflux -l "$lat" -g "$lng" "$@"
+exec xflux -l "$lat" -g "$lng" -nofork
