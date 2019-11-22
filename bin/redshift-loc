@@ -12,4 +12,4 @@ case $1 in
     ;;
 esac
 
-exec redshift -l "$lat":"$lng" -t 6500K:3500K -b 1.0:0.8
+exec redshift -l "$lat":"$lng" -t 6500K:4000K -b 1.0:0.8
