@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+prev_state=$(systemctl --user is-active redshift-auto)
+
+systemctl --no-block --user stop redshift-auto
+
 extra_args=()
 
 if cat /sys/class/power_supply/BAT*/status | grep -qx Discharging; then
@@ -9,3 +13,7 @@ fi
 /usr/bin/mpv "${extra_args[@]}" "$@" &
 sudo renice -n -15 "$!"
 wait
+
+if [[ $prev_state == active ]]; then
+    systemctl --no-block --user start redshift-auto
+fi
