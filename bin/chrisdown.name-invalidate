@@ -1,5 +1,5 @@
 #!/bin/bash
 
-for dist in E3JFDQ2QEF0HR7 E3PXQXBK6DFKDU E2AU1PIBLEGWPF; do
+for dist in E3JFDQ2QEF0HR7 E3PXQXBK6DFKDU; do
     aws cloudfront create-invalidation --distribution-id="$dist" --paths "/*"
 done
