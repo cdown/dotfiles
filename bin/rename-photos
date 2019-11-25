@@ -39,7 +39,7 @@ for in_filename in *.{JP{,E}G,jp{,e}g}; do
                 continue 2
             else
                 last_filename=$new_filename
-                let i++
+                (( i++ ))
             fi
         done
     fi
