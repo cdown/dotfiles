@@ -2,7 +2,18 @@
 
 prev_state=$(systemctl --user is-active redshift-auto)
 
-systemctl --no-block --user stop redshift-auto
+
+no_video=0
+for arg do
+    if [[ $arg == "--no-video" ]]; then
+        no_video=1
+        break
+    fi
+done
+
+if ! (( no_video )); then
+    systemctl --no-block --user stop redshift-auto
+fi
 
 extra_args=()
 
