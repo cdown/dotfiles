@@ -14,6 +14,7 @@ diff=$(RAW=1 compare-photo-backups | filter_headers)
 
 # TODO: dedupe logic
 
+# shellcheck disable=SC2209
 (( DRYRUN )) && prefix=echo || prefix=command
 
 mapfile -t in_s3_only_no_prefix < <(
