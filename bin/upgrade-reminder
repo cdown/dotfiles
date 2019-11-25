@@ -13,6 +13,7 @@ for dir in "$upgrade_dir/$USER"/*; do
 done
 
 if [[ -v dir ]]; then
+    # shellcheck disable=SC2001
     last_upgrade_epoch=$(date +%s -d "$(sed 's/\(.*\)-/\1 /' <<< "${dir##*/}")")
     acceptable_upgrade_epoch=$(date +%s -d "$max_days days ago")
 else
