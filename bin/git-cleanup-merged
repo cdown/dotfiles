@@ -4,17 +4,13 @@ branch_to_check=${1?}
 
 remove_base_branches_cmd=(sed -n '/\(develop\|master\|HEAD\)/!s/^..//p')
 
-local_branches=(
-    $(
-        git branch --merged "$branch_to_check" |
-            "${remove_base_branches_cmd[@]}"
-    )
+mapfile -t local_branches < <(
+    git branch --merged "$branch_to_check" |
+        "${remove_base_branches_cmd[@]}"
 )
-remote_branches=(
-    $(
-        git branch -r --merged "$branch_to_check" |
-            "${remove_base_branches_cmd[@]}" | sed 's|^origin/||'
-    )
+mapfile -t remote_branches < <(
+    git branch -r --merged "$branch_to_check" |
+        "${remove_base_branches_cmd[@]}" | sed 's|^origin/||'
 )
 
 printf 'Would purge the following:\nLocal: %s\nRemote: %s\n' \
