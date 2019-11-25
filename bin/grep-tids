@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
 pid=$1
-tids=( $(ps -L --pid "$pid" -o tid=) )
+mapfile -t tids < <(ps -L --pid "$pid" -o tid=)
 grep -f <(printf '\\b%s\\b\n' "$pid" "${tids[@]}")
