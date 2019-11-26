@@ -1,0 +1,13 @@
+#!/bin/bash -x
+
+svg_file=$(mktemp --suffix .svg)
+perf_file=$(mktemp)
+
+perf record -o "$perf_file" --call-graph dwarf "$@"
+perf script -i "$perf_file" | gprof2dot --format=perf | dot -Tsvg > "$svg_file"
+
+if (( UID )); then
+    exec google-chrome-stable "$svg_file"
+else
+    printf 'Output at %s\n' "$svg_file"
+fi
