@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+pkill -f chrome
+google-chrome-stable --disable-async-dns --proxy-server="socks5://183.233.181.216:1081"
