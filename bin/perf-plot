@@ -3,7 +3,12 @@
 svg_file=$(mktemp --suffix .svg)
 perf_file=$(mktemp)
 
+# Allow Ctrl-C in case someone runs with -p for example, without using wait and
+# cooperative exit, then clear it after done.
+trap '' INT
 perf record -o "$perf_file" --call-graph dwarf "$@"
+trap - INT
+
 perf script -i "$perf_file" | gprof2dot --format=perf | dot -Tsvg > "$svg_file"
 
 if (( UID )); then
