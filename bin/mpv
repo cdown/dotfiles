@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
-prev_state=$(systemctl --user is-active redshift-auto)
-
+prev_state=$(systemctl --user is-active redshift-auto || true)
 
 no_video=0
 for arg do
