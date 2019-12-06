@@ -4,6 +4,8 @@ shopt -s nullglob
 
 : "${WARN_PERC:=10}"
 : "${SLEEP_PERC:=5}"
+: "${XDG_RUNTIME_DIR:=/run/user/"$(id -u)"}"
+: "${CACHE_DIR:="$XDG_RUNTIME_DIR"/battmon}"
 
 sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
 any_is_charging() {
@@ -13,9 +15,32 @@ any_battery_exists() {
     batteries=(/sys/class/power_supply/BAT*)
     (( "${#batteries[@]}" ))
 }
+write_last() {
+    mkdir -p "$CACHE_DIR"
+    printf '%s' "${1?}" > "$CACHE_DIR/last_global_state"
+}
+read_last() {
+    cat "$CACHE_DIR/last_global_state" 2>/dev/null
+}
+check_and_update_last() {
+    local last
+    local current
 
-if ! any_battery_exists || any_is_charging; then
-    exit 0
+    last=$(read_last)
+    current=${1?}
+
+    [[ $last == "$current" ]] || notify-send "Battery now $current"
+    write_last "$current"
+}
+
+any_battery_exists || exit 0
+
+last=$(read_last)
+
+if any_is_charging; then
+    check_and_update_last charging
+else
+    check_and_update_last discharging
 fi
 
 full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
