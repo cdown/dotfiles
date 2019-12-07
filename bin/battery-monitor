@@ -11,6 +11,10 @@ sum() { cat "$@" | awk '{ sum += $0 } END { print sum }'; }
 any_is_charging() {
     cat /sys/class/power_supply/BAT*/status | grep -q -e Charging -e Full
 }
+all_are_unknown() {
+    # On the T470s, both batteries go to "unknown" when charged for some reason
+    ! cat /sys/class/power_supply/BAT*/status | grep -q -v Unknown
+}
 any_battery_exists() {
     batteries=(/sys/class/power_supply/BAT*)
     (( "${#batteries[@]}" ))
@@ -37,7 +41,7 @@ any_battery_exists || exit 0
 
 last=$(read_last)
 
-if any_is_charging; then
+if any_is_charging || all_are_unknown; then
     check_and_update_last charging
 else
     check_and_update_last discharging
