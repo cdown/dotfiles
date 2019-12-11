@@ -47,6 +47,8 @@ else
     check_and_update_last discharging
 fi
 
+any_is_charging && exit 0
+
 full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
 now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
 perc=$(( now * 100 / full ))
