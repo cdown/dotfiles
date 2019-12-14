@@ -86,3 +86,5 @@ alias kt='ssh root@localhost -p 10022'
 alias e='PATH=$(get-path-without-env) '
 
 alias pacman-recent='grep '\''\[ALPM\] \(removed\|installed\|upgraded\|downgraded\)'\'' /var/log/pacman.log'
+
+alias mpva='mpv --no-video'
