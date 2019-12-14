@@ -4,10 +4,9 @@ prev_state=$(systemctl --user is-active redshift-auto || true)
 
 no_video=0
 for arg do
-    if [[ $arg == "--no-video" ]]; then
-        no_video=1
-        break
-    fi
+    case $arg in
+        --no-video|--help) no_video=1 ;;
+    esac
 done
 
 if ! (( no_video )); then
