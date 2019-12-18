@@ -205,8 +205,19 @@ EXEC 01;31  # Unix
 .org 32
 .md 32
 .mkd 32
+.srt 32
+.ass 32
+.ssa 32
+.patch 32
+.diff 32
+.ini 32
+.nfo 32
+.csv 32
+.gpx 32
 
 # Source text
+.rs 32
+.lalrpop 32
 .h 32
 .c 32
 .C 32
@@ -336,6 +347,7 @@ EXEC 01;31  # Unix
 .rm 33
 .rmvb 33
 .swf 33
+.ts 33
 .vob 33
 .webm 33
 .wmv 33
@@ -354,6 +366,21 @@ EXEC 01;31  # Unix
 .pptx 31
 .fla 31
 .psd 31
+.torrent 31
+.odt 31 
+.ott 31
+.odm 31
+.oth 31
+.ods 31
+.ots 31
+.odg 31
+.otg 31
+.odp 31
+.otp 31
+.odf 31
+.odb 31
+.oxt 31
+.ics 31
 
 # Archives, compressed
 .7z   1;35
@@ -383,6 +410,7 @@ EXEC 01;31  # Unix
 .z    1;35
 .Z    1;35
 .zip  1;35
+.zst  1;35
 
 # For testing
 .ANSI-30-black 30
@@ -409,6 +437,7 @@ EXEC 01;31  # Unix
 # For universal scheme, use brightgreen 01;32
 # For optimal on light bg (but too prominent on dark bg), use white 01;34
 .log 01;32
+.tmp 01;32
 *~ 01;32
 *# 01;32
 #.log 01;34
@@ -445,6 +474,7 @@ EXEC 01;31  # Unix
 .ORIG 01;33
 .swp 01;33
 .swo 01;33
+.aria2 01;33
 *,v 01;33
 
 # The brightmagenta (Solarized: purple) color is free for you to use for your
