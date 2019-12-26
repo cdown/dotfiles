@@ -173,7 +173,7 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
   endfor
 
-  for filetype in ['tex', 'plaintex', 'mail']
+  for filetype in ['tex', 'plaintex', 'mail', 'gitcommit']
     exe 'autocmd FileType ' . filetype . ' setlocal spell'
   endfo
 
