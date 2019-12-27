@@ -170,8 +170,12 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
   endfor
 
-  for filetype in ['gitcommit', 'mail']
+  for filetype in ['gitcommit', 'mail', 'gitsendemail']
     exe 'autocmd FileType ' . filetype . ' setlocal joinspaces'
+  endfor
+
+  for filetype in ['gitcommit', 'gitsendemail']
+    exe 'autocmd FileType ' . filetype . ' setlocal tw=72'
   endfor
 
   autocmd BufRead,BufNewFile ~/.local/share/nota/* setlocal filetype=markdown
