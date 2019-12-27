@@ -178,6 +178,8 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal tw=72'
   endfor
 
+  autocmd FileType gitsendemail setlocal tabstop=8
+
   autocmd BufRead,BufNewFile ~/.local/share/nota/* setlocal filetype=markdown
 
   autocmd BufRead,BufNewFile */git/linux-mmots/*.c,*/git/linux-mmots/*.h setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab
