@@ -15,7 +15,7 @@ fi
 
 extra_args=()
 
-if ! (( NO_MANGLING )) &&& cat /sys/class/power_supply/BAT*/status | grep -qx Discharging; then
+if cat /sys/class/power_supply/BAT*/status | grep -qx Discharging; then
     extra_args+=("--profile=battery")
 fi
 
