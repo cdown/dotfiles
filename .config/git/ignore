@@ -359,3 +359,5 @@ xcuserdata
 .config/htop/htoprc
 .perf.data*
 *.pdfpc
+.pytype/
+MANIFEST
