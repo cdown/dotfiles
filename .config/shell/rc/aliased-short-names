@@ -71,6 +71,7 @@ alias chinese-only='srt lines-matching -m hanzidentifier -f hanzidentifier.has_c
 alias strip-html="srt process -m re -f 'lambda sub: re.sub("'"<[^<]+?>", "", sub'")'"
 alias strip-format="srt process -m re -f 'lambda sub: re.sub("'"{[^{]+?}", "", sub'")'"
 alias simplify='cconv -f utf-8 -t utf-8-cn'
+alias srt-top="srt process -f 'lambda l: r\"{\\an8}\" + l'"
 
 alias pw='LC_ALL=C tr -dc a-zA-Z0-9 < /dev/urandom | head -c 20; echo'
 
