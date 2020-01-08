@@ -34,7 +34,7 @@ exists cpanm && cpan-outdated -p | cpanm -n
 
 exists vagrant && vagrant plugin update
 
-exists rustup && rustup update stable && rustup update nightly
+exists rustup && rustup self upgrade-data && rustup update stable && rustup update nightly
 
 # `cargo install-update` is an optional extension
 cargo install-update --help >/dev/null 2>&1 && cargo install-update -a
