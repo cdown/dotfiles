@@ -1,5 +1,6 @@
 [global]
 font = Inconsolata 14
+word_wrap = yes
 geometry = 600x5-15+15
 padding = 8
 horizontal_padding = 8
