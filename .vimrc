@@ -153,9 +153,6 @@ augroup filetype_settings
   " over again
   autocmd!
 
-  " By default, *.md is detected as modula2
-  autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
-
   autocmd BufNewFile,BufReadPost *.cconf,*.cinc,TARGETS setlocal filetype=python
   autocmd BufNewFile,BufReadPost *.lalrpop setlocal filetype=rust
   autocmd BufNewFile,BufReadPost *.def setlocal filetype=c

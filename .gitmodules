@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/liquid"]
 	path = .vim/bundle/liquid
 	url = https://github.com/tpope/vim-liquid
+[submodule ".vim/bundle/markdown"]
+	path = .vim/bundle/markdown
+	url = https://github.com/tpope/vim-markdown
