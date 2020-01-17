@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/markdown"]
 	path = .vim/bundle/markdown
 	url = https://github.com/tpope/vim-markdown
+[submodule ".vim/bundle/sleuth"]
+	path = .vim/bundle/sleuth
+	url = https://github.com/tpope/vim-sleuth

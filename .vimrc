@@ -23,7 +23,6 @@ set backupcopy=yes
 set colorcolumn=+1
 set cursorcolumn
 set cursorline
-set expandtab
 set formatoptions=qrn
 set hlsearch
 set ignorecase
@@ -39,11 +38,9 @@ set shiftround
 set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
-set softtabstop=4
 set spell
 set spelllang=en_gb
 set synmaxcol=1000
-set tabstop=4
 set textwidth=79
 set viminfo='20,<1000,s1000
 
@@ -161,8 +158,6 @@ augroup filetype_settings
   autocmd FileType mail normal }
   autocmd FileType mail setlocal formatoptions+=rw
 
-  autocmd FileType make setlocal noexpandtab
-
   for filetype in ['yaml', 'sql', 'ruby', 'html', 'css', 'xml', 'php', 'vim']
     exe 'autocmd FileType ' . filetype . ' setlocal sw=2 sts=2 ts=2'
   endfor
@@ -175,12 +170,10 @@ augroup filetype_settings
     exe 'autocmd FileType ' . filetype . ' setlocal tw=72'
   endfor
 
-  autocmd FileType gitsendemail setlocal tabstop=8
-
   autocmd BufRead,BufNewFile ~/.local/share/nota/* setlocal filetype=markdown
 
-  autocmd BufRead,BufNewFile */git/linux-mmots/*.c,*/git/linux-mmots/*.h setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab
-  autocmd BufRead,BufNewFile */git/systemd/*.c,*/git/systemd/*.h setlocal tabstop=8 shiftwidth=8 expandtab textwidth=109
+  autocmd BufRead,BufNewFile */linux-mmots/*.c,*/linux-mmots/*.h setlocal textwidth=80
+  autocmd BufRead,BufNewFile */systemd/*.c,*/systemd/*.h setlocal textwidth=109
 
   " Update ctags on write
   " Disabled for now due to perf
