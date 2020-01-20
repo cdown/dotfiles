@@ -1,5 +1,5 @@
 #!/bin/bash
 
-while ! rsync -avP --inplace --timeout 5 "${@:3}" cd:/srv/downloads/"$1" "${2-.}"; do
+while ! rsync -rvPS --no-compress --inplace --timeout 5 "${@:3}" cd:/srv/downloads/"$1" "${2-.}"; do
     sleep 5
 done
