@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+cd /sys/kernel/debug/tracing/
+echo "${1?}" >> set_ftrace_pid
+echo function_graph >> current_tracer
+echo 1 >> tracing_on
