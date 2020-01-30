@@ -1,7 +1,7 @@
 #!/bin/bash
 
 case $1 in
-    london|Europe/London)     lat=51.50; lng=-0.12   ;;
+    london|Europe/*)     lat=51.50; lng=-0.12        ;;
     ny|America/New_York)      lat=40.71; lng=-74.00  ;;
     mpk|America/Los_Angeles)  lat=37.45; lng=-122.18 ;;
     singapore|Asia/Singapore) lat=1.36;  lng=103.92  ;;
