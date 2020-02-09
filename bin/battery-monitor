@@ -58,5 +58,5 @@ if (( perc <= WARN_PERC )); then
 fi
 
 if (( perc <= SLEEP_PERC )); then
-    sudo sh -c 'printf mem > /sys/power/state'
+    lock-sleep
 fi
