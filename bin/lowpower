@@ -2,9 +2,9 @@
 
 action=${1?}
 
-processes=(chrome spotify)
-services=(bluetooth "netctl-ifplugd@$(get-wired-interface)" systemd-journald)
-user_services=(clipmenud pulseaudio mpdscribble)
+processes=(chrome spotify adb)
+services=(bluetooth "netctl-ifplugd@$(get-wired-interface)" systemd-journald org.cups.cupsd)
+user_services=(clipmenud pulseaudio mpdscribble fcitx mpd)
 
 case $action in
     on)
