@@ -2,6 +2,7 @@
 
 qemu-system-x86_64 \
     -enable-kvm \
+    -s \
     -m 2G \
     -smp 4 \
     -nographic \
