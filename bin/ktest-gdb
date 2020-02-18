@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+exec gdb vmlinux -ex 'target remote localhost:1234'
