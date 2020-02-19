@@ -223,4 +223,7 @@ endfor
 nnoremap <silent> <Leader>E :set wrap<CR>:setlocal formatoptions-=t<CR>:set textwidth=0<CR>
 nnoremap <silent> <Leader>e :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
 
+" Go to conflict marker
+noremap <silent> <Leader>c /^\(<<<<<<<\\|=======\\|>>>>>>>\)<CR>
+
 let g:GPGDefaultRecipients=["0xDF8D21B616118070"]
