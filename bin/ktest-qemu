@@ -8,6 +8,6 @@ qemu-system-x86_64 \
     -nographic \
     -net user,hostfwd=tcp::10022-:22 \
     -net nic \
-    -kernel arch/x86/boot/bzImage \
+    -kernel ~/git/linux-mmots/arch/x86/boot/bzImage \
     -append 'root=/dev/sda1 cgroup_no_v1=all rw console=ttyS0,115200 systemd.log_level=debug' \
-    kernel-dev-archlinux.img
+    ~/kernel-dev-archlinux.img
