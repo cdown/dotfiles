@@ -89,7 +89,6 @@ for tool_full in /usr/share/bcc/tools/*; do
     alias "$tool"='PATH=$(get-path-without-env) sudo '"$tool_full"
 done
 
-alias pkgfile='pacman -Fs'
 alias dmesg='dmesg -T --color=always | less -R +G'
 alias mksrcinfo='makepkg --printsrcinfo >| .SRCINFO'
 
