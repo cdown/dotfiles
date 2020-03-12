@@ -74,4 +74,5 @@ if [[ $TERM == linux ]]; then
     put_template 20 $color20
     put_template 21 $color21
   )
+  reset
 fi
