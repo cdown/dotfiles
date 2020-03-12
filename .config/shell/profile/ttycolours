@@ -4,6 +4,7 @@
 
 if [[ $TERM == linux ]]; then
   reset
+  setfont ter-112n
   (
     color00="00/2b/36" # Base 00 - Black
     color01="dc/32/2f" # Base 08 - Red
