@@ -3,6 +3,7 @@
 # All in one big subshell to avoid pollution
 
 if [[ $TERM == linux ]]; then
+  reset
   (
     color00="00/2b/36" # Base 00 - Black
     color01="dc/32/2f" # Base 08 - Red
@@ -74,5 +75,4 @@ if [[ $TERM == linux ]]; then
     put_template 20 $color20
     put_template 21 $color21
   )
-  reset
 fi
