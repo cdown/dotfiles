@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+while IFS= read -r uri; do
+    if ! data=$(curl "$uri"); then
+        printf 'Failed to get URI: %s\n' "$uri" >&2
+    fi
+
+    if ! grep -q 'will be back in stock' <<< "$data"; then
+        pushbullet-push 'Item available' "$uri" 2
+    fi
+done < ~/.config/amznlist
