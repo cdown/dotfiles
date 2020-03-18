@@ -8,4 +8,6 @@ while IFS= read -r uri; do
     if ! grep -q 'will be back in stock' <<< "$data"; then
         pushbullet-push 'Item available' "$uri" 2
     fi
+
+    sleep 30
 done < ~/.config/amznlist
