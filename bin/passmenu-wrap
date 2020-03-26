@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# A wrapper to disable clipmenu from collecting password clips
+
+clipctl disable || exit
+passmenu "$@"
+clipctl enable
