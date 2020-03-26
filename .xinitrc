@@ -22,7 +22,7 @@ if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
 fi
 
 for service in "${services_to_start[@]}"; do
-    systemctl --user start "$service"
+    systemctl --user restart "$service"
 done
 
 exec "${WM:-dwm}" > "/tmp/dwm-$USER.log" 2>&1
