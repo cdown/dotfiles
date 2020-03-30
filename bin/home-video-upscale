@@ -7,13 +7,14 @@
 # 2. They have VHS interlacing. Try to fix it with yadif mode 1, which outputs
 #    one frame for each field (so now 50fps 720p50).
 # 3. There's a bunch of head switching noise at the bottom which makes
-#    compression worse and reduces overall useful data throughput. Use a 10px
-#    high box to cover it.
+#    compression worse and reduces overall useful data throughput. Before I
+#    used drawbox to mask it, but since we're resizing we might as well just
+#    crop out the dead areas and colour artefacts with the crop filter.
 #
 # Other than that, just use the optimal YouTube settings (except for the audio,
 # which we pass through without reencoding, since YouTube can just do whatever
 # it wants with it).
 
-ffmpeg -i "${1?missing input}" -vf yadif=1,drawbox=y=ih-h:w=0:h=10:t=fill,scale=1280x720:flags=lanczos \
+ffmpeg -i "${1?missing input}" -vf crop=in_w-200:in_h-20,yadif=1,scale=1280x720:flags=lanczos \
     -c:v libx264 -preset "${X264_PRESET:-slow}" -tune film -profile:v high -crf 18 -coder 1 -pix_fmt yuv420p \
     -movflags +faststart -g 30 -bf 2 -c:a copy "${2?missing output}"
