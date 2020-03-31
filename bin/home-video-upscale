@@ -16,5 +16,5 @@
 # it wants with it).
 
 chrt -b 0 ffmpeg -i "${1?missing input}" -vf crop=in_w-200:in_h-20,yadif=1,scale=1280x720:flags=lanczos \
-    -c:v libx264 -preset "${X264_PRESET:-slow}" -tune film -profile:v high -crf 18 -coder 1 -pix_fmt yuv420p \
+    -c:v libx264 -preset "${X264_PRESET:-slow}" -tune film -profile:v high -crf "${X264_CRF:-18}" -coder 1 -pix_fmt yuv420p \
     -movflags +faststart -g 30 -bf 2 -c:a copy "${2?missing output}"
