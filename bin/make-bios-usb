@@ -2,7 +2,7 @@
 
 # make-bios-usb n1wur14w.iso /dev/sdX
 
-# T470s: https://support.lenovo.com/cy/en/downloads/ds120419
+# T470s: https://support.lenovo.com/uu/en/downloads/ds120418/
 
 iso=${1?iso missing}
 device=${2?device missing}
