@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+exec s3cmd sync "${1?missing file}" s3://chrisdown.name/temp_images/
