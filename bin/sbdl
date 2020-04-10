@@ -1,5 +1,5 @@
 #!/bin/bash
 
-while ! nocache rsync -rvP --inplace --timeout 5 --rsync-path 'nocache rsync' "${@:3}" cd:/srv/downloads/"${1?}" "${2-.}"; do
+while ! rsync -rvP --inplace --timeout 5 "${@:3}" sb:data/"${1?}" "${2-.}"; do
     sleep 5
 done

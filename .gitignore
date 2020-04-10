@@ -31,6 +31,7 @@
 /.mpdscribble/mpdscribble.conf
 /.pypirc
 /.s3cfg
+/.ssh/config
 /.ssh/keys/personal
 /bin/domaincheck
 /bin/pushbullet-push
