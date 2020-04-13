@@ -2,12 +2,6 @@
 
 [[ "$-" == *i* ]] || return
 
-if (( JUNEST_ENV )) && ! (( _JUNEST_BASE_SHELL )); then
-    # workaround for https://github.com/fsquillace/junest/issues/142
-    export _JUNEST_BASE_SHELL=1
-    exec zsh -l
-fi
-
 if [[ -z "$SSHHOME" ]]; then
     config_home="$HOME"
 else
