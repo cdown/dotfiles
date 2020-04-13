@@ -65,8 +65,8 @@ _virt_prompt() {
     if [ "$_VIRT" ]; then
         # Skip other branches
         :
-    elif [ "${JUROOT_ENV:-0}" -eq 1 ]; then
-        _VIRT=juroot
+    elif [ "${JUNEST_ENV:-0}" -eq 1 ]; then
+        _VIRT=junest
     else
         _VIRT=$(systemd-detect-virt 2>/dev/null)
         if [[ $_VIRT == none ]]; then
