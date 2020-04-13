@@ -2,6 +2,10 @@
 
 if [[ $SSHHOME ]]; then
     exec "$SSHHOME/.sshrc.d/.sshrc"
-else
-    exec "$SHELL" "$@"
+elif (( JUNEST_ENV )); then
+    if command -v zsh >/dev/null 2>&1; then
+        exec zsh "$@"
+    fi
 fi
+
+exec "$SHELL" "$@"

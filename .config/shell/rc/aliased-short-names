@@ -93,3 +93,5 @@ alias mpva='mpv --no-video'
 alias spell='aspell check --lang=en_GB --dont-backup'
 alias spellh='spell --mode=html'
 alias spellm='spell --mode=markdown'
+
+alias sb='mosh --server ./mosh-server-junest sb -- zsh -l'
