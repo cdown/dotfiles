@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+# Decide what to do when told to toggle play state
+
+win=$(xdotool getactivewindow getwindowname)
+
+case $win in
+    *YouTube*|*mpv*) xdotool key space ;;
+    *) mpc toggle ;;
+esac
