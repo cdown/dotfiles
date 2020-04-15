@@ -25,4 +25,6 @@ for service in "${services_to_start[@]}"; do
     systemctl --user restart "$service"
 done
 
-exec "${WM:-dwm}" > "/tmp/dwm-$USER.log" 2>&1
+while :; do
+    "${WM:-dwm}" >> "/tmp/dwm-$USER.log" 2>&1
+done
