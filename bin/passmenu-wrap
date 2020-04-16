@@ -2,6 +2,6 @@
 
 # A wrapper to disable clipmenu from collecting password clips
 
-clipctl disable || exit
+clipctl disable
 passmenu "$@"
 clipctl enable
