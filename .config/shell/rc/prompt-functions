@@ -94,13 +94,17 @@ _hostname_prompt() {
 
 _user_prompt() {
     local user
-    user=$(id -un)
 
-    case $user in
-        cdown|chris|lin) return ;;
-    esac
+    # Still skip if it's empty, only go in if unset
+    if ! [ "${_USER+x}" ]; then
+        user=$(id -un)
+        case $user in
+            cdown|chris|lin|neuro) _USER='' ;;
+            *) _USER=$user ;;
+        esac
+    fi
 
-    colour_part 3 "$user@" ''
+    colour_part 3 "${_USER+"$_USER@"}" ''
 }
 
 _pwd_prompt() {
