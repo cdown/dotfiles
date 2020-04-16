@@ -79,16 +79,17 @@ _virt_prompt() {
 
 _hostname_prompt() {
     local hostname
-    local displayed_hostname
 
     if ! [ "$SSH_CLIENT" ]; then
         return
     fi
 
-    hostname=$(cat /etc/hostname 2>/dev/null || hostname)
-    displayed_hostname="${hostname%%.*}"
+    if ! [ "$_HOSTNAME" ]; then
+        hostname=$(cat /etc/hostname 2>/dev/null || hostname)
+        _HOSTNAME="${hostname%%.*}"
+    fi
 
-    colour_part 3 "$displayed_hostname"
+    colour_part 3 "$_HOSTNAME"
 }
 
 _user_prompt() {
