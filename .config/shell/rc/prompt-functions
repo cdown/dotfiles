@@ -104,7 +104,7 @@ _user_prompt() {
         esac
     fi
 
-    colour_part 3 "${_USER+"$_USER@"}" ''
+    colour_part 3 "${_USER:+"$_USER@"}" ''
 }
 
 _pwd_prompt() {
