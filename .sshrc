@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Use permanent SSHHOME, since we can't repropagate easily in tmux/etc
-perm_rc_dir=/tmp/cdown-sshrc
+perm_rc_dir=/tmp/$USER-sshrc
 rsync -aq "$SSHHOME"/ "$perm_rc_dir"
 export SSHHOME="$perm_rc_dir"
 
