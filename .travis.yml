@@ -1,10 +1,4 @@
-language: haskell
-
-install:
-  - cabal install shellcheck
-
-before_script:
-  - export PATH=$PATH:$HOME/.cabal/bin/
+language: bash
 
 script:
   - shellcheck -e SC1090,SC1091 -s bash .bashrc .bash_profile
@@ -16,7 +10,3 @@ script:
 
 matrix:
   fast_finish: true
-
-# Enable container based Travis CI infrastructure
-# http://docs.travis-ci.com/user/migrating-from-legacy/
-sudo: false
