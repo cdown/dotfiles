@@ -85,7 +85,7 @@ _hostname_prompt() {
         return
     fi
 
-    hostname=$(cat /etc/hostname)
+    hostname=$(cat /etc/hostname 2>/dev/null || hostname)
     displayed_hostname="${hostname%%.*}"
 
     colour_part 3 "$displayed_hostname"
