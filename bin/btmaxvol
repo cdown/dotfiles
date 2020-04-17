@@ -6,3 +6,8 @@ mac=$(bluetoothctl <<< devices | awk '$3 == "WH-1000XM3" { print $2 }' | sed 's/
 for (( i=0; i<100; i++ )); do
     dbus-send --print-reply --system --dest=org.bluez /org/bluez/hci0/dev_"$mac" org.bluez.MediaControl1.VolumeUp >/dev/null
 done
+
+# Reduce it a bit to stop static noise
+for (( i=0; i<15; i++ )); do
+    dbus-send --print-reply --system --dest=org.bluez /org/bluez/hci0/dev_"$mac" org.bluez.MediaControl1.VolumeDown >/dev/null
+done
