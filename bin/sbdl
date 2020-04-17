@@ -1,5 +1,5 @@
 #!/bin/bash
 
-while ! rsync -rvP --size-only --inplace --timeout 5 -e 'ssh -T -c aes256-gcm@openssh.com -o Compression=no -x' "${@:3}" sb:data/"${1?}" "${2-.}"; do
+while ! rsync -rvP --size-only --inplace --timeout 5 -e 'ssh -T -c aes256-gcm@openssh.com -o Compression=no -x' "${@:3}" sb:files/"${1?}" "${2-.}"; do
     sleep 5
 done
