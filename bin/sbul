@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while ! rsync -rvP --inplace --timeout 5 -e 'ssh -T -c aes256-gcm@openssh.com -o Compression=no -x' "${@:3}" "${1?missing source}" sb:files/"$2"; do
+    sleep 5
+done
