@@ -34,6 +34,7 @@
 /.ssh/config
 /.ssh/keys/personal
 /bin/domaincheck
+/bin/mkt
 /bin/pushbullet-push
 /bin/pushover-push
 /bin/trello-backup
