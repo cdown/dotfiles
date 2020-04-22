@@ -26,6 +26,5 @@ for service in "${services_to_start[@]}"; do
 done
 
 while :; do
-    WM=$(< /tmp/_wm 2>/dev/null)  # allow relaunch with changes
     "${WM:-dwm}" >> "/tmp/dwm-$USER.log" 2>&1
 done
