@@ -1,0 +1,5 @@
+update 10
+
+threshold cpu some avg10 40.00
+threshold memory some avg10 25.00
+threshold io some avg60 25.00
