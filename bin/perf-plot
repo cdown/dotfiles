@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+: "${SELF:=0}"
+
 svg_file=$(mktemp --suffix .svg)
 perf_file=$(mktemp)
 
@@ -9,7 +11,12 @@ trap '' INT
 perf record -o "$perf_file" --call-graph dwarf "$@"
 trap - INT
 
-perf script -i "$perf_file" | gprof2dot --format=perf | dot -Tsvg > "$svg_file"
+extra_args=()
+if (( SELF )); then
+    extra_args+=( --color-nodes-by-selftime )
+fi
+
+perf script -i "$perf_file" | gprof2dot "${extra_args[@]}" --format=perf | dot -Tsvg > "$svg_file"
 
 if (( UID )); then
     exec google-chrome-stable "$svg_file"
