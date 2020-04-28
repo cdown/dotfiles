@@ -2,4 +2,4 @@ update 10
 
 threshold cpu some avg10 45.00
 threshold memory some avg10 5.00
-threshold io some avg10 2.00
+threshold io some avg10 5.00
