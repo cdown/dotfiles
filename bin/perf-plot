@@ -1,6 +1,7 @@
 #!/bin/bash -x
 
 : "${SELF:=0}"
+: "${ALL_NODES:=0}"
 
 svg_file=$(mktemp --suffix .svg)
 perf_file=$(mktemp)
@@ -12,9 +13,9 @@ perf record -o "$perf_file" --call-graph dwarf "$@"
 trap - INT
 
 extra_args=()
-if (( SELF )); then
-    extra_args+=( --color-nodes-by-selftime )
-fi
+(( SELF )) && extra_args+=( --color-nodes-by-selftime )
+(( ALL_NODES )) && extra_args+=( -n 0.05 -e 0.01 )
+
 
 perf script -i "$perf_file" | gprof2dot "${extra_args[@]}" --format=perf | dot -Tsvg > "$svg_file"
 
