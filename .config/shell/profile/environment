@@ -9,6 +9,12 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 export BROWSER=google-chrome-stable
 export NSS_DEFAULT_DB_TYPE=sql
 
+# If we weren't started by pam_systemd, try to guess so that things like
+# systemctl work
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+    export XDG_RUNTIME_DIR=/run/user/$UID
+fi
+
 # Allow $config home, which comes from shell init
 # shellcheck disable=SC2154
 {
