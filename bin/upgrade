@@ -65,7 +65,7 @@ if ! (( UPDATED_DOTFILES )); then
             escalation_cmd=(sudo -i -u "$user")
         fi
 
-        if [[ "$user" != root ]]; then
+        if [[ "$user" != root ]] && ! (( SKIP_UPGRADE_ENVS )); then
             # root doesn't have envs, only dotfiles
             [[ -f bin/upgrade-envs ]] && "${escalation_cmd[@]}" bin/upgrade-envs
         fi
