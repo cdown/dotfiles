@@ -28,6 +28,11 @@ sudo mkdir -p -m0700 "$log_dir"
 sudo chown "$USER" "$log_dir"
 
 if ! [[ -v TMUX ]]; then
+    if (( SKIP_UPGRADE_ENVS )); then
+        printf '%s\n' "Must already be in tmux session to pass env vars" >&1
+        exit 1
+    fi
+
     exec tmux new-session -s upgrade -- script -c "$0" "$log_file"
 else
     session=$(tmux display-message -p '#S')
