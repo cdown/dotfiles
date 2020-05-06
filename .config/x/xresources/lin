@@ -1,2 +1,2 @@
-URxvt.font: xft:Inconsolata\\-g:pixelsize=14, xft:Symbola, xft:WenQuanYi Micro Hei Mono:antialias=true
+URxvt.font: xft:Inconsolata\\-g:pixelsize=14, xft:Symbola
 URxvt.letterSpace: -1

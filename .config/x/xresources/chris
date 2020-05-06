@@ -1,4 +1,4 @@
-URxvt.font: xft:Terminus:size=6, xft:Symbola, xft:WenQuanYi Micro Hei Mono:antialias=true
+URxvt.font: xft:Terminus:size=6, xft:Symbola
 sxiv.font: xft:Terminus:size=6
 URxvt.letterSpace: 0
 
