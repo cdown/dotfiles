@@ -96,7 +96,7 @@ if [[ $pkgs ]]; then
     sudo pacman -D --asdeps $pkgs
 fi
 
-while pkgs=$(pacman -Qqtd); do
+while pkgs=$(pacman -Qqttd); do
     # All packages are spit by IFS.
     # shellcheck disable=SC2086
     sudo pacman -Rns $pkgs
