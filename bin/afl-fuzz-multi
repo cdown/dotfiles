@@ -16,7 +16,7 @@ for (( i = 0; i < $(nproc); i++ )); do
     num=$(printf '%02d' "$i")
     (( i == 0 )) && afl_type=-M
 
-    afl-fuzz -i "$input_dir" -o "$output_dir" \
+    afl-fuzz -i "$input_dir" -o "$output_dir" -m none \
 	"$afl_type" "$num" -- "${cmd[@]}" &
 done
 
