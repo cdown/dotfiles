@@ -1,0 +1,23 @@
+#!/bin/bash -ex
+
+export UBSAN_OPTIONS=halt_on_error=1:abort_on_error=1
+export AFL_NO_UI=1
+
+input_dir=${1?}
+output_dir=${2?}
+
+: "${3?}"
+cmd=( "${@:3}" )
+
+prefix=afl-fuzz-"${cmd[0]}"
+
+for (( i = 0; i < $(nproc); i++ )); do
+    afl_type=-S
+    num=$(printf '%02d' "$i")
+    (( i == 0 )) && afl_type=-M
+
+    afl-fuzz -i "$input_dir" -o "$output_dir" \
+	"$afl_type" "$num" -- "${cmd[@]}" &
+done
+
+wait
