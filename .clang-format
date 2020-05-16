@@ -1,5 +1,4 @@
 BreakStringLiterals: false
-ColumnLimit: 80
 IndentWidth: 4
 PenaltyReturnTypeOnItsOwnLine: 999
 PenaltyBreakComment: 0
@@ -7,3 +6,6 @@ SortIncludes: true
 UseTab: Never
 IndentPPDirectives: BeforeHash
 IndentCaseLabels: true
+
+# Per rationale in https://github.com/systemd/systemd/commit/c90ee8340078
+ColumnLimit: 109
