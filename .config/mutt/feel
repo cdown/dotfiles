@@ -21,6 +21,8 @@ bind index,pager p noop
 bind index,pager r group-reply
 bind pager,attach q exit
 
+macro index i "<limit>~t chris@chrisdown.name | ~c chris@chrisdown.name | ~t cdown@fb.com | ~c cdown@fb.com<enter>"
+
 bind index g first-entry
 bind index G last-entry
 
