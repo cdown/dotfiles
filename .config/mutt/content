@@ -4,3 +4,4 @@ set edit_headers
 set include
 set mime_forward
 set text_flowed
+set user_agent
