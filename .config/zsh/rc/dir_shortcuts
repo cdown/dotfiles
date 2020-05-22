@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+hash -d git="$HOME/git"
+
+dotfiles_dir="$HOME/git/dotfiles-edit"
+[[ -d "$dotfiles_dir" ]] || dotfiles_dir="$HOME/git/dotfiles"
+hash -d df="$dotfiles_dir"
+
+hash -d mov="$HOME/TEMP/mov"
