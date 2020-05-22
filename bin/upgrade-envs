@@ -17,6 +17,10 @@ cd /
 if exists pyenv; then
     while read -r version; do
         export PYENV_VERSION="$version"
+        if ! pyenv which python; then
+            # Waiting to install this one...
+            continue
+        fi
         pip install -U pip
         pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
             xargs -d '\n' pip install -U
