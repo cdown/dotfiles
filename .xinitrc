@@ -18,7 +18,7 @@ services_to_start=(
 )
 
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
-    services_to_start+=(prompter irssi mutt mpdscribble)
+    services_to_start+=(prompter irssi mutt mpdscribble inbox-reminder)
 fi
 
 for service in "${services_to_start[@]}"; do
