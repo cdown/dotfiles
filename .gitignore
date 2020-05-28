@@ -20,7 +20,6 @@
 /.duply/bitbucket/conf
 /.duply/github/conf
 /.duply/google-drive/conf
-/.duply/mozilla/conf
 /.duply/trello/conf
 /.flickr_download
 /.flickr_token
@@ -34,6 +33,7 @@
 /.ssh/config
 /.ssh/keys/personal
 /bin/domaincheck
+/bin/inbox-reminder
 /bin/mkt
 /bin/pushbullet-push
 /bin/pushover-push
