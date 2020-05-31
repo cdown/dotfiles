@@ -18,7 +18,7 @@ done
 manual=()
 
 for pkg in "${pkgs[@]}"; do
-    if ! grep -RFqw -- "$pkg" "$playbook_dir/"{tasks,vars} && ! (( base["$pkg"] )); then
+    if ! grep -Rq -e "- $pkg"'\( \|$\)' -e "=$pkg"'\b'  "$playbook_dir/"{tasks,vars} && ! (( base["$pkg"] )); then
         manual+=( "$pkg" )
     fi
 done
