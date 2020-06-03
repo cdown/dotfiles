@@ -6,7 +6,7 @@ tzs=(
     America/New_York
     Europe/London
     Asia/Tel_Aviv
-    Asia/Singapore
+    Asia/Shanghai
 )
 
 max_tz_len() {
