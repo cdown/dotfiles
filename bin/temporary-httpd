@@ -1,0 +1,13 @@
+#!/bin/bash -e
+
+root=${1?}
+time=${2:-12h}
+port=${3:-37067}
+
+timeout "$time" thttpd -p "$port" -D -d "$root" &
+
+# timeout puts it processes in a separate process group, work around that for
+# WCE.
+pid=$!
+trap 'kill -INT -$pid' INT
+wait "$pid"
