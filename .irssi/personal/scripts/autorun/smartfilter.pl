@@ -5,10 +5,10 @@ use vars qw($VERSION %IRSSI);
 $VERSION = "0.4";
 
 %IRSSI = (
-	authors     => 'Christian Brassat, Niall Bunting and Walter Hop',
+	authors     => 'Chris Down, Christian Brassat, Niall Bunting and Walter Hop',
 	contact     => 'irssi-smartfilter@spam.lifeforms.nl',
 	name        => 'smartfilter.pl',
-	description => 'Improved smart filter for join, part, quit, nick messages',
+	description => 'Improved smart filter for join, part, quit, nick messages [cdown: also Circa ignoring]',
 	license     => 'BSD',
 	url         => 'https://github.com/lifeforms/irssi-smartfilter',
 	changed     => '2015-07-25',
@@ -18,6 +18,10 @@ $VERSION = "0.4";
 our $lastmsg = {};
 our $garbagetime = 1;
 
+sub begins_with{
+	return rindex($_[0], $_[1], 0) == 0;
+}
+
 # Do checks after receving a channel event.
 # - If the originating nick is not active, ignore the signal.
 # - If nick is active, propagate the signal and display the event message.
@@ -25,6 +29,12 @@ our $garbagetime = 1;
 #   or QUIT, a second nick change, etc.
 sub checkactive {
 	my ($nick, $altnick) = @_;
+
+	# Circa nicks JOIN and PART every time. Just ignore them entirely.
+	if (begins_with($nick, "m_")) {
+		return;
+	}
+
 	if ($lastmsg->{$nick} <= time() - Irssi::settings_get_int('smartfilter_delay')) {
 		delete $lastmsg->{$nick};
 		Irssi::signal_stop();
@@ -73,6 +83,12 @@ sub smartfilter_nick {
 # Channel message received. Mark the nick as active.
 sub log {
 	my ($server, $msg, $nick, $address, $target) = @_;
+
+	# Circa nicks JOIN and PART every time. Just ignore them entirely.
+	if (begins_with($nick, "m_")) {
+		return;
+	}
+
 	$lastmsg->{$nick} = time();
 }
 
