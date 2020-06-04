@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+# You also need to set permissions, or thttpd will refuse to index/serve:
+#
+# find . -type f -exec chmod o+r {} + && find . -type d -exec chmod o+rx {} k+
+
 root=${1?}
 time=${2:-12h}
 port=${3:-37067}
