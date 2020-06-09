@@ -12,5 +12,5 @@ for (( i=0; i < "${#subs[@]}"; i++ )); do
     sub=${subs[$i]}
     video=${videos[$i]}
 
-    subsync -i "$sub" -o "${video%.*}".srt "$video"
+    subsync --max-offset-seconds 9999 -i "$sub" -o "${video%.*}".srt "$video"
 done
