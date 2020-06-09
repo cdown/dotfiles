@@ -1,0 +1,16 @@
+#!/bin/bash
+
+subs=( "${1?}"/* )
+videos=( "${2?}"/* )
+
+if (( ${#subs[@]} != ${#videos[@]} )); then
+    printf 'Different dir sizes: %d != %d\n' "${#subs[@]}" "${#videos[@]}" >&2
+    exit 1
+fi
+
+for (( i=0; i < "${#subs[@]}"; i++ )); do
+    sub=${subs[$i]}
+    video=${videos[$i]}
+
+    subsync -i "$sub" -o "${video%.*}".srt "$video"
+done
