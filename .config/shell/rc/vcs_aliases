@@ -21,6 +21,10 @@ gcopr() {
     git fetch origin pull/"${1?need pr num}"/head:pr"$1" && gco pr"$1"
 }
 
+gnb() {
+    git checkout -b "$USER"/"${1?name missing}"/"$(date +%F)"
+}
+
 # git-send-patch style
 alias gsp='mutt-patch'
 
