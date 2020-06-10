@@ -22,7 +22,7 @@ gcopr() {
 }
 
 gnb() {
-    git checkout -b "$USER"/"${1?name missing}"/"$(date +%F)"
+    git checkout -b "$USER"/"${1?name missing}"/"$(date +%F)" "${2:-HEAD}"
 }
 
 # git-send-patch style
