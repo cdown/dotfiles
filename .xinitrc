@@ -27,4 +27,5 @@ done
 
 while :; do
     "${WM:-dwm}" >> "/tmp/dwm-$USER.log" 2>&1
+    hash -r  # in case we now have a new one in /usr/local/bin, for example
 done
