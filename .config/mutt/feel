@@ -12,6 +12,7 @@ set askcc
 set auto_tag
 set imap_idle
 unset confirmappend
+unset wait_key
 
 bind index Q quit
 bind index q noop
