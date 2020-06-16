@@ -9,8 +9,6 @@ output_dir=${2?}
 : "${3?}"
 cmd=( "${@:3}" )
 
-prefix=afl-fuzz-"${cmd[0]}"
-
 for (( i = 0; i < $(nproc); i++ )); do
     afl_type=-S
     num=$(printf '%02d' "$i")
