@@ -23,6 +23,7 @@ alias startx='exec startx &>| /tmp/startx-$USER'
 # include basedir so we can edit tests that get their sys.path munged by nose
 
 # $config_home comes from shell init
+# shellcheck disable=SC2154
 alias vim='PYTHONPATH="$(vcs-root)" vim -u "$config_home/.vimrc" -N'
 
 # Do not disable raw control chars when running less
