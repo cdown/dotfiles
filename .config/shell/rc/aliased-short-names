@@ -47,6 +47,14 @@ transfer() {
     curl --upload-file "${1?}" https://transfer.sh
 }
 
+ps() {
+    if [ "$#" -ne 0 ]; then
+        command ps "$@"
+    else
+        command ps --ppid 2 -p 2 --deselect --sort -%mem -o pid,user,%cpu,%mem,cputime,cmd
+    fi
+}
+
 # virtualenvwrapper
 _VE_SOURCED=0
 ve_source() {
