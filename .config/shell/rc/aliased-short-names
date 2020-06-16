@@ -51,7 +51,7 @@ ps() {
     if [ "$#" -ne 0 ]; then
         command ps "$@"
     else
-        watch -n 1 ps --ppid 2 -p 2 --deselect --sort -%mem -o pid,user,%cpu,%mem,cputime,cmd
+        watch -t -n 1 -- ps --ppid 2 -p 2 --deselect --sort -%mem -o pid,user,%cpu,%mem,cputime,cmd
     fi
 }
 
