@@ -58,7 +58,7 @@ ps() {
 # virtualenvwrapper
 _VE_SOURCED=0
 ve_source() {
-    (( _VE_SOURCED )) && return
+    [ "$_VE_SOURCED" -eq 1 ] && return
 
     . "$(pyenv which virtualenvwrapper.sh)" && _VE_SOURCED=1
 }
