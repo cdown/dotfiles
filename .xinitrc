@@ -10,7 +10,7 @@ systemctl --user import-environment "${to_export[@]}"
 dbus-update-activation-environment "${to_export[@]}"
 
 services_to_start=(
-    mpd pulseaudio fcitx battery-monitor.timer xresources
+    pulseaudio fcitx battery-monitor.timer xresources
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
     xinput-disable@screen xinput-disable@trackpoint synclient
     no-dpms no-screensaver clipmenud upgrade-reminder.timer
@@ -18,7 +18,9 @@ services_to_start=(
 )
 
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
-    services_to_start+=(prompter irssi mutt mpdscribble inbox-reminder.timer)
+    services_to_start+=(
+        prompter irssi mutt mpdscribble inbox-reminder.timer mpd
+    )
 fi
 
 for service in "${services_to_start[@]}"; do
