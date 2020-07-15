@@ -19,10 +19,10 @@ manual=()
 
 for pkg in "${pkgs[@]}"; do
     # Allow -docs and -headers packages for custom kernel
-    pkg=${pkg%-docs}
-    pkg=${pkg%-headers}
+    pkg_check=${pkg%-docs}
+    pkg_check=${pkg_check%-headers}
 
-    if ! grep -Rq -e "[:-] $pkg"'\( \|$\)' -e "=$pkg"'\b'  "$playbook_dir/"{tasks,vars} && ! (( base["$pkg"] )); then
+    if ! grep -Rq -e "[:-] $pkg_check"'\( \|$\)' -e "=$pkg_check"'\b'  "$playbook_dir/"{tasks,vars} && ! (( base["$pkg"] )); then
         manual+=( "$pkg" )
     fi
 done
