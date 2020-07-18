@@ -1,6 +1,6 @@
 #!/bin/bash
 
-req_brightness_perc=${1?arg 1 should be brightness percent}
+req_brightness_perc=$1
 
 backlight_dirs=(intel_backlight nv_backlight)
 
@@ -19,10 +19,17 @@ fi
 
 read -r max_brightness < "$backlight_dir/max_brightness"
 
-# Bash only works with integers
-req_brightness_abs=$(
-    perl -mPOSIX -e 'print POSIX::floor($ARGV[0] * ($ARGV[1] / 100))' \
-        "$req_brightness_perc" "$max_brightness"
-)
+if [[ $req_brightness_perc ]]; then
+    # Bash only works with integers
+    req_brightness_abs=$(
+        perl -mPOSIX -e 'print POSIX::floor($ARGV[0] * ($ARGV[1] / 100))' \
+            "$req_brightness_perc" "$max_brightness"
+    )
 
-printf '%s' "$req_brightness_abs" > "$backlight_dir"/brightness
+    printf '%s' "$req_brightness_abs" > "$backlight_dir"/brightness
+else
+    # Print the current percentage
+    read -r cur_brightness < "$backlight_dir/brightness"
+    perl -l -mPOSIX -e 'print POSIX::ceil($ARGV[0] / $ARGV[1] * 100)' \
+        "$cur_brightness" "$max_brightness"
+fi
