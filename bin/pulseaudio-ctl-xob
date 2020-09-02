@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pulseaudio-ctl "$@"
+
+read -r vol mute _ < <(pulseaudio-ctl full-status)
+
+extra=''
+[[ $mute == yes ]] && extra=!
+
+printf '%d%s\n' "$vol" "$extra" > "${XDG_RUNTIME_DIR?}"/xobpipe
