@@ -1,6 +1,8 @@
 #!/bin/bash
 
-pulseaudio-ctl "$@"
+if [[ ${1?} != noop ]]; then
+    pulseaudio-ctl "$@"
+fi
 
 read -r vol mute _ < <(pulseaudio-ctl full-status)
 
