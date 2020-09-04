@@ -1,0 +1,4 @@
+0 11-20 * * *|Drink water
+0 1 * * *|Time to wind down
+30 17 * * *|Fast ends
+30 18 * * *|Fast begins
