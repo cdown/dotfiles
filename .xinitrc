@@ -14,12 +14,12 @@ services_to_start=(
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
     xinput-disable@screen xinput-disable@trackpoint synclient
     no-dpms no-screensaver clipmenud upgrade-reminder.timer
-    redshift-auto psi-notify xob habitual
+    redshift-auto psi-notify xob
 )
 
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     services_to_start+=(
-        prompter irssi mutt mpdscribble inbox-reminder.timer mpd
+        prompter irssi mutt mpdscribble inbox-reminder.timer mpd habitual
     )
 fi
 
