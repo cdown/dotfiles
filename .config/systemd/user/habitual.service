@@ -1,0 +1,4 @@
+[Service]
+Environment=PYTHONUNBUFFERED=1
+ExecStart=pyenv exec habitual
+Restart=always
