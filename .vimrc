@@ -175,6 +175,9 @@ augroup filetype_settings
   autocmd BufRead,BufNewFile */linux-mmots/*.c,*/linux-mmots/*.h setlocal textwidth=80
   autocmd BufRead,BufNewFile */systemd/*.c,*/systemd/*.h setlocal textwidth=109
 
+  " Don't restore last file position for git commit
+  autocmd BufWinEnter */COMMIT_EDITMSG normal! gg0
+
   " Update ctags on write
   " Disabled for now due to perf
   " autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R >/tmp/ctags.log 2>&1 &
