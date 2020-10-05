@@ -22,7 +22,7 @@ for pkg in "${pkgs[@]}"; do
     pkg_check=${pkg%-docs}
     pkg_check=${pkg_check%-headers}
 
-    if ! grep -Rq -e "[:-] $pkg_check"'\( \|$\)' -e "=$pkg_check"'\b'  "$playbook_dir/"{tasks,vars} && ! (( base["$pkg"] )); then
+    if ! grep -Rq -e "[:-] $pkg_check"'\( \|$\)' -e "=$pkg_check"'\( \|$\)' "$playbook_dir/"{tasks,vars} && ! (( base["$pkg"] )); then
         manual+=( "$pkg" )
     fi
 done
