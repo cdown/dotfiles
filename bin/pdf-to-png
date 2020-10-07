@@ -3,6 +3,6 @@
 pdf=${1?missing pdf}
 out_dir=${2?missing out_dir}
 
-convert -density 800 -background white -alpha remove -alpha off "$pdf" -resize 1920x1200 "$out_dir"/out.png
+convert -density 800 -background white -alpha remove -alpha off "$pdf" -resize 1920x1080 "$out_dir"/out.png
 
 # Now, Insert -> Media -> Photo Album
