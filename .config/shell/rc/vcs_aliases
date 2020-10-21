@@ -25,6 +25,14 @@ gnb() {
     git checkout -b "$USER"/"${1?name missing}"/"$(date +%F)" "${2:-HEAD}"
 }
 
+hnb() {
+    local name
+    name="$USER"/"${1?name missing}"/"$(date +%F)"
+
+    hg bookmark -r "${2:-.}" "$name"
+    hg update "$name"
+}
+
 # git-send-patch style
 alias gsp='mutt-patch'
 
