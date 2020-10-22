@@ -1,0 +1,22 @@
+#!/bin/bash -e
+
+prev_state=$(systemctl --user is-active redshift-auto || true)
+
+no_video=0
+for arg do
+    case $arg in
+        --list-options|--no-video|--help) no_video=1 ;;
+    esac
+done
+
+if ! (( no_video )); then
+    systemctl --no-block --user stop redshift-auto
+fi
+
+/usr/bin/mpv "$@" &
+sudo renice -n -15 "$!"
+wait
+
+if [[ $prev_state == active ]]; then
+    systemctl --no-block --user start redshift-auto
+fi
