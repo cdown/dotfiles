@@ -100,8 +100,6 @@ map q: :q
 vnoremap J J:s/( /(/g<CR>:s/,)/)/g<CR>
 
 " Quickly move around (and into) command mode
-imap jk <Esc>
-imap kj <Esc>:
 for keymode in ['n', 'v']
   exec keymode . 'noremap ; :'
   exec keymode . 'noremap : ;'
