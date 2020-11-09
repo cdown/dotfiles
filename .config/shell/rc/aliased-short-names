@@ -103,3 +103,5 @@ alias spellh='spell --mode=html'
 alias spellm='spell --mode=markdown'
 
 alias sb='mosh --server ./mosh-server-junest sb -- zsh -l'
+
+alias disas='objdump -drwCS -Mintel'
