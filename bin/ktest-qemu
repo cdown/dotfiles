@@ -6,8 +6,9 @@ qemu-system-x86_64 \
     -m 2G \
     -smp 4 \
     -nographic \
+    -cpu host \
     -net user,hostfwd=tcp::10022-:22 \
     -net nic \
     -kernel ~/git/linux-mmots/arch/x86/boot/bzImage \
     -append 'root=/dev/sda1 cgroup_no_v1=all rw console=ttyS0,115200 systemd.log_level=debug' \
-    ~/kernel-dev-archlinux.img
+    -drive file=$HOME/kernel-dev-archlinux.img,cache=none
