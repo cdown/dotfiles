@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-repo=${1?repo required}
+repo=$(readlink -f ${1:-.})
 session_name=$(perl -pe 's/[^[:alpha:][:digit:]-\n]/_/g' <<< "${repo##*/}")
 
 # set -e is already set, so...
