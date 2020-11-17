@@ -11,4 +11,4 @@ qemu-system-x86_64 \
     -net nic \
     -kernel ~/git/linux-mmots/arch/x86/boot/bzImage \
     -append 'root=/dev/sda1 cgroup_no_v1=all rw console=ttyS0,115200 systemd.log_level=debug' \
-    -drive file=$HOME/kernel-dev-archlinux.img,cache=none
+    -drive file=$HOME/kernel-dev-archlinux.img,cache=none,format=raw
