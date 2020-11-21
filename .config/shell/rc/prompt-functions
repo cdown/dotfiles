@@ -138,3 +138,8 @@ _get_ps1() {
     prompt="$(_user_prompt)$(_hostname_prompt)$(_pwd_prompt)$(_git_prompt)$(_hg_prompt)"
     printf '%s%s ' "$prompt" "$prompt_ender"
 }
+
+# Mostly for WSL, since on Linux I don't have window titles.
+_term_title() {
+    printf '\e]0;%s\a' "${1?}"
+}

@@ -2,3 +2,12 @@
 
 autoload -U promptinit
 promptinit
+
+_running_on_wsl() {
+    grep -q Microsoft /proc/version
+}
+
+if _running_on_wsl; then
+    precmd() { _term_title "$PWD" }
+    preexec() { _term_title "${1?}" }
+fi
