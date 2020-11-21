@@ -8,6 +8,6 @@ _running_on_wsl() {
 }
 
 if _running_on_wsl; then
-    precmd() { _term_title "$PWD" }
+    precmd() { _term_title "${PWD/"$HOME"/~}" }
     preexec() { _term_title "${1?}" }
 fi
