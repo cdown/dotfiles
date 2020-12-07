@@ -8,7 +8,7 @@ ancestor_plain=$(mktemp)
 our_plain=$(mktemp)
 other_plain=$(mktemp)
 
-trap EXIT 'rm -f -- "$ancestor_plain" "$our_plain" "$other_plain"'
+trap 'rm -f -- "$ancestor_plain" "$our_plain" "$other_plain"' EXIT
 
 gpg --output "$ancestor_plain" -d "$ancestor_enc"
 gpg --output "$our_plain" -d "$our_enc"
