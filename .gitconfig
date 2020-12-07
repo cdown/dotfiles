@@ -24,3 +24,7 @@
     insteadOf = "aur:"
 [url "ssh+git://aur@aur.archlinux.org/"]
     pushInsteadOf = "aur:"
+
+[merge "gpg"]
+  name = gpg merge driver
+  driver = ~/bin/gpg-merge-driver %O %A %B

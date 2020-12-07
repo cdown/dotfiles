@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+ancestor_enc=$1
+our_enc=$2
+other_enc=$3
+
+ancestor_plain=$(mktemp)
+our_plain=$(mktemp)
+other_plain=$(mktemp)
+
+trap EXIT 'rm -f -- "$ancestor_plain" "$our_plain" "$other_plain"'
+
+gpg --output "$ancestor_plain" -d "$ancestor_enc"
+gpg --output "$our_plain" -d "$our_enc"
+gpg --output "$other_plain" -d "$other_enc"
+
+git-merge-file -L "Ours" -L "Common ancestor" -L "Theirs" \
+    "$our_plain" "$ancestor_plain" "$other_plain"
+
+gpg --output "$our_enc" -e "$our_plain"
