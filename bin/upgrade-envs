@@ -29,16 +29,16 @@ fi
 
 # This one is safe without checking for explicit dependencies >=2.6.1, see
 # https://github.com/npm/npm/issues/6247
-exists npm && npm update -g
+if exists npm; then npm update -g; fi
 
 # TODO: Check safety of gem update
-exists gem && gem update
+if exists gem; then gem update; fi
 
-exists cpanm && cpan-outdated -p | cpanm -n
+if exists cpanm; then cpan-outdated -p | cpanm -n; fi
 
-exists vagrant && vagrant plugin update
+if exists vagrant; then vagrant plugin update; fi
 
-exists rustup && rustup self upgrade-data && rustup update stable && rustup update nightly
+if exists rustup; then rustup self upgrade-data && rustup update stable && rustup update nightly; fi
 
 # `cargo install-update` is an optional extension
-cargo install-update --help >/dev/null 2>&1 && cargo install-update -a
+if exists cargo; then cargo install-update --help >/dev/null 2>&1 && cargo install-update -a; fi
