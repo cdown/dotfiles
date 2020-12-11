@@ -1,8 +1,7 @@
 #!/bin/bash -e
 
-meson build --buildtype debug -Db_sanitize=address --optimization g
-nice -n 20 ninja -C build
+if ! [[ -d build ]]; then
+    meson build --optimization g -Dtests=false -Dbuildtype=debug -Dpwquality=false -Dfdisk=false -Dseccomp=false -Dselinux=false -Dapparmor=false -Dpolkit=false -Dacl=false -Daudit=false -Dblkid=false -Dkmod=false -Dpam=false -Dmicrohttpd=false -Dlibcryptsetup=false -Dlibcurl=false -Dlibidn=false -Dlibidn2=false -Dlibiptc=false -Dqrencode=false -Dgcrypt=false -Dgnutls=false -Dopenssl=false -Dp11kit=false -Dlibfido2=false -Delfutils=false -Dzlib=false -Dbzip2=false -Dxz=false -Dlz4=false -Dzstd=false -Dxkbcommon=false -Dpcre2=false -Dglib=false
+fi
 
-# These tests take more than 200ms
-# shellcheck disable=SC2046
-nice -n 20 meson test -C build $(meson test --list -C build | grep -vE '^(hwdb-test|test-systemd-tmpfiles|test-process-util|test-bus-chat|test-unit-file|test-conf-parser|sysv-generator-test|test-watchdog|test-exec-util|test-ipv4ll|test-journal-send|test-event|test-dhcp6-client|test-ratelimit|test-async|test-bus-watch-bind|test-journal-flush|test-libudev|test-fd-util|test-daemon|test-install-root|test-sd-device|test-compress|test-time-util|test-compress-benchmark|test-path|test-hashmap|rule-syntax-check|test-journal-init|parse-hwdb)$')
+ninja -C build
