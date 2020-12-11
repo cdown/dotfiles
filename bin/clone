@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+mkdir -p ~/git
+
+case ${1?} in
+    systemd)
+	git clone git@github.com:systemd/systemd.git ~/git/systemd
+	cd ~/git/systemd
+	git remote set-url cdown git@github.com:cdown/systemd.git
+    ;;
+    linux)
+	git clone git@github.com:hnaz/linux-mm.git ~/git/linux
+	git remote set-url upstream git@github.com:torvalds/linux.git
+	git remote set-url cdown git@github.com:cdown/linux-mmots.git
+
+	git clone git@github.com:cdown/kernel-misc.git ~/git/kernel-misc
+	ln -sfn ~/git/kernel-misc/.config ~/git/linux/.config
+    ;;
+    *)
+	printf 'Unknown repo: %s\n' "$1"
+	exit 1
+    ;;
+esac
