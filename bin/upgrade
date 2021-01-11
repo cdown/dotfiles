@@ -118,7 +118,7 @@ else
     sudo pacman --noconfirm -Syu
 fi
 
-sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew /etc/pulse/default.pa.pacnew /etc/pacman.conf.pacnew
+sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew /etc/pulse/default.pa.pacnew /etc/pacman.conf.pacnew /etc/ImageMagick-7/policy.xml.pacnew
 sudo pacdiff
 
 sudo update-from-cm "$ansible_type"
