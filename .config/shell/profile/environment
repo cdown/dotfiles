@@ -18,8 +18,8 @@ fi
 # Allow $config home, which comes from shell init
 # shellcheck disable=SC2154
 {
-    export PATH="/usr/share/bcc/tools:/opt/chefdk/bin:$config_home/local/bin:$config_home/bin:$config_home/.rbenv/bin:$config_home/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/local/ittools/arcanist/bin:/usr/texbin:/opt/local/bin:$HOME/.pyenv/bin:$HOME/.cargo/bin"
-    export MAILCAPS=$config_home/.config/mailcap/linux
+    export PATH="/usr/share/bcc/tools:/opt/chefdk/bin:$config_home/local/bin:$config_home/bin:$config_home/.rbenv/bin:$config_home/.local/bin:$HOME/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/local/ittools/arcanist/bin:/usr/texbin:/opt/local/bin:$HOME/.pyenv/bin:$HOME/.cargo/bin"
+    export MAILCAPS=$config_home/.config/mailcap/linux:$HOME/.config/mailcap/linux
 }
 
 umask 0022
