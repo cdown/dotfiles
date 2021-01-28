@@ -13,6 +13,8 @@ cd linux/repos/core-x86_64/
 
 sed -i 's|git+https://git.archlinux.org/linux.git?signed#tag=$_srctag|git+https://github.com/cdown/linux-mmots#commit='"$commit"'|g' PKGBUILD
 sed -i 's/olddefconfig/menuconfig/' PKGBUILD
+sed -i 's/make all/make -j "$(( $(nproc) + 1 ))" all/' PKGBUILD
+sed -i '/make htmldocs/d' PKGBUILD
 
 # Check the edits actually were made
 grep -q -e menuconfig PKGBUILD
