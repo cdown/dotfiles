@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 commit=${1?missing commit}
 base=$(mktemp -d -p /var/tmp)
@@ -14,4 +14,6 @@ cd linux/repos/testing-x86_64/
 sed -i 's|git+https://git.archlinux.org/linux.git?signed#tag=$_srctag|git+https://github.com/cdown/linux-mmots#commit='"$commit"'|g' PKGBUILD
 sed -i 's/olddefconfig/menuconfig/' PKGBUILD
 
-makepkg -si --nocheck -f --skippgpcheck
+makepkg -s --nocheck -f --skippgpcheck
+
+printf '%s\n' "$base"
