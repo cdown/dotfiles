@@ -106,3 +106,7 @@ alias sb='mosh --server ./mosh-server-junest sb -- zsh -l'
 
 alias disas='objdump -drwCS -Mintel'
 alias section='objdump -s -j'
+
+disas-func() {
+    gdb -batch -ex "disassemble/rs ${1?}" "${2?}"
+}
