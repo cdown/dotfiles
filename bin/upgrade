@@ -111,6 +111,7 @@ mapfile -t unowned < <(find-unowned-in-usr-bin)
 (( "${#unowned[@]}" )) && sudo rm -i "${unowned[@]}"
 
 sudo pacman -Sy --noconfirm --needed archlinux-keyring
+sudo pacman-key --populate archlinux
 
 if command -v yay >/dev/null 2>&1; then
     sudo -u makepkg yay --noconfirm --cleanafter -Syu
