@@ -1,0 +1,3 @@
+#!/bin/bash
+
+printf 'The time is now %s\n' "$(date +%I:%M)" | espeak --stdout | paplay
