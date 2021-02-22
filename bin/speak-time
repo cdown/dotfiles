@@ -1,3 +1,6 @@
 #!/bin/bash
 
-printf 'The time is now %s\n' "$(date +%I:%M)" | espeak --stdout | paplay
+time="$(date +%I:%M%p)"
+
+notify-send "$time"
+printf 'The time is now %s\n' "$time" | espeak --stdout | paplay
