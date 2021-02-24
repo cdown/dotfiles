@@ -110,3 +110,5 @@ alias section='objdump -s -j'
 disas-func() {
     gdb -batch -ex "disassemble/rs ${1?}" "${2?}"
 }
+
+alias susp="sudo sh -c 'echo mem >| /sys/power/state'"
