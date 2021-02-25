@@ -22,12 +22,12 @@ gcopr() {
 }
 
 gnb() {
-    git checkout -b "$USER"/"${1?name missing}"/"$(date +%F)" "${2:-HEAD}"
+    git checkout -b "$USER"/"$(date +%F)"/"${1?name missing}" "${2:-HEAD}"
 }
 
 hnb() {
     local name
-    name="$USER"/"${1?name missing}"/"$(date +%F)"
+    name="$USER"/"$(date +%F)"/"${1?name missing}"
 
     hg bookmark -r "${2:-.}" "$name"
     hg update "$name"
