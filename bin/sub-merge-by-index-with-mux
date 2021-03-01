@@ -1,0 +1,28 @@
+#!/bin/bash -ex
+
+subs=( "${1?}"/* )
+videos=( "${2?}"/* )
+map=${3?}
+
+if (( ${#subs[@]} != ${#videos[@]} )); then
+    printf 'Different dir sizes: %d != %d\n' "${#subs[@]}" "${#videos[@]}" >&2
+    exit 1
+fi
+
+for (( i=0; i < "${#subs[@]}"; i++ )); do
+    sub=${subs[$i]}
+    video=${videos[$i]}
+    extracted=extracted.srt
+    intermediate=intermediate.srt
+
+    ffmpeg -i "$video" -map "$map" "$extracted"
+    subsync -i "$sub" -o "$intermediate" "$extracted"
+
+    for file in "$intermediate" "$extracted"; do
+        srt process -m re -f 'lambda sub: re.sub("<[^<]+?>", "", sub)' -p -i "$file"
+        srt process -m re -f 'lambda sub: re.sub("{[^{]+?}", "", sub)' -p -i "$file"
+    done
+
+    srt mux -t -i "$extracted" -i "$intermediate" -o "${video%.*}".srt
+    rm "$extracted" "$intermediate"
+done

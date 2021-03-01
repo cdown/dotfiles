@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 subs=( "${1?}"/* )
 videos=( "${2?}"/* )
