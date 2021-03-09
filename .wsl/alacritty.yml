@@ -41,6 +41,9 @@ working_directory: "\\\\wsl$\\Arch\\home\\cdown"
 font:
   normal:
     family: Consolas
+  bold:
+    family: Consolas
+    style: Regular
   size: 12
 
 selection:
