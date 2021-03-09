@@ -1,0 +1,5 @@
+# cp ~/.wsl/wslconfig /mnt/c/Users/Chris/.wslconfig
+
+[wsl2]
+memory=1GB
+processors=1
