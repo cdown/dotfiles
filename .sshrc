@@ -8,7 +8,9 @@ export SSHHOME="$perm_rc_dir"
 # ncurses stuff is screwed with default $TERM set by mosh. This seems to work
 # fine, but may well explode in future.
 # https://github.com/mobile-shell/mosh/issues/728
-export TERM=rxvt
+if [[ $TERM == xterm-256color ]]; then
+    export TERM=rxvt
+fi
 
 if command -v zsh >/dev/null 2>&1; then
     ZDOTDIR="$SSHHOME/.sshrc.d" exec zsh -l
