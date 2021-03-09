@@ -1,4 +1,4 @@
-# At %APPDATA%\alacritty\alacritty.yml
+# cp ~/.wsl/alacritty.yml /mnt/c/Users/Chris/AppData/Roaming/alacritty/alacritty.yml
 
 colors:
   # Default colors
@@ -45,3 +45,8 @@ font:
 
 selection:
   save_to_clipboard: true
+
+window:
+  padding:
+    x: 4
+    y: 4
