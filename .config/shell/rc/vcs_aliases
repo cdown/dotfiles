@@ -16,6 +16,7 @@ alias gmc='gm --no-ff'
 alias gp='git push'
 alias gs='git show --no-prefix'
 alias gst='git status'
+alias gref='git reflog --date=iso'
 
 gcopr() {
     git fetch origin pull/"${1?need pr num}"/head:pr"$1" && gco pr"$1"
