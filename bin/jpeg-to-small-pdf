@@ -11,7 +11,7 @@ out_dir=$(mktemp -d)
 
 cp -- "$@" "$out_dir"
 
-mogrify -define jpeg:extent=250kb -resize 2500 "$out_dir"/*
+mogrify -define jpeg:extent=250kb -resize 2000 "$out_dir"/*
 img2pdf --output "$pdf" "$out_dir"/*
 
 printf '%s\n' "$pdf"
