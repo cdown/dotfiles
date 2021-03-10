@@ -7,11 +7,15 @@
 pdf=$(mktemp)
 out_dir=$(mktemp -d)
 
+: "${TARGET_KB:=6000}"
 : "${1?files missing}"
 
-cp -- "$@" "$out_dir"
+# 20kb buffer
+single_file_kb=$(( (TARGET_KB / "$#") - 20 ))
 
-mogrify -define jpeg:extent="${TARGET_SIZE:-250kb}" -resize 2000 "$out_dir"/*
+cp -- "$@" "$out_dir"
+exiftool -all= -overwrite_original "$out_dir"/*
+mogrify -define jpeg:extent="$single_file_kb"kb -resize 1500 "$out_dir"/*
 img2pdf --output "$pdf" "$out_dir"/*
 
 printf '%s\n' "$pdf"
