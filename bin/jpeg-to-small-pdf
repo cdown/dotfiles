@@ -1,0 +1,18 @@
+#!/bin/bash -ex
+
+# Many government portals have maximum file sizes for PDFs, so this script
+# takes a list of scanned JPEGs and outputs a small PDF with minimal overheads
+# and quality loss.
+
+pdf=$(mktemp)
+out_dir=$(mktemp -d)
+
+: "${1?files missing}"
+
+cp -- "$@" "$out_dir"
+
+mogrify -define jpeg:extent=200kb -resize 2500 "$out_dir"/*
+jpegoptim "$out_dir"/*
+img2pdf --output "$pdf" "$out_dir"/*
+
+printf '%s\n' "$pdf"
