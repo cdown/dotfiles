@@ -4,7 +4,7 @@ autoload -U promptinit
 promptinit
 
 _running_on_wsl() {
-    grep -q Microsoft /proc/version
+    grep -qi Microsoft /proc/version
 }
 
 if _running_on_wsl; then
