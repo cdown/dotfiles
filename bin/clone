@@ -15,9 +15,11 @@ case ${1?} in
 	git remote add upstream git@github.com:torvalds/linux.git
 	git remote add cdown git@github.com:cdown/linux-mmots.git
 	git remote add next https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+	git remote add net-next https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git
 	git fetch -p upstream
 	git fetch -p cdown
 	git fetch -p next
+	git fetch -p net-next
 
 	git clone git@github.com:cdown/kernel-misc.git ~/git/kernel-misc
 	ln -sfn ~/git/kernel-misc/.config ~/git/linux/.config
