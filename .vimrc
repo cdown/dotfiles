@@ -69,18 +69,18 @@ highlight MatchParen ctermbg=darkmagenta ctermfg=black
 
 command FixFile :set fileencoding=utf-8 fileformat=unix nobomb | %s/\r$//
 
-for directory in ["backup", "swap", "undo"]
-  silent! call mkdir($HOME . "/.vim/" . directory, "p")
-endfor
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
+silent! call mkdir($HOME . "/.vim/undo", "p")
 set undodir=~/.vim/undo//
 set undofile
 
+" I regularly commit/push to avoid computer death, so saving swap/backup files
+" locally doesn't help anyway.
+set nobackup
+set noswapfile
+set nowritebackup
 
 " This avoids <Leader>q getting mapped to MailQuote when in a mail file
 let no_mail_maps = 1
-
 
 " Do not enter ex mode when I fat finger q with shift pressed
 nnoremap Q <nop>
