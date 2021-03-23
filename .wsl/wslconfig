@@ -2,4 +2,4 @@
 
 [wsl2]
 memory=4GB
-processors=10
+processors=20
