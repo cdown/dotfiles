@@ -4,4 +4,4 @@
 
 : "${1?}"
 
-exiftool "$@" -overwrite_original -XMP:all= -EXIF:all= -tagsfromfile @ -EXIF:{Make,Model,Orientation,FNumber,ShutterSpeedValue,DateTimeOriginal,FocalLength}
+exiftool "$@" -overwrite_original -XMP:all= -EXIF:all= -tagsfromfile @ -EXIF:{Make,Model,Orientation,FNumber,ShutterSpeedValue,DateTimeOriginal,FocalLength,ISO,ShutterSpeed} -XMP:{ShutterSpeedValue,ISO,ShutterSpeed}
