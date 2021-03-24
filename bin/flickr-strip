@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+# Strip metadata from file for Flickr
+
+: "${1?}"
+
+exiftool "$@" -overwrite_original -EXIF:all= -tagsfromfile @ -EXIF:{Make,Model,Orientation,FNumber,ShutterSpeedValue,DateTimeOriginal,FocalLength}
