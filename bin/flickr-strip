@@ -4,4 +4,5 @@
 
 : "${1?}"
 
-exiftool "$@" -overwrite_original -XMP:all= -EXIF:all= -tagsfromfile @ -EXIF:{Make,Model,Orientation,FNumber,ShutterSpeedValue,DateTimeOriginal,FocalLength,ISO,ShutterSpeed} -XMP:{ShutterSpeedValue,ISO,ShutterSpeed}
+# Shutter speed is composite of ExposureTime, ShutterSpeedValue, and BulbDuration
+exiftool "$@" -overwrite_original -XMP:all= -EXIF:all= -tagsfromfile @ -EXIF:{Make,Model,Orientation,FNumber,ShutterSpeedValue,DateTimeOriginal,FocalLength,ISO,ShutterSpeed,ExposureTime,BulbDuration} -XMP:{ShutterSpeedValue,ISO,ShutterSpeed,ExposureTime,BulbDuration}
