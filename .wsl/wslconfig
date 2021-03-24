@@ -3,3 +3,6 @@
 [wsl2]
 memory=4GB
 processors=20
+
+[network]
+generateHosts=false
