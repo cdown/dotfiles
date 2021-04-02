@@ -12,6 +12,10 @@ use_first_to_exist() {
     return 1
 }
 
+_running_on_wsl() {
+    grep -qi Microsoft /proc/version
+}
+
 setopt NULL_GLOB >/dev/null 2>&1
 
 # shellcheck disable=SC2039
