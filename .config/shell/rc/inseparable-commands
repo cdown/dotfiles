@@ -22,3 +22,7 @@ update-auth-sock() {
 }
 
 alias tox='tox --skip-missing-interpreters'
+
+_running_on_wsl() {
+    grep -qi Microsoft /proc/version
+}

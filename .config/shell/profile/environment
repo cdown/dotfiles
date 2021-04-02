@@ -22,10 +22,6 @@ fi
     export MAILCAPS=$config_home/.config/mailcap/linux:$HOME/.config/mailcap/linux
 }
 
-_running_on_wsl() {
-    grep -qi Microsoft /proc/version
-}
-
 if _running_on_wsl; then
     export LIBGL_ALWAYS_INDIRECT=1
     export DISPLAY=$(awk '$1 == "nameserver" { print $2 }' /etc/resolv.conf):0
