@@ -10,19 +10,7 @@ fi
 log_dir=/var/log/upgrades/$USER
 name=$(LC_ALL=C date +%F-%T.%N)
 log_file=$log_dir/$name
-ansible_type_file=/.ansibletype
-
-if [[ -f $ansible_type_file ]]; then
-    read -r ansible_type < "$ansible_type_file"
-else
-    echo "WARNING: ansible type unset, guessing based on whether in X"
-    if [[ $DISPLAY ]]; then
-        ansible_type=desktop
-    else
-        ansible_type=server
-    fi
-    sudo tee <<< "$ansible_type" > /dev/null /.ansibletype
-fi
+ansible_type=server
 
 sudo mkdir -p -m0700 "$log_dir"
 sudo chown "$USER" "$log_dir"
