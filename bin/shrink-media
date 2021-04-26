@@ -32,7 +32,7 @@ for dir; do
     done
 
     # x264 uses all processors already so don't need parallel
-    (( NO_VIDEOS )) || for file in "$dir"/**/*.{mov,MOV,mp4,MP4,avi,AVI,mts,MTS}; do
+    (( NO_VIDEOS )) || for file in "$dir"/**/*.{mov,MOV,mp4,MP4,avi,AVI,mts,MTS,wmv,WMV}; do
         mp4_filename=${file%.*}.mp4
         mp4_filename=${mp4_filename##"$dir"/}
 
@@ -44,6 +44,7 @@ for dir; do
         nice -n 19 \
             ffmpeg -y -i "$file" -c:v libx264 -profile:v baseline \
                 -preset "${X264_PROFILE}" \
+                -vf scale=w="$MAX_DIMENSION":h="$MAX_DIMENSION":force_original_aspect_ratio=decrease \
                 -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$mp4_filename"
     done
 done
