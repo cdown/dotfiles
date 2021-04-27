@@ -24,7 +24,7 @@ if ! [[ -v TMUX ]]; then
     exec tmux new-session -s upgrade -- script -c "$0" "$log_file"
 else
     session=$(tmux display-message -p '#S')
-    tmux set-option -t "$session" remain-on-exit 1
+    tmux set-option -t "$session" remain-on-exit on
 fi
 
 # /boot is not on btrfs root. Copy its contents to / so it will be included in
