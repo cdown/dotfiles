@@ -1,7 +1,12 @@
 #!/bin/sh -e
 
 # Use permanent SSHHOME, since we can't repropagate easily in tmux/etc
-perm_rc_dir=/tmp/$USER-sshrc
+perm_rc_base=${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}
+if ! [ -d "$perm_rc_base" ]; then
+    perm_rc_base=/tmp
+fi
+
+perm_rc_dir=$perm_rc_base/$USER-sshrc
 rsync -aq "$SSHHOME"/ "$perm_rc_dir"
 export SSHHOME="$perm_rc_dir"
 
