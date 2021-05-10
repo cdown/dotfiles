@@ -29,7 +29,10 @@ fi
 
 # This one is safe without checking for explicit dependencies >=2.6.1, see
 # https://github.com/npm/npm/issues/6247
-if exists npm; then npm update -g; fi
+if exists npm; then
+    npm install -g npm  # not upgraded by npm update
+    npm update -g
+fi
 
 # TODO: Check safety of gem update
 if exists gem; then gem update; fi
