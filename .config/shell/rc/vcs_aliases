@@ -26,6 +26,10 @@ gnb() {
     git checkout -b "$USER"/"$(date +%F)"/"${1?name missing}" "${2:-HEAD}"
 }
 
+ggbl() {
+    git grep -n "${1?}" | perl -F: -anpe '$_=`git blame -fL$F[1],+1 $F[0]`'
+}
+
 hnb() {
     local name
     name="$USER"/"$(date +%F)"/"${1?name missing}"
