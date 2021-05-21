@@ -7,6 +7,7 @@ horizontal_padding = 8
 separator_color = auto
 timeout = 10
 follow = keyboard
+icon_position = off
 
 [shortcuts]
     close_all = mod4+space
