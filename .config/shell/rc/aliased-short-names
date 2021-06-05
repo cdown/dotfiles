@@ -112,3 +112,6 @@ disas-func() {
 }
 
 alias susp="sudo sh -c 'echo mem >| /sys/power/state'"
+
+alias tbytes='numfmt --from=iec'
+alias fbytes='numfmt --to=iec'
