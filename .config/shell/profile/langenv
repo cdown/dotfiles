@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # https://github.com/pyenv/pyenv/issues/1906
-if comment -v pyenv >/dev/null 2>&1; then
+if command -v pyenv >/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
