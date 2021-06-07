@@ -15,6 +15,10 @@ done
 cd /
 
 if exists pyenv; then
+    # We might be doing it for another user as part of upgrade where we weren't
+    # running ~/.profile or similar, and without this pyenv stuff will fail
+    eval "$(pyenv init --path)"
+
     while read -r version; do
         export PYENV_VERSION="$version"
         if ! pyenv which python; then
