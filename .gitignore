@@ -16,6 +16,7 @@
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
 /.config/shell/rc/trello
+/.duply/ac-setups/conf
 /.duply/bitbucket/_pre
 /.duply/bitbucket/conf
 /.duply/github/conf
