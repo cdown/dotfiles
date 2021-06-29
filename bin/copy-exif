@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+in=${1?}
+out=${2?}
+
+exiftool -all= "$out"
+exiftool -TagsFromFile "$in" "$out"
+exiftool -PreviewImage= -thumbnailimage= -ifd1:all= "$out"
