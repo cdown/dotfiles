@@ -115,3 +115,6 @@ alias susp="sudo sh -c 'echo mem >| /sys/power/state'"
 
 alias tbytes='numfmt --from=iec'
 alias fbytes='numfmt --to=iec'
+
+# Until https://marc.info/?l=linux-fsdevel&m=162516624706195&w=2 is fixed
+alias ptp='gphoto2 --debug --get-all-files --folder "/store_10000001/SLOT 1/DCIM"'
