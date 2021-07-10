@@ -15,16 +15,18 @@ for in_filename in *.{JP{,E}G,jp{,e}g}; do
         continue
     fi
 
-    out_filename=IMG_$datetime.jpg
+    orig_filename=IMG_$datetime.jpg
+    orig_filename_seq=IMG_${datetime}_01.jpg
+    out_filename=$orig_filename
 
-    [[ $in_filename == "$out_filename" ]] && continue
+    [[ $in_filename == "$orig_filename" ]] && continue
 
-    if [[ -e $out_filename ]]; then
+    if [[ -e $orig_filename ]] || [[ -e $orig_filename_seq ]]; then
         i=2
-        last_filename=$out_filename
+        last_filename=$orig_filename
 
         while true; do
-            new_filename=${out_filename%%.jpg}_$i.jpg
+            new_filename=${orig_filename%%.jpg}_$(printf '%02d' "$i").jpg
 
             printf 'Already exists: %s, trying %s (%s -> %s)\n' \
                 "$last_filename" "$new_filename" \
@@ -32,6 +34,14 @@ for in_filename in *.{JP{,E}G,jp{,e}g}; do
 
             if ! [[ -e $new_filename ]]; then
                 out_filename=$new_filename
+
+                if (( i == 2 )) && [[ -e $orig_filename ]] && ! [[ -e $orig_filename_seq ]]; then
+                    # This is now a sequence, rename it so that it works nicely
+                    # with lexicographic sort
+                    printf '%s is now sequenced as #1\n' "$orig_filename"
+                    mv -n -- "$orig_filename" "$orig_filename_seq"
+                fi
+
                 break
             elif [[ $new_filename == "$in_filename" ]]; then
                 # We already renamed these ones, don't do it again. This avoids
