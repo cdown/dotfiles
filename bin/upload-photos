@@ -16,9 +16,8 @@ extra_args=''
 # megabytes. In these cases, it makes sense to disable parallel upload.
 (( NO_PARALLEL )) || extra_args+=' -m'
 
-# 2020-07: Currently gsutil fails to upload to S3
 tmux new-session -d -s "$session_name" \
-    "while ! s3cmd sync -r . 's3://chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
+    "copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
 tmux split-window -h -t "$session_name:1" \
     "while ! gsutil $extra_args rsync -r . 'gs://chris-down-photos/chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
 

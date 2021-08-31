@@ -1,0 +1,18 @@
+#!/bin/bash -ex
+
+inner_dir=${1?}
+base_dir=/tmp/ext
+full_dir=$base_dir/$inner_dir
+retries=5
+
+while (( retries-- )) && ! mountpoint -- "$base_dir"; do
+    sleep 2
+done
+
+if (( retries == -1 )); then
+    echo "Retries exceeded"
+    exit 1
+fi
+
+mkdir -p -- "$full_dir"
+rsync -avP ./ "$full_dir"
