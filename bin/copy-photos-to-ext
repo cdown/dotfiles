@@ -2,7 +2,7 @@
 
 inner_dir=${1?}
 base_dir=/mnt/ext
-full_dir=$base_dir/$inner_dir
+full_dir=$base_dir/Photos/$inner_dir
 retries=5
 
 while (( retries-- )) && ! mountpoint -- "$base_dir"; do
