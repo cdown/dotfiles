@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
 inner_dir=${1?}
-base_dir=/tmp/ext
+base_dir=/mnt/ext
 full_dir=$base_dir/$inner_dir
 retries=5
 
