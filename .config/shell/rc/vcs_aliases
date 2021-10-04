@@ -19,6 +19,10 @@ alias gs='git show --no-prefix'
 alias gst='git status'
 alias gref='git reflog --date=iso'
 
+gfic() {
+    git diff-tree --no-commit-id --name-only -r "${1-HEAD}"
+}
+
 gcopr() {
     git fetch origin pull/"${1?need pr num}"/head:pr"$1" && gco pr"$1"
 }
