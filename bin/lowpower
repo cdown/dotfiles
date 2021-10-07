@@ -31,4 +31,8 @@ case $action in
         sudo systemctl stop "${services[@]}"
         systemctl --user stop "${user_services[@]}"
     ;;
+    *)
+        printf '%s is not a valid action\n' "$action" >&2
+        exit 1;
+    ;;
 esac
