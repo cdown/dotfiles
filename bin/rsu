@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+# Calculate RSU vesting from Schwab transaction history.
+#
+# 1. https://client.schwab.com/Apps/accounts/transactionhistory/
+# 2. Copy in `:set paste' mode
+
+exec awk '
+    BEGIN { sum = 0; c = -1 }
+
+    /Stock Plan Activity/ { c = 3; }
+
+    # Becomes true 3 lines after "Stock Plan Activity" line
+    c && c-- == 0 {
+        if ($1 !~ /^[0-9]+$/) {
+            print "mangled";
+            exit 1;
+        }
+
+        sum += $1;
+    }
+
+    END { print sum; }
+' "$@"
