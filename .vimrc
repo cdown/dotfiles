@@ -7,8 +7,6 @@ if exists("*pathogen#infect")
   execute pathogen#infect('bundle/{}', $SSHHOME . ".sshrc.d/.vim/bundle/{}")
 endif
 
-let g:neocomplete#enable_at_startup = 1
-
 filetype plugin on
 syntax on
 
