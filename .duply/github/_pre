@@ -11,6 +11,6 @@ git clone git://github.com/cdown/gh-mirror.git
 
 cd repos
 
-../gh-mirror/gh-mirror --exclude linux-mmots --exclude systemd --exclude fbkutils --exclude quickstack --exclude regex --exclude nom cdown
+../gh-mirror/gh-mirror --exclude linux --exclude systemd --exclude fbkutils --exclude quickstack --exclude regex --exclude nom cdown
 
 cd ..
