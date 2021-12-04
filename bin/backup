@@ -7,6 +7,13 @@ ulimit -n 4096
 PATH="$(get-path-without-env)"
 export PATH
 
+if ! [[ -v TMUX ]]; then
+    exec tmux new-session -s backup -- "$0"
+else
+    session=$(tmux display-message -p '#S')
+    tmux set-option -t "$session" remain-on-exit on
+fi
+
 backup_type=backup
 if (( PURGE )); then
     backup_type=full
