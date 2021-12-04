@@ -7,7 +7,13 @@ ulimit -n 4096
 PATH="$(get-path-without-env)"
 export PATH
 
+
 if ! [[ -v TMUX ]]; then
+    if (( PURGE )) || (( VERIFY )); then
+        printf '%s\n' "Must already be in tmux session to pass env vars" >&2
+        exit 1
+    fi
+
     exec tmux new-session -s backup -- "$0"
 else
     session=$(tmux display-message -p '#S')
