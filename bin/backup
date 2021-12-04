@@ -33,8 +33,8 @@ for backup_path in "${backup_paths[@]}"; do
     if [[ -x "$pre" ]]; then "$pre"; fi
 
     duply "$backup_name" "$backup_type"
-    (( VERIFY )) && duply "$backup_name" verify
     (( PURGE )) && duply "$backup_name" purge --force
+    (( VERIFY )) && duply "$backup_name" verify
 
     if [[ -x "$post" ]]; then "$post"; fi
 done
