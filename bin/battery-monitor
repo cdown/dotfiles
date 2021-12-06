@@ -12,7 +12,7 @@ any_is_charging() {
     cat /sys/class/power_supply/BAT*/status | grep -q -e Charging -e Full
 }
 all_are_unknown() {
-    # On the T470s, both batteries go to "unknown" when charged for some reason
+    # On ThinkPads, both batteries go to "unknown" when at charging threshold
     ! cat /sys/class/power_supply/BAT*/status | grep -q -v Unknown
 }
 any_battery_exists() {
@@ -41,8 +41,10 @@ any_battery_exists || exit 0
 
 last=$(read_last)
 
-if any_is_charging || all_are_unknown; then
+if any_is_charging; then
     check_and_update_last charging
+elif all_are_unknown; then
+    check_and_update_last 'at threshold'
 else
     check_and_update_last discharging
 fi
