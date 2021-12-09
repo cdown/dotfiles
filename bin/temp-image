@@ -6,4 +6,4 @@
 
 : "${1?missing file}"
 
-exec s3cmd sync "$@" s3://chrisdown.name/temp_images/
+exec s3cmd sync "$@" s3://chrisdown.name/temp/
