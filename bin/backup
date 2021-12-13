@@ -15,9 +15,6 @@ if ! [[ -v TMUX ]]; then
     fi
 
     exec tmux new-session -s backup -- "$0"
-else
-    session=$(tmux display-message -p '#S')
-    tmux set-option -t "$session" remain-on-exit on
 fi
 
 backup_type=backup
