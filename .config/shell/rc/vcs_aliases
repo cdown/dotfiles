@@ -9,7 +9,6 @@ alias gc='git commit -v'
 alias gco='git checkout'
 alias gcp='git cherry-pick --strategy=recursive --strategy-option=diff-algorithm=histogram'
 alias gd='git diff --no-prefix'
-alias gf='git fetch -p --all'
 alias gg='git grep'
 alias gl='git log'
 alias gm='git merge'
@@ -18,6 +17,14 @@ alias gp='git push'
 alias gs='git show --no-prefix'
 alias gst='git status'
 alias gref='git reflog --date=iso'
+
+gf() {
+    if [ "$1" ]; then
+        git fetch -p "$1"
+    else
+        git fetch -p --all
+    fi
+}
 
 gfic() {
     git diff-tree --no-commit-id --name-only -r "${1-HEAD}"
