@@ -25,6 +25,8 @@ alias us='systemctl --user start'
 alias ut='systemctl --user stop'
 alias ud='systemctl --user -n 100 status'
 
+alias nn='rtcwake -s 28800 -m mem'
+
 alias mtp-on='mtpfs -o allow_other /mnt/mtp'
 alias mtp-off='fusermount -u /mnt/mtp'
 
