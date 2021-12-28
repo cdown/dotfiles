@@ -3,3 +3,4 @@
 shopt -s extglob
 shopt -s globstar
 set -o noclobber
+set +o hashall

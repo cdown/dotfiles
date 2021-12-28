@@ -17,3 +17,4 @@ set -o nullglob
 set -o prompt_subst
 set -o rmstarsilent
 set -o shwordsplit
+set -o nohashcmds
