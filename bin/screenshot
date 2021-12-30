@@ -17,7 +17,7 @@ case $1 in
     ;;
 esac
 
-pngquant -f --ext .png "$file"
+pngquant --skip-if-larger --strip -f --ext .png "$file"
 
 notify-send -u low 'Screenshot taken'
 
