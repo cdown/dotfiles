@@ -96,3 +96,5 @@ alias mksrcinfo='makepkg --printsrcinfo >| .SRCINFO'
 alias hyperfine='sudo nice -n -20 sudo -u "$USER" hyperfine'
 
 alias ncdu='sudo ncdu -x --confirm-quit --exclude /snapshots /'
+
+alias du='du --apparent-size'
