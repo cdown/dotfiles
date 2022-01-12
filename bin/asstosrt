@@ -5,7 +5,7 @@ shopt -s nullglob
 for ass in *.ass *.ssa; do
     srt="${ass%.ass}.srt"
     srt_temp="$srt.temp"
-    ffmpeg -y -i "$ass" "$srt"
+    ffmpeg -y -f ass -i "$ass" "$srt"
     srt process -m re -f 'lambda sub: re.sub("<[^<]+?>", "", sub)' \
         -i "$srt" -o "$srt_temp"
 
