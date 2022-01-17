@@ -2,14 +2,6 @@ command -v ssh-agent >/dev/null 2>&1 || return
 [ -d ~/.ssh/keys ] || return
 [ "$(uname -s)" = Linux ] || return
 
-stable_auth="${XDG_RUNTIME_DIR:-/tmp}/ssh-auth-sock-$(id -u)"
-if [ "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$stable_auth" ]; then
-    ln -sfn -- "$SSH_AUTH_SOCK" "$stable_auth"
-    SSH_AUTH_SOCK=$stable_auth
-fi
-
-[ "$SSH_CLIENT" ] && return
-
 # We manually create both, so no need to worry about -m only applying to the
 # deepest
 # shellcheck disable=SC2174
@@ -18,6 +10,8 @@ mkdir -m700 -p ~/.ssh ~/.ssh/agents
 # Execute in subshell to avoid polluting environment
 (
 for key in ~/.ssh/keys/*; do
+    [ -f "$key" ] || continue
+
     case $key in
         *.pub) continue ;;
     esac
@@ -34,3 +28,9 @@ done
 )
 
 [ -e ~/.ssh/agents/personal ] && . ~/.ssh/agents/personal >/dev/null
+
+stable_auth="${XDG_RUNTIME_DIR:-/tmp}/ssh-auth-sock-$(id -u)"
+if [ "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$stable_auth" ]; then
+    ln -sfn -- "$SSH_AUTH_SOCK" "$stable_auth"
+    SSH_AUTH_SOCK=$stable_auth
+fi
