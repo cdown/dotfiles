@@ -1,6 +1,13 @@
 command -v ssh-agent >/dev/null 2>&1 || return
 [ -d ~/.ssh/keys ] || return
 [ "$(uname -s)" = Linux ] || return
+
+stable_auth="${XDG_RUNTIME_DIR:-/tmp}/ssh-auth-sock-$(id -u)"
+if [ "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$stable_auth" ]; then
+    ln -sfn -- "$SSH_AUTH_SOCK" "$stable_auth"
+    SSH_AUTH_SOCK=$stable_auth
+fi
+
 [ "$SSH_CLIENT" ] && return
 
 # We manually create both, so no need to worry about -m only applying to the
