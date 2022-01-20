@@ -41,6 +41,7 @@ set shiftwidth=4
 set shortmess=aoOtI
 set smartcase
 set spell
+set spellcapcheck=
 set spelllang=en_gb
 set synmaxcol=1000
 set textwidth=79
