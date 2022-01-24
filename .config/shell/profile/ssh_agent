@@ -29,7 +29,9 @@ done
 
 [ -e ~/.ssh/agents/personal ] && . ~/.ssh/agents/personal >/dev/null
 
-stable_auth="${XDG_RUNTIME_DIR:-/tmp}/ssh-auth-sock-$(id -u)"
+stable_auth_dir=/tmp
+[ -d "$XDG_RUNTIME_DIR" ] && stable_auth_dir="$XDG_RUNTIME_DIR"
+stable_auth="$stable_auth_dir/ssh-auth-sock-$(id -u)"
 if [ "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$stable_auth" ]; then
     ln -sfn -- "$SSH_AUTH_SOCK" "$stable_auth"
     SSH_AUTH_SOCK=$stable_auth
