@@ -1,0 +1,6 @@
+[Unit]
+ConditionPathExists=/usr/bin/matterhorn
+
+[Service]
+ExecStart=/bin/sh -c "exec %h/bin/start-matterhorn"
+Restart=on-failure
