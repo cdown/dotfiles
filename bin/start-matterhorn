@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec urxvtc -title irc -e create-or-attach-tmux-session mattermost \
+    "while :; do matterhorn; done"
