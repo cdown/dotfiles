@@ -2,7 +2,7 @@
 
 req_brightness_perc=$1
 
-backlight_dirs=(intel_backlight nv_backlight)
+backlight_dirs=(intel_backlight nv_backlight nvidia_0)
 
 for dir in "${backlight_dirs[@]}"; do
     full_dir=/sys/class/backlight/"$dir"
