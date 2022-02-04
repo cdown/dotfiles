@@ -123,3 +123,5 @@ alias ptp='gphoto2 --get-all-files --folder "/store_10000001/SLOT 1/DCIM"'
 
 # One day I will learn to type
 alias unlock='faillock --reset --user'
+
+alias vwin='veracrypt -m system --filesystem=ntfs3'
