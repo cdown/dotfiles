@@ -17,7 +17,7 @@ alias mv='mv --backup=numbered'
 alias ln='ln --backup=numbered'
 alias rg='rg --hidden -i'
 
-alias startx='exec startx &>| /tmp/startx-$USER'
+alias startx='exec startx -- -dpi 96 &>| /tmp/startx-$USER'
 
 # Disable sourcing systemwide vim configuration. Also set PYTHONPATH to
 # include basedir so we can edit tests that get their sys.path munged by nose
