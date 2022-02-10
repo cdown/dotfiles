@@ -26,5 +26,5 @@ while (( total_seconds > 0 )); do
     sleep 1
 done
 
-printf '%s\n' "Time up!"
+printf '\r%s\n' "Time up!"
 notify-send -u critical -- 'Time up!' "Your timer for $length is up."
