@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Some minor drift may be expected, since there's no correction for exec time,
+# but it's close enough.
+
+length=${1?}
+
+hours=0
+minutes=0
+seconds=0
+
+[[ "$length" =~ ([0-9]+)h ]] && hours=${BASH_REMATCH[1]}
+[[ "$length" =~ ([0-9]+)m ]] && minutes=${BASH_REMATCH[1]}
+[[ "$length" =~ ([0-9]+)s ]] && seconds=${BASH_REMATCH[1]}
+
+total_seconds=$(( (hours * 60 * 60) + (minutes * 60) + seconds ))
+
+while (( total_seconds > 0 )); do
+    { printf '\r%s' "$(date -u -d @"$total_seconds" +%H:%M:%S)"; } &  # avoid taking more than fork time
+    let total_seconds--
+    sleep 1
+done
+
+printf '%s\n' "Time up!"
+notify-send -u critical -- 'Time up!' "Your timer for $length is up."
