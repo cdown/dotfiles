@@ -20,6 +20,9 @@ if (( total_seconds <= 0 )) || (( total_seconds >= (24 * 60 * 60) )); then
     exit 1
 fi
 
+trap 'tput cnorm' EXIT
+tput civis
+
 while (( total_seconds > 0 )); do
     { printf '\r%s' "$(date -u -d @"$total_seconds" +%H:%M:%S)"; } &  # avoid taking more than fork time
     let total_seconds--
