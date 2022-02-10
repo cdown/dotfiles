@@ -14,11 +14,6 @@ let g:solarized_termtrans = 1
 silent! colorscheme solarized
 set background=dark
 
-" Workaround for Terminus on WSL
-" https://github.com/vim/vim/issues/390
-set t_u7=
-
-
 set autoindent
 set backspace=indent,eol,start
 set backupcopy=yes
