@@ -24,7 +24,6 @@ fi
 
 if _running_on_wsl; then
     export LIBGL_ALWAYS_INDIRECT=1
-    export DISPLAY=$(awk '$1 == "nameserver" { print $2 }' /etc/resolv.conf):0
 fi
 
 umask 0022
