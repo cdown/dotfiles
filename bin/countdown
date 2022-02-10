@@ -15,6 +15,11 @@ seconds=0
 
 total_seconds=$(( (hours * 60 * 60) + (minutes * 60) + seconds ))
 
+if (( total_seconds <= 0 )); then
+    printf 'Invalid length: %s\n' "$length" >&2
+    exit 1
+fi
+
 while (( total_seconds > 0 )); do
     { printf '\r%s' "$(date -u -d @"$total_seconds" +%H:%M:%S)"; } &  # avoid taking more than fork time
     let total_seconds--
