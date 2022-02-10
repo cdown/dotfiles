@@ -15,7 +15,7 @@ seconds=0
 
 total_seconds=$(( (hours * 60 * 60) + (minutes * 60) + seconds ))
 
-if (( total_seconds <= 0 )); then
+if (( total_seconds <= 0 )) || (( total_seconds >= (24 * 60 * 60) )); then
     printf 'Invalid length: %s\n' "$length" >&2
     exit 1
 fi
