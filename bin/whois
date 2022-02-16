@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+ curl --referer https://ipinfo.io/ "https://ipinfo.io/widget/$1"
