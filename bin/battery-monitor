@@ -13,7 +13,8 @@ any_is_charging() {
 }
 all_are_unknown() {
     # On ThinkPads, both batteries go to "unknown" when at charging threshold
-    ! cat /sys/class/power_supply/BAT*/status | grep -q -v Unknown
+    # On more recent kernels, it may go to "Not charging"
+    ! cat /sys/class/power_supply/BAT*/status | grep -q -v -e Unknown -e Not
 }
 any_battery_exists() {
     batteries=(/sys/class/power_supply/BAT*)
