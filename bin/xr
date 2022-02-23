@@ -67,25 +67,7 @@ case $1 in
         xrandr --output eDP1 --off
     ;;
     work)
-        w=2560
-        h=1600
-        r=60
-
-        args=$(cvt -r "$w" "$h" "$r" | awk -F\" '!/^#/ { print $3; exit }')
-        name=${w}x${h}@${r}R
-
-        xrandr --output DP1 --auto --primary
-
-        # This monitor doesn't support 2560x1600/60 over HDMI- by default
-        xrandr --output HDMI2 --mode 1920x1200  # Force release
-        xrandr --delmode HDMI2 "$name" || true
-        xrandr --rmmode "$name" || true
-        # shellcheck disable=SC2086
-        xrandr --newmode "$name" $args
-        xrandr --addmode HDMI2 "$name"
-        xrandr --output HDMI2 --mode "$name" --right-of DP1
-
-        xrandr --output eDP1 --off
+        xrandr --output DP2 --auto --primary --output HDMI1 --auto --right-of DP2 --output eDP1 --off
     ;;
     external-only)
         xrandr --output "$main_display" --off
