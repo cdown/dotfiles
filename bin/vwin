@@ -1,0 +1,11 @@
+#!/bin/bash
+
+src=${1?}
+dest=${2?}
+
+unset DISPLAY
+
+veracrypt -m system --filesystem=none "$src"
+
+# TODO: handle other cases
+sudo mount -t ntfs3 -o uid="$(id -u)" /dev/mapper/veracrypt1 /mnt/windows
