@@ -1,5 +1,6 @@
 [Unit]
 ConditionPathExists=/usr/bin/matterhorn
+ConditionPathExists=%h/.config/matterhorn/config.ini
 
 [Service]
 ExecStart=/bin/sh -c "exec %h/bin/start-matterhorn"
