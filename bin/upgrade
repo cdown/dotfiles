@@ -108,3 +108,6 @@ sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew /etc/pu
 sudo pacdiff
 
 sudo update-from-cm "$ansible_type"
+
+sudo paccache -rk2
+sudo paccache -ruk0
