@@ -86,12 +86,6 @@ if [[ $pkgs ]]; then
     sudo pacman -D --asdeps $pkgs
 fi
 
-while pkgs=$(pacman -Qqttd); do
-    # All packages are spit by IFS.
-    # shellcheck disable=SC2086
-    sudo pacman -Rns $pkgs
-done
-
 mapfile -t unowned < <(find-unowned-in-usr-bin)
 (( "${#unowned[@]}" )) && sudo rm -i "${unowned[@]}"
 
@@ -108,6 +102,12 @@ sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew /etc/pu
 sudo pacdiff
 
 sudo update-from-cm "$ansible_type"
+
+while pkgs=$(pacman -Qqttd); do
+    # All packages are spit by IFS.
+    # shellcheck disable=SC2086
+    sudo pacman -Rns $pkgs
+done
 
 sudo paccache -rk2
 sudo paccache -ruk0
