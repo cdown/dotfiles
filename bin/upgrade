@@ -93,7 +93,7 @@ sudo pacman -Sy --noconfirm --needed archlinux-keyring
 sudo pacman-key --populate archlinux
 
 if command -v yay >/dev/null 2>&1; then
-    sudo -u makepkg yay --noconfirm --cleanafter -Syu
+    sudo -u makepkg yay --noconfirm --cleanafter --devel -Syu
 else
     sudo pacman --noconfirm -Syu
 fi
