@@ -55,6 +55,7 @@ _git_prompt() {
     fi
 
     [ "$git_head" = master ] && unset git_head
+    [ "$git_head" = main ] && unset git_head
 
     colour_part 2 "$git_head"
     colour_part 1 "$git_state"
