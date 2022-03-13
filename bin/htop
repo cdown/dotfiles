@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+# Execute htop as root with local config
+
+exec sudo HTOPRC="$HOME/.config/htop/htoprc" /usr/bin/htop
