@@ -35,10 +35,10 @@ if ! (( UPDATED_DOTFILES )); then
         btrfs)
             btrfs-snap / "upgrade-$name"
 
-            # only keep 3 newest upgrade snapshots
+            # only keep 2 newest upgrade snapshots
             sudo btrfs subvolume list /snapshots/ |
                 awk '$NF ~ /\/upgrade-/ { print "/" $NF }' |
-                sort -r | tail -n +4 |
+                sort -r | tail -n +3 |
                 xargs -r -d '\n' sudo btrfs subvolume delete -v
         ;;
         *)
