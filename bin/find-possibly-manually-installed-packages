@@ -4,7 +4,7 @@ playbook_dir=$(mktemp -ud)
 ansible_type="${1?ansible_type missing}"
 
 trap 'cd /; rm -rf "$playbook_dir"' 0
-git clone git://github.com/cdown/ansible-"$ansible_type".git "$playbook_dir"
+git clone https://github.com/cdown/ansible-"$ansible_type".git "$playbook_dir"
 
 mapfile -t pkgs < <(pacman -Qqe)
 mapfile -t _base < <(pacman -Qqg base-devel)
