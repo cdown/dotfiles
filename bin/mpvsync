@@ -6,4 +6,4 @@ export PATH
 
 room=${2:-"$(LC_ALL=C tr -dc a-zA-Z0-9 < /dev/urandom | head -c 20)"}
 
-exec syncplay --no-gui -a syncplay.pl:8997 -n "$(id -un)" -r "$room" --player-path mpv "${1?}"
+exec syncplay --no-store --no-gui -a syncplay.pl:8997 -n "$(id -un)" -r "$room" --player-path mpv "${1?}"
