@@ -13,7 +13,8 @@ case $action in
             pkill -x "$process"
         done
         sudo brightness 30
-
+        sudo systemctl stop "${services[@]}"
+        systemctl --user stop "${user_services[@]}"
     ;;
     off)
         sudo brightness 100
@@ -28,8 +29,6 @@ case $action in
         tmux kill-server
         sudo netctl stop-all
         sudo rfkill block all
-        sudo systemctl stop "${services[@]}"
-        systemctl --user stop "${user_services[@]}"
     ;;
     *)
         printf '%s is not a valid action\n' "$action" >&2
