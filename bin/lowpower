@@ -3,7 +3,7 @@
 action=${1?}
 
 processes=(chrome spotify adb)
-services=(bluetooth "netctl-ifplugd@$(get-wired-interface)" systemd-journald org.cups.cupsd colord)
+services=(bluetooth "netctl-ifplugd@$(get-wired-interface)" systemd-journald cups colord avahi-daemon)
 user_services=(clipmenud pulseaudio mpdscribble fcitx mpd)
 
 case $action in
