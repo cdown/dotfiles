@@ -1,6 +1,14 @@
 #!/bin/bash
 
-exec mpc playlist -f '%time%' | tr ':' ' ' | awk '
+top=$1
+
+extra_cmd=(cat)
+
+if [[ $top ]]; then
+    extra_cmd=(head -"$top")
+fi
+
+exec mpc playlist -f '%time%' | "${extra_cmd[@]}" |  tr ':' ' ' | awk '
     BEGIN {i = 0}
     {i += $1*60 + $2}
     END{
