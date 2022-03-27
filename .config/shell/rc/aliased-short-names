@@ -130,3 +130,5 @@ wsldisp() {
     DISPLAY=$(awk '$1 == "nameserver" { print $2 }' /etc/resolv.conf):0
     export DISPLAY
 }
+
+alias elanbug='watch -n 0.2 -d -- grep -i -e idma -e elan /proc/interrupts'
