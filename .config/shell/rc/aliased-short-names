@@ -132,3 +132,9 @@ wsldisp() {
 }
 
 alias elanbug='watch -n 0.2 -d -- grep -i -e idma -e elan /proc/interrupts'
+
+kc() {
+    printf '%.12s ("%s")\n' \
+        "$(git rev-parse "${1?}")" \
+        "$(git show-branch --no-name "$1")"
+}
