@@ -1,7 +1,9 @@
 #!/bin/bash -ex
 
+shopt -s extglob nullglob
+
 mkdir mp3
 cd mp3
-printf '%s\0' ../*.flac | parallel --bar -0 tov0-synchronous '{}'
+printf '%s\0' ../**/*.flac | parallel --bar -0 tov0-synchronous '{}'
 mack -o ~/Music
 mpc update
