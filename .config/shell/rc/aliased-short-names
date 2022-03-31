@@ -138,3 +138,12 @@ kc() {
         "$(git rev-parse "${1?}")" \
         "$(git show-branch --no-name "$1")"
 }
+
+choudoufu() {
+    _dir=/mnt/scratch
+    if ! mountpoint -q "$_dir"; then
+        [ -d "$_dir" ] || sudo mkdir "$_dir"
+        sudo mount -t cifs -o username="$(id -un)",uid="$(id -u)" //choudoufu/scratch "$_dir"
+    fi
+    cd "$_dir"
+}
