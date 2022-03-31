@@ -1,0 +1,12 @@
+#!/bin/bash -x
+
+in=${1?}
+out=${2?}
+size=$(stat -c %s "$in")
+
+[[ $size ]] || exit
+
+# Byzantine process needed in order to do O_DIRECT and get progress
+dd if="$in" ibs=1M status=none |
+    pv -s "$size" |
+    dd of="$out" obs=1M oflag=direct status=none
