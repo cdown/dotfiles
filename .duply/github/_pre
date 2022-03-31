@@ -7,7 +7,7 @@ mkdir -p /tmp/github-backup/repos
 
 cd /tmp/github-backup
 
-git clone git://github.com/cdown/gh-mirror.git
+git clone https://github.com/cdown/gh-mirror.git
 
 cd repos
 
