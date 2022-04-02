@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+umask 077
+
+temp=$(mktemp -d)
+
+wg genkey | tee "$temp"/server_private_key | wg pubkey > "$temp"/server_public_key
+wg genkey | tee "$temp"/client_private_key | wg pubkey > "$temp"/client_public_key
+
+printf '%s\n' "$temp"
