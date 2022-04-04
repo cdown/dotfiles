@@ -16,8 +16,14 @@ extra_args=''
 # megabytes. In these cases, it makes sense to disable parallel upload.
 (( NO_PARALLEL )) || extra_args+=' -m'
 
-tmux new-session -d -s "$session_name" \
-    "copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
+if (( LOCAL_EXT )); then
+    tmux new-session -d -s "$session_name" \
+        "copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
+else
+    tmux new-session -d -s "$session_name" \
+        "rsync -rvP . choudoufu:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
+fi
+
 tmux split-window -h -t "$session_name:1" \
     "while ! gsutil $extra_args rsync -r . 'gs://chris-down-photos/chrisdown-photos/$escaped_photo_dir/'; do sleep 20; done; echo Done; read"
 
