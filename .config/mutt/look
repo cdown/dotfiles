@@ -29,7 +29,7 @@ unset markers
 set rfc2047_parameters
 
 set sort = threads
-set sort_aux = last-date-received
+set sort_aux = reverse-last-date-received
 
 auto_view text/html
 
