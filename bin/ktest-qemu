@@ -10,5 +10,5 @@ qemu-system-x86_64 \
     -net user,hostfwd=tcp::10022-:22 \
     -net nic \
     -kernel ~/git/linux/arch/x86/boot/bzImage \
-    -append 'root=/dev/sda1 cgroup_no_v1=all rw console=ttyS0,115200 systemd.log_level=debug systemd.log_target=kmsg log_buf_len=1M printk.devkmsg=on loglevel=7' \
+    -append 'root=/dev/sda3 cgroup_no_v1=all rw console=ttyS0,115200 systemd.log_level=debug systemd.log_target=kmsg log_buf_len=1M printk.devkmsg=on loglevel=7' \
     -drive file="$HOME"/kernel-dev-archlinux.img,format=raw
