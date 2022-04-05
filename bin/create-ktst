@@ -1,0 +1,14 @@
+#!/bin/bash -ex
+
+iso=${1?}
+base_dir=$HOME/qemu
+img=$base_dir/$(date +%F)
+
+[[ -e $img ]] && exit 1
+
+mkdir -p "$base_dir"
+
+qemu-img create -f raw -o preallocation=full "$img" 10G
+qemu-system-x86_64 -enable-kvm -cdrom "$iso" -boot order=d -drive file="$img",format=raw -m 4G
+
+ln -sfn "$img" "$HOME"/kernel-dev-archlinux.img
