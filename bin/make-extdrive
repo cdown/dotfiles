@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+device=${1?}
+label=${2?}
+
+mkfs.ext4 -L "$label" "$device"
+
+# This drive is written to infrequently. If data corruption happens, it'll just
+# be e2fsck'ed and get rsynced again, no biggie.
+tune2fs -o journal_data_writeback "$device"
+tune2fs -o nobarrier "$device"
