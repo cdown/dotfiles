@@ -1,11 +1,34 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 device=${1?}
 label=${2?}
 
-mkfs.ext4 -L "$label" "$device"
+if [[ $device == *[0-9] ]]; then
+    printf '%s\n' 'Use the device itself, not a partition\n' >&2
+    exit 1
+fi
 
-# This drive is written to infrequently. If data corruption happens, it'll just
-# be e2fsck'ed and get rsynced again, no biggie.
-tune2fs -o journal_data_writeback "$device"
-tune2fs -o nobarrier "$device"
+sgdisk -Z "$device"
+sgdisk -n 0:0:0 -c 1:"$label" "$device"
+
+partprobe "$device"
+sleep 5  # partprobe is async...
+
+part="$device"1
+unset device  # safety measure to make sure we don't introduce some bug that
+	      # accidentally does something with the base device...
+
+
+# This drive mostly stores photos. Most of these are about 12 megabytes or so.
+# As such the cluster size should be big (probably 64k with -O bigalloc -C
+# 65536). However, bigalloc is still unstable, so don't use it.
+#
+# % find ./ -ls | awk 'BEGIN{OFMT="%f"} {sum += $7; n++;} END {print sum/n;}'
+# 12965453.184444
+#
+# On the other hand there's no way we will use one inode per 16kb, so we can
+# bump that up to 1MB per inode.
+mkfs.ext4 -L "$label" -i 1048576 "$part"
+
+# We can tolerate data/metadata misordering.
+tune2fs -o journal_data_writeback "$part"
