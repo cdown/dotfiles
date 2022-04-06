@@ -2,6 +2,8 @@
 
 device=${1?}
 label=${2?}
+cryptdev=ext
+cryptdev_path=/dev/mapper/$cryptdev
 
 if [[ $device == *[0-9] ]]; then
     printf '%s\n' 'Use the device itself, not a partition\n' >&2
@@ -18,6 +20,8 @@ part="$device"1
 unset device  # safety measure to make sure we don't introduce some bug that
 	      # accidentally does something with the base device...
 
+cryptsetup -y -v luksFormat "$part"
+cryptsetup luksOpen --allow-discards "$part" "$cryptdev"
 
 # This drive mostly stores photos. Most of these are about 12 megabytes or so.
 # As such the cluster size should be big (probably 64k with -O bigalloc -C
@@ -28,7 +32,7 @@ unset device  # safety measure to make sure we don't introduce some bug that
 #
 # On the other hand there's no way we will use one inode per 16kb, so we can
 # bump that up to 1MB per inode.
-mkfs.ext4 -L "$label" -i 1048576 "$part"
+mkfs.ext4 -L "$label" -i 1048576 "$cryptdev_path"
 
 # We can tolerate data/metadata misordering.
-tune2fs -o journal_data_writeback "$part"
+tune2fs -o journal_data_writeback "$cryptdev_path"
