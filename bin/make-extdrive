@@ -10,6 +10,7 @@ if [[ $device == *[0-9] ]]; then
     exit 1
 fi
 
+wipefs -a "$device"
 sgdisk -Z "$device"
 sgdisk -n 0:0:0 -c 1:"$label" "$device"
 
