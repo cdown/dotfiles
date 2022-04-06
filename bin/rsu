@@ -17,6 +17,7 @@ exec awk '
             exit 1;
         }
 
+        printf("+ %d\n", $1);
         sum += $1;
     }
 
