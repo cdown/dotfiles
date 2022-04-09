@@ -23,10 +23,6 @@ if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     )
 fi
 
-if [[ -f /proc/acpi/ibm/fan ]]; then
-    services_to_start+=(zcfan)
-fi
-
 for service in "${services_to_start[@]}"; do
     systemctl --user restart "$service"
 done
