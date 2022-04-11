@@ -7,3 +7,4 @@ SortIncludes: true
 UseTab: Never
 IndentPPDirectives: BeforeHash
 IndentCaseLabels: true
+AllowShortBlocksOnASingleLine: true
