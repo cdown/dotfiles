@@ -147,3 +147,5 @@ scratch() {
     fi
     cd "$_dir"
 }
+
+alias wol-chashao='wol 24:4b:fe:93:a7:0e'
