@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ~/'Google Drive'
+cd /mnt/scratch/'Google Drive'
 drive pull
