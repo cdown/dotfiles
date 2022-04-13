@@ -37,3 +37,7 @@ mkfs.ext4 -L "$label" -i 1048576 "$cryptdev_path"
 
 # We can tolerate data/metadata misordering.
 tune2fs -o journal_data_writeback "$cryptdev_path"
+
+printf '%s\n' \
+    'NOTE: You may want to make sure that the users map properly, and do the following:' \
+    'sudo setfacl -b -R /srv/samba && sudo setfacl -Rdm g:docker:rx /srv/samba && sudo setfacl -Rm g:docker:rx /srv/samba'
