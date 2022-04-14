@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec rsync --size-only -avHAXP ~/Music/ /mnt/scratch/Music/
