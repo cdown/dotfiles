@@ -17,10 +17,9 @@
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
 /.config/shell/rc/trello
-/.duply/bitbucket/_pre
-/.duply/bitbucket/conf
-/.duply/github/conf
 /.duply/google-drive/conf
+/.duply/repos/_pre
+/.duply/repos/conf
 /.duply/trello/conf
 /.flickr_download
 /.flickr_token
