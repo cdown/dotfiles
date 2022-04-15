@@ -12,8 +12,8 @@ dbus-update-activation-environment "${to_export[@]}"
 services_to_start=(
     pulseaudio fcitx battery-monitor.timer xresources
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
-    xinput-disable@screen xinput-disable@trackpoint synclient
-    no-dpms no-screensaver clipmenud upgrade-reminder.timer
+    xinput-disable@ELAN901C xinput-disable@screen xinput-disable@trackpoint
+    synclient no-dpms no-screensaver clipmenud upgrade-reminder.timer
     psi-notify xob
 )
 
