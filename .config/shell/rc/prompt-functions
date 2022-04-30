@@ -94,7 +94,7 @@ _hostname_prompt() {
 }
 
 _nox_prompt() {
-    if ! [ "$SSH_CLIENT" ] && ! [ "$DISPLAY" ]; then
+    if ! _running_on_wsl && ! [ "$SSH_CLIENT" ] && ! [ "$DISPLAY" ]; then
         colour_part 5 nox
     fi
 }
