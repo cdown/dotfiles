@@ -1,0 +1,5 @@
+warn 37;41
+err 37;41
+crit 37;41
+alert 37;41
+segfault 37;41
