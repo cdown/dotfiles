@@ -6,4 +6,7 @@
 procs=$(getconf _NPROCESSORS_ONLN)
 [[ $procs ]] || exit
 
-exec make -j "$(( procs + (procs/8) ))" "$@"
+addl=$(( procs / 8 ))
+(( addl )) || addl=1
+
+exec make -j "$(( procs + addl ))" "$@"
