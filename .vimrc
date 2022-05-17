@@ -226,4 +226,14 @@ nnoremap <silent> <Leader>e :set nowrap<CR>:setlocal formatoptions+=t<CR>:set te
 " Go to conflict marker
 noremap <silent> <Leader>c /^\(<<<<<<<\\|\|\|\|\|\|\|\|\\|=======\\|>>>>>>>\)<CR>
 
+" Kernel syntax
+augroup kernel_syntax
+  autocmd!
+
+  autocmd Syntax c syn keyword cStatement fallthrough
+  autocmd Syntax c syn keyword cOperator likely unlikely
+  autocmd Syntax c syn keyword cType u8 u16 u32 u64 s8 s16 s32 s64
+  autocmd Syntax c syn keyword cType __u8 __u16 __u32 __u64 __s8 __s16 __s32 __s64
+augroup END
+
 let g:GPGDefaultRecipients=["0xDF8D21B616118070"]
