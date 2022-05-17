@@ -51,9 +51,11 @@ nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
 nnoremap <silent> H :set hlsearch!<CR>
 
 
-highlight BadWhitespace ctermbg=darkred
-call matchadd('BadWhitespace', '\s\+$')    " trailing whitespace
-call matchadd('BadWhitespace', ' \+\ze\t') " spaces before tab
+highlight TrailingWhitespace ctermbg=black
+call matchadd('TrailingWhitespace', '\s\+$')
+
+highlight SpacesBeforeTab ctermbg=darkred
+call matchadd('SpacesBeforeTab', ' \+\ze\t')
 
 " I've got to stop saying this crap
 highlight ShittyWords ctermbg=red ctermfg=black
