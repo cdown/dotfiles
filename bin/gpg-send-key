@@ -1,0 +1,5 @@
+#!/bin/bash -ex
+
+for ks in hkps://keyserver.ubuntu.com hkp://pgp.mit.edu https://keyserver.pgp.com hkps://keys.openpgp.org hkps://keys.mailvelope.com; do
+    gpg --keyserver "$ks" --send-keys 0xDF8D21B616118070
+done
