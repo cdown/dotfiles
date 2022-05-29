@@ -1,0 +1,11 @@
+#!/bin/bash
+
+: "${MAX_IDLE_MS=120000}"
+
+while sleep "${BREAK_SEC-20m}"; do
+    idle_ms=$(xprintidle)
+    if (( idle_ms < MAX_IDLE_MS )); then
+        # User active.
+        notify-send -u critical -- 'Eye break' "Avert your gaze."
+    fi
+done
