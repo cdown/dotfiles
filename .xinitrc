@@ -23,6 +23,10 @@ if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     )
 fi
 
+if [[ $USER == lin ]]; then
+    services_to_start+=(eyebreak)
+fi
+
 for service in "${services_to_start[@]}"; do
     systemctl --user restart "$service"
 done
