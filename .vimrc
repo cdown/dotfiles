@@ -171,7 +171,7 @@ augroup filetype_settings
 
   autocmd BufRead,BufNewFile ~/.local/share/nota/* setlocal filetype=markdown
 
-  autocmd BufRead,BufNewFile */linux-mmots/*.c,*/linux-mmots/*.h setlocal textwidth=80
+  autocmd BufRead,BufNewFile */linux/*.c,*/linux/*.h setlocal textwidth=80
   autocmd BufRead,BufNewFile */systemd/*.c,*/systemd/*.h setlocal textwidth=109
 
   " Don't restore last file position for git buffers
