@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+date_cmd=(date '+%Y-%m-%d %H:%M')
 tzs=(
     Current
     America/Los_Angeles
@@ -18,15 +19,26 @@ max_tz_len() {
     echo "$max"
 }
 
-len=$(max_tz_len)
-for tz in "${tzs[@]}"; do
+print_tz() {
+    local len="${1?}"
+    local tz="${2?}"
+
     printf "%${len}s: " "$tz"
 
     if [[ $tz == Current ]]; then
-        unset TZ
+        "${date_cmd[@]}"
     else
-        export TZ="$tz"
+        TZ="$tz" "${date_cmd[@]}"
     fi
+}
 
-    date '+%Y-%m-%d %H:%M'
+len=$(max_tz_len)
+
+print_tz "$len" Current
+printf '\n'
+
+for tz in "${tzs[@]}"; do
+    if [[ $tz != Current ]]; then
+        print_tz "$len" "$tz"
+    fi
 done | sort -k 2,3
