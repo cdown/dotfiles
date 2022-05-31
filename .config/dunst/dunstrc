@@ -16,9 +16,8 @@ scale = 0
 notification_limit = 5
 frame_width = 0
 
-[shortcuts]
-    close_all = mod4+space
-    history = mod4+h
+close_all = mod4+space
+history = mod4+h
 
 [urgency_low]
     background = "#000000"
