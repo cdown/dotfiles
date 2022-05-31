@@ -29,4 +29,4 @@ for tz in "${tzs[@]}"; do
     fi
 
     date '+%Y-%m-%d %H:%M'
-done
+done | sort -k 2,3
