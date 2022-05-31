@@ -23,8 +23,10 @@ for tz in "${tzs[@]}"; do
     printf "%${len}s: " "$tz"
 
     if [[ $tz == Current ]]; then
-        date
+        unset TZ
     else
-        TZ="$tz" date
+        export TZ="$tz"
     fi
+
+    date '+%Y-%m-%d %H:%M'
 done
