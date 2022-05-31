@@ -15,6 +15,7 @@ offset = 15x15
 scale = 0
 notification_limit = 5
 frame_width = 0
+show_indicators = no
 
 close_all = mod4+space
 history = mod4+h
