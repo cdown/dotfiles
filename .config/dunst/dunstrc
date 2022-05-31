@@ -8,8 +8,8 @@ timeout = 10
 follow = keyboard
 icon_position = off
 
-width = 700
-height = 500
+width = (0, 700)
+height = 800
 origin = top-right
 offset = 15x15
 scale = 0
