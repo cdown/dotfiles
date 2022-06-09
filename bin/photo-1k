@@ -1,8 +1,11 @@
 #!/bin/bash -ex
 
 for file in DSCF?*; do
-    [[ -d "$file" ]] && continue
-    dir=${file%???.*}
+    if [[ "$file" == *.MOV ]]; then
+        dir=mov
+    else
+        dir=${file%???.*}
+    fi
     [[ -d "$dir" ]] || mkdir -- "$dir"
     mv -n -- "$file" "$dir"
 done
