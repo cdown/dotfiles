@@ -155,5 +155,8 @@ alias t='sudo cat /sys/kernel/debug/tracing/trace'
 alias nproc1='echo "$(( $(nproc) + 1 ))"'
 
 utf8() {
-    iconv -f "${1?}"//IGNORE -t UTF8//IGNORE
+    local encoding
+    encoding=$(chardetect "${1?}" | sed -r 's/.* ([A-Za-z0-9-]+) with confidence.*/\1/')
+    [[ $encoding ]] || return
+    iconv -f "$encoding"//IGNORE -t UTF8//IGNORE < "$1" > "${2?}"
 }
