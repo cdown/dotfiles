@@ -1,6 +1,7 @@
 #!/bin/bash -ex
 
 for file in DSCF?*; do
+    [[ -d "$file" ]] && continue
     if [[ "$file" == *.MOV ]]; then
         dir=mov
     else
