@@ -1,0 +1,44 @@
+#!/bin/bash -ex
+
+# Erroneous re: file=...,media=cdrom and such
+# shellcheck disable=SC2054
+
+# Set up Windows 10 with virtio drivers.
+
+
+base_dir=$HOME/qemu
+img=$base_dir/win10
+
+extra_args=()
+
+if (( INSTALL )); then
+    # https://www.microsoft.com/en-gb/software-download/windows10
+    win10_iso=${1?}
+
+    # https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+    # https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
+    virtio_iso=${2?}
+
+    [[ -e $img ]] && exit 1
+
+    mkdir -p "$base_dir"
+
+    qemu-img create -f qcow2 -o preallocation=full "$img" 25G
+
+    extra_args+=(-boot d -drive file="$win10_iso",media=cdrom,readonly=on -drive file="$virtio_iso",media=cdrom,readonly=on -nic none)
+else
+    [[ -e $img ]] || exit 1
+
+    # No NIC on install to avoid MS account
+    extra_args+=(-net nic -net user,hostname=windowsvm)
+fi
+
+qemu-system-x86_64 -enable-kvm \
+    -cpu host \
+    -smp 2 \
+    -device VGA,vgamem_mb=128 \
+    -drive file="$img",if=virtio \
+    -m 4G \
+    -monitor stdio \
+    -name "Windows" \
+    "${extra_args[@]}"
