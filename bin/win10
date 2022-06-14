@@ -36,9 +36,6 @@ fi
 qemu-system-x86_64 -enable-kvm \
     -cpu host \
     -smp 2 \
-    -device VGA,vgamem_mb=128 \
     -drive file="$img",if=virtio \
     -m 4G \
-    -monitor stdio \
-    -name "Windows" \
     "${extra_args[@]}"
