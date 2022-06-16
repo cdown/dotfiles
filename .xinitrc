@@ -31,7 +31,7 @@ for service in "${services_to_start[@]}"; do
     systemctl --user restart "$service"
 done
 
-while :; do
+while sleep 0.5; do
     "${WM:-dwm}" >> "/tmp/dwm-$USER.log" 2>&1
     hash -r  # in case we now have a new one in /usr/local/bin, for example
 done
