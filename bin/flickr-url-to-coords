@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+import sys
+from urllib.parse import urlparse, parse_qs
+
+# URLs look like https://www.flickr.com/map/?fLat=40.866178&fLon=-75.735969&zl=13&everyone_nearby=1&photo=49016081858
+
+parsed_url = urlparse(sys.stdin.read().strip())
+qs = parse_qs(parsed_url.query)
+
+print("{}, {}".format(qs['fLat'][0], qs['fLon'][0]))
