@@ -8,4 +8,4 @@ from urllib.parse import urlparse, parse_qs
 parsed_url = urlparse(sys.stdin.read().strip())
 qs = parse_qs(parsed_url.query)
 
-print("{}, {}".format(qs['fLat'][0], qs['fLon'][0]))
+print("https://www.google.com/maps/place/{},%20{}".format(qs['fLat'][0], qs['fLon'][0]))
