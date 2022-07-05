@@ -22,7 +22,7 @@ gf() {
     if [ "$1" ]; then
         git fetch -p "$1"
     else
-        git fetch -p --all
+        git fetch -p -j99 --all
     fi
 }
 
