@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-shopt -s extglob nullglob
+shopt -s globstar nullglob
 
 mkdir mp3
 cd mp3
