@@ -4,6 +4,8 @@ head_file=$(mktemp)
 before_file=$(mktemp)
 after_file=$(mktemp)
 
+trap 'rm -- "$head_file" "$before_file" "$after_file"' EXIT
+
 while IFS= read -r line; do
     case $line in
 	'<<<<<<<'*) out=$head_file; continue ;;
