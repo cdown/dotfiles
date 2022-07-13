@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/conflictmotions"]
 	path = .vim/bundle/conflictmotions
 	url = https://github.com/vim-scripts/ConflictMotions.git
+[submodule ".vim/bundle/countjump"]
+	path = .vim/bundle/countjump
+	url = https://github.com/inkarkat/vim-CountJump.git
