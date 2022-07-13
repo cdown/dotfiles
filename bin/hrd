@@ -21,7 +21,7 @@ done
 
 printf '%s\n\n' "What is now:"
 
-cat -- "$head_file"
+delta "$before_file" "$head_file"
 
 printf '\n%s\n\n' "...previously had these changes:"
 
