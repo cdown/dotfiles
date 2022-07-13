@@ -23,6 +23,8 @@ mono  error         bold
 color index         brightgreen     default         "~A"                       # all messages
 color index         blue            default         "~P"                       # messages from me
 color index         blue            default         "~p"                       # messages to me
+color index         blue            default         "~C [^@]+@chrisdown.name"  # messages to me (wildcard)
+color index         black           blue            "~p~U"                     # messages to me that i've not read yet
 color index         red             default         "~F"                       # flagged messages
 color index         black           red             "~D"                       # deleted messages
 color index         red             default         "~T"                       # tagged messages
