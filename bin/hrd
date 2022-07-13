@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+head_file=$(mktemp)
+before_file=$(mktemp)
+after_file=$(mktemp)
+
+while IFS= read -r line; do
+    case $line in
+	'<<<<<<<'*) out=$head_file; continue ;;
+	'|||||||'*) out=$before_file; continue ;;
+	'======='*) out=$after_file; continue ;;
+	'>>>>>>>'*) unset out ;;
+    esac
+
+    [[ $out ]] || continue
+
+    printf '%s\n' "$line" >> "$out"
+done
+
+printf '%s\n\n' "What is now:"
+
+cat -- "$head_file"
+
+printf '\n%s\n\n' "...previously had these changes:"
+
+delta "$before_file" "$after_file"
