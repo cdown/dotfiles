@@ -21,6 +21,7 @@ mono  error         bold
 # Index
 
 color index         brightgreen     default         "~A"                       # all messages
+color index         white           brightblack     "~N"                       # all unread messages
 color index         blue            default         "~P"                       # messages from me
 color index         blue            default         "~p"                       # messages to me
 color index         blue            default         "~C [^@]+@chrisdown.name"  # messages to me (wildcard)
