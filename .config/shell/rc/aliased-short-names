@@ -10,6 +10,7 @@ alias s=sshrc
 alias b='sudo brightness'
 alias x='s -l root'
 alias q='sudo '
+alias v='vim'
 alias lopri='nice -n 19 ionice -c2 -n7 '
 alias pp='pdfpc -n right --disable-auto-grouping'
 alias scan='sudo nmap -n -PN -sT -sU -p-'
