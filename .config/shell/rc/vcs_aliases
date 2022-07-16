@@ -17,6 +17,7 @@ alias gp='git push'
 alias gs='git show --no-prefix'
 alias gst='git status'
 alias gref='git reflog --date=iso'
+alias gsmu='git submodule foreach sh -c "git fetch -p && git reset --hard origin/HEAD"'
 
 gf() {
     if [ "$1" ]; then
