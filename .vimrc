@@ -198,14 +198,6 @@ augroup modechange_settings
   " Jump to last position in file
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-  " Go to last file(s) if invoked without arguments.
-  autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
-      \ call mkdir($HOME . "/.vim") |
-      \ endif |
-      \ execute "mksession! " . $HOME . "/.vim/Session.vim"
-  autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
-      \ execute "source " . $HOME . "/.vim/Session.vim"
-
   " Balance splits on window resize
   autocmd VimResized * wincmd =
 augroup END
