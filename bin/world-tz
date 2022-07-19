@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-date_cmd=(date '+%Y-%m-%d %H:%M')
+date_cmd=(date '+%a %Y-%m-%d %H:%M')
 tzs=(
     Current
     America/Los_Angeles
