@@ -41,4 +41,4 @@ for tz in "${tzs[@]}"; do
     if [[ $tz != Current ]]; then
         print_tz "$len" "$tz"
     fi
-done | sort -k 2,3
+done | sort -k 3,4
