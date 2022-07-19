@@ -46,3 +46,7 @@ macro index,pager J "<pipe-message> urlscan<Enter>" "call urlscan to extract URL
 macro attach,compose J "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 macro index M '<enter-command>set pipe_sep="\n_PIPE_SEP_\n"<enter><pipe-message>pyenv exec gmute<enter><sync-mailbox>'
+
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all as read"
