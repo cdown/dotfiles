@@ -161,3 +161,5 @@ utf8() {
     [[ $encoding ]] || return
     iconv -f "$encoding"//IGNORE -t UTF8//IGNORE < "$1" > "${2?}"
 }
+
+alias gitdf='PATH="$HOME/git/git:$PATH" GIT_EXEC_PATH="$HOME/git/git" command git'
