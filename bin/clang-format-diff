@@ -1,0 +1,26 @@
+#!/bin/bash -eu
+
+shopt -s extglob
+
+(( $# )) || set -- 'HEAD^'
+skip=0
+
+while IFS= read -r line; do
+    case $line in
+	'+++ '*)
+	    file=${line##'+++ '}
+	    case $file in
+		*.c*(pp|s)|*.h*(pp)|*.java|*.m|*.js|*.json|*.proto) skip=0 ;;
+		*) skip=1 ;;
+	    esac
+	;;
+	'@@ '*)
+	    (( skip )) && continue
+	    IFS=', ' read -r from chunk _ <<< "${line##*+}"
+	    [[ $chunk == @@ ]] && chunk=1  # no chunk on single line
+	    to=$((from + chunk - 1))
+	    printf 'Formatting %s from line %d to %d\n' "${file?}" "$from" "$to"
+	    clang-format -i -lines "$from:$to" "${file?}"
+	;;
+    esac
+done < <(git diff -U0 --no-prefix "$@")
