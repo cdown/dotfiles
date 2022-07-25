@@ -1,9 +1,12 @@
 #!/bin/bash
 
 if [[ $1 ]]; then
-    curl -s http://ix.io/"${1##*/}"
+    curl -s https://termbin.com/"${1##*/}"
 else
-    # Avoid curl timeout, "x" needed to avoid stripping trailing newlines
+    # Don't open the socket until ready, "x" needed to avoid stripping trailing newlines
     stdin=$(cat; printf x)
-    curl -F 'f:1=<-' ix.io <<< "${stdin%x}"
+    exec 3<>/dev/tcp/termbin.com/9999
+    printf '%s\n' "${stdin%x}" >&3
+    cat <&3
+    exec 3<&-
 fi
