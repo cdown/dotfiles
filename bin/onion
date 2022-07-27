@@ -36,6 +36,11 @@ def words(prefix="cdown"):
             line = line.strip()
             if len(line) >= 3:
                 san = ''.join(c for c in line.lower() if c.isalpha())
+                # the above check is expensive so we guard it with the first
+                # len check, but we still need to check again in case it got
+                # smaller
+                if len(san) < 3:
+                    continue
                 words[san] = None
 
     words = list(words)
