@@ -4,9 +4,9 @@
 
 import os
 
-got = []
+def repeats():
+    got = []
 
-def main():
     for f in os.listdir("."):
         if not f.startswith("cdown"):
             continue
@@ -18,7 +18,7 @@ def main():
         while f[idx] == char:
             idx += 1
 
-        if idx == 6:
+        if idx <= 7:  # only accept 2+ repeats
             continue
 
         got.append((idx - 6, f))
@@ -26,5 +26,42 @@ def main():
     for num, onion in sorted(got, key=lambda x: x[0]):
         print("{}: {}".format(num, onion))
 
+def words(prefix="cdown"):
+    # preserve order and uniqueness from 3.7
+    words = {}
+    got = []
+
+    with open("/usr/share/dict/british-english") as f:
+        for line in f:
+            line = line.strip()
+            if len(line) >= 3:
+                san = ''.join(c for c in line.lower() if c.isalpha())
+                words[san] = None
+
+    words = list(words)
+    idx = 0
+
+    for f in sorted(os.listdir(".")):
+        if not f.startswith(prefix):
+            continue
+
+        cut = f[len(prefix):]
+
+        try:
+            while True:
+                c = words[idx]
+                idx += 1
+                if cut.startswith(c):
+                    got.append((len(c), f))
+                elif c > cut:
+                    break
+        except IndexError:
+            break
+
+    for num, onion in sorted(got, key=lambda x: x[0]):
+        print("{}: {}".format(num, onion))
+
 if __name__ == '__main__':
-    main()
+    repeats()
+    print("----")
+    words()
