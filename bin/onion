@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+### Find onions with decent separators
+
+import os
+
+got = []
+
+def main():
+    for f in os.listdir("."):
+        if not f.startswith("cdown"):
+            continue
+
+        idx = 5
+        char = f[idx]
+        idx += 1
+
+        while f[idx] == char:
+            idx += 1
+
+        if idx == 6:
+            continue
+
+        got.append((idx - 6, f))
+
+    for num, onion in sorted(got, key=lambda x: x[0]):
+        print("{}: {}".format(num, onion))
+
+if __name__ == '__main__':
+    main()
