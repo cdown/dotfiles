@@ -10,7 +10,7 @@ fi
 log_dir=/var/log/upgrades/$USER
 name=$(LC_ALL=C date +%F-%T.%N)
 log_file=$log_dir/$name
-ansible_type=server
+ansible_type=desktop
 
 sudo mkdir -p -m0700 "$log_dir"
 sudo chown "$USER" "$log_dir"
