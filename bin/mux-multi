@@ -1,0 +1,17 @@
+#!/bin/bash -ex
+
+eng_stream=${1?}
+chs_stream=${2?}
+
+for file in *.mkv; do
+    eng="${file%.*}".eng.srt
+    chs="${file%.*}".chs.srt
+    out="${file%.*}".srt
+
+    ffmpeg -i "$file" -map "$eng_stream" "$eng"
+    ffmpeg -i "$file" -map "$chs_stream" "$chs"
+
+    srt mux -t -i "$eng" -i "$chs" -o "$out"
+
+    rm "$eng" "$chs"
+done
