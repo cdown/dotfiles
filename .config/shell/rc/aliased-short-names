@@ -163,3 +163,4 @@ utf8() {
 }
 
 alias gitdf='PATH="$HOME/git/git:$PATH" GIT_EXEC_PATH="$HOME/git/git" command git'
+alias nxkill="pkill -f '/usr/NX' && sleep 10 && pkill -9 -f '/usr/NX'"
