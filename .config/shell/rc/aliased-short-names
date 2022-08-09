@@ -10,7 +10,6 @@ alias s=sshrc
 alias b='sudo brightness'
 alias x='s -l root'
 alias q='sudo '
-alias v='vim'
 alias lopri='nice -n 19 ionice -c2 -n7 '
 alias pp='pdfpc -n right --disable-auto-grouping'
 alias scan='sudo nmap -n -PN -sT -sU -p-'
@@ -32,6 +31,18 @@ alias mtp-on='mtpfs -o allow_other /mnt/mtp'
 alias mtp-off='fusermount -u /mnt/mtp'
 
 alias pngquant='pngquant --skip-if-larger --strip -f --ext .png'
+
+alias v='vim'
+alias vf='v "$(fd -H -0 | fzf --read0)"'
+
+vr() {
+    [ "${1?}" ] || return
+    full=$(rg --no-heading --line-number --smart-case -- "$1" | fzf)
+    IFS=: read -r file line _ <<< "$full"
+    [ "$file" ] || return
+    [ "$line" ] || return
+    vim "$file" +"$line"
+}
 
 m() {
     moshrc "$@"
