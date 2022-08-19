@@ -67,7 +67,7 @@ case $1 in
         xrandr --output eDP1 --off
     ;;
     work)
-        xrandr --output HDMI1 --auto --primary --output DP2 --auto --right-of HDMI1 --output eDP1 --off
+        xrandr --output HDMI-1 --auto --primary --output DP-2 --auto --right-of HDMI-1 --output eDP-1 --off
     ;;
     external-only)
         xrandr --output "$main_display" --off
