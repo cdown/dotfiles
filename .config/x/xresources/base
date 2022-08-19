@@ -1,3 +1,5 @@
+Rxvt.preeditType: Root
+
 URxvt.boldFont:
 URxvt.depth: 32
 URxvt.borderless: 1
