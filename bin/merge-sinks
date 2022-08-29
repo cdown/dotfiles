@@ -1,0 +1,16 @@
+#!/bin/bash -ex
+
+# Output to multiple headphones using module-combine-sink
+
+readarray -t all_sinks < <(pacmd list-sinks | sed -n '/name:/s/.*<\([^>]\+\)>.*/\1/p')
+all_sinks+=(Done)
+merged_sinks=''
+
+PS3="Enter a sink by number: "
+select sink in "${all_sinks[@]}"; do
+    [[ $sink == "Done" ]] && break
+    [[ $merged_sinks ]] && merged_sinks+=,
+    merged_sinks+="$sink"
+done
+
+pacmd load-module module-combine-sink sink_name=combined slaves="$merged_sinks"
