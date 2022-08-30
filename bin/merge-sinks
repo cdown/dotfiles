@@ -13,4 +13,7 @@ select sink in "${all_sinks[@]}"; do
     merged_sinks+="$sink"
 done
 
+# First get rid of any existing ones
+pactl unload-module module-combine-sink
+
 pacmd load-module module-combine-sink sink_name=combined slaves="$merged_sinks"
