@@ -3,6 +3,7 @@
 # Go into the directory that should mimic the directory structure of the one
 # being shrunk.
 # Defaults are good for transferring to Lin's parents
+# For Flickr uploads, use VIDEO_CRF=24
 export LC_ALL=C
 
 shopt -s nullglob globstar
