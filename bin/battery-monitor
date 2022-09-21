@@ -3,7 +3,7 @@
 shopt -s nullglob
 
 : "${WARN_PERC:=10}"
-: "${SLEEP_PERC:=5}"
+: "${SLEEP_PERC:=10}"
 : "${XDG_RUNTIME_DIR:=/run/user/"$(id -u)"}"
 : "${CACHE_DIR:="$XDG_RUNTIME_DIR"/battmon}"
 
