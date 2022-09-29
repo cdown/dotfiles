@@ -1,0 +1,8 @@
+#!/bin/bash -ex
+
+out=${1?}
+shift
+
+# Need to put working directory in or ffmpeg will think it's relative to the
+# named pipe in /proc...?
+ffmpeg -f concat -safe 0 -i <(printf "file '$PWD/%s'\n" "$@") -c copy "$out"
