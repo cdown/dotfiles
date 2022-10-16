@@ -16,6 +16,7 @@
 /.config/msmtp/chris@chrisdown.name
 /.config/mutt/accounts/chris@chrisdown.name
 /.config/mutt/aliases
+/.config/rclone/rclone.conf
 /.config/shell/rc/trello
 /.duply/google-drive/conf
 /.duply/repos/_pre
