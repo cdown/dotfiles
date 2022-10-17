@@ -5,6 +5,15 @@ sync_no_backup() {
 }
 
 sync() {
+    sync_no_backup -v --dry-run "${@:2}"
+    while true; do
+        read -rp "Does this look okay? " yn
+        case $yn in
+            [Yy]* ) break ;;
+            [Nn]* ) exit 1 ;;
+            *) echo "Please answer y/n." >&2 ;;
+        esac
+    done
     sync_no_backup --backup-dir "s3:chrisdown-rclone-backups/$(date +%F)/${1?}" "${@:2}"
 }
 
