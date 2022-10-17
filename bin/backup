@@ -1,43 +1,22 @@
 #!/bin/bash -ex
 
-ulimit -n 4096
+sync_no_backup() {
+    rclone sync --fast-list --update --use-server-modtime -P "$@"
+}
 
-# Otherwise pyenv shims will interfere with duplicity imports
-# Sadly duplicitly can't be pip installed :-(
-PATH="$(get-path-without-env)"
-export PATH
+sync() {
+    sync_no_backup --backup-dir "s3:chrisdown-rclone-backups/$(date +%F)/${1?}" "${@:2}"
+}
 
+mountpoint -q /mnt/scratch
 
-if ! [[ -v TMUX ]]; then
-    if (( PURGE )) || (( VERIFY )); then
-        printf '%s\n' "Must already be in tmux session to pass env vars" >&2
-        exit 1
-    fi
+sync_no_backup drive: /mnt/scratch/Google\ Drive
+sync drive /mnt/scratch/Google\ Drive s3:chrisdown-google-drive
 
-    exec tmux new-session -s backup -- "$0"
-fi
+backup-repos
+sync repos /mnt/scratch/Repos s3:chrisdown-github
 
-backup_type=backup
-if (( PURGE )); then
-    backup_type=full
-fi
+trello-backup
+sync trello /mnt/scratch/Trello s3:chrisdown-trello-backup
 
-if (( $# )); then
-    backup_paths=( "${@/#/"$HOME/.duply/"}" )
-else
-    backup_paths=( ~/.duply/* )
-fi
-
-for backup_path in "${backup_paths[@]}"; do
-    backup_name=${backup_path##*/}
-    pre=$backup_path/_pre
-    post=$backup_path/_post
-
-    if [[ -x "$pre" ]]; then "$pre"; fi
-
-    duply "$backup_name" "$backup_type"
-    (( PURGE )) && duply "$backup_name" purge --force
-    (( VERIFY )) && duply "$backup_name" verify
-
-    if [[ -x "$post" ]]; then "$post"; fi
-done
+sync music ~/Music s3:chrisdown-music
