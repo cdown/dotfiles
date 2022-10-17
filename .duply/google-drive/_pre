@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd /mnt/scratch/'Google Drive'
-drive pull

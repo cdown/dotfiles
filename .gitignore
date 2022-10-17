@@ -18,9 +18,6 @@
 /.config/mutt/aliases
 /.config/rclone/rclone.conf
 /.config/shell/rc/trello
-/.duply/google-drive/conf
-/.duply/repos/conf
-/.duply/trello/conf
 /.flickr_download
 /.flickr_token
 /.irssi/personal/certs/oftc-cdown.pem
