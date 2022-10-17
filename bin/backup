@@ -25,7 +25,8 @@ sync drive /mnt/scratch/Google\ Drive s3:chrisdown-google-drive
 backup-repos
 sync repos /mnt/scratch/Repos s3:chrisdown-github
 
+# We redownload everything each time, so we can't use mtime
 trello-backup
-sync trello /mnt/scratch/Trello s3:chrisdown-trello-backup
+sync trello /mnt/scratch/Trello s3:chrisdown-trello-backup --checksum
 
 sync music ~/Music s3:chrisdown-music
