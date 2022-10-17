@@ -19,7 +19,6 @@
 /.config/rclone/rclone.conf
 /.config/shell/rc/trello
 /.duply/google-drive/conf
-/.duply/repos/_pre
 /.duply/repos/conf
 /.duply/trello/conf
 /.flickr_download
@@ -33,6 +32,7 @@
 /.s3cfg
 /.ssh/config
 /.ssh/keys/personal
+/bin/backup-repos
 /bin/domaincheck
 /bin/inbox-reminder
 /bin/mkt
