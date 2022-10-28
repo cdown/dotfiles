@@ -3,7 +3,7 @@
 export LC_ALL=C
 
 in=${1?}
-out=${1?}
+out=${2?}
 
 : "${MAX_DIMENSION:=1920}"
 : "${VIDEO_CRF:=24}"
