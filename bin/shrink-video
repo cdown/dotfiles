@@ -1,25 +1,31 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 export LC_ALL=C
 
 in=${1?}
 out=${2?}
 
-: "${MAX_DIMENSION:=1920}"
+: "${MAX_DIMENSION:=0}"
 : "${VIDEO_CRF:=24}"
-: "${PRESET:=faster}"
-: "${X265:=0}"
+: "${PRESET:=slow}"
+: "${X265:=1}"
+
+
+extra_vf=''
+if (( MAX_DIMENSION )); then
+    extra_vf=scale=w="$MAX_DIMENSION":h="$MAX_DIMENSION":force_original_aspect_ratio=decrease', '
+fi
 
 if (( X265 )); then
     nice -n 19 \
         ffmpeg -y -i "$in" -c:v libx265 \
             -preset "${PRESET}" \
-            -vf scale=w="$MAX_DIMENSION":h="$MAX_DIMENSION":force_original_aspect_ratio=decrease', format=yuv420p' \
+            -vf "${extra_vf}format=yuv420p" \
             -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$out"
 else
     nice -n 19 \
         ffmpeg -y -i "$in" -c:v libx264 -profile:v baseline \
             -preset "${PRESET}" \
-            -vf scale=w="$MAX_DIMENSION":h="$MAX_DIMENSION":force_original_aspect_ratio=decrease', format=yuv420p' \
+            -vf "${extra_vf}format=yuv420p" \
             -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$out"
 fi
