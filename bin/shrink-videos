@@ -3,5 +3,14 @@
 mkdir -p shrink
 
 for file do
-    shrink-video "$file" shrink/"$file"
+    dir=${file%/*}
+    if [[ $dir != "$file" ]]; then
+        mkdir -p shrink/"$dir"
+    fi
+    out=shrink/"${file%.*}.mp4"
+    if [[ -f "$out" ]]; then
+        printf '%s already exists, skipping\n' "$out" >&2
+        continue
+    fi
+    shrink-video "$file" "$out"
 done

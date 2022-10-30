@@ -29,3 +29,12 @@ else
             -vf "${extra_vf}format=yuv420p" \
             -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$out"
 fi
+
+in_sz=$(stat -c%s "$in")
+out_sz=$(stat -c%s "$out")
+intolerance=1048576
+
+if (( out_sz > (in_sz - intolerance) )); then
+    printf '%s is not a significant improvement, restoring %s\n' "$out" "$in" >&2
+    cp -- "$in" "$out"
+fi
