@@ -116,3 +116,10 @@ done
 
 sudo paccache -rk2
 sudo paccache -ruk0
+
+rebuild=$(checkrebuild -v)
+if [[ $rebuild ]]; then
+    printf '%s\n' "$rebuild"
+    printf '%s%s%s%s\n' \
+        "$(tput setaf 1)" "$(tput blink)" "WARNING: PACKAGES NEED MANUAL REBUILD!" "$(tput sgr0)"
+fi
