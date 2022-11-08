@@ -28,7 +28,7 @@ if exists pyenv; then
         pip install -U pip
         pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
             xargs -d '\n' pip install -U
-    done < ~/.python-version
+    done < ~/.pyenv/version
 fi
 
 # This one is safe without checking for explicit dependencies >=2.6.1, see
