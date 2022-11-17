@@ -30,3 +30,4 @@ trello-backup
 sync trello /mnt/scratch/Trello s3:chrisdown-trello-backup --checksum
 
 sync music ~/Music s3:chrisdown-music
+rsync -rvP --delete --size-only --inplace ~/Music/ /mnt/scratch/Music/
