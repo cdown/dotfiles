@@ -2,7 +2,10 @@
 
 # Workaround for wifi networks which set stupid routing domains
 
-while sleep 120; do
+i=0
+
+while (( i == 0 )) || sleep 120; do
+    (( i++ ))
     for ((i=0; i<10; i++)); do
 	sudo resolvectl domain wlp0s20f3 ''
     done
