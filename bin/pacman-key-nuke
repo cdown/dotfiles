@@ -1,0 +1,8 @@
+#!/bin/bash -ex
+
+# This only happened once in ten years, but just in case the pacman GPG store
+# gets screwed again...
+
+rm -rf /etc/pacman.d/gnupg
+pacman-key --init
+pacman-key --populate archlinux
