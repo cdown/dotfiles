@@ -21,6 +21,7 @@ services_to_start=(
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     services_to_start+=(
         irssi mutt mpdscribble inbox-reminder.timer mpd matterhorn
+        mpd-mpris
     )
 fi
 
