@@ -1,0 +1,15 @@
+#!/bin/bash
+
+case ${1?} in
+    mount)
+        mkdir -p /mnt/scratch{,-baduser}
+        cryptsetup luksOpen -S 1 /dev/sda1 ext
+        mount /dev/mapper/ext /mnt/scratch-baduser
+        bindfs --map="$(stat -c %u /mnt/scratch-baduser)"/"$(id -u)" /mnt/scratch-baduser /mnt/scratch
+    ;;
+    unmount)
+        umount /mnt/scratch
+        umount /mnt/scratch-baduser
+        cryptsetup luksClose ext
+    ;;
+esac
