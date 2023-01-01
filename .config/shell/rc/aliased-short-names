@@ -110,6 +110,7 @@ alias nxs='ssh -L 1234:10.19.11.102:4000 wotou-ext'
 alias e='PATH=$(get-path-without-env) '
 
 alias pacman-recent='grep '\''\[ALPM\] \(removed\|installed\|upgraded\|downgraded\)'\'' /var/log/pacman.log'
+alias pacman-recent-critical='pacman-recent | grep -w -e systemd -e linux -e dbus -e libc | tail -20'
 
 alias mpv='mpv --profile=high'
 alias mpva='mpv --no-video'
