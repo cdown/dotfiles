@@ -1,0 +1,12 @@
+#!/bin/bash -x
+
+src=$(findmnt -n -o SOURCE --target /boot)
+root_src=$(findmnt -n -o SOURCE --target /)
+
+if [[ -z $src ]] || [[ $src == "$root_src" ]]; then
+    exit 1
+fi
+
+umount /boot
+fsck.vfat -w -r -l -a -v -t "$src"
+mount /boot
