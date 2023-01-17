@@ -4,6 +4,7 @@ device=${1?}
 label=${2?}
 cryptdev=ext
 cryptdev_path=/dev/mapper/$cryptdev
+pbkdf_kb=512000
 
 if [[ $device == *[0-9] ]]; then
     printf '%s\n' 'Use the device itself, not a partition\n' >&2
@@ -21,7 +22,7 @@ part="$device"1
 unset device  # safety measure to make sure we don't introduce some bug that
 	      # accidentally does something with the base device...
 
-cryptsetup -y -v luksFormat "$part"
+cryptsetup -y -v --pbkdf-memory "$pbkdf_kb" luksFormat "$part"
 cryptsetup luksOpen --allow-discards "$part" "$cryptdev"
 
 # This drive mostly stores photos. Most of these are about 12 megabytes or so.
