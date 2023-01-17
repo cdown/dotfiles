@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+label=lin-ext
+from=/dev/disk/by-partlabel/$label
+to=/mnt/$label
+
+case ${1?} in
+    mount)
+        mkdir -p "$to"
+        cryptsetup luksOpen "$from" "$label"
+        mount -o noatime /dev/mapper/"$label" "$to"
+        printf 'Mounted at %s\n' "$to"
+    ;;
+    unmount)
+        umount /mnt/"$label"
+        cryptsetup luksClose "$label"
+    ;;
+esac
