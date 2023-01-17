@@ -4,7 +4,7 @@ device=${1?}
 label=${2?}
 cryptdev=ext
 cryptdev_path=/dev/mapper/$cryptdev
-pbkdf_kb=512000
+pbkdf_kb=128000
 
 if [[ $device == *[0-9] ]]; then
     printf '%s\n' 'Use the device itself, not a partition\n' >&2
