@@ -1,0 +1,23 @@
+#!/bin/bash -ex
+
+length=${1?}
+
+hours=0
+minutes=0
+seconds=0
+
+[[ "$length" =~ (-?[0-9]+)h ]] && hours=${BASH_REMATCH[1]}
+[[ "$length" =~ (-?[0-9]+)m ]] && minutes=${BASH_REMATCH[1]}
+[[ "$length" =~ (-?[0-9]+)s ]] && seconds=${BASH_REMATCH[1]}
+
+total_seconds=$(( (hours * 60 * 60) + (minutes * 60) + seconds ))
+
+if (( total_seconds <= 0 )) || (( total_seconds >= (24 * 60 * 60) )); then
+    printf 'Invalid length: %s\n' "$length" >&2
+    exit 1
+fi
+
+trap 'dunstctl set-paused false' EXIT
+
+dunstctl set-paused true
+sleep "$total_seconds"
