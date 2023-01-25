@@ -180,3 +180,5 @@ alias nxkill="pkill -f '/usr/NX' && sleep 10 && pkill -9 -f '/usr/NX'"
 alias yt-dlpa='yt-dlp -f bestaudio'
 alias tczst='tar --use-compress-program zstd -cf'
 alias tdzst='tar --use-compress-program zstd -xf'
+
+alias today='find . -daystart -ctime 0 -print'
