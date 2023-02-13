@@ -163,7 +163,7 @@ scratch() {
 }
 
 alias wol-chashao='wol 24:4b:fe:93:a7:0e'
-alias wol-nucleus='wol a4:ae:11:18:45:de'
+alias wol-guotie='wol a4:ae:11:18:45:de'
 alias sxiv='nsxiv'
 alias t='sudo cat /sys/kernel/debug/tracing/trace'
 alias nproc1='echo "$(( $(nproc) + 1 ))"'
