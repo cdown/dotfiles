@@ -3,7 +3,7 @@
 export LC_ALL=C
 
 in=${1?}
-out=${2?}
+out=${2:-"${in%.*}_SHRINK.mp4"}
 
 : "${MAX_DIMENSION:=0}"
 : "${VIDEO_CRF:=24}"
