@@ -21,7 +21,7 @@ any_battery_exists() {
     (( "${#batteries[@]}" ))
 }
 external_monitor_connected() {
-    xrandr | grep -c '^\(DP\|HDMI\).* connected'
+    xrandr | grep -q '^\(DP\|HDMI\).* connected'
 }
 write_last() {
     mkdir -p "$CACHE_DIR"
