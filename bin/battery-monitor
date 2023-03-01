@@ -20,6 +20,9 @@ any_battery_exists() {
     batteries=(/sys/class/power_supply/BAT*)
     (( "${#batteries[@]}" ))
 }
+external_monitor_connected() {
+    xrandr | grep -c '^\(DP\|HDMI\).* connected'
+}
 write_last() {
     mkdir -p "$CACHE_DIR"
     printf '%s' "${1?}" > "$CACHE_DIR/last_global_state"
@@ -55,13 +58,12 @@ any_is_charging && exit 0
 full=$(sum /sys/class/power_supply/BAT*/{charge,energy}_full)
 now=$(sum /sys/class/power_supply/BAT*/{charge,energy}_now)
 perc=$(( now * 100 / full ))
-external_monitor_connected=$(xrandr | grep -c '^\(DP\|HDMI\).* connected')
 
 if (( perc <= WARN_PERC )); then
     notify-send -u critical 'Reaching critical battery threshold'
 fi
 
-if (( external_monitor_connected )) && ! any_is_charging; then
+if ! any_is_charging && external_monitor_connected; then
     notify-send -u critical 'Connected to monitor but not AC!'
 fi
 
