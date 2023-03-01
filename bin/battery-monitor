@@ -63,7 +63,7 @@ if (( perc <= WARN_PERC )); then
     notify-send -u critical 'Reaching critical battery threshold'
 fi
 
-if ! any_is_charging && external_monitor_connected; then
+if ! all_are_unknown && external_monitor_connected; then
     notify-send -u critical 'Connected to monitor but not AC!'
 fi
 
