@@ -43,3 +43,6 @@
 [submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
 	path = .local/share/nvim/site/pack/packer/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim
+[submodule ".nvim/bundle/nvim-lspconfig"]
+	path = .nvim/bundle/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
