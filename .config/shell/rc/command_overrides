@@ -24,7 +24,12 @@ alias startx='exec startx -- -dpi 96 &>| /tmp/startx-$USER'
 
 # $config_home comes from shell init
 # shellcheck disable=SC2154
-alias vim='PYTHONPATH="$(vcs-root)" vim -u "$config_home/.vimrc" -N'
+if command -v nvim >/dev/null 2>&1; then
+    alias vim='PYTHONPATH="$(vcs-root)" vim -u "$config_home/.vimrc" -N'
+else
+    alias nvim='nvim -u "$config_home/.config/nvim/init.vim"'
+    alias vim=nvim
+fi
 
 # Do not disable raw control chars when running less
 alias less='less -R'
