@@ -40,9 +40,6 @@
 [submodule ".vim/bundle/ingo-library"]
 	path = .vim/bundle/ingo-library
 	url = https://github.com/inkarkat/vim-ingo-library.git
-[submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
-	path = .local/share/nvim/site/pack/packer/start/packer.nvim
-	url = https://github.com/wbthomason/packer.nvim
-[submodule ".nvim/bundle/nvim-lspconfig"]
-	path = .nvim/bundle/nvim-lspconfig
+[submodule ".local/share/nvim/site/pack/lspconfig/start/lspconfig.nvim"]
+	path = .local/share/nvim/site/pack/lspconfig/start/lspconfig.nvim
 	url = https://github.com/neovim/nvim-lspconfig.git

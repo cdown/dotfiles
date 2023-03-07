@@ -1,6 +1,5 @@
 local vimrc = vim.fn.stdpath("config") .. "/init_.vim"
 vim.cmd.source(vimrc)
 
-require('packer').startup(function(use)
-  use '~/.nvim/bundle/nvim-lspconfig'
-end)
+local nvim_lsp = require('lspconfig')
+nvim_lsp.rust_analyzer.setup { }
