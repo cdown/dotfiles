@@ -49,6 +49,14 @@ require('trouble').setup({
 
 local nvim_lsp = require('lspconfig')
 nvim_lsp.rust_analyzer.setup({
-    on_attach = on_attach,
-    cmd = { "rust-analyzer-root" },
+  on_attach = on_attach,
+  cmd = { "rust-analyzer-root" },
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        enable = true,
+        command = "clippy",
+      },
+    },
+  },
 })
