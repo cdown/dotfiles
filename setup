@@ -18,7 +18,7 @@ else
 fi
 
 # TODO: we need to not make these manual
-rm -rf ~/.vim/bundle ~/.sshrc.d
+rm -rf ~/.vim/bundle ~/.nvim/bundle ~/.sshrc.d
 
 decrypt_pgp=0
 if command -v gpg >/dev/null >/dev/null 2>&1 && gpg --list-secret-keys | grep -q 0xDF8D21B616118070; then
