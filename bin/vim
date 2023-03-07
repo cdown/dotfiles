@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if command -v nvim >/dev/null 2>&1; then
+    exec nvim "$@"
+else
+    exec vim "$@"
+fi
