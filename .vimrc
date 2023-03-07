@@ -71,8 +71,14 @@ highlight MatchParen ctermbg=darkmagenta ctermfg=black
 
 command FixFile :set fileencoding=utf-8 fileformat=unix nobomb | %s/\r$//
 
-silent! call mkdir($HOME . "/.vim/undo", "p")
-set undodir=~/.vim/undo//
+if has('nvim')
+  silent! call mkdir($HOME . "/.nvim/undo", "p")
+  set undodir=~/.nvim/undo//
+else
+  silent! call mkdir($HOME . "/.vim/undo", "p")
+  set undodir=~/.vim/undo//
+endif
+
 set undofile
 
 " I regularly commit/push to avoid computer death, so saving swap/backup files
