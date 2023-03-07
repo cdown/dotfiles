@@ -50,5 +50,5 @@ require('trouble').setup({
 local nvim_lsp = require('lspconfig')
 nvim_lsp.rust_analyzer.setup({
     on_attach = on_attach,
-    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+    cmd = { "rust-analyzer-root" },
 })
