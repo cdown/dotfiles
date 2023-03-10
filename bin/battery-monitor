@@ -37,7 +37,10 @@ check_and_update_last() {
     last=$(read_last)
     current=${1?}
 
-    [[ $last == "$current" ]] || notify-send "Battery now $current"
+    urgency=normal
+    [[ $current == discharging ]] && urgency=critical
+
+    [[ $last == "$current" ]] || notify-send -u "$urgency" "Battery now $current"
     write_last "$current"
 }
 
