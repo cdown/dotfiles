@@ -1,0 +1,5 @@
+#!/bin/bash -xe
+
+btrfs subvolume list /snapshots/ |
+    awk '$NF ~ /\/upgrade-/ { print "/" $NF }' |
+    xargs -r -d '\n' sudo btrfs subvolume delete -v
