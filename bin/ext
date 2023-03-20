@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 case ${1?} in
     mount)
