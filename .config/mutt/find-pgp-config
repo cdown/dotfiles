@@ -2,7 +2,8 @@
 
 for file in \
     /etc/Muttrc.gpg.dist \
-    /etc/Muttrc.d/gpg.rc
+    /etc/Muttrc.d/gpg.rc \
+    /usr/share/doc/mutt/samples/gpg.rc
 do
     if [ -e "$file" ]; then
         echo "$file"
