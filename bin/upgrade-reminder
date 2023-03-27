@@ -22,6 +22,21 @@ else
     acceptable_upgrade_epoch=1
 fi
 
+flagged=0
+mapfile -t pkgs < <(packages-to-upgrade)
+for pkg in "${pkgs[@]}"; do
+    case $pkg in
+        google-chrome|linux-lts|linux)
+            notify-send -u low -- 'Upgrade due' "Critical package '$pkg' is pending upgrade."
+            flagged=1
+        ;;
+    esac
+done
+
+if (( flagged )); then
+    exit
+fi
+
 if (( last_upgrade_epoch < acceptable_upgrade_epoch )); then
     notify-send -u low -- 'Upgrade due' "It looks like you didn't upgrade in the last $max_days days."
     exit
@@ -29,7 +44,7 @@ else
     printf 'Not notifying for time basis, last upgrade epoch is only %d but we need before %d\n' "$last_upgrade_epoch" "$acceptable_upgrade_epoch" >&2
 fi
 
-num_packages=$(checkupdates | wc -l)
+num_packages=${#pkgs[@]}
 
 if (( num_packages > max_packages )); then
     notify-send -u low -- 'Upgrade due' "More than $max_packages packages are pending upgrade."

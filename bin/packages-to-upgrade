@@ -1,0 +1,3 @@
+#!/bin/bash
+
+{ checkupdates; yay -Qua; } | awk '{ print $1 }'
