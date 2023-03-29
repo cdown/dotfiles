@@ -231,6 +231,9 @@ endfor
 nnoremap <silent> <Leader>E :set wrap<CR>:setlocal formatoptions-=t<CR>:set textwidth=0<CR>
 nnoremap <silent> <Leader>e :set nowrap<CR>:setlocal formatoptions+=t<CR>:set textwidth=79<CR>
 
+" I only mistype :a for :q
+cnoremap <expr> <CR> getcmdtype() == ":" && index(["a"], getcmdline()) >= 0 ? "<C-u>:q<CR>" : "<CR>"
+
 " Go to conflict marker
 noremap <silent> <Leader>c /^\(<<<<<<<\\|\|\|\|\|\|\|\|\\|=======\\|>>>>>>>\)<CR>
 
