@@ -44,7 +44,7 @@ if (( last_upgrade_epoch < acceptable_upgrade_epoch )); then
     notify-send -u low -- 'Upgrade due' "It looks like you didn't upgrade in the last $max_days days."
     exit
 elif (( last_upgrade_epoch < shambolic_upgrade_epoch )); then
-    notify-send -u crtitical -- 'Upgrade due' "It looks like you didn't upgrade in the last $shambolic_days days."
+    notify-send -u crtitical -- 'Upgrade due' "Last upgrade over $shambolic_days days ago!"
     exit
 else
     printf 'Not notifying for time basis, last upgrade epoch is only %d but we need before %d\n' "$last_upgrade_epoch" "$acceptable_upgrade_epoch" >&2
