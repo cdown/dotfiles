@@ -26,7 +26,7 @@ flagged=0
 mapfile -t pkgs < <(packages-to-upgrade)
 for pkg in "${pkgs[@]}"; do
     case $pkg in
-        google-chrome|linux-lts|linux|openssh)
+        google-chrome|linux-lts|linux|openssh|xorg-server)
             notify-send -u low -- 'Upgrade due' "Critical package '$pkg' is pending upgrade."
             flagged=1
         ;;
