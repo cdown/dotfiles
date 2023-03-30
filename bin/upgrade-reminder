@@ -3,6 +3,7 @@
 upgrade_dir=/var/log/upgrades
 
 max_days=2
+shambolic_days=7
 max_packages=15
 
 shopt -s nullglob
@@ -16,10 +17,12 @@ if [[ -v dir ]]; then
     # shellcheck disable=SC2001
     last_upgrade_epoch=$(date +%s -d "$(sed 's/\(.*\)-/\1 /' <<< "${dir##*/}")")
     acceptable_upgrade_epoch=$(date +%s -d "$max_days days ago")
+    shambolic_upgrade_epoch=$(date +%s -d "$shambolic_days days ago")
 else
     # No upgrades yet, force one
     last_upgrade_epoch=0
     acceptable_upgrade_epoch=1
+    shambolic_upgrade_epoch=1
 fi
 
 flagged=0
@@ -27,7 +30,7 @@ mapfile -t pkgs < <(packages-to-upgrade)
 for pkg in "${pkgs[@]}"; do
     case $pkg in
         google-chrome|linux-lts|linux|openssh|xorg-server)
-            notify-send -u low -- 'Upgrade due' "Critical package '$pkg' is pending upgrade."
+            notify-send -u critical -- 'Upgrade due' "Critical package '$pkg' is pending upgrade."
             flagged=1
         ;;
     esac
@@ -39,6 +42,9 @@ fi
 
 if (( last_upgrade_epoch < acceptable_upgrade_epoch )); then
     notify-send -u low -- 'Upgrade due' "It looks like you didn't upgrade in the last $max_days days."
+    exit
+elif (( last_upgrade_epoch < shambolic_upgrade_epoch )); then
+    notify-send -u crtitical -- 'Upgrade due' "It looks like you didn't upgrade in the last $shambolic_days days."
     exit
 else
     printf 'Not notifying for time basis, last upgrade epoch is only %d but we need before %d\n' "$last_upgrade_epoch" "$acceptable_upgrade_epoch" >&2
