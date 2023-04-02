@@ -1,15 +1,20 @@
 #!/bin/bash -e
 
+if ! (( UID )); then
+    echo "run as non-root so we have the right uid" >&2
+    exit 1
+fi
+
 case ${1?} in
     mount)
-        mkdir -p /mnt/scratch{,-baduser}
-        cryptsetup luksOpen -S 1 /dev/disk/by-partlabel/ext ext
-        mount /dev/mapper/ext /mnt/scratch-baduser
+        sudo mkdir -p /mnt/scratch{,-baduser}
+        sudo cryptsetup luksOpen -S 1 /dev/disk/by-partlabel/ext ext
+        sudo mount /dev/mapper/ext /mnt/scratch-baduser
         bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser /mnt/scratch
     ;;
     unmount)
-        umount /mnt/scratch
-        umount /mnt/scratch-baduser
-        cryptsetup luksClose ext
+        sudo umount /mnt/scratch
+        sudo umount /mnt/scratch-baduser
+        sudo cryptsetup luksClose ext
     ;;
 esac
