@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# A dumb Rust sloc counter, based on pysloc
+
+sed -r -e '/^\s*$/d' -e '/^\s*\/\/.*$/d' < "$1" | wc -l
