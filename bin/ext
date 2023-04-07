@@ -10,7 +10,7 @@ case ${1?} in
         sudo mkdir -p /mnt/scratch{,-baduser}
         sudo cryptsetup luksOpen -S 1 /dev/disk/by-partlabel/ext ext
         sudo mount /dev/mapper/ext /mnt/scratch-baduser
-        bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser /mnt/scratch
+        sudo bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser /mnt/scratch
     ;;
     unmount)
         sudo umount /mnt/scratch
