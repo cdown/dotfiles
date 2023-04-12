@@ -184,3 +184,4 @@ alias tdzst='tar --use-compress-program zstd -xf'
 alias today='find . -daystart -ctime 0 -print'
 
 alias clippy-noisy='cargo clippy --all -- -D clippy::all -D clippy::pattern-type-mismatch -D clippy::arithmetic-side-effects -D clippy::undocumented-unsafe-blocks -D clippy::as-conversions -D clippy::pedantic -D clippy::nursery -D clippy::cargo -D warnings -A clippy::multiple-crate-versions -A clippy::module-name-repetitions'
+alias wsl-usb-sync='q rsync -avh --inplace --no-perms --no-owner --no-group --ignore-existing --delete /mnt/a/ /mnt/b/'
