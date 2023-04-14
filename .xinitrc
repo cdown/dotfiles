@@ -15,13 +15,12 @@ services_to_start=(
     tmux urxvtd xinput-disable@yubikey xinput-disable@touchscreen
     xinput-disable@ELAN901C xinput-disable@screen
     synclient no-dpms no-screensaver clipmenud upgrade-reminder.timer
-    psi-notify xob
+    psi-notify xob mpd mpd-mpris
 )
 
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     services_to_start+=(
-        irssi mutt mpdscribble inbox-reminder.timer mpd matterhorn
-        mpd-mpris
+        irssi mutt mpdscribble inbox-reminder.timer matterhorn
     )
 fi
 
