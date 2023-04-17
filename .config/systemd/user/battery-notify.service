@@ -1,0 +1,2 @@
+[Service]
+ExecStart=/bin/sh -c "exec %h/.cargo/bin/battery-notify"
