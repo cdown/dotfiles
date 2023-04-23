@@ -5,8 +5,16 @@ export LC_ALL=C
 in=${1?}
 out=${2:-"${in%.*}_SHRINK.mp4"}
 
+# Default setting of 21 determined by looking through GoPro videos with fine
+# detail
+#
+# eg:
+#
+# for crf in {18..23}; do ffmpeg -ss 01:16 -y -i GH010018.MP4 -c:v libx265 -preset faster -tune grain -vf format=yuv420p -to 00:08 -crf "$crf" -acodec aac -b:a 192k shrink/GH010018_"$crf".MP4; done
+# for file in shrink/*.MP4; do mpv "$file" --start=00:04 --frames=1 -o "$file".png; done
+# du -sh *.MP4 -- after 21 it starts going exponential
 : "${MAX_DIMENSION:=0}"
-: "${VIDEO_CRF:=24}"
+: "${VIDEO_CRF:=21}"
 : "${PRESET:=faster}"
 : "${X265:=1}"
 
