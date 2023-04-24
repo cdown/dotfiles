@@ -21,6 +21,22 @@ out=${2:-"${in%.*}_SHRINK.mp4"}
 # Or even mode
 #
 # -x265-params "no-sao:psy-rdoq=3.00:rdoq-level=1:psy-rd=2.00:aq-mode=3"
+#
+# For now -tune grain is disabled because it's just too big:
+#
+# 5.9M    GH010018_18_notune.MP4
+# 9.6M    GH010018_18_tune.MP4
+# 4.9M    GH010018_19_notune.MP4
+# 8.3M    GH010018_19_tune.MP4
+# 4.1M    GH010018_20_notune.MP4
+# 6.9M    GH010018_20_tune.MP4
+# 3.5M    GH010018_21_notune.MP4
+# 5.8M    GH010018_21_tune.MP4
+# 2.9M    GH010018_22_notune.MP4
+# 5.0M    GH010018_22_tune.MP4
+# 2.5M    GH010018_23_notune.MP4
+# 4.2M    GH010018_23_tune.MP4
+
 : "${MAX_DIMENSION:=0}"
 : "${VIDEO_CRF:=21}"
 : "${PRESET:=faster}"
@@ -36,7 +52,6 @@ if (( X265 )); then
     nice -n 19 \
         ffmpeg -y -i "$in" -c:v libx265 \
             -preset "${PRESET}" \
-            -tune grain \
             -vf "${extra_vf}format=yuv420p" \
             -crf "$VIDEO_CRF" -c:a copy "$out"
 else
