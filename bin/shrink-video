@@ -36,6 +36,9 @@ out=${2:-"${in%.*}_SHRINK.mp4"}
 # 5.0M    GH010018_22_tune.MP4
 # 2.5M    GH010018_23_notune.MP4
 # 4.2M    GH010018_23_tune.MP4
+#
+# For long GoPro encodes, consider PRESET=slow per
+# https://ottverse.com/choosing-an-x265-preset-an-roi-analysis/
 
 : "${MAX_DIMENSION:=0}"
 : "${VIDEO_CRF:=21}"
