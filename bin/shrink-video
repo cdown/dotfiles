@@ -36,6 +36,7 @@ if (( X265 )); then
     nice -n 19 \
         ffmpeg -y -i "$in" -c:v libx265 \
             -preset "${PRESET}" \
+            -tune grain \
             -vf "${extra_vf}format=yuv420p" \
             -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$out"
 else
