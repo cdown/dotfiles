@@ -55,10 +55,18 @@ hnb() {
 alias gsp='mutt-patch'
 
 # Rebasing
+git_main_or_master() {
+    if git rev-parse --verify main &>/dev/null; then
+        echo main
+    else
+        echo master
+    fi
+}
+
 alias grr='git rebase -r'
 alias gri='grr -i'
-alias grim='gri master@{u}'
-alias grrm='grr master@{u}'
+alias grim='gri "$(git_main_or_master)"@{u}'
+alias grrm='grr "$(git_main_or_master)"@{u}'
 alias grid='gri develop@{u}'
 alias grrd='grr develop@{u}'
 alias gru='grr @{u}'
@@ -69,14 +77,14 @@ git-diff-merge-base() {
     gd "$(git merge-base "$1" "$feature")..$feature"
 }
 
-alias gdm='git-diff-merge-base master@{u}'
+alias gdm='git-diff-merge-base "$(git_main_or_master)"@{u}'
 alias gdd='git-diff-merge-base develop@{u}'
 alias gdu='gd @{u}..'
 alias gdc='gd --cached'
 alias gdw='gd --color-words'
 
 # Logs
-alias glm='gl master@{u}..'
+alias glm='gl "$(git_main_or_master)"@{u}..'
 alias gld='gl develop@{u}..'
 alias glu='gl @{u}..'
 
