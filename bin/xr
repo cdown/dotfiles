@@ -36,8 +36,8 @@ fi
 
 case $1 in
     vbox)
-        w=1920
-        h=1080
+        w=3840
+        h=1600
         r=60
 
         args=$(cvt -r "$w" "$h" "$r" | awk -F\" '!/^#/ { print $3; exit }')
