@@ -61,7 +61,7 @@ call matchadd('SpacesBeforeTab', ' \+\ze\t')
 highlight ShittyWords ctermbg=red ctermfg=black
 call matchadd('ShittyWords', '\<\([Gg]uy\|[Dd]ude\)s\?\>')
 
-" Since we changed solarized colour from #001c23 to #3b5a61, we need to
+" Since we changed solarized colour from #002b36 to #3b5a61, we need to
 " explicitly set this to avoid the whole background becoming that colour
 highlight Normal ctermbg=none
 

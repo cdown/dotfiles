@@ -28,7 +28,7 @@ URxvt.keysym.C-A-V:          perl:clipboard:paste_escaped
 
 URxvt.print-pipe: cat > /dev/null
 
-*background: #001c23
+*background: #002b36
 *foreground: #839496
 *cursorColor: #93a1a1
 *pointerColorBackground: #586e75

@@ -1,12 +1,12 @@
 colors:
   # Default colors
   primary:
-    background: '#001c23' # base03
+    background: '#002b36' # base03
     foreground: '#839496' # base0
 
   # Cursor colors
   cursor:
-    text:   '#001c23' # base03
+    text:   '#002b36' # base03
     cursor: '#839496' # base0
 
   # Normal colors
