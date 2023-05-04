@@ -45,7 +45,7 @@ if exists cpanm; then cpan-outdated -p | cpanm -n; fi
 
 if exists vagrant; then vagrant plugin update; fi
 
-if exists rustup; then rustup self upgrade-data && rustup update stable && rustup update nightly; fi
+if exists rustup; then rustup self upgrade-data && rustup update stable; fi
 
 # `cargo install-update` is an optional extension
 if exists cargo && cargo install-update --help >/dev/null 2>&1; then cargo install-update -a; fi
