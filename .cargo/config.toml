@@ -1,5 +1,5 @@
 [build]
-rustflags = ["-C", "target-cpu=native"]
+rustflags = ["-C", "target-cpu=native", "-C", "link-arg=-fuse-ld=mold"]
 
 [profile.release]
 codegen-units = 1
