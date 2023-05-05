@@ -3,7 +3,7 @@
 export LC_ALL=C
 
 in=${1?}
-out=${2:-"${in%.*}_SHRINK.mp4"}
+out=${2:-"${in%.*}_SHRINK.mkv"}
 
 # Default setting of 21 determined by looking through GoPro videos with fine
 # detail

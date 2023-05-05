@@ -7,7 +7,7 @@ for file do
     if [[ $dir != "$file" ]]; then
         mkdir -p shrink/"$dir"
     fi
-    out=shrink/"${file%.*}.mp4"
+    out=shrink/"${file%.*}.mkv"
     if [[ -f "$out" ]]; then
         printf '%s already exists, skipping\n' "$out" >&2
         continue
