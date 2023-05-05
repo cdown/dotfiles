@@ -40,5 +40,6 @@ qemu-system-x86_64 \
     -usb -device usb-kbd -device usb-tablet \
     -smp 2 \
     -drive file="$img",if=virtio \
+    -vga virtio \
     -m 4G \
     "${extra_args[@]}"
