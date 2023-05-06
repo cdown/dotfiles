@@ -359,14 +359,14 @@ formats = {
     channel_created = "";
     channel_synced = "";
     url = "";
-    own_msg = "{ownmsgnick $2 {ownnick $[-9]0}}$1";
-    own_msg_channel = "{ownmsgnick $3 {ownnick $[-9]0}{msgchannel $1}}$2";
-    pubmsg_me = "{pubmsgmenick $2 {menick $[-9]0}}$1";
-    pubmsg_me_channel = "{pubmsgmenick $3 {menick $[-9]0}{msgchannel $1}}$2";
-    pubmsg_hilight = "{pubmsghinick $0 $3 $[-9]1}$2";
-    pubmsg_hilight_channel = "{pubmsghinick $0 $4 $[-9]1{msgchannel $2}}$3";
-    pubmsg = "{pubmsgnick $2 {pubnick $[-9]0}}$1";
-    pubmsg_channel = "{pubmsgnick $3 {pubnick $[-9]0}{msgchannel $1}}$2";
+    own_msg = "$cnpadl%K$2$cnuser {msgtext $1}";
+    own_msg_channel = "$cnpadl%K$3$cnuser {msgchannel $1} {msgtext $2}";
+    pubmsg = "$cnnick%K$2$cnpadl {msgtext $1}";
+    pubmsg_channel = "$cnnick%K$3$cnpadl {msgchannel $1} {msgtext $2}";
+    pubmsg_hilight = "$cnnick%K$3$cnpads {msgtext_hilight $2}";
+    pubmsg_hilight_channel = "$cnnick%K$4$cnpads {msgchannel $2} {msgtext_hilight $3}";
+    pubmsg_me = "$cnnick%K$2$cnpads {msgtext_notice $1}";
+    pubmsg_me_channel = "$cnnick%K$3$cnpads {msgchannel $1} {msgtext_notice $2}";
   };
   "Irssi::Script::adv_windowlist" = {
     awl_display_nokey = "= [$N]$H$C$S ";
