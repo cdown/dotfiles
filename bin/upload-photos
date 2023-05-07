@@ -13,7 +13,7 @@ if (( LOCAL_EXT )); then
         "copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
 else
     tmux new-session -d -s "$session_name" \
-        "rsync -rvP --mkpath . wotou:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
+        "rsync --size-only -rvP --mkpath . wotou:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
 fi
 
 tmux split-window -h -t "$session_name:1" \
