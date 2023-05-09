@@ -361,12 +361,12 @@ formats = {
     url = "";
     own_msg = "$cnpadl%N$2$cnuser {msgtext $1}";
     own_msg_channel = "$cnpadl%N$3$cnuser {msgchannel $1} {msgtext $2}";
-    pubmsg = "%N<$cnnick%N>$2$cnpadl {msgtext $1}";
-    pubmsg_channel = "%N<$cnnick%N>$3$cnpadl {msgchannel $1} {msgtext $2}";
-    pubmsg_hilight = "%N<$cnnick%N>$3$cnpads {msgtext_hilight $2}";
-    pubmsg_hilight_channel = "%N<$cnnick%N>$4$cnpads {msgchannel $2} {msgtext_hilight $3}";
-    pubmsg_me = "%N<$cnnick%N>$2$cnpads {msgtext_notice $1}";
-    pubmsg_me_channel = "%N<$cnnick%N>$3$cnpads {msgchannel $1} {msgtext_notice $2}";
+    pubmsg = "$cnpadl%N<$cnnick%N>$2 {msgtext $1}";
+    pubmsg_channel = "$cnpadl%N<$cnnick%N>$3 {msgchannel $1} {msgtext $2}";
+    pubmsg_hilight = "$cnpads%N<$cnnick%N>$3 {msgtext_hilight $2}";
+    pubmsg_hilight_channel = "$cnpads%N<$cnnick%N>$4 {msgchannel $2} {msgtext_hilight $3}";
+    pubmsg_me = "$cnpads%N<$cnnick%N>$2 {msgtext_notice $1}";
+    pubmsg_me_channel = "$cnpads%N<$cnnick%N>$3 {msgchannel $1} {msgtext_notice $2}";
   };
   "Irssi::Script::adv_windowlist" = {
     awl_display_nokey = "= [$N]$H$C$S ";
