@@ -1,2 +1,10 @@
 [Service]
 ExecStart=/bin/sh -c "exec %h/.cargo/bin/battery-notify"
+Restart=always
+Type=notify
+
+# Will be updated once we start the loop
+WatchdogSec=2s
+
+[Install]
+WantedBy=default.target
