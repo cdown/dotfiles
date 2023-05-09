@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+{
+    printf "Here are some Rust files. In a second I will ask some questions about them:\n"
+    for file do
+	printf '\n\n#####\n### File: "%s" ###\n#####\n\n' "$file"
+	sed -r -e '/^\s*$/d' -e '/^\s*\/\/.*$/d' "$file"
+    done
+    printf '\nPlease review this code, suggesting 10 improvements with code examples of the suggested changes. Thanks!\n'
+} | xclip -sel clip
