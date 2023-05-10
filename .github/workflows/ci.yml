@@ -1,0 +1,24 @@
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo apt-get install shellcheck
+      - run: shellcheck -e SC1090,SC1091 -s bash .bashrc .bash_profile
+      - run: find .config/shell -not -name dircolors -not -name '*.gpg' -type f -exec shellcheck -e SC1090,SC1091,SC2039 -s bash {} +
+      - run: find .config/bash -not -name dircolors -not -name '*.gpg' -type f -exec shellcheck -e SC1090,SC1091 -s bash {} +
+      - run: find bin -not -name '*.gpg' -not -name format-udf -not -name rustfilt -not -name generate-irssi-channel-config -type f -exec shellcheck -e SC1090,SC1091,SC1071 {} +
+
+  gpg:
+    name: GPG gitignore
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: '[[ -z "$(comm -23 <(bin/generate-gpg-gitignore) <(sort -u < .gitignore))" ]]'
+      - run: '[[ -z "$(comm -12 <(git ls-files | sort) <(sort -u < .gitignore))" ]]'
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:

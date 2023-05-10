@@ -14,6 +14,8 @@ cd linux/repos/core-x86_64/
 # shellcheck disable=SC2016
 sed -i 's|git+https://git.archlinux.org/linux.git?signed#tag=$_srctag|git+file:///home/cdown/git/linux#commit='"$commit"'|g' PKGBUILD
 sed -i 's/olddefconfig/menuconfig/' PKGBUILD
+
+# shellcheck disable=SC2016
 sed -i 's/make all/make -j "$(( $(nproc) + 1 ))" all/' PKGBUILD
 sed -i '/make htmldocs/d' PKGBUILD
 

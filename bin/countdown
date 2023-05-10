@@ -22,7 +22,7 @@ fi
 
 while (( total_seconds > 0 )); do
     { printf '\r%s' "$(date -u -d @"$total_seconds" +%H:%M:%S)"; } &  # avoid taking more than fork time
-    let total_seconds--
+    (( total_seconds-- ))
     sleep 1
 done
 

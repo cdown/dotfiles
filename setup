@@ -29,7 +29,7 @@ for file in "$location"/**/*; do
     bare="${file#$location/}"
 
     case "$bare" in
-        .git|.git/*|.gitignore|.gitmodules|setup|*/.gitkeep|README.md) continue ;;
+        .git|.git/*|.gitignore|.gitmodules|setup|*/.gitkeep|.github/*|README.md) continue ;;
     esac
 
     if [[ $file == *.gpg ]]; then

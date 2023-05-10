@@ -159,7 +159,7 @@ scratch() {
         [ -d "$_dir" ] || sudo mkdir "$_dir"
         sudo mount -t cifs -o username="$(id -un)",uid="$(id -u)" //doufu.chrisdown.name/scratch "$_dir"
     fi
-    cd "$_dir"
+    cd "$_dir" || return
 }
 
 alias wol-chashao='wol 24:4b:fe:93:a7:0e'
