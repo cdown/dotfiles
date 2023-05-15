@@ -3,4 +3,5 @@
 # rust-analyzer, but it works at non root (root should be VCS top)
 
 cd "$(git rev-parse --show-toplevel)"
-exec rustup run stable rust-analyzer
+toolchain=$(rustup default | awk '{ print $1 }')
+exec rustup run "$toolchain" rust-analyzer
