@@ -22,6 +22,8 @@ bind index % noop
 bind index,pager p noop
 bind index,pager r group-reply
 bind pager,attach q exit
+bind pager <PageDown> half-down
+bind pager <PageUp> half-up
 
 macro index i "<limit>~t chris@chrisdown.name | ~c chris@chrisdown.name | ~t cdown@fb.com | ~c cdown@fb.com<enter>"
 
