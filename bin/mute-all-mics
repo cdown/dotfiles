@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+pacmd list-sources | sed -n '/index:/s/.*index: //p' | xargs -I{} pactl set-source-mute {} 1
+pacmd list-sources | grep muted:
