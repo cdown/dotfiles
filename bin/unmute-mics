@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+time=$1
+
+pacmd list-sources | sed -n '/index:/s/.*index: //p' | xargs -I{} pactl set-source-mute {} 0
+pacmd list-sources | grep muted:
+
+if [[ $time ]]; then
+    sleep "$time"
+    mute-all-mics
+fi
