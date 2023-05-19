@@ -64,3 +64,10 @@ nvim_lsp.rust_analyzer.setup({
 })
 
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+
+-- No bottom bar
+vim.opt.laststatus = 0
+vim.opt.ruler = true
+
+-- Disable mouse support
+vim.opt.mouse = ""
