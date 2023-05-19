@@ -62,3 +62,5 @@ nvim_lsp.rust_analyzer.setup({
     },
   },
 })
+
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
