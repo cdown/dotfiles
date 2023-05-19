@@ -29,8 +29,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
-  require("lsp-inlayhints").on_attach(client, bufnr)
 end
 
 require('trouble').setup({
@@ -64,5 +62,3 @@ nvim_lsp.rust_analyzer.setup({
     },
   },
 })
-
-
