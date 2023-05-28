@@ -63,6 +63,11 @@ nvim_lsp.rust_analyzer.setup({
   },
 })
 
+require("lsp_lines").setup()
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 
 -- No bottom bar
