@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/textobj-user"]
 	path = .vim/bundle/textobj-user
 	url = https://github.com/kana/vim-textobj-user.git
+[submodule ".local/share/nvim/site/pack/lspconfig/start/lsp_lines.nvim"]
+	path = .local/share/nvim/site/pack/lspconfig/start/lsp_lines.nvim
+	url = https://git.sr.ht/~whynothugo/lsp_lines.nvim
