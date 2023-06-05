@@ -1,10 +1,10 @@
+BinPackArguments: false
 BreakStringLiterals: false
 ColumnLimit: 80
+IndentCaseLabels: true
+IndentPPDirectives: BeforeHash
 IndentWidth: 4
-PenaltyReturnTypeOnItsOwnLine: 999
 PenaltyBreakComment: 0
 SortIncludes: true
+SpaceBeforeParens: ControlStatementsExceptForEachMacros
 UseTab: Never
-IndentPPDirectives: BeforeHash
-IndentCaseLabels: true
-AllowShortBlocksOnASingleLine: true
