@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rsync sb:files/"${1?}"
+rsync --old-args sb:files/"${1?}"
