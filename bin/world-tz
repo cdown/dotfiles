@@ -1,8 +1,6 @@
 #!/bin/bash -e
 
-date_cmd=(date '+%a %Y-%m-%d %H:%M')
 tzs=(
-    Current
     America/Los_Angeles
     America/New_York
     Europe/London
@@ -10,35 +8,4 @@ tzs=(
     Asia/Shanghai
 )
 
-max_tz_len() {
-    max=0
-    for tz in "${tzs[@]}"; do
-        cur=${#tz}
-        (( cur > max )) && max=$cur
-    done
-    echo "$max"
-}
-
-print_tz() {
-    local len="${1?}"
-    local tz="${2?}"
-
-    printf "%${len}s: " "$tz"
-
-    if [[ $tz == Current ]]; then
-        "${date_cmd[@]}"
-    else
-        TZ="$tz" "${date_cmd[@]}"
-    fi
-}
-
-len=$(max_tz_len)
-
-print_tz "$len" Current
-printf '\n'
-
-for tz in "${tzs[@]}"; do
-    if [[ $tz != Current ]]; then
-        print_tz "$len" "$tz"
-    fi
-done | sort -k 3,4
+multidate "${tzs[@]}"
