@@ -107,7 +107,7 @@ fi
 # modules won't get built, so you can't even login.
 #
 # TODO: Fix this upstream...
-if ! zstd -d -c /boot/initramfs-linux-lts.img | grep -q kernel/drivers/hid/usbhid/; then
+if ! sudo zstd -d -c /boot/initramfs-linux-lts.img | grep -q kernel/drivers/hid/usbhid/; then
     printf '%s%s%s%s\n' \
         "$(tput setaf 1)" "$(tput blink)" "module build bug, please rebuild kernel initramfs" "$(tput sgr0)"
     exit 1
