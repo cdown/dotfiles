@@ -103,6 +103,16 @@ else
     sudo pacman --noconfirm -Syu
 fi
 
+# Big honking hack to avoid bug when racing with device disconnect where
+# modules won't get built, so you can't even login.
+#
+# TODO: Fix this upstream...
+if ! zstd -d -c /boot/initramfs-linux-lts.img | grep -q kernel/drivers/hid/usbhid/; then
+    printf '%s%s%s%s\n' \
+        "$(tput setaf 1)" "$(tput blink)" "module build bug, please rebuild kernel initramfs" "$(tput sgr0)"
+    exit 1
+fi
+
 sudo rm -f /etc/pacman.d/mirrorlist.pacnew /etc/locale.{conf,gen}.pacnew /etc/pulse/default.pa.pacnew /etc/pacman.conf.pacnew /etc/ImageMagick-7/policy.xml.pacnew
 sudo pacdiff
 
