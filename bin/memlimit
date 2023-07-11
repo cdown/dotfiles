@@ -1,0 +1,5 @@
+#!/bin/bash
+
+: "${LIMIT:=256M}"
+
+exec systemd-run --user -t -p MemoryMax="$LIMIT" -p WorkingDirectory="$(pwd)" -- "$@"
