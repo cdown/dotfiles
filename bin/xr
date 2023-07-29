@@ -128,3 +128,6 @@ esac
 
 # Doesn't recalc on viewport change
 systemctl --user restart xob
+
+# Do not allow monitor changes to change the DPI
+xrandr --dpi 96
