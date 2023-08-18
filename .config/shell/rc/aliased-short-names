@@ -17,10 +17,6 @@ alias k='curl -Lo .config https://gist.githubusercontent.com/cdown/d03e4f12353be
 alias cf='clang-format -i -style=file'
 alias c='ctags --links=no -R .'
 
-alias ss='sudo systemctl start'
-alias st='sudo systemctl stop'
-alias sd='sudo systemctl -n 100 status'
-
 alias us='systemctl --user start'
 alias ut='systemctl --user stop'
 alias ud='systemctl --user -n 100 status'
