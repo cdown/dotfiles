@@ -5,4 +5,4 @@ out_dir=${2?missing out_dir}
 
 convert -density 800 -background black -alpha remove -alpha off "$pdf" -resize "${PTP_SIZE:-1920x1080}" "$out_dir"/out-%02d.png
 
-# Now, Insert -> Media -> Photo Album
+# then use https://github.com/cdown/imagetopptx/blob/master/imagetopptx.py
