@@ -1,8 +1,8 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 pdf=${1?missing pdf}
 out_dir=${2?missing out_dir}
 
-convert -density 800 -background black -alpha remove -alpha off "$pdf" -resize "${PTP_SIZE:-1920x1080}" "$out_dir"/out-%02d.png
+convert -density 1400 -background black -alpha remove -alpha off "$pdf" "$out_dir"/out-%02d.png
 
 # then use https://github.com/cdown/imagetopptx/blob/master/imagetopptx.py
