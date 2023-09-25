@@ -3,7 +3,9 @@
 in_dir=${1?input dir missing}
 out_dir=${2?output dir missing}
 
-for raw_file in "$in_dir"/*.ARW; do
+shopt -s globstar nullglob
+
+for raw_file in "$in_dir"/**/*.ARW; do
     jpg_file=${raw_file##*/}
     jpg_file=$out_dir/${jpg_file%.*}.jpg
     exiftool -b -JpgFromRaw "$raw_file" > "$jpg_file"
