@@ -2,4 +2,6 @@
 
 : "${LIMIT:=256M}"
 
-exec systemd-run --user -t -p MemoryMax="$LIMIT" -p WorkingDirectory="$(pwd)" -- "$@"
+exec systemd-run --user \
+    -E SSH_AUTH_SOCK="$SSH_AUTH_SOCK" -E SSH_AGENT_PID="$SSH_AGENT_PID" \
+    -t -p MemoryMax="$LIMIT" -p WorkingDirectory="$(pwd)" -- "$@"
