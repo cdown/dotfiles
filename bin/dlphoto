@@ -1,0 +1,12 @@
+#!/bin/bash -ex
+
+dir=${1?missing dir}
+shift
+
+includes=()
+
+for file; do
+    includes+=( --include "$file" )
+done
+
+rclone copy gs:chris-down-photos/chrisdown-photos/"$dir" . "${includes[@]}"
