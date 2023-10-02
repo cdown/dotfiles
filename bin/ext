@@ -17,4 +17,8 @@ case ${1?} in
         sudo umount /mnt/scratch-baduser
         sudo cryptsetup luksClose ext
     ;;
+    *)
+        printf 'Unknown command: "%s"\n' "$1" >&2
+        exit 1
+    ;;
 esac

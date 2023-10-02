@@ -15,4 +15,8 @@ case ${1?} in
         umount /mnt/"$label"
         cryptsetup luksClose "$label"
     ;;
+    *)
+        printf 'Unknown command: "%s"\n' "$1" >&2
+        exit 1
+    ;;
 esac
