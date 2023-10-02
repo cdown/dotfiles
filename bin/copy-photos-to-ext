@@ -5,6 +5,11 @@ base_dir=/mnt/scratch
 full_dir=$base_dir/Photos/$inner_dir
 retries=5
 
+extra_rsync_args=()
+if (( LOCAL_CHECKSUM )); then
+    extra_rsync_args=( -c )
+fi
+
 while (( retries-- )) && ! mountpoint -- "$base_dir"; do
     sleep 2
 done
@@ -15,4 +20,4 @@ if (( retries == -1 )); then
 fi
 
 mkdir -p -- "$full_dir"
-rsync -avP ./ "$full_dir"
+rsync -avP "${extra_rsync_args[@]}" -- ./ "$full_dir"
