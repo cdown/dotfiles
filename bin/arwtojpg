@@ -8,6 +8,16 @@ shopt -s globstar nullglob
 for raw_file in "$in_dir"/**/*.ARW; do
     jpg_file=${raw_file##*/}
     jpg_file=$out_dir/${jpg_file%.*}.jpg
+
+    if [[ -e "$jpg_file" ]]; then
+        # TODO: wtf? why do some of these come out as garbage and need redoing?
+        if file "$jpg_file" | grep -q orientation=; then
+            printf 'skipping %s\n' "$jpg_file" >&2
+            continue
+        else
+            printf 'forcing redo of broken file %s\n' "$jpg_file" >&2
+        fi
+    fi
     exiftool -b -JpgFromRaw "$raw_file" > "$jpg_file"
     exiftool -overwrite_original -TagsFromFile "$raw_file" \
         -ISO -ExposureTime -Make -Model -DateTimeOriginal -FocalLength -LensModel -FNumber -Orientation "$jpg_file"
