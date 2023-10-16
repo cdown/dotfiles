@@ -108,9 +108,7 @@ alias e='PATH=$(get-path-without-env) '
 alias pacman-recent='grep '\''\[ALPM\] \(removed\|installed\|upgraded\|downgraded\)'\'' /var/log/pacman.log'
 alias pacman-recent-critical='pacman-recent | grep -w -e systemd -e linux -e dbus -e libc | tail -20'
 
-alias mpv='mpv --profile=high'
 alias mpva='mpv --no-video'
-alias mpvl='command mpv'
 
 alias spell='aspell check --lang=en_GB --dont-backup'
 alias spellh='spell --mode=html'
