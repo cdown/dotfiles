@@ -1,0 +1,52 @@
+#!/bin/bash
+
+shopt -s nullglob globstar
+
+jpg_dir=${1-jpg}
+raw_dir=${2-raw}
+
+if ! [[ -d $jpg_dir ]]; then
+    printf 'error: jpg dir does not exist: %s\n' "$jpg_dir"
+fi
+
+mkdir -- "$raw_dir"
+
+for jpg_fullpath in "$jpg_dir"/*.jpg; do
+    jpg=${jpg_fullpath##*/}
+    raw=( /mnt/sdcard/**/"${jpg%.jpg}".ARW )
+
+    if (( ${#raw[@]} != 1 )); then
+	printf 'error: wrong number of files for %s' "$jpg_fullpath" >&2
+	exit 1
+    fi
+
+    echo "${raw[0]}"
+    cp "${raw[0]}" "$raw_dir"
+done
+
+exifrename --copy -f "done/$jpg_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$jpg_dir"/*.jpg
+exifrename --copy -f "done/$raw_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$raw_dir"/*.ARW
+
+# We should have identical dirs
+
+for file in done/"$jpg_dir"/*.jpg; do
+    file=${file##*/}
+    noext=${file%.*}
+    if [[ -f "done/$raw_dir/$noext.ARW" ]]; then
+	printf 'matched jpg->raw: %s\n' "$noext"
+    else
+        printf 'error: missing file: %s\n' "$raw_dir/$noext.ARW" >&2
+	exit 1
+    fi
+done
+
+for file in done/"$raw_dir"/*.ARW; do
+    file=${file##*/}
+    noext=${file%.*}
+    if [[ -f "done/$jpg_dir/$noext.jpg" ]]; then
+	printf 'matched raw->jpg: %s\n' "$noext"
+    else
+        printf 'error: missing file: %s\n' "$jpg_dir/$noext.ARW" >&2
+	exit 1
+    fi
+done
