@@ -16,7 +16,7 @@ for jpg_fullpath in "$jpg_dir"/*.jpg; do
     raw=( /mnt/sdcard/**/"${jpg%.jpg}".ARW )
 
     if (( ${#raw[@]} != 1 )); then
-	printf 'error: wrong number of files for %s' "$jpg_fullpath" >&2
+	printf 'error: wrong number of files for %s\n' "$jpg_fullpath" >&2
 	exit 1
     fi
 
