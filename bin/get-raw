@@ -2,6 +2,8 @@
 
 shopt -s nullglob globstar
 
+: "${SDCARD_DIR:=/mnt/sdcard}"
+
 jpg_dir=${1-jpg}
 raw_dir=${2-raw}
 
@@ -13,7 +15,7 @@ mkdir -- "$raw_dir"
 
 for jpg_fullpath in "$jpg_dir"/*.jpg; do
     jpg=${jpg_fullpath##*/}
-    raw=( /mnt/sdcard/**/"${jpg%.jpg}".ARW )
+    raw=( "$SDCARD_DIR"/**/"${jpg%.jpg}".ARW )
 
     if (( ${#raw[@]} != 1 )); then
 	printf 'error: wrong number of files for %s\n' "$jpg_fullpath" >&2
