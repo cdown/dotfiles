@@ -6,8 +6,14 @@ out_dir=${2?output dir missing}
 shopt -s globstar nullglob
 
 for raw_file in "$in_dir"/**/*.ARW; do
-    jpg_file=${raw_file##*/}
+    jpg_file=${raw_file#"$in_dir"/}
     jpg_file=$out_dir/${jpg_file%.*}.jpg
+
+    jpg_dir=${jpg_file%/*}
+
+    if [[ $jpg_dir != "$jpg_file" ]]; then
+        mkdir -p "$jpg_dir"
+    fi
 
     if [[ -e "$jpg_file" ]]; then
         # TODO: wtf? why do some of these come out as garbage and need redoing?
