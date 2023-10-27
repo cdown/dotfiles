@@ -1,33 +1,44 @@
 #!/bin/bash
 
+# Structure is [jpg or raw]/[card number]/DCIM/[folder with stuff]
+
 shopt -s nullglob globstar
 
 : "${SDCARD_DIR:=/mnt/sdcard}"
 
-jpg_dir=${1-jpg}
-raw_dir=${2-raw}
+card_number=${1?missing card number}
+jpg_dir=${2-jpg}
+raw_dir=${3-raw}
 
 if ! [[ -d $jpg_dir ]]; then
     printf 'error: jpg dir does not exist: %s\n' "$jpg_dir"
 fi
 
-mkdir -- "$raw_dir"
+mkdir -p -- "$raw_dir"
 
-for jpg_fullpath in "$jpg_dir"/*.jpg; do
-    jpg=${jpg_fullpath##*/}
-    raw=( "$SDCARD_DIR"/**/"${jpg%.jpg}".ARW )
+for jpg_fullpath in "$jpg_dir"/"$card_number"/**/*.jpg; do
+    jpg_file=${jpg_fullpath#"$jpg_dir"/}
+    jpg_file=${jpg_file#*/}  # one more for the sdcard number
+    raw="$SDCARD_DIR"/"${jpg_file%.*}".ARW
 
-    if (( ${#raw[@]} != 1 )); then
-	printf 'error: wrong number of files for %s\n' "$jpg_fullpath" >&2
+    if ! [[ -f "$raw" ]]; then
+	printf 'error: no raw file for %s\n' "$jpg_fullpath" >&2
 	exit 1
     fi
 
-    echo "${raw[0]}"
-    cp "${raw[0]}" "$raw_dir"
+    echo "$raw"
+
+    im_dir=${jpg_file%/*}
+
+    if [[ $im_dir != "$jpg_file" ]]; then
+        mkdir -p -- "$raw_dir/$card_number/$im_dir"
+    fi
+
+    cp "$raw" "$raw_dir/$card_number/$im_dir"
 done
 
-exifrename --copy -f "done/$jpg_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$jpg_dir"/*.jpg
-exifrename --copy -f "done/$raw_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$raw_dir"/*.ARW
+exifrename --copy -f "done/$jpg_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$jpg_dir"/"$card_number"/**/*.jpg
+exifrename --copy -f "done/$raw_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$raw_dir"/"$card_number"/**/*.ARW
 
 # We should have identical dirs
 
