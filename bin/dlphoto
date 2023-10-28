@@ -1,5 +1,7 @@
 #!/bin/bash -ex
 
+shopt -s nullglob
+
 dir=${1?missing dir}
 shift
 
@@ -9,4 +11,16 @@ for file; do
     includes+=( --include "$file" )
 done
 
-rclone copy gs:chris-down-photos/chrisdown-photos/"$dir" . "${includes[@]}"
+temp_dir=$(mktemp -d)
+
+rclone copy gs:chris-down-photos/chrisdown-photos/"$dir" "$temp_dir"/ "${includes[@]}"
+
+local_files=( "$temp_dir"/* )
+
+if (( "$#" != "${#local_files[@]}" )); then
+    printf '%s\n' 'Got back wrong number of files' >&2
+    exit 1
+fi
+
+mv "${local_files[@]}" .
+rmdir "$temp_dir"
