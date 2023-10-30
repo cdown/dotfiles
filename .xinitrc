@@ -20,7 +20,7 @@ services_to_start=(
 
 if [[ $USER == cdown || $USER == chris ]] && [[ -z $WM ]]; then
     services_to_start+=(
-        irssi mutt mpdscribble inbox-reminder.timer matterhorn mute-all-mics
+        irssi mutt mpdscribble inbox-reminder.timer mute-all-mics
     )
 fi
 
