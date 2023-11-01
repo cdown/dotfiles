@@ -4,4 +4,5 @@ linkchecker \
     --no-robots \
     --check-extern \
     --user-agent 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1474.0' \
+    --config <(printf '%s\n' '[filtering]' 'ignorewarnings=http-redirected') \
     https://chrisdown.name
