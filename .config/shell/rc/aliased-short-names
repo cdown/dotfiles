@@ -151,7 +151,7 @@ scratch() {
     _dir=/mnt/scratch
     if ! mountpoint -q "$_dir"; then
         [ -d "$_dir" ] || sudo mkdir "$_dir"
-        sudo mount -t cifs -o username="$(id -un)",uid="$(id -u)" //doufu.chrisdown.name/scratch "$_dir"
+        sudo mount -t cifs -o username="$(id -un)",uid="$(id -u)" //wotou.chrisdown.name/scratch "$_dir"
     fi
     cd "$_dir" || return
 }
