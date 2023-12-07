@@ -3,10 +3,7 @@
 # Quick and dirty check to ensure all raw files are valid.
 
 for file do
-    if convert "$file" jpg:- > /dev/null; then
-	printf 'ok: %s\n' "$file"
-    else
+    if ! convert "$file" jpg:- > /dev/null; then
 	printf 'failed conversion: %s\n' "$file" >&2
-	exit 1
     fi
 done
