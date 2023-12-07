@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+case ${1?} in
+    mount)
+        sudo mount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1 /mnt/sdcard
+    ;;
+    unmount)
+        sudo umount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1
+    ;;
+    *)
+        printf 'Unknown command: "%s"\n' "$1" >&2
+        exit 1
+    ;;
+esac
