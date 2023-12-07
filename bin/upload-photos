@@ -20,12 +20,16 @@ if (( SLOW )); then
     extra_rclone_args='--transfers 1'
 fi
 
-if (( LOCAL_EXT )); then
-    tmux new-session -d -s "$session_name" \
-        "$limit_cmd copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
+if (( NO_EXT )); then
+    tmux new-session -d -s "$session_name" "echo NO_EXT was set"
 else
-    tmux new-session -d -s "$session_name" \
-        "$limit_cmd rsync --size-only -rvP --mkpath . $host:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
+    if (( LOCAL_EXT )); then
+        tmux new-session -d -s "$session_name" \
+            "$limit_cmd copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
+    else
+        tmux new-session -d -s "$session_name" \
+            "$limit_cmd rsync --size-only -rvP --mkpath . $host:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
+    fi
 fi
 
 tmux split-window -h -t "$session_name:1" \
