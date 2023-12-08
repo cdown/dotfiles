@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Structure is [jpg or raw]/[card number]/DCIM/[folder with stuff]
 
