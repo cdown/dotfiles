@@ -37,8 +37,8 @@ for jpg_fullpath in "$jpg_dir"/"$card_number"/**/*.jpg; do
     cp "$raw" "$raw_dir/$card_number/$im_dir"
 done
 
-exifrename -f "done/$jpg_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$jpg_dir"/"$card_number"/**/*.jpg
-exifrename -f "done/$raw_dir/IMG_{day}{month}{year}_{hour}{minute}{second}_{filename}" "$raw_dir"/"$card_number"/**/*.ARW
+exifrename -f "done/$jpg_dir/IMG_{year}{month}{day}_{hour}{minute}{second}_{filename}" "$jpg_dir"/"$card_number"/**/*.jpg
+exifrename -f "done/$raw_dir/IMG_{year}{month}{day}_{hour}{minute}{second}_{filename}" "$raw_dir"/"$card_number"/**/*.ARW
 
 # We should have identical dirs
 
