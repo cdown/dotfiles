@@ -181,3 +181,8 @@ alias clippy-noisy='cargo clippy --all -- -D clippy::all -D clippy::pattern-type
 alias wsl-usb-sync='q rsync -avh --inplace --no-perms --no-owner --no-group --ignore-existing --delete /mnt/a/ /mnt/b/'
 alias media-length='ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal'
 alias uf='unused-features analyze && unused-features build-report -i report.json && unused-features prune -i report.json && xdg-open report.html'
+
+ffmpeg-fix() {
+    ffmpeg -i "${1?}" -c copy "${2?}"
+}
+alias ff=ffmpeg-fix
