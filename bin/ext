@@ -8,7 +8,7 @@ fi
 case ${1?} in
     mount)
         sudo mkdir -p /mnt/scratch{,-baduser}
-        sudo cryptsetup luksOpen -S 1 /dev/disk/by-partlabel/ext ext
+        sudo cryptsetup luksOpen /dev/disk/by-partlabel/ext ext
         sudo mount /dev/mapper/ext /mnt/scratch-baduser
         sudo bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser /mnt/scratch
     ;;
