@@ -186,3 +186,8 @@ ffmpeg-fix() {
     ffmpeg -i "${1?}" -c copy "${2?}"
 }
 alias ff=ffmpeg-fix
+
+ffmpeg-srt() {
+    ffmpeg -i "${1?}" -map "${2?}" out.srt
+}
+alias fs=ffmpeg-srt
