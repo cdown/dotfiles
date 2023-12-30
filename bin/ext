@@ -18,6 +18,11 @@ fi
 part=${parts[0]}
 label=${part##*/}
 
+dest=/mnt/scratch
+if [[ -d /srv/samba ]]; then
+    dest=/srv/samba
+fi
+
 case ${1?} in
     mount)
         sudo mkdir -p /mnt/scratch{,-baduser}
@@ -37,13 +42,13 @@ case ${1?} in
 
         if (( cur_uid == mount_uid )); then
             sudo umount /mnt/scratch-baduser
-            sudo mount /dev/mapper/"$label" /mnt/scratch
+            sudo mount /dev/mapper/"$label" "$dest"
         else
-            sudo bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser /mnt/scratch
+            sudo bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser "$dest"
         fi
     ;;
     unmount)
-        sudo umount /mnt/scratch
+        sudo umount "$dest"
         if mountpoint -q /mnt/scratch-baduser; then
             sudo umount /mnt/scratch-baduser
         fi
