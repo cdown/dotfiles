@@ -5,10 +5,19 @@ if ! (( UID )); then
     exit 1
 fi
 
+bpl=/dev/disk/by-partlabel/ext
+
 case ${1?} in
     mount)
         sudo mkdir -p /mnt/scratch{,-baduser}
-        sudo cryptsetup luksOpen /dev/disk/by-partlabel/ext ext
+
+        # This USB enclosure reports non-rotational, and TRIM isn't enabled by
+        # default, sigh...
+        part=$(readlink -f "$bpl")
+        device=${part%[0-9]}
+        sudo enable-usb-trim "$device"
+
+        sudo cryptsetup luksOpen --allow-discards /dev/disk/by-partlabel/ext ext
         sudo mount /dev/mapper/ext /mnt/scratch-baduser
         sudo bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser /mnt/scratch
     ;;

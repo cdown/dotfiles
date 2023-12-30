@@ -4,7 +4,7 @@ shopt -s nullglob
 
 device=${1?}
 
-provs=( /sys/block/"$device"/device/scsi_disk/*/provisioning_mode )
+provs=( /sys/block/"${device##*/}"/device/scsi_disk/*/provisioning_mode )
 num_provs=${#provs[@]}
 
 if (( num_provs != 1 )); then
