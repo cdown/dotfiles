@@ -1,0 +1,15 @@
+#!/bin/bash -xe
+
+shopt -s nullglob
+
+device=${1?}
+
+provs=( /sys/block/"$device"/device/scsi_disk/*/provisioning_mode )
+num_provs=${#provs[@]}
+
+if (( num_provs != 1 )); then
+    printf 'Unexpected number of SCSI disks: %s\n' "$num_provs" >&2
+    exit 1
+fi
+
+cat > "${provs[0]}" <<< unmap
