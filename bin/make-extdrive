@@ -15,12 +15,19 @@ wipefs -a "$device"
 sgdisk -Z "$device"
 sgdisk -n 0:0:0 -c 1:"$label" "$device"
 
-partprobe "$device"
-sleep 5  # partprobe is async...
+cat > /sys/block/"${device##*/}"/uevent <<< change
+
+sleep 5  # hold for reprobe
+
 
 part="$device"1
 unset device  # safety measure to make sure we don't introduce some bug that
 	      # accidentally does something with the base device...
+
+if ! [[ -e "$part" ]]; then
+    printf '%s is missing\n' "$part" >&2
+    exit 2
+fi
 
 cryptsetup -y -v --pbkdf-memory "$pbkdf_kb" luksFormat "$part"
 cryptsetup luksOpen --allow-discards "$part" "$cryptdev"
