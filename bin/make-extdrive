@@ -30,6 +30,13 @@ if ! [[ -e "$part" ]]; then
 fi
 
 cryptsetup -y -v --pbkdf-memory "$pbkdf_kb" luksFormat "$part"
+
+temp_dir=$(mktemp -d)
+temp=$temp_dir/header
+cryptsetup luksHeaderBackup "$part" --header-backup-file "$temp"
+
 cryptsetup luksOpen --allow-discards "$part" "$cryptdev"
 
 mkfs.ext4 -L "$label" "$cryptdev_path"
+
+printf '\nHeader backup at %s\n' "$temp"
