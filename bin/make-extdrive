@@ -39,4 +39,9 @@ cryptsetup luksOpen --allow-discards "$part" "$cryptdev"
 
 mkfs.ext4 -L "$label" "$cryptdev_path"
 
+mount_dir=$(mktemp -d)
+mount "$cryptdev_path" "$mount_dir"
+fstrim -v "$mount_dir"
+umount "$mount_dir"
+
 printf '\nHeader backup at %s\n' "$temp"
