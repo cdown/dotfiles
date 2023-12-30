@@ -8,13 +8,17 @@ update_parts() {
 }
 
 device=${1?}
-label=${2?}
-cryptdev=ext
-cryptdev_path=/dev/mapper/$cryptdev
+label=ext-${2?}
+cryptdev_path=/dev/mapper/$label
 pbkdf_kb=128000
 
+if [[ $label == ext-ext ]]; then
+    printf '%s\n' 'Use a more descriptive label' >&2
+    exit 3
+fi
+
 if [[ $device == *[0-9] ]]; then
-    printf '%s\n' 'Use the device itself, not a partition\n' >&2
+    printf '%s\n' 'Use the device itself, not a partition' >&2
     exit 1
 fi
 
@@ -44,7 +48,7 @@ temp_dir=$(mktemp -d)
 temp=$temp_dir/header
 cryptsetup luksHeaderBackup "$part" --header-backup-file "$temp"
 
-cryptsetup luksOpen --allow-discards "$part" "$cryptdev"
+cryptsetup luksOpen --allow-discards "$part" "$label"
 
 mkfs.ext4 -L "$label" "$cryptdev_path"
 
