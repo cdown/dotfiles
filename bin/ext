@@ -18,9 +18,15 @@ fi
 part=${parts[0]}
 label=${part##*/}
 
+smb=0
 dest=/mnt/scratch
 if [[ -d /srv/samba ]]; then
     dest=/srv/samba
+    smb=1
+fi
+
+if (( smb )); then
+    sudo systemctl stop smb
 fi
 
 case ${1?} in
@@ -45,6 +51,10 @@ case ${1?} in
             sudo mount /dev/mapper/"$label" "$dest"
         else
             sudo bindfs -u "$(id -u)" --create-for-user="$(stat -c %u /mnt/scratch-baduser)" /mnt/scratch-baduser "$dest"
+        fi
+
+        if (( smb )); then
+            sudo systemctl start smb
         fi
     ;;
     unmount)
