@@ -7,7 +7,11 @@ session_name=photo-upload-"$RANDOM"
 # shellcheck disable=SC2140
 escaped_photo_dir=${photo_dir/"'"/"'\\''"}
 
-limit_cmd=memlimit
+if [[ -d /run/systemd/system ]]; then
+    limit_cmd=memlimit
+else
+    limit_cmd=
+fi
 
 if (( WOTOU_REMOTE )); then
     host=wotou-ext
@@ -28,7 +32,7 @@ else
             "$limit_cmd copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
     else
         tmux new-session -d -s "$session_name" \
-            "$limit_cmd rsync --size-only -rvP --mkpath . $host:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
+            "$limit_cmd rsync -e 'ssh -T -c aes256-gcm@openssh.com -o Compression=no -x' --size-only -rvP --mkpath . $host:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
     fi
 fi
 

@@ -1,0 +1,7 @@
+#!/bin/bash -ex
+
+cd /mnt/f/Lightroom
+upload-photos _Lightroom
+
+cd /mnt/c/Users/Chris/Pictures/Lightroom/Backups
+upload-photos _Lightroom_Catalog
