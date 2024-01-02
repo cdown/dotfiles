@@ -2,6 +2,7 @@
 
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE \
     -dColorImageResolution=300 -dColorImageDownsampleType=/Bicubic \
+    -dPreserveAnnots=false \
     -dQUIET -dBATCH -sOutputFile="$2" "$1"
 
 du -sh "$@"
