@@ -32,7 +32,7 @@ else
             "$limit_cmd copy-photos-to-ext '$escaped_photo_dir'; echo Done; read"
     else
         tmux new-session -d -s "$session_name" \
-            "$limit_cmd rsync -e 'ssh -T -c aes256-gcm@openssh.com -o Compression=no -x' --size-only -rvP --mkpath . $host:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
+            "$limit_cmd rsync -e 'ssh -T -c chacha20-poly1305@openssh.com -o Compression=no -x' --size-only -rvP --mkpath . $host:'/srv/samba/Photos/$escaped_photo_dir'; echo Done; read"
     fi
 fi
 
