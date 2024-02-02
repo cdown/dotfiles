@@ -191,3 +191,5 @@ ffmpeg-srt() {
     ffmpeg -i "${1?}" -map "${2?}" out.srt
 }
 alias fs=ffmpeg-srt
+
+alias captive='curl -LI http://neverssl.com'
