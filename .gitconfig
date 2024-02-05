@@ -30,3 +30,5 @@
   driver = ~/bin/gpg-merge-driver %O %A %B
 [pull]
 	rebase = true
+[rerere]
+	enabled = true
