@@ -1,0 +1,6 @@
+#!/bin/bash -xe
+
+# Lin's Clip Go doesn't like some... complex jpgs? I don't know, but this makes
+# them dumb enough.
+
+mogrify -format jpg -resize 500x500\> -strip -colorspace sRGB -quality 85 "$@"
