@@ -3,6 +3,6 @@
 for dir in ~/.irssi/*; do
     irc_type=${dir##*/}
     [[ $irc_type == *_DEPRECATED ]] && continue
-    urxvtc -title irc -e create-or-attach-tmux-session irc-"$irc_type" \
+    st -t irc -e create-or-attach-tmux-session irc-"$irc_type" \
         "while :; do irssi --home=\"$dir\"; done"
 done
