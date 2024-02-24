@@ -1,6 +1,7 @@
 URxvt.font: xft:Terminus:size=6, xft:Symbola
 sxiv.font: xft:Terminus:size=6
 URxvt.letterSpace: 0
+st.font: Terminus:pixelsize=13:lcdfilter=lcddefault:hintstyle=hintnone:rgba=rgb:antialias=false:autohint=false
 
 URxvt.keysym.C-9: command:\033]50;xft:Terminus:pixelsize=40\007
 URxvt.keysym.C-0: command:\033]50;xft:Terminus:pixelsize=6\007
