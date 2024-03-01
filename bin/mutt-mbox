@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+export EMAIL=chris@chrisdown.name
+exec mutt -R -f "$@"
