@@ -1,4 +1,4 @@
-BinPackArguments: false
+BinPackArguments: true
 BreakStringLiterals: false
 ColumnLimit: 80
 IndentCaseLabels: true
