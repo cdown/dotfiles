@@ -42,7 +42,7 @@ alias ipython='ipython --no-banner'
 safe_termname() {
     case $TERM in
         rxvt*) echo rxvt ;;
-        xterm*) echo xterm ;;
+        xterm*|st*) echo xterm ;;
         *) echo linux ;;
     esac
 }
