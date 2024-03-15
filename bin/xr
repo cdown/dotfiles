@@ -81,8 +81,8 @@ case $1 in
         direction="${1#external-}"
         [[ $direction == right || $direction == left ]] && direction+=-of
 
-        xrandr --output "$main_display" --auto --primary
-        xrandr --output "${external_displays[0]}" --"$direction" "$main_display" --auto
+        xrandr --output "$main_display" --auto
+        xrandr --output "${external_displays[0]}" --"$direction" "$main_display" --auto --primary
     ;;
     tv)
         xrandr --output "$main_display" --auto --primary
