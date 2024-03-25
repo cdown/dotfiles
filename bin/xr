@@ -69,6 +69,11 @@ case $1 in
     work)
         xrandr --output HDMI-1 --auto --output DP-2 --auto --primary --right-of HDMI-1 --output eDP-1 --off
     ;;
+    work-internal)
+        xrandr --output HDMI-1 --auto \
+            --output DP-2 --auto --primary --right-of HDMI-1 \
+            --output eDP-1 --auto --pos 1600x1600
+    ;;
     external-only)
         xrandr --output "$main_display" --off
         xrandr --output "${external_displays[0]}" --primary --auto
