@@ -1,15 +1,19 @@
 #!/bin/bash
 
-mapfile -t shell_pids < <(pgrep -P "$(pgrep -nx urxvtd)")
+mapfile -t st_pids < <(pgrep -x st)
+
 idle_shells=()
 
-for pid in "${shell_pids[@]}"; do
-    # For reasons I don't totally understand, when HUPing one shell, another
-    # shell gets reparented to others, which prevents them from being reaped if
-    # we do the reaping in place. As such we work out who to reap first, and
-    # then reap them later.
-    [[ "$(cat /proc/"$pid"/comm)" == @(zsh|bash) ]] || continue
-    pgrep -P "$pid" &>/dev/null || idle_shells+=( "$pid" )
+for st_pid in "${st_pids[@]}"; do
+    mapfile -t child_pids < <(pgrep -P "$st_pid")
+    for child_pid in "${child_pids[@]}"; do
+        # For reasons I don't totally understand, when HUPing one shell,
+        # another shell gets reparented to others, which prevents them from
+        # being reaped if we do the reaping in place. As such we work out who
+        # to reap first, and then reap them later.
+        [[ "$(cat /proc/"$child_pid"/comm)" == @(zsh|bash) ]] || continue
+        pgrep -P "$child_pid" &>/dev/null || idle_shells+=( "$child_pid" )
+    done
 done
 
 for pid in "${idle_shells[@]}"; do
