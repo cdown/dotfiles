@@ -1,0 +1,24 @@
+#!/bin/bash
+
+for file do
+    echo "Processing $file..."
+
+    cp "$file" "$file.bak"
+
+    # In reverse order so line numbers don't move around
+    mapfile -t include_lines < <(grep -n "#include" "$file" | cut -d: -f1 | tac)
+
+    for line in "${include_lines[@]}"; do
+        sed -i "${line}d" "$file"
+
+        if make >/dev/null 2>&1; then
+            echo "Removed unneeded #include on line $line in $file."
+            cp "$file" "$file.bak"
+        else
+            echo "Need #include on line $line in $file, restoring."
+            cp "$file.bak" "$file"
+        fi
+    done
+
+    rm "$file.bak"
+done
