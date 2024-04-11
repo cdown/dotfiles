@@ -55,3 +55,6 @@
 [submodule ".local/share/nvim/site/pack/lspconfig/start/lsp_lines.nvim"]
 	path = .local/share/nvim/site/pack/plugins/start/lsp_lines.nvim
 	url = https://git.sr.ht/~whynothugo/lsp_lines.nvim
+[submodule ".vim/bundle/context"]
+	path = .vim/bundle/context
+	url = https://github.com/wellle/context.vim.git
