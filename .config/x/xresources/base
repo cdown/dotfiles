@@ -28,26 +28,26 @@ URxvt.keysym.C-A-V:          perl:clipboard:paste_escaped
 
 URxvt.print-pipe: cat > /dev/null
 
-*.background: #002b36
-*.foreground: #839496
-*.cursorColor: #93a1a1
-*.pointerColorBackground: #586e75
-*.pointerColorForeground: #93a1a1
+*.background: #000000
+*.foreground: #bbc2cf
+*.cursorColor: #bbc2cf
+*.pointerColorBackground: #bbc2cf
+*.pointerColorForeground: #bbc2cf
 
-*.color0: #073642
-*.color1: #dc322f
-*.color2: #859900
-*.color3: #b58900
-*.color4: #268bd2
-*.color5: #d33682
-*.color6: #2aa198
-*.color7: #eee8d5
-*.color8: #3b5a61
-*.color9: #cb4b16
-*.color10: #586e75
-*.color11: #657b83
-*.color12: #839496
-*.color13: #6c71c4
+*.color0: #3f444a
+*.color1: #ff6c6b
+*.color2: #98be65
+*.color3: #ECBE7B
+*.color4: #51afef
+*.color5: #a9a1e1
+*.color6: #4db5bd
+*.color7: #efefef
+*.color8: #5B6268
+*.color9: #da8548
+*.color10: #73797e
+*.color11: #9ca0a4
+*.color12: #b1b1b1
+*.color13: #c678dd
 *.color14: #93a1a1
 *.color15: #fdf6e3
 
