@@ -25,6 +25,4 @@ for raw_file in "$in_dir"/**/*.ARW; do
         fi
     fi
     exiftool -b -JpgFromRaw "$raw_file" > "$jpg_file"
-    exiftool -overwrite_original -TagsFromFile "$raw_file" \
-        -ISO -ExposureTime -Make -Model -DateTimeOriginal -FocalLength -LensModel -FNumber -Orientation "$jpg_file"
 done
