@@ -28,6 +28,9 @@ for jpg_fullpath in "$jpg_dir"/"$card_number"/**/*.jpg; do
 
     echo "$raw"
 
+    exiftool -overwrite_original -TagsFromFile "$raw" \
+        -ISO -ExposureTime -Make -Model -DateTimeOriginal -FocalLength -LensModel -FNumber -Orientation "$jpg_fullpath"
+
     im_dir=${jpg_file%/*}
 
     if [[ $im_dir != "$jpg_file" ]]; then
