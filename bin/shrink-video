@@ -66,6 +66,10 @@ else
             -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$out"
 fi
 
+if (( ANY_SIZE )); then
+    exit 0
+fi
+
 in_sz=$(stat -c%s "$in")
 out_sz=$(stat -c%s "$out")
 intolerance=1048576
