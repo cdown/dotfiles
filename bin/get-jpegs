@@ -9,5 +9,5 @@ for raw_dir in "$in_dir"/**/; do
     inner_dir=${raw_dir#"$in_dir"/}
     jpg_dir=$out_dir/$inner_dir
     mkdir -p "$jpg_dir"
-    arwtojpg "$inner_dir" "$jpg_dir"
+    rawtojpg "$inner_dir" "$jpg_dir"
 done
