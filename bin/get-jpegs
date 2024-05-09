@@ -6,8 +6,11 @@ out_dir=.
 shopt -s globstar nullglob
 
 for raw_dir in "$in_dir"/**/; do
+    if [[ "$in_dir/" == "$raw_dir" ]]; then
+        continue
+    fi
     inner_dir=${raw_dir#"$in_dir"/}
     jpg_dir=$out_dir/$inner_dir
     mkdir -p "$jpg_dir"
-    rawtojpg "$inner_dir" "$jpg_dir"
+    arwtojpg "$raw_dir" "$jpg_dir"
 done
