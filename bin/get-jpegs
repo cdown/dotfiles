@@ -1,9 +1,11 @@
 #!/bin/bash -ex
 
 in_dir=/mnt/sdcard/DCIM
-out_dir=.
+out_dir=jpg/${1?}
 
 shopt -s globstar nullglob
+
+mkdir -p "$out_dir"
 
 for raw_dir in "$in_dir"/**/; do
     if [[ "$in_dir/" == "$raw_dir" ]]; then
