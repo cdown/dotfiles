@@ -18,9 +18,9 @@ extra_args=()
 (( ALL_NODES )) && extra_args+=( -n 0.05 -e 0.01 )
 
 
-filter_cmd=cat
+filter_cmd='cat'
 if (( RUST )); then
-    filter_cmd=rustfilt
+    filter_cmd='rustfilt'
 fi
 
 perf script -i "$perf_file" | "$filter_cmd" | gprof2dot "${extra_args[@]}" --format=perf | dot -Tsvg > "$svg_file"
