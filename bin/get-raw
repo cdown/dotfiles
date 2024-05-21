@@ -4,7 +4,7 @@
 
 shopt -s nullglob globstar
 
-: "${SDCARD_DIR:=/mnt/sdcard}"
+: "${SDCARD_DIR:=/mnt/sdcard/DCIM}"
 
 card_number=${1?missing card number}
 jpg_dir=${2-jpg}
