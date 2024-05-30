@@ -7,7 +7,7 @@ if ! (( UID )); then
     exit 1
 fi
 
-parts=( /dev/disk/by-partlabel/ext-* )
+parts=( /dev/disk/by-partlabel/ext{,-}* )
 num_parts=${#parts[@]}
 
 if (( num_parts != 1 )); then
