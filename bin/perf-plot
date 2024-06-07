@@ -3,6 +3,7 @@
 : "${SELF:=0}"
 : "${ALL_NODES:=0}"
 : "${RUST:=0}"
+: "${KEEP_SYSCALL:=0}"
 
 svg_file=$(mktemp --suffix .svg)
 perf_file=$(mktemp)
@@ -10,20 +11,23 @@ perf_file=$(mktemp)
 # Allow Ctrl-C in case someone runs with -p for example, without using wait and
 # cooperative exit, then clear it after done.
 trap '' INT
-perf record -o "$perf_file" --call-graph dwarf "$@"
+perf record -o "$perf_file" -F9999 --call-graph lbr -e instructions "$@"
 trap - INT
 
 extra_args=()
 (( SELF )) && extra_args+=( --color-nodes-by-selftime )
 (( ALL_NODES )) && extra_args+=( -n 0.05 -e 0.01 )
 
-
 filter_cmd='cat'
 if (( RUST )); then
     filter_cmd='rustfilt'
 fi
 
-perf script -i "$perf_file" | "$filter_cmd" | gprof2dot "${extra_args[@]}" --format=perf | dot -Tsvg > "$svg_file"
+if (( KEEP_SYSCALL == 1 )); then
+    perf script -i "$perf_file" | "$filter_cmd" | gprof2dot "${extra_args[@]}" --format=perf | dot -Tsvg > "$svg_file"
+else
+    perf script -i "$perf_file" | "$filter_cmd" | grep -v 'entry_SYSCALL_64\|do_syscall_64' | gprof2dot "${extra_args[@]}" --format=perf | dot -Tsvg > "$svg_file"
+fi
 
 if (( UID )); then
     exec google-chrome-stable "$svg_file"

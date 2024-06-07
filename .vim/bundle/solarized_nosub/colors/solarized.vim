@@ -549,6 +549,10 @@ exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
 "        Boolean         a boolean constant: TRUE, false
 "        Float           a floating point constant: 2.3e10
 
+" cdown: The comment above suggests that String will be included in Constant,
+" but this seems to no longer be the case as of neovim 0.10(?)
+exe "hi! String"        .s:fmt_none   .s:fg_cyan   .s:bg_none
+
 exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
