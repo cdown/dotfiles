@@ -8,3 +8,6 @@ lto = "fat"
 [profile.profiling]
 inherits = "release"
 debug = true
+codegen-units = 64
+lto = "off"
+incremental = true
