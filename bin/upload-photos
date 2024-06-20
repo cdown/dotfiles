@@ -8,7 +8,7 @@ session_name=photo-upload-"$RANDOM"
 escaped_photo_dir=${photo_dir/"'"/"'\\''"}
 
 if [[ -d /run/systemd/system ]]; then
-    limit_cmd=memlimit
+    limit_cmd='LIMIT=512M memlimit'
 else
     limit_cmd=
 fi
