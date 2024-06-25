@@ -1,0 +1,55 @@
+# cp ~/.wsl/alacritty.toml /mnt/c/Users/cdown/AppData/Roaming/alacritty/alacritty.toml
+
+working_directory = '\\wsl$\Arch\home\cdown'
+
+[colors.bright]
+black = "#3b5a61"
+blue = "#839496"
+cyan = "#93a1a1"
+green = "#586e75"
+magenta = "#6c71c4"
+red = "#cb4b16"
+white = "#fdf6e3"
+yellow = "#657b83"
+
+[colors.cursor]
+cursor = "#839496"
+text = "#002b36"
+
+[colors.normal]
+black = "#073642"
+blue = "#268bd2"
+cyan = "#2aa198"
+green = "#859900"
+magenta = "#d33682"
+red = "#dc322f"
+white = "#eee8d5"
+yellow = "#b58900"
+
+[colors.primary]
+background = "#002b36"
+foreground = "#839496"
+
+[font]
+size = 9
+
+[font.bold]
+family = "Terminus (TTF) for Windows"
+style = "Regular"
+
+[font.normal]
+family = "Terminus (TTF) for Windows"
+
+[selection]
+save_to_clipboard = true
+
+[shell]
+program = 'C:\Windows\System32\wsl.exe'
+
+[window.padding]
+x = 4
+y = 4
+
+[font.offset]
+x = 0
+y = -1
