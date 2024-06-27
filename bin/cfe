@@ -1,11 +1,25 @@
 #!/bin/bash -e
 
+wsl() {
+    grep -qi Microsoft /proc/version
+}
+
+sudo mkdir -p /mnt/sdcard
+
 case ${1?} in
     mount)
-        sudo mount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1 /mnt/sdcard
+        if wsl; then
+            sudo mount -t drvfs d: /mnt/sdcard
+        else
+            sudo mount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1 /mnt/sdcard
+        fi
     ;;
     unmount)
-        sudo umount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1
+        if wsl; then
+            sudo umount d:
+        else
+            sudo umount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1
+        fi
     ;;
     *)
         printf 'Unknown command: "%s"\n' "$1" >&2
