@@ -93,6 +93,9 @@ case ${1?} in
             sudo umount /mnt/scratch-baduser
         fi
         sudo cryptsetup luksClose "$label"
+        if is-wsl; then
+            wsl_act unmount
+        fi
     ;;
     *)
         printf 'Unknown command: "%s"\n' "$1" >&2
