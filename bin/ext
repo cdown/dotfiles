@@ -24,6 +24,10 @@ if is-wsl; then
         wsl_act mount
     fi
 
+    # Could this get any more ugly? We need to wait for this to actually appear
+    # in WSL, this doesn't happen synchronously.
+    sleep 5
+
     # TODO: deduplicate this horrorshow
     part=$(blkid | awk -F: '/PARTLABEL="ext-.*"/ { print $1 }')
     label=$(blkid | sed -n 's/.*PARTLABEL="\([^"]\+\)".*/\1/p')
