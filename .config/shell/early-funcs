@@ -13,7 +13,7 @@ use_first_to_exist() {
 }
 
 _running_on_wsl() {
-    grep -qi Microsoft /proc/version
+    is-wsl
 }
 
 setopt NULL_GLOB >/dev/null 2>&1

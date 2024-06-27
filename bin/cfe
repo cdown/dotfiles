@@ -1,21 +1,17 @@
 #!/bin/bash -e
 
-wsl() {
-    grep -qi Microsoft /proc/version
-}
-
 sudo mkdir -p /mnt/sdcard
 
 case ${1?} in
     mount)
-        if wsl; then
+        if is-wsl; then
             sudo mount -t drvfs d: /mnt/sdcard
         else
             sudo mount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1 /mnt/sdcard
         fi
     ;;
     unmount)
-        if wsl; then
+        if is-wsl; then
             sudo umount d:
         else
             sudo umount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1
