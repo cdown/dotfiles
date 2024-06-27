@@ -7,26 +7,52 @@ if ! (( UID )); then
     exit 1
 fi
 
-parts=( /dev/disk/by-partlabel/ext* )
-num_parts=${#parts[@]}
+wsl_act() {
+    # TODO: do not hardcode disk 1. why on earth does this have no gpt name
+    /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe \
+        -Command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command \"& {wsl --${1?missing action} \\\\.\\PHYSICALDRIVE1}\"' -Verb RunAs"
+}
 
-if (( num_parts != 1 )); then
-    printf 'Unexpected number of ext partitions: %s\n' "$num_parts" >&2
-    exit 1
-fi
-
-part=${parts[0]}
-label=${part##*/}
-
-smb=0
 dest=/mnt/scratch
-if [[ -d /srv/samba ]]; then
-    dest=/srv/samba
-    smb=1
-fi
 
-if (( smb )); then
-    sudo systemctl stop smb
+if is-wsl; then
+    # On WSL there's no udev to populate by-partlabel, and lsblk looks at that,
+    # so we have to use blkid.
+    #
+    # TODO: Do not hardcode this path. Why does GptName not get populated? Gah!
+    if [[ $1 == mount ]]; then
+        wsl_act mount
+    fi
+
+    # TODO: deduplicate this horrorshow
+    part=$(blkid | awk -F: '/PARTLABEL="ext-.*"/ { print $1 }')
+    label=$(blkid | sed -n 's/.*PARTLABEL="\([^"]\+\)".*/\1/p')
+
+    if ! [[ $part ]] || ! [[ $label ]]; then
+        printf 'Could not find WSL mount\n' >&2
+        exit 1
+    fi
+else
+    parts=( /dev/disk/by-partlabel/ext* )
+    num_parts=${#parts[@]}
+
+    if (( num_parts != 1 )); then
+        printf 'Unexpected number of ext partitions: %s\n' "$num_parts" >&2
+        exit 1
+    fi
+
+    part=${parts[0]}
+    label=${part##*/}
+
+    smb=0
+    if [[ -d /srv/samba ]]; then
+        dest=/srv/samba
+        smb=1
+    fi
+
+    if (( smb )); then
+        sudo systemctl stop smb
+    fi
 fi
 
 case ${1?} in
