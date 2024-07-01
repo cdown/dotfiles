@@ -106,8 +106,10 @@ fi
 # Big honking hack to avoid bug when racing with device disconnect where
 # modules won't get built, so you can't even login.
 #
+# sudo is needed as this may be 0600(?)
+#
 # TODO: Fix this upstream...
-if [[ -e /boot/initramfs-linux-lts.img ]] && ! grep -q kernel/drivers/hid/usbhid/ /boot/initramfs-linux-lts.img; then
+if [[ -e /boot/initramfs-linux-lts.img ]] && ! sudo grep -q kernel/drivers/hid/usbhid/ /boot/initramfs-linux-lts.img; then
     printf '%s%s%s%s\n' \
         "$(tput setaf 1)" "$(tput blink)" "module build bug, please rebuild kernel initramfs" "$(tput sgr0)"
     exit 1
