@@ -1,0 +1,78 @@
+#!/bin/bash -e
+
+# Takes a file with lines like:
+#
+# VID_20240630_143147_036.mp4
+# VID_20240630_144842_041.mp4 01:45
+# VID_20240630_145538_042.mp4 01:00 01:50
+#
+# ...and extracts them into another folder.
+#
+# The keyframe seeking is imprecise, but with the Ace Pro it's close enough
+# that it doesn't matter.
+
+while getopts ":i:o:" opt; do
+  case $opt in
+    i) input_dir="$OPTARG"
+    ;;
+    o) output_dir="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+        exit 1
+    ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+file_list="$1"
+
+if [[ -z "$input_dir" || -z "$output_dir" || -z "$file_list" ]]; then
+  echo "Usage: $0 -i input_dir -o output_dir file_list"
+  exit 1
+fi
+
+time_to_seconds() {
+  IFS=: read -r m s <<< "$1"
+  echo $((10#${m:-0} * 60 + 10#${s:-0}))
+}
+
+while IFS=' ' read -r file start end; do
+  if [[ -z "$file" ]]; then
+    echo "File name is empty, skipping..."
+    continue
+  fi
+
+  input_file="$input_dir/$file"
+
+  base_name=$(basename "$file" .mp4)
+  if [[ -n "$start" && -n "$end" ]]; then
+    start_formatted=$(echo "$start" | tr -d ':')
+    end_formatted=$(echo "$end" | tr -d ':')
+    output_file="$output_dir/${base_name}_${start_formatted}_${end_formatted}.mp4"
+  elif [[ -n "$start" ]]; then
+    start_formatted=$(echo "$start" | tr -d ':')
+    output_file="$output_dir/${base_name}_${start_formatted}.mp4"
+  else
+    output_file="$output_dir/$file"
+  fi
+
+  cmd=("ffmpeg" "-nostdin")
+
+  if [[ -n "$start" ]]; then
+    cmd+=("-ss" "$start")
+  fi
+
+  cmd+=("-i" "$input_file" "-muxpreload" "0" "-muxdelay" "0")
+
+  if [[ -n "$end" ]]; then
+    start_seconds=$(time_to_seconds "$start")
+    end_seconds=$(time_to_seconds "$end")
+    relative_end_seconds=$((end_seconds - start_seconds))
+    cmd+=("-to" "$relative_end_seconds")
+  fi
+
+  cmd+=("-c" "copy" "$output_file")
+
+  echo "${cmd[@]}"
+  "${cmd[@]}"
+done < "$file_list"
