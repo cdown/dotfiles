@@ -22,5 +22,6 @@ if (( "$#" != "${#local_files[@]}" )); then
     exit 1
 fi
 
-mv "${local_files[@]}" .
+mkdir -p "$dir"
+mv "${local_files[@]}" "$dir"
 rmdir "$temp_dir"
