@@ -46,23 +46,28 @@ out=${2:-"${in%.*}_SHRINK.$ext"}
 : "${PRESET:=faster}"
 : "${X265:=1}"
 
-
 extra_vf=''
 if (( MAX_DIMENSION )); then
     extra_vf=scale=w="$MAX_DIMENSION":h="$MAX_DIMENSION":force_original_aspect_ratio=decrease', '
+fi
+
+fps_filter=''
+fps=$(ffmpeg -i "$in" 2>&1 | grep -oP '(\d+(?:\.\d+)?) fps' | head -1 | grep -oP '\d+(?:\.\d+)?')
+if (( $(echo "$fps > 30" | bc -l) )); then
+    fps_filter='fps=fps=30, '
 fi
 
 if (( X265 )); then
     nice -n 19 \
         ffmpeg -y -i "$in" -c:v libx265 \
             -preset "${PRESET}" \
-            -vf "${extra_vf}format=yuv420p" \
+            -vf "${fps_filter}${extra_vf}format=yuv420p" \
             -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$out"
 else
     nice -n 19 \
         ffmpeg -y -i "$in" -c:v libx264 -profile:v baseline \
             -preset "${PRESET}" \
-            -vf "${extra_vf}format=yuv420p" \
+            -vf "${fps_filter}${extra_vf}format=yuv420p" \
             -crf "$VIDEO_CRF" -acodec aac -b:a 192k "$out"
 fi
 
