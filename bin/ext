@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 shopt -s nullglob
 
@@ -23,19 +23,23 @@ if is-wsl; then
     if [[ $1 == mount ]]; then
         wsl_act mount
 
-        # Could this get any more ugly? We need to wait for this to actually
-        # appear in WSL, this doesn't happen synchronously.
-        sleep 5
-    fi
+        # Try to find the disk every second for up to 30 seconds
+        for i in {1..30}; do
+            blkid_output=$(sudo blkid)
+            part=$(awk -F: '/PARTLABEL="ext-.*"/ { print $1 }' <<< "$blkid_output")
+            label=$(sed -n 's/.*PARTLABEL="\([^"]\+\)".*/\1/p' <<< "$blkid_output")
 
-    # TODO: deduplicate this horrorshow
-    part=$(blkid | awk -F: '/PARTLABEL="ext-.*"/ { print $1 }')
-    label=$(blkid | sed -n 's/.*PARTLABEL="\([^"]\+\)".*/\1/p')
+            if [[ $part ]] && [[ $label ]]; then
+                break
+            fi
+            sleep 1
+        done
 
-    if ! [[ $part ]] || ! [[ $label ]]; then
-        printf 'Could not find WSL mount\n' >&2
-        wsl_act unmount
-        exit 1
+        if ! [[ $part ]] || ! [[ $label ]]; then
+            printf 'Could not find WSL mount\n' >&2
+            wsl_act unmount
+            exit 1
+        fi
     fi
 else
     parts=( /dev/disk/by-partlabel/ext* )
@@ -48,16 +52,16 @@ else
 
     part=${parts[0]}
     label=${part##*/}
+fi
 
-    smb=0
-    if [[ -d /srv/samba ]]; then
-        dest=/srv/samba
-        smb=1
-    fi
+smb=0
+if [[ -d /srv/samba ]]; then
+    dest=/srv/samba
+    smb=1
+fi
 
-    if (( smb )); then
-        sudo systemctl stop smb
-    fi
+if (( smb )); then
+    sudo systemctl stop smb
 fi
 
 case ${1?} in
