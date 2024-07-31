@@ -22,24 +22,24 @@ if is-wsl; then
     # TODO: Do not hardcode this path. Why does GptName not get populated? Gah!
     if [[ $1 == mount ]]; then
         wsl_act mount
+    fi
 
-        # Try to find the disk every second for up to 30 seconds
-        for i in {1..30}; do
-            blkid_output=$(sudo blkid)
-            part=$(awk -F: '/PARTLABEL="ext-.*"/ { print $1 }' <<< "$blkid_output")
-            label=$(sed -n 's/.*PARTLABEL="\([^"]\+\)".*/\1/p' <<< "$blkid_output")
+    # Try to find the disk every second for up to 30 seconds
+    for i in {1..30}; do
+        blkid_output=$(sudo blkid)
+        part=$(awk -F: '/PARTLABEL="ext-.*"/ { print $1 }' <<< "$blkid_output")
+        label=$(sed -n 's/.*PARTLABEL="\([^"]\+\)".*/\1/p' <<< "$blkid_output")
 
-            if [[ $part ]] && [[ $label ]]; then
-                break
-            fi
-            sleep 1
-        done
-
-        if ! [[ $part ]] || ! [[ $label ]]; then
-            printf 'Could not find WSL mount\n' >&2
-            wsl_act unmount
-            exit 1
+        if [[ $part ]] && [[ $label ]]; then
+            break
         fi
+        sleep 1
+    done
+
+    if ! [[ $part ]] || ! [[ $label ]]; then
+        printf 'Could not find WSL mount\n' >&2
+        wsl_act unmount
+        exit 1
     fi
 else
     parts=( /dev/disk/by-partlabel/ext* )
