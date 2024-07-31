@@ -34,6 +34,7 @@ if is-wsl; then
 
     if ! [[ $part ]] || ! [[ $label ]]; then
         printf 'Could not find WSL mount\n' >&2
+        wsl_act unmount
         exit 1
     fi
 else
