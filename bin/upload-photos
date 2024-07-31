@@ -21,7 +21,7 @@ fi
 
 extra_rclone_args=''
 if (( SLOW )); then
-    extra_rclone_args='--transfers 1'
+    extra_rclone_args='--transfers 2'
 fi
 
 if (( NO_EXT )); then
