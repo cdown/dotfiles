@@ -1,0 +1,62 @@
+#!/bin/bash
+
+max_size=$((950 * 1024 * 1024))
+
+split_files=()
+
+for video_file do
+    if [[ ! -f "$video_file" ]]; then
+        echo "File '$video_file' not found!"
+        continue
+    fi
+
+    file_size=$(stat -c%s "$video_file")
+
+    if (( file_size > max_size )); then
+        file_name=$(basename "$video_file")
+        file_ext="${file_name##*.}"
+        file_base="${file_name%.*}"
+
+        echo "Splitting '$video_file' into chunks..."
+
+        start_time=0
+        chunk_number=0
+        while :; do
+            output_file="${file_base}_chunk$(printf "%03d" $chunk_number).${file_ext}"
+            ffmpeg -i "$video_file" -c copy -ss "$start_time" -fs "$max_size" "$output_file"
+
+            duration=$(ffprobe -v error -select_streams v:0 -show_entries stream=duration -of default=noprint_wrappers=1:nokey=1 "$output_file")
+            if [[ -z "$duration" ]]; then
+                echo "Error in calculating duration or file is completely processed."
+                break
+            fi
+
+            start_time=$(echo "$start_time + $duration" | bc)
+            chunk_number=$((chunk_number + 1))
+
+            output_size=$(stat -c%s "$output_file")
+            if (( output_size < max_size )); then
+                break
+            fi
+        done
+
+        split_files+=("$video_file")
+    else
+        echo "File '$video_file' is under 950MB and does not need to be split."
+    fi
+done
+
+echo "Processing complete."
+
+if [[ ${#split_files[@]} -gt 0 ]]; then
+    echo -n "Do you want to delete the original video files that were split? (y/n): "
+    read -r response
+    if [[ "$response" == "y" ]]; then
+        for file in "${split_files[@]}"; do
+            rm "$file"
+            echo "Deleted '$file'."
+        done
+    else
+        echo "Original files were not deleted."
+    fi
+fi
