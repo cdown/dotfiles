@@ -38,11 +38,17 @@ time_to_seconds() {
 
 while IFS=' ' read -r file start end; do
   if [[ -z "$file" ]]; then
-    echo "File name is empty, skipping..."
-    continue
+    echo "File name is empty" >&2
+    exit 1
   fi
 
+
   input_file="$input_dir/$file"
+
+  if ! [[ -f "$input_file" ]]; then
+    echo "$input_file does not exist" >&2
+    exit 1
+  fi
 
   base_name=$(basename "$file" .mp4)
   if [[ -n "$start" && -n "$end" ]]; then
