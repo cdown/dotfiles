@@ -193,3 +193,5 @@ ffmpeg-srt() {
 alias fs=ffmpeg-srt
 
 alias captive='curl -LI http://neverssl.com'
+
+alias cargo_update_deps="gf && grrm && cargo upgrade --incompatible && cargo update && cargo check && gca -m 'deps: Update'"
