@@ -11,6 +11,9 @@ export NOTMUCH_CONFIG
 PATH=$(get-path-without-env)
 export PATH
 
+# For attachments with a relative path
+cd /tmp
+
 while :; do
     mutt
 done
