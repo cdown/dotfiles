@@ -172,6 +172,7 @@ utf8() {
 alias gitdf='PATH="$HOME/git/git:$PATH" GIT_EXEC_PATH="$HOME/git/git" command git'
 alias nxkill="pkill -f '/usr/NX' && sleep 10 && pkill -9 -f '/usr/NX'"
 alias yt-dlpa='yt-dlp -f bestaudio'
+alias yt-dlp1080='yt-dlp -f "bestvideo[height<=?1080][fps<=?60][vcodec!=?vp9]+bestaudio/best"'
 alias tczst='tar --use-compress-program zstd -cf'
 alias tdzst='tar --use-compress-program zstd -xf'
 
