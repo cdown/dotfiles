@@ -17,8 +17,33 @@ rclone copy gs:chris-down-photos/chrisdown-photos/"$dir" "$temp_dir"/ "${include
 
 local_files=( "$temp_dir"/* )
 
-if (( "$#" != "${#local_files[@]}" )); then
-    printf '%s\n' 'Got back wrong number of files' >&2
+# Get the base names of the intended files (files passed as arguments)
+expected_files=("$@")
+
+# Get the base names of the files downloaded into temp_dir using ##*/ to strip the directory
+downloaded_files=()
+for file in "${local_files[@]}"; do
+    downloaded_files+=( "${file##*/}" )
+done
+
+# Find missing files
+missing_files=()
+for expected in "${expected_files[@]}"; do
+    found=0
+    for downloaded in "${downloaded_files[@]}"; do
+        if [[ "$expected" == "$downloaded" ]]; then
+            found=1
+            break
+        fi
+    done
+    if ! (( found )); then
+        missing_files+=( "$expected" )
+    fi
+done
+
+if (( ${#missing_files[@]} > 0 )); then
+    printf 'Missing files:\n'
+    printf '%s\n' "${missing_files[@]}" >&2
     exit 1
 fi
 
