@@ -27,7 +27,7 @@ if is-wsl; then
     # Try to find the disk every second for up to 30 seconds
     for _ in {1..30}; do
         blkid_output=$(sudo blkid)
-        part=$(awk -F: '/PARTLABEL="ext-.*"/ { print $1 }' <<< "$blkid_output")
+        part=$(awk -F: '/PARTLABEL=".*-?ext-?.*"/ { print $1 }' <<< "$blkid_output")
         label=$(sed -n 's/.*PARTLABEL="\([^"]\+\)".*/\1/p' <<< "$blkid_output")
 
         if [[ $part ]] && [[ $label ]]; then
@@ -42,7 +42,7 @@ if is-wsl; then
         exit 1
     fi
 else
-    parts=( /dev/disk/by-partlabel/ext* )
+    parts=( /dev/disk/by-partlabel/*ext* )
     num_parts=${#parts[@]}
 
     if (( num_parts != 1 )); then
