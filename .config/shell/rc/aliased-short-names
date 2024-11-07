@@ -197,3 +197,4 @@ alias fs=ffmpeg-srt
 alias captive='curl -LI http://neverssl.com'
 
 alias cargo_update_deps="gf && grrm && cargo upgrade --ignore-rust-version --incompatible && cargo update && cargo check && cargo msrv find --write-msrv && gca -m 'deps: Update'"
+alias wclip='/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c "chcp 65001 >\$null; clip.exe"'
