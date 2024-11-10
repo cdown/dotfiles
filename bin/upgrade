@@ -56,7 +56,7 @@ if ! (( UPDATED_DOTFILES )); then
         fi
 
         # Check user exists
-        if ! grep -q "$user" /etc/passwd; then
+        if ! grep -qw "$user" /etc/passwd; then
             continue
         fi
 
