@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+target_dir="$HOME/Downloads/"
+days_old=7
+
+live_mode=0
+if [[ "$1" == "--live" ]]; then
+    live_mode=1
+fi
+
+if ! [[ -d "$target_dir" ]]; then
+    echo "Error: Target directory $target_dir does not exist." >&2
+    exit 1
+fi
+
+process_files() {
+    find "$target_dir" -mtime +$days_old -type f -print0 | sort -z | while IFS= read -r -d '' file; do
+        if (( live_mode )); then
+            echo "Deleting: $file"
+            rm "$file"
+        else
+            echo "$file"
+        fi
+    done
+}
+
+process_empty_dirs() {
+    local removed_anything=0
+    while :; do
+        removed_anything=0
+        while IFS= read -r -d '' dir; do
+            if (( live_mode )); then
+                echo "Removing empty directory: $dir"
+                rmdir "$dir" && removed_anything=1
+            else
+                echo "$dir"
+            fi
+        done < <(find "$target_dir" -mindepth 1 -type d -empty -print0 | sort -z)
+
+        (( removed_anything )) || break
+    done
+}
+
+if (( live_mode )); then
+    echo "Running in live mode. Deleting files older than $days_old days in $target_dir."
+else
+    echo "Dry run mode. Files that would be deleted (sorted):"
+fi
+process_files
+
+if (( live_mode )); then
+    echo "Removing empty directories after file deletion."
+else
+    echo "Directories that would be removed if empty (sorted):"
+fi
+process_empty_dirs
