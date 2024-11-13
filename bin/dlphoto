@@ -8,7 +8,9 @@ shift
 includes=()
 
 for file; do
-    includes+=( --include "$file" )
+    base_name="${file##*/}"
+    arw_name="${base_name%.*}.ARW"
+    includes+=( --include "$arw_name" )
 done
 
 temp_dir=$(mktemp -d)
@@ -17,16 +19,18 @@ rclone copy gs:chris-down-photos/chrisdown-photos/"$dir" "$temp_dir"/ "${include
 
 local_files=( "$temp_dir"/* )
 
-# Get the base names of the intended files (files passed as arguments)
-expected_files=("$@")
+expected_files=()
+for file in "$@"; do
+    base_name="${file##*/}"
+    arw_name="${base_name%.*}.ARW"
+    expected_files+=( "$arw_name" )
+done
 
-# Get the base names of the files downloaded into temp_dir using ##*/ to strip the directory
 downloaded_files=()
 for file in "${local_files[@]}"; do
     downloaded_files+=( "${file##*/}" )
 done
 
-# Find missing files
 missing_files=()
 for expected in "${expected_files[@]}"; do
     found=0
