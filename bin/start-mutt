@@ -12,7 +12,7 @@ PATH=$(get-path-without-env)
 export PATH
 
 # For attachments with a relative path
-cd /tmp
+cd /tmp || exit
 
 while :; do
     mutt
