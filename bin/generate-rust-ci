@@ -60,6 +60,12 @@ printf '\n'
 make_job lint Lint
 make_run cargo fmt --all -- --check
 make_run cargo clippy -- -D warnings
+printf '\n'
+
+make_job msrv 'MSRV'
+make_run cargo install cargo-msrv
+make_run cargo msrv verify
+printf '\n'
 
 if (( features )); then
     printf '\n'
