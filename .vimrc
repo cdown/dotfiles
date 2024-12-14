@@ -50,6 +50,10 @@ nnoremap <silent> <leader>q :%s/\s\+$//e<CR><C-o>
 nnoremap <silent> / :let @/ = ""<CR>:set hlsearch<CR>/
 nnoremap <silent> H :set hlsearch!<CR>
 
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 highlight TrailingWhitespace ctermbg=black
 call matchadd('TrailingWhitespace', '\s\+$')
