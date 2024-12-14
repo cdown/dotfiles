@@ -1,6 +1,11 @@
 #!/bin/bash -ex
 
+extra_args=()
+if [[ "$TRANSFERS" ]]; then
+    extra_args=( --transfers "$TRANSFERS" )
+fi
+
 in_dir=/mnt/sdcard/DCIM
 out_dir=jpg/${1?}
 mkdir -p "$out_dir"
-rawtojpg "$in_dir" "$out_dir"
+rawtojpg "$in_dir" "$out_dir" "${extra_args[@]}"
