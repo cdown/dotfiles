@@ -12,5 +12,9 @@ for (( i=0; i < "${#subs[@]}"; i++ )); do
     sub=${subs[$i]}
     video=${videos[$i]}
 
-    subsync -i "$sub" -o "${video%.*}".srt "$video"
+    if (( COPY )); then
+        cp "$sub" "${video%.*}".srt
+    else
+        subsync -i "$sub" -o "${video%.*}".srt "$video"
+    fi
 done
