@@ -19,3 +19,4 @@ hash=$(date +%Y%m%d -d "${1:-now}" | cksum | awk '{ print $1 }')
 
 print_allocations Battery 4 "$hash"
 print_allocations CFe 8 "$hash"
+print_allocations Thermal 4 "$hash"
