@@ -7,7 +7,7 @@ session_name=photo-upload-"$RANDOM"
 # shellcheck disable=SC2140
 escaped_photo_dir=${photo_dir/"'"/"'\\''"}
 
-: "${TRANSFERS:=4}"
+: "${TRANSFERS:=16}"
 
 if [[ -d /run/systemd/system ]]; then
     limit_cmd='LIMIT=512M memlimit'
