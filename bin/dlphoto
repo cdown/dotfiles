@@ -2,15 +2,35 @@
 
 shopt -s nullglob
 
-dir=${1?missing dir}
-shift
+extension=ARW
+args=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --ext)
+            extension=$2
+            shift 2
+            ;;
+        *)
+            args+=( "$1" )
+            shift
+            ;;
+    esac
+done
+
+if [[ ${#args[@]} -lt 1 ]]; then
+    echo "Usage: $0 [--ext extension] dir file1 file2 ..."
+    exit 1
+fi
+
+dir="${args[0]}"
+files=( "${args[@]:1}" )
 
 includes=()
-
-for file; do
+for file in "${files[@]}"; do
     base_name="${file##*/}"
-    arw_name="${base_name%.*}.ARW"
-    includes+=( --include "$arw_name" )
+    custom_name="${base_name%.*}.$extension"
+    includes+=( --include "$custom_name" )
 done
 
 temp_dir=$(mktemp -d)
@@ -20,10 +40,10 @@ rclone copy gs:chris-down-photos/chrisdown-photos/"$dir" "$temp_dir"/ "${include
 local_files=( "$temp_dir"/* )
 
 expected_files=()
-for file in "$@"; do
+for file in "${files[@]}"; do
     base_name="${file##*/}"
-    arw_name="${base_name%.*}.ARW"
-    expected_files+=( "$arw_name" )
+    custom_name="${base_name%.*}.$extension"
+    expected_files+=( "$custom_name" )
 done
 
 downloaded_files=()
