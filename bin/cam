@@ -1,0 +1,21 @@
+#!/bin/bash
+
+print_allocations() {
+    local label="$1"
+    local count="$2"
+    local hash="$3"
+
+    for ((i = 1; i <= count; i++)); do
+        local order=$(( (hash + i) % count + 1 ))
+        if ((i == 1)); then
+            printf "%-7s %d: #%d\n" "$label" "$i" "$order"
+        else
+            printf "        %d: #%d\n" "$i" "$order"
+        fi
+    done
+}
+
+hash=$(date +%Y%m%d -d "${1:-now}" | cksum | awk '{ print $1 }')
+
+print_allocations Battery 4 "$hash"
+print_allocations CFe 8 "$hash"
