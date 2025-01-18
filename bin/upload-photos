@@ -9,10 +9,12 @@ escaped_photo_dir=${photo_dir/"'"/"'\\''"}
 
 : "${TRANSFERS:=16}"
 
-if [[ -d /run/systemd/system ]]; then
-    limit_cmd='LIMIT=512M memlimit'
-else
-    limit_cmd=
+if ! (( NO_MEMLIMIT )); then
+    if [[ -d /run/systemd/system ]]; then
+        limit_cmd='LIMIT=512M memlimit'
+    else
+        limit_cmd=
+    fi
 fi
 
 if (( WOTOU_REMOTE )); then
