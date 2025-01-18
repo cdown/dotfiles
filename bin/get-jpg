@@ -7,5 +7,11 @@ fi
 
 in_dir=/mnt/sdcard/DCIM
 out_dir=jpg/${1?}
+
+if [[ -e "$out_dir" ]]; then
+    printf 'Refusing to reuse, already exists: %s\n' "$out_dir" >&2
+    exit 1
+fi
+
 mkdir -p "$out_dir"
 rawtojpg "$in_dir" "$out_dir" "${extra_args[@]}"
