@@ -1,4 +1,8 @@
 #!/bin/bash -ex
 
 cd /mnt/c/Users/cdown/Pictures/'LR backup'
+
+mkdir PSD
+cp -nv /mnt/c/Users/cdown/Pictures/'LOCAL Lightroom'/**/*.psd PSD/
+
 upload-photos _LR_Backup
