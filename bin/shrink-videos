@@ -8,10 +8,5 @@ for file do
         mkdir -p shrink/"$dir"
     fi
     ext="${file##*.}"
-    out=shrink/"${file%.*}.$ext"
-    if [[ -f "$out" ]]; then
-        printf '%s already exists, skipping\n' "$out" >&2
-        continue
-    fi
-    shrink-video "$file" "$out"
+    shrink-video "$file" shrink/
 done

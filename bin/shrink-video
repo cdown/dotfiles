@@ -2,10 +2,6 @@
 
 export LC_ALL=C
 
-in=${1?}
-ext=${in##*.}
-out=${2:-"${in%.*}_SHRINK.$ext"}
-
 # Default setting of 21 determined by looking through GoPro videos with fine
 # detail
 #
@@ -40,6 +36,28 @@ out=${2:-"${in%.*}_SHRINK.$ext"}
 #
 # For long GoPro encodes, consider PRESET=slow per
 # https://ottverse.com/choosing-an-x265-preset-an-roi-analysis/
+
+in=${1?}
+
+in_filename=${in##*/}
+in_ext=${in_filename##*.}
+in_base=${in_filename%.*}
+
+if (( X265 )); then
+    default_container="mp4"
+else
+    default_container="mkv"
+fi
+
+if [[ -n "$2" ]]; then
+    if [[ -d "$2" ]]; then
+        out="$2/${in_base}.${default_container}"
+    else
+        out="$2"
+    fi
+else
+    out="${in_base}_SHRINK.${default_container}"
+fi
 
 : "${MAX_DIMENSION:=0}"
 : "${VIDEO_CRF:=21}"
