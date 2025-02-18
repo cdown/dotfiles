@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe \
+    -c "(New-Object Media.SoundPlayer 'C:\\Windows\\Media\\notify.wav').PlaySync()"
