@@ -1,47 +1,18 @@
 #!/bin/bash -e
 
-drive=$(wsl-get-drive '.*MEGA.*')
-if ! [[ "$drive" ]]; then
-    echo "No drive found" >&2
-    exit 1
-fi
-
-wsl_act() {
-    /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe \
-        -Command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command \"& {wsl --${1?missing action} $drive}\"' -Verb RunAs"
-}
-
 sudo mkdir -p /mnt/sdcard
 
 case ${1?} in
     mount)
         if is-wsl; then
-            wsl_act mount
-
-            # Wait for the exfat partition to appear (up to 30 seconds)
-            for _ in {1..30}; do
-                part=$(sudo blkid | awk -F: '/TYPE="exfat"/ {print $1; exit}')
-                if [[ -n "$part" ]]; then
-                    break
-                fi
-                sleep 1
-            done
-
-            if [[ -z "$part" ]]; then
-                echo "Could not find exfat partition" >&2
-                wsl_act unmount
-                exit 1
-            fi
-
-            sudo mount "$part" /mnt/sdcard
+            sudo mount -t drvfs e: /mnt/sdcard
         else
             sudo mount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1 /mnt/sdcard
         fi
     ;;
     unmount)
         if is-wsl; then
-            sudo umount /mnt/sdcard
-            wsl_act unmount
+            sudo umount e:
         else
             sudo umount /dev/disk/by-id/usb-MEGA-W_CFe_Reader_*-part1
         fi
