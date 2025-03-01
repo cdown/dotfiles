@@ -142,8 +142,8 @@ endfor
 " gV to highlight previously inserted text
 nnoremap gV `[v`]
 
-nnoremap <silent> <Leader>y :call writefile(getline(1, '$'), expand("~/.vim/xfer"))<CR>:silent! w !xclip<CR>:silent! w !xclip -sel clip<CR>
-vnoremap <silent> <Leader>y :<C-U>call writefile(getline("'<", "'>"), expand("~/.vim/xfer"))<CR>gv:silent! w !xclip<CR>gv:silent! w !xclip -sel clip<CR>
+nnoremap <silent> <Leader>y :call writefile(getline(1, '$'), expand("~/.vim/xfer"))<CR>:silent! execute '!xclip < ' . expand("~/.vim/xfer")<CR>:silent! execute '!xclip -sel clip < ' . expand("~/.vim/xfer")<CR>:redraw!<CR>
+vnoremap <silent> <Leader>y :<C-U>call writefile(getline("'<", "'>"), expand("~/.vim/xfer"))<CR>:silent! execute '!xclip < ' . expand("~/.vim/xfer")<CR>:silent! execute '!xclip -sel clip < ' . expand("~/.vim/xfer")<CR>:redraw!<CR>
 
 " Automatically move to end of paste
 vnoremap <silent> y y`]
