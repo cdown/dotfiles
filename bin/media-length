@@ -2,6 +2,18 @@
 
 total_seconds=0
 
+format_time() {
+    local sec=$1
+    local h=$(( sec / 3600 ))
+    local m=$(( (sec % 3600) / 60 ))
+    local s=$(( sec % 60 ))
+    local out=""
+    (( h > 0 )) && out+="${h}h "
+    (( m > 0 )) && out+="${m}m "
+    out+="${s}s"
+    echo "$out"
+}
+
 for file in "$@"; do
     duration=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal "$file")
 
@@ -16,29 +28,13 @@ for file in "$@"; do
     file_seconds=$((10#$hh * 3600 + 10#$mm * 60 + 10#$sec))
     total_seconds=$((total_seconds + file_seconds))
 
-    output=""
-    if (( 10#$hh > 0 )); then
-        output+="$((10#$hh))h "
-    fi
-    if (( 10#$mm > 0 )); then
-        output+="$((10#$mm))m "
-    fi
-    output+="$((10#$sec))s"
-
-    echo "$file: $output"
+    echo "$file: $(format_time "$file_seconds")"
 done
 
-total_h=$((total_seconds / 3600))
-total_m=$(((total_seconds % 3600) / 60))
-total_s=$((total_seconds % 60))
+echo "Total: $(format_time "$total_seconds")"
 
-total_output=""
-if (( total_h > 0 )); then
-    total_output+="${total_h}h "
-fi
-if (( total_m > 0 )); then
-    total_output+="${total_m}m "
-fi
-total_output+="${total_s}s"
-
-echo "Total: $total_output"
+speed_factors=(1.5 1.75 2)
+for factor in "${speed_factors[@]}"; do
+    effective=$(awk "BEGIN {printf \"%d\", $total_seconds / $factor}")
+    echo "Total at ${factor}x: $(format_time "$effective")"
+done
