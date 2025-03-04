@@ -181,7 +181,6 @@ alias today='find . -daystart -ctime 0 -print'
 
 alias clippy-noisy='cargo clippy --all -- -D clippy::all -D clippy::undocumented-unsafe-blocks -D clippy::as-conversions -D clippy::pedantic -D clippy::nursery -D clippy::cargo -D warnings -A clippy::multiple-crate-versions -A clippy::module-name-repetitions'
 alias wsl-usb-sync='q rsync -avh --inplace --no-perms --no-owner --no-group --ignore-existing --delete /mnt/a/ /mnt/b/'
-alias media-length='ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal'
 alias uf='unused-features analyze && unused-features build-report -i report.json && unused-features prune -i report.json && xdg-open report.html'
 
 ffmpeg-fix() {

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+total_seconds=0
+
+for file in "$@"; do
+    duration=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal "$file")
+
+    if [[ -z "$duration" ]]; then
+        echo "$file: Unable to determine duration." >&2
+        exit 1
+    fi
+
+    IFS=: read -r hh mm ss <<< "$duration"
+    sec=${ss%%.*}
+
+    file_seconds=$((10#$hh * 3600 + 10#$mm * 60 + 10#$sec))
+    total_seconds=$((total_seconds + file_seconds))
+
+    output=""
+    if (( 10#$hh > 0 )); then
+        output+="$((10#$hh))h "
+    fi
+    if (( 10#$mm > 0 )); then
+        output+="$((10#$mm))m "
+    fi
+    output+="$((10#$sec))s"
+
+    echo "$file: $output"
+done
+
+total_h=$((total_seconds / 3600))
+total_m=$(((total_seconds % 3600) / 60))
+total_s=$((total_seconds % 60))
+
+total_output=""
+if (( total_h > 0 )); then
+    total_output+="${total_h}h "
+fi
+if (( total_m > 0 )); then
+    total_output+="${total_m}m "
+fi
+total_output+="${total_s}s"
+
+echo "Total: $total_output"
