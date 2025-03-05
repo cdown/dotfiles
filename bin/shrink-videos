@@ -7,6 +7,5 @@ for file do
     if [[ $dir != "$file" ]]; then
         mkdir -p shrink/"$dir"
     fi
-    ext="${file##*.}"
     shrink-video "$file" shrink/
 done

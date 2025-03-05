@@ -40,7 +40,6 @@ export LC_ALL=C
 in=${1?}
 
 in_filename=${in##*/}
-in_ext=${in_filename##*.}
 in_base=${in_filename%.*}
 
 if (( X265 )); then
@@ -66,6 +65,7 @@ fi
 
 extra_vf=''
 if (( MAX_DIMENSION )); then
+    # shellcheck disable=SC2140
     extra_vf=scale=w="$MAX_DIMENSION":h="$MAX_DIMENSION":force_original_aspect_ratio=decrease,"scale=trunc(iw/2)*2:trunc(ih/2)*2"', '
 fi
 
