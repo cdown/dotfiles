@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+case $(id -un) in
+    lin) cmd=firefox ;;
+    cdown) cmd=google-chrome-stable ;;
+esac
+
+exec "$cmd"
