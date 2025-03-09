@@ -1,8 +1,25 @@
 #!/bin/bash -e
 
+incognito=0
+if [[ "$1" == "--incognito" ]]; then
+    incognito=1
+fi
+
+browser_args=()
+
 case $(id -un) in
-    lin) cmd=firefox ;;
-    cdown) cmd=google-chrome-stable ;;
+    lin)
+        cmd="firefox"
+        if (( incognito )); then
+            browser_args+=( "--private-window" )
+        fi
+        ;;
+    *)
+        cmd="google-chrome-stable"
+        if (( incognito )); then
+            browser_args+=( "--incognito" )
+        fi
+        ;;
 esac
 
-exec "$cmd"
+exec "$cmd" "${browser_args[@]}"
