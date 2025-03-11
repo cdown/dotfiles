@@ -176,7 +176,7 @@ alias yt-dlp1080='y 1080'
 alias yt-dlp720='y 720'
 
 y() {
-    yt-dlp -f "bestvideo[height<=?${1?}][fps<=?60][vcodec!~='\''vp0?9'\'']+bestaudio/best" "${@:2}"
+    yt-dlp -f "bestvideo[height<=?${1?}][fps<=?60][vcodec!~='vp0?9']+bestaudio/best" "${@:2}"
 }
 
 alias tczst='tar --use-compress-program zstd -cf'
