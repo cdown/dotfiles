@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+luks_name="luksusb"
+mapper="/dev/mapper/${luks_name}"
+default_mount_point="/mnt/${luks_name}"
+
+usage() {
+    echo "Usage:"
+    echo "  $0 create <drive>"
+    echo "  $0 mount <drive> <dest>"
+    echo "  $0 umount <drive|dest>"
+    exit 1
+}
+
+open_luks() {
+    local drive="$1"
+    if [[ ! -e "$mapper" ]]; then
+        echo "Opening LUKS container on $drive..."
+        cryptsetup luksOpen "$drive" "$luks_name"
+    else
+        echo "LUKS container already open at $mapper."
+    fi
+}
+
+close_luks() {
+    if [[ -e "$mapper" ]]; then
+        echo "Closing LUKS container..."
+        cryptsetup luksClose "$luks_name"
+    else
+        echo "LUKS container is not open."
+    fi
+}
+
+mount_drive() {
+    local drive="$1"
+    local dest="$2"
+    local skip_open="${3:-false}"
+    if [[ "$skip_open" != "true" ]]; then
+        open_luks "$drive"
+    fi
+    echo "Mounting $mapper to $dest..."
+    mount "$mapper" "$dest"
+    echo "Drive mounted at $dest"
+}
+
+create_drive() {
+    local drive="$1"
+    echo "Initializing LUKS on $drive..."
+    cryptsetup luksFormat "$drive"
+    open_luks "$drive"
+    echo "Creating ext4 filesystem on $mapper..."
+    mkfs.ext4 "$mapper"
+    # Create default mount point if it doesn't exist.
+    if [[ ! -d "$default_mount_point" ]]; then
+         mkdir -p "$default_mount_point"
+    fi
+    # Skip open_luks since it's already been called.
+    mount_drive "$drive" "$default_mount_point" "true"
+}
+
+umount_drive() {
+    local arg="$1"
+    # Check if the argument is a mountpoint.
+    if mountpoint -q "$arg"; then
+        echo "Unmounting mountpoint $arg..."
+        umount "$arg"
+    else
+        # Otherwise, attempt to find the mountpoint for the opened LUKS device.
+        local mp
+        mp=$(grep -F "$mapper" /proc/mounts | awk '{print $2}' | head -n1)
+        if [[ -n "$mp" ]]; then
+            echo "Unmounting $mp..."
+            umount "$mp"
+        else
+            echo "No mountpoint found for $mapper"
+            exit 1
+        fi
+    fi
+    close_luks
+}
+
+[[ $# -ge 2 ]] || usage
+
+command="$1"
+drive="$2"
+dest="${3:-}"
+
+case "$command" in
+    create)
+        create_drive "$drive"
+        ;;
+    mount)
+        [[ -n "$dest" ]] || usage
+        mount_drive "$drive" "$dest"
+        ;;
+    umount)
+        umount_drive "$drive"
+        ;;
+    *)
+        usage
+        ;;
+esac
