@@ -32,3 +32,5 @@
 	rebase = true
 [rerere]
 	enabled = true
+[core]
+	autocrlf = false
