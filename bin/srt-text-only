@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+import sys
+import srt
+
+
+def print_subtitle_text(filepath):
+    with open(filepath, "r", encoding="utf-8") as file:
+        raw_srt = file.read()
+
+    subtitles = srt.parse(raw_srt)
+
+    for subtitle in subtitles:
+        for line in subtitle.content.splitlines():
+            if line.strip():
+                print(line)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} path/to/file.srt")
+        sys.exit(1)
+
+    srt_path = sys.argv[1]
+    print_subtitle_text(srt_path)
