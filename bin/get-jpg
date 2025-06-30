@@ -14,4 +14,4 @@ if [[ -e "$out_dir" ]]; then
 fi
 
 mkdir -p "$out_dir"
-rawtojpg "$in_dir" "$out_dir" "${extra_args[@]}"
+jpgfromraw "$in_dir" "$out_dir" "${extra_args[@]}"
