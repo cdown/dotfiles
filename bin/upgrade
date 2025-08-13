@@ -97,7 +97,7 @@ esac
 sudo pacman -Sy --noconfirm --needed "$keyring"-keyring
 sudo pacman-key --populate "$keyring"
 
-if command -v yay >/dev/null 2>&1; then
+if ! (( BYPASS_AUR )) && command -v yay >/dev/null 2>&1; then
     sudo -u makepkg yay --noconfirm --cleanafter --devel -Syu
 else
     sudo pacman --noconfirm -Syu
