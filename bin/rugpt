@@ -1,10 +1,45 @@
 #!/bin/bash -e
 
 {
-    printf "Here are some Rust files. In a second I will ask some questions about them:\n"
+    # First, output the instructions for ChatGPT
+    cat << 'EOF'
+You’re given one or more files, each described like this:
+
+#####
+### File: "<filename>" ###
+#####
+
+<file contents>
+
+#####
+### File: "<next-filename>" ###
+#####
+
+<next file contents>
+…etc.
+
+Your task is to apply exactly the changes described in the user’s instructions and nothing else. When you output:
+
+  • Only include files that were modified; omit unmodified files.  
+  • For each modified file, reproduce its entire content exactly, including comments, indentation, line breaks, shebangs, encoding banners, etc.  
+  • Change only the lines or tokens explicitly required by the user’s request. Do not rename variables, reflow paragraphs, reformat code, or remove comments.  
+  • Do not insert placeholders like “rest of file unchanged” or ellipses.  
+  • Match the original style, quoting, and formatting character for character in unchanged regions.  
+
+Output each modified file in the same delimiters:
+
+#####
+### File: "<filename>" ###
+#####
+
+<new full contents>
+
+# --- USER INSTRUCTIONS ---
+# Please describe here what modifications you want to apply to the files.
+EOF
+
     for file do
-	printf '\n\n#####\n### File: "%s" ###\n#####\n\n' "$file"
-	cat "$file"
+        printf '\n\n#####\n### File: "%s" ###\n#####\n\n' "$file"
+        cat "$file"
     done
-    printf '\nPlease review this code, suggesting 10 improvements with code examples of the suggested changes. Thanks!\n'
 } | xclip -sel clip
