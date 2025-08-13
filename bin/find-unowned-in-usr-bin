@@ -1,3 +1,12 @@
 #!/bin/bash
 
-pacman -Qo -- /usr/bin/* 2> >(awk '/No package owns/ { print $NF }') >/dev/null
+allowlist=(
+    # From Arch WSL
+    /usr/bin/mount.drvfs
+    /usr/bin/wslinfo
+    /usr/bin/wslpath
+)
+
+pacman -Qo -- /usr/bin/* 2> >(
+    awk '/No package owns/ { print $NF }' | grep -vFf <(printf "%s\n" "${allowlist[@]}")
+) >/dev/null || true
