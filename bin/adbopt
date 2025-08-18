@@ -1,0 +1,137 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+print_status() {
+    echo -e "${GREEN}[INFO]${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+print_section() {
+    echo -e "\n${BLUE}# $1${NC}"
+}
+
+cleanup() {
+    print_warning "\nScript interrupted. Exiting."
+    exit 1
+}
+trap cleanup INT TERM
+
+print_status "Checking for a connected device..."
+DEVICE_COUNT=$(adb devices | awk 'NR>1 && $2=="device"{print $1}' | wc -l)
+
+if [ "$DEVICE_COUNT" -eq 0 ]; then
+    print_error "No device found. Please connect your device and enable USB debugging."
+    exit 1
+elif [ "$DEVICE_COUNT" -gt 1 ]; then
+    print_error "Multiple devices found. Please connect only one device and try again."
+    adb devices
+    exit 1
+fi
+
+if [[ "$(adb get-state)" != "device" ]]; then
+    print_error "Device not ready. Please authorize the connection on your device."
+    exit 1
+fi
+print_status "Device connected: $(adb shell getprop ro.product.model | tr -d '\r')"
+
+BATTERY_LEVEL=$(adb shell dumpsys battery | grep level | awk '{print $2}')
+print_status "Current battery level: ${BATTERY_LEVEL}%"
+if [ "$BATTERY_LEVEL" -lt 20 ]; then
+    print_warning "Battery is low. It's recommended to charge your device first."
+    read -p "Continue anyway? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi
+
+print_warning "\nThis script will process ALL apps (system and user)."
+print_warning "It will force-stop apps and run optimizations."
+print_warning "This is non-destructive and WILL NOT delete your app data or logins."
+print_warning "Please save your work in any open apps. Do not disconnect the device."
+read -p "Ready to proceed? (y/N): " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    exit 1
+fi
+
+
+print_section "Collecting Package Information"
+mapfile -t PACKAGES < <(adb shell pm list packages | cut -d':' -f2 | tr -d '\r')
+
+if [ ${#PACKAGES[@]} -eq 0 ]; then
+    print_warning "No packages found to optimize."
+    exit 0
+fi
+PACKAGE_COUNT=${#PACKAGES[@]}
+print_status "Found $PACKAGE_COUNT total packages to process."
+
+
+print_section "Phase 1: Force-Stopping Applications"
+counter=0
+for pkg in "${PACKAGES[@]}"; do
+    counter=$((counter + 1))
+    echo -ne "Stopping app ($counter/$PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
+    adb shell am force-stop "$pkg" > /dev/null 2>&1
+done
+echo -e "\nAll apps stopped."
+
+
+print_section "Phase 2: Verifying and Optimizing Applications"
+counter=0
+for pkg in "${PACKAGES[@]}"; do
+    counter=$((counter + 1))
+    print_status "Processing ($counter/$PACKAGE_COUNT): $pkg"
+
+    # TODO: this is a bit jank and sometimes gets other things
+    CURRENT_STATUS=$(adb shell dumpsys package "$pkg" | awk -F '[][]' '/status=/{print $2}' | cut -d'=' -f2)
+
+    if [[ "$CURRENT_STATUS" == "speed" ]]; then
+        echo "  - Already optimized for speed. Skipping."
+    else
+        echo "  - Current status: '$CURRENT_STATUS'. Optimizing for speed..."
+        # Compile the app for performance (speed profile)
+        if ! adb shell cmd package compile -m speed "$pkg" > /dev/null 2>&1; then
+            print_warning "Could not optimize $pkg. This can happen with some apps. Continuing..."
+        fi
+    fi
+done
+echo -e "\nApp optimization complete."
+
+print_section "Phase 3: Final System-Wide Cleanup (Non-essential)"
+
+print_status "Optimizing boot image profiles..."
+adb shell cmd package compile -m speed-profile -a > /dev/null 2>&1 || true
+
+print_status "Kicking off background optimization job..."
+adb shell cmd package bg-dexopt-job > /dev/null 2>&1 || true
+
+print_status "Reconciling secondary dex files..."
+adb shell cmd package reconcile-secondary-dex-files all > /dev/null 2>&1 || true
+
+print_status "Clearing ART profiles..."
+adb shell pm art clear-app-profiles all > /dev/null 2>&1 || true
+
+print_status "Running system garbage collection..."
+adb shell cmd activity garbage-collect all > /dev/null 2>&1 || true
+
+print_status "Performing a final system-wide cache trim..."
+adb shell pm trim-caches 256G > /dev/null 2>&1 || true
+
+print_section "Phase 4: Reboot"
+print_status "Rebooting device..."
+adb reboot
+
+echo "Done."
