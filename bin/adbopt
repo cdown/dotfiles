@@ -6,6 +6,22 @@ BLUE='\033[0;34m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+ALLOWLIST=(
+    "com.chirpbirding.birda"
+    "com.deliveroo.orderapp"
+    "com.enzuredigital.weatherbomb"
+    "com.google.android.apps.walletnfcrel"
+    "com.google.android.deskclock"
+    "com.labs.merlinbirdid.app"
+    "com.oneplus.deskclock"
+    "com.pushbullet.android"
+    "com.strava"
+    "com.ubercab.eats"
+    "de.tu_chemnitz.mi.kahst.birdnet"
+    "net.superblock.pushover"
+    "org.videolan.vlc"
+)
+
 print_status() {
     echo -e "${GREEN}[INFO]${NC} $1"
 }
@@ -20,6 +36,14 @@ print_error() {
 
 print_section() {
     echo -e "\n${BLUE}# $1${NC}"
+}
+
+# Function to check if an array contains a specific element
+contains_element() {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
 }
 
 cleanup() {
@@ -66,6 +90,24 @@ echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
+
+print_section "Restricting Background Activity for User Apps"
+mapfile -t USER_PACKAGES < <(adb shell pm list packages -3 | cut -d':' -f2 | tr -d '\r')
+USER_PACKAGE_COUNT=${#USER_PACKAGES[@]}
+print_status "Found $USER_PACKAGE_COUNT user-installed packages to process."
+
+counter=0
+for pkg in "${USER_PACKAGES[@]}"; do
+    counter=$((counter + 1))
+    if contains_element "$pkg" "${ALLOWLIST[@]}"; then
+        echo -ne "Allowing ($counter/$USER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
+        adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND allow > /dev/null 2>&1
+    else
+        echo -ne "Restricting ($counter/$USER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
+        adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND restricted > /dev/null 2>&1
+    fi
+done
+echo -e "\nUser app background restrictions applied."
 
 
 print_section "Collecting Package Information"
