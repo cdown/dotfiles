@@ -12,6 +12,7 @@ ALLOWLIST=(
     "com.enzuredigital.weatherbomb"
     "com.google.android.apps.walletnfcrel"
     "com.google.android.deskclock"
+    "com.google.android.gm"
     "com.labs.merlinbirdid.app"
     "com.oneplus.deskclock"
     "com.pushbullet.android"
@@ -91,23 +92,23 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
 
-print_section "Restricting Background Activity for User Apps"
-mapfile -t USER_PACKAGES < <(adb shell pm list packages -3 | cut -d':' -f2 | tr -d '\r')
-USER_PACKAGE_COUNT=${#USER_PACKAGES[@]}
-print_status "Found $USER_PACKAGE_COUNT user-installed packages to process."
+print_section "Restricting Background Activity for Launcher Apps"
+mapfile -t LAUNCHER_PACKAGES < <(adb shell cmd package query-activities -a android.intent.action.MAIN -c android.intent.category.LAUNCHER | grep "packageName=" | cut -d'=' -f2 | sort -u)
+LAUNCHER_PACKAGE_COUNT=${#LAUNCHER_PACKAGES[@]}
+print_status "Found $LAUNCHER_PACKAGE_COUNT launcher apps to process."
 
 counter=0
-for pkg in "${USER_PACKAGES[@]}"; do
+for pkg in "${LAUNCHER_PACKAGES[@]}"; do
     counter=$((counter + 1))
     if contains_element "$pkg" "${ALLOWLIST[@]}"; then
-        echo -ne "Allowing ($counter/$USER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
+        echo -ne "Allowing ($counter/$LAUNCHER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
         adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND allow > /dev/null 2>&1
     else
-        echo -ne "Restricting ($counter/$USER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
+        echo -ne "Restricting ($counter/$LAUNCHER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
         adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND restricted > /dev/null 2>&1
     fi
 done
-echo -e "\nUser app background restrictions applied."
+echo -e "\nLauncher app background restrictions applied."
 
 
 print_section "Collecting Package Information"
