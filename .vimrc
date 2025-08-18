@@ -251,4 +251,10 @@ augroup kernel_syntax
   autocmd Syntax c syn keyword cType __u8 __u16 __u32 __u64 __s8 __s16 __s32 __s64
 augroup END
 
+highlight NonAscii ctermbg=darkmagenta ctermfg=white guibg=#ff0000 guifg=#ffffff
+augroup HighlightNonAscii
+  autocmd!
+  autocmd BufWinEnter,InsertLeave * match NonAscii /[^\x00-\x7F]/
+augroup END
+
 let g:GPGDefaultRecipients=["0xDF8D21B616118070"]
