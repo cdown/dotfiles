@@ -85,6 +85,7 @@ fi
 print_warning "\nThis script will process ALL apps (system and user)."
 print_warning "It will force-stop apps and run optimizations."
 print_warning "This is non-destructive and WILL NOT delete your app data or logins."
+print_warning "You must also disable permission monitoring for the duration."
 print_warning "Please save your work in any open apps. Do not disconnect the device."
 read -p "Ready to proceed? (y/N): " -n 1 -r
 echo
@@ -102,10 +103,10 @@ for pkg in "${LAUNCHER_PACKAGES[@]}"; do
     counter=$((counter + 1))
     if contains_element "$pkg" "${ALLOWLIST[@]}"; then
         echo -ne "Allowing ($counter/$LAUNCHER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
-        adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND allow > /dev/null 2>&1
+        adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND allow
     else
         echo -ne "Restricting ($counter/$LAUNCHER_PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
-        adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND restricted > /dev/null 2>&1
+        adb shell cmd appops set "$pkg" RUN_IN_BACKGROUND ignore
     fi
 done
 echo -e "\nLauncher app background restrictions applied."
