@@ -157,22 +157,19 @@ echo -e "\nApp optimization complete."
 print_section "Phase 3: Final System-Wide Cleanup (Non-essential)"
 
 print_status "Optimizing boot image profiles..."
-adb shell cmd package compile -m speed-profile -a > /dev/null 2>&1 || true
+adb shell cmd package compile -m speed-profile -a
 
 print_status "Optimizing XML layouts..."
 adb shell pm compile -a -f --check-prof false --compile-layouts >/dev/null 2>&1 || true
 
 print_status "Kicking off background optimization job..."
-adb shell cmd package bg-dexopt-job > /dev/null 2>&1 || true
-
-print_status "Reconciling secondary dex files..."
-adb shell cmd package reconcile-secondary-dex-files all > /dev/null 2>&1 || true
+adb shell cmd package bg-dexopt-job
 
 print_status "Clearing ART profiles..."
-adb shell pm art clear-app-profiles all > /dev/null 2>&1 || true
+adb shell pm art clear-app-profiles all
 
 print_status "Running system garbage collection..."
-adb shell cmd activity garbage-collect all > /dev/null 2>&1 || true
+adb shell cmd activity garbage-collect all
 
 print_status "Performing a final system-wide cache trim..."
 adb shell pm trim-caches 256G > /dev/null 2>&1 || true
