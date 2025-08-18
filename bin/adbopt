@@ -171,9 +171,6 @@ echo -e "\nAll app profiles cleared."
 print_status "Kicking off background optimization job..."
 adb shell cmd package bg-dexopt-job
 
-print_status "Clearing ART profiles..."
-adb shell pm art clear-app-profiles all
-
 print_status "Running system garbage collection..."
 adb shell cmd activity garbage-collect all
 
