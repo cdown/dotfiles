@@ -128,7 +128,7 @@ counter=0
 for pkg in "${PACKAGES[@]}"; do
     counter=$((counter + 1))
     echo -ne "Stopping app ($counter/$PACKAGE_COUNT): ${pkg:0:40}...\033[0K\r"
-    adb shell am force-stop "$pkg" > /dev/null 2>&1
+    adb shell am force-stop "$pkg"
 done
 echo -e "\nAll apps stopped."
 
