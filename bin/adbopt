@@ -159,6 +159,9 @@ print_section "Phase 3: Final System-Wide Cleanup (Non-essential)"
 print_status "Optimizing boot image profiles..."
 adb shell cmd package compile -m speed-profile -a > /dev/null 2>&1 || true
 
+print_status "Optimizing XML layouts..."
+adb shell pm compile -a -f --check-prof false --compile-layouts >/dev/null 2>&1 || true
+
 print_status "Kicking off background optimization job..."
 adb shell cmd package bg-dexopt-job > /dev/null 2>&1 || true
 
