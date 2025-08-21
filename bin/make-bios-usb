@@ -9,6 +9,12 @@ device=${2?device missing}
 
 # put old bios/dmi info in ~/lastbios, just in case shtf
 # shellcheck disable=SC2024
-sudo dmidecode &> ~/lastbios
+cat /sys/class/dmi/id/bios_version &> ~/lastbios
 
-geteltorito.pl "$iso" | sudo tee "$device" >/dev/null
+size=$(stat -c %s "$iso")
+[[ $size ]] || exit
+
+# Byzantine process needed in order to do O_DIRECT and get progress
+geteltorito.pl "$iso" |
+    pv -s "$size" |
+    sudo dd of="$device" obs=1M oflag=direct status=none
