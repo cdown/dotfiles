@@ -9,7 +9,9 @@ You’re given one or more files, each described like this:
 ### File: "<filename>" ###
 #####
 
-<file contents>
+```
+<file contents in a code block>
+```
 
 #####
 ### File: "<next-filename>" ###
