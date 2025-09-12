@@ -2,8 +2,14 @@
 
 time=$1
 
-pacmd list-sources | sed -n '/index:/s/.*index: //p' | xargs -I{} pactl set-source-mute {} 0
-pacmd list-sources | grep muted:
+indices=$(pacmd list-sources | sed -n '/index:/s/.*index: //p')
+echo "$indices" | xargs -I{} pactl set-source-mute {} 0
+
+echo "$indices" | xargs -I{} pactl set-source-volume {} 100%
+
+echo "Current microphone status:"
+pacmd list-sources | grep -e "muted:" -e "volume:" | grep -v "base volume"
+
 
 if [[ $time ]]; then
     sleep "$time"
