@@ -10,7 +10,7 @@ fi
 wsl_act() {
     # TODO: do not hardcode disk 1. why on earth does this have no gpt name
     /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe \
-        -Command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command \"& {wsl --${1?missing action} \\\\.\\PHYSICALDRIVE2}\"' -Verb RunAs"
+        -Command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command \"& {wsl --${1?missing action} $(wsl-get-drive '.*SABRENT.*')}\"' -Verb RunAs"
 }
 
 dest=/mnt/scratch
