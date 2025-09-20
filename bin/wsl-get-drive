@@ -5,7 +5,7 @@ set -e
 regex=${1?}
 found=()
 
-output=$(/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -Command "wmic diskdrive list brief" 2>/dev/null)
+output=$(/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -Command "Get-CimInstance -ClassName Win32_DiskDrive" 2>/dev/null)
 
 while IFS= read -r line; do
     if [[ "$line" =~ Caption ]] || [[ -z "$line" ]]; then
