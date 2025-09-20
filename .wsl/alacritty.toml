@@ -1,6 +1,6 @@
 # cp ~/.wsl/alacritty.toml /mnt/c/Users/cdown/AppData/Roaming/alacritty/alacritty.toml
 
-working_directory = '\\wsl$\Arch\home\cdown'
+general.working_directory = '\\wsl$\archlinux\home\cdown'
 
 [colors.bright]
 black = "#3b5a61"
@@ -43,7 +43,7 @@ family = "Terminus (TTF) for Windows"
 [selection]
 save_to_clipboard = true
 
-[shell]
+[terminal.shell]
 program = 'C:\Windows\System32\wsl.exe'
 
 [window.padding]
