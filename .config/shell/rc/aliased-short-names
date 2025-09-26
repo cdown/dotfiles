@@ -171,6 +171,10 @@ utf8() {
 
 alias gitdf='PATH="$HOME/git/git:$PATH" GIT_EXEC_PATH="$HOME/git/git" command git'
 alias nxkill="pkill -f '/usr/NX' && sleep 10 && pkill -9 -f '/usr/NX'"
+
+# https://github.com/yt-dlp/yt-dlp/issues/14456
+alias yt-dlp='yt-dlp --extractor-args "youtube:player-client=default,-tv_simply"'
+
 alias yt-dlpa='yt-dlp -f bestaudio'
 alias yt-dlp1080='y 1080'
 alias yt-dlp720='y 720'
