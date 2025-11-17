@@ -1,12 +1,35 @@
 #!/bin/bash
 
 if [[ ${1?} != noop ]]; then
-    pulseaudio-ctl "$@"
+    case "$1" in
+        up)
+            pactl set-sink-volume @DEFAULT_SINK@ +${2:-5}%
+            ;;
+        down)
+            pactl set-sink-volume @DEFAULT_SINK@ -${2:-5}%
+            ;;
+        mute|mute-toggle)
+            pactl set-sink-mute @DEFAULT_SINK@ toggle
+            ;;
+        unmute)
+            pactl set-sink-mute @DEFAULT_SINK@ 0
+            ;;
+        mute-only)
+            pactl set-sink-mute @DEFAULT_SINK@ 1
+            ;;
+        set)
+            pactl set-sink-volume @DEFAULT_SINK@ ${2}%
+            ;;
+        *)
+            echo "Unknown command: $1" >&2
+            exit 1
+            ;;
+    esac
 fi
 
-read -r vol mute _ < <(pulseaudio-ctl full-status)
+vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n1)
+mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
 
 extra=''
 [[ $mute == yes ]] && extra=!
-
 printf '%d%s\n' "$vol" "$extra" > "${XDG_RUNTIME_DIR?}"/xobpipe
