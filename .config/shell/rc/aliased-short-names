@@ -9,7 +9,13 @@ alias u='udf && exec zsh -l'
 alias s=sshrc
 alias b='sudo brightness'
 alias x='s -l root'
-alias q='sudo '
+
+if command -v run0 >/dev/null; then
+    alias q='run0 '
+else
+    alias q='sudo '
+fi
+
 alias lopri='nice -n 19 ionice -c2 -n7 '
 alias pp='dunstctl set-paused true; dspdfviewer -b 2'
 alias scan='sudo nmap -n -PN -sT -sU -p-'
