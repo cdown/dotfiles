@@ -1,4 +1,7 @@
 #!/bin/bash -e
 
-pacmd list-sources | sed -n '/index:/s/.*index: //p' | xargs -I{} pactl set-source-mute {} 1
-pacmd list-sources | grep muted:
+pactl list short sources | awk '{print $1}' | xargs -I{} pactl set-source-mute {} 1
+echo "Current microphone status:"
+pactl list short sources | awk '{print $1}' | while read -r idx; do
+    echo "Source $idx: $(pactl get-source-mute $idx)"
+done
