@@ -11,7 +11,7 @@ alias b='sudo brightness'
 alias x='s -l root'
 
 if command -v run0 >/dev/null; then
-    alias q='run0 '
+    alias q='run0 --background= '
 else
     alias q='sudo '
 fi
