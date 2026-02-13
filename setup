@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-shopt -s dotglob extglob globstar nullglob
+shopt -s dotglob extglob nullglob
 
 git clean -dffx
 git submodule update --init --recursive
@@ -25,7 +25,7 @@ if command -v gpg >/dev/null >/dev/null 2>&1 && gpg --list-secret-keys | grep -q
     decrypt_pgp=1
 fi
 
-for file in "$location"/**/*; do
+while IFS= read -r -d '' file; do
     bare="${file#$location/}"
 
     case "$bare" in
@@ -59,18 +59,15 @@ for file in "$location"/**/*; do
         fi
         mkdir -m755 -p ~/"$bare"
     else
-        link=$HOME/$bare
-        real_link=$(readlink -f "$link")
-        real_file=$(readlink -f "$file")
-        # If we already linked this file due to a directory symlink inside the
-        # dotfiles, don't try and link it again (see issue #1)
-        [[ $real_link != "$real_file" ]] && ln -sfn "$file" ~/"$bare"
+        ln -sfn "$file" ~/"$bare"
     fi
-done
+done < <(find "$location" -mindepth 1 -name .git -prune -o -print0)
 
 deleted=()
 if [[ -f ~/.dfsha ]]; then
-    mapfile -t deleted < <(git diff --name-status "$(<~/.dfsha)" HEAD | grep -v .vim/bundle | sed -n 's/^D[[:blank:]]//p' | sed 's/\.gpg$//')
+    while IFS= read -r line; do
+        deleted+=("$line")
+    done < <(git diff --name-status "$(<~/.dfsha)" HEAD | grep -v .vim/bundle | sed -n 's/^D[[:blank:]]//p' | sed 's/\.gpg$//')
 fi
 
 if (( "${#deleted[@]}" )); then

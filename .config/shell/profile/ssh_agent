@@ -1,33 +1,33 @@
 command -v ssh-agent >/dev/null 2>&1 || return
-[ -d ~/.ssh/keys ] || return
-[ "$(uname -s)" = Linux ] || return
 
-# We manually create both, so no need to worry about -m only applying to the
-# deepest
-# shellcheck disable=SC2174
-mkdir -m700 -p ~/.ssh ~/.ssh/agents
+if [ "$(uname -s)" = Linux ] && [ -d ~/.ssh/keys ]; then
+    # We manually create both, so no need to worry about -m only applying to the
+    # deepest
+    # shellcheck disable=SC2174
+    mkdir -m700 -p ~/.ssh ~/.ssh/agents
 
-# Execute in subshell to avoid polluting environment
-(
-for key in ~/.ssh/keys/*; do
-    [ -f "$key" ] || continue
+    # Execute in subshell to avoid polluting environment
+    (
+    for key in ~/.ssh/keys/*; do
+        [ -f "$key" ] || continue
 
-    case $key in
-        *.pub) continue ;;
-    esac
+        case $key in
+            *.pub) continue ;;
+        esac
 
-    agent_file=$HOME/.ssh/agents/${key##*/}
+        agent_file=$HOME/.ssh/agents/${key##*/}
 
-    [ -r "$agent_file" ] && . "$agent_file" >/dev/null
+        [ -r "$agent_file" ] && . "$agent_file" >/dev/null
 
-    if [ "$(id -u)" -gt 0 ] && ! ssh-add -l >/dev/null 2>&1; then
-        eval "$(ssh-agent | tee "$agent_file")" >/dev/null
-        ssh-add "$key"
-    fi
-done
-)
+        if [ "$(id -u)" -gt 0 ] && ! ssh-add -l >/dev/null 2>&1; then
+            eval "$(ssh-agent | tee "$agent_file")" >/dev/null
+            ssh-add "$key"
+        fi
+    done
+    )
 
-[ -e ~/.ssh/agents/personal ] && . ~/.ssh/agents/personal >/dev/null
+    [ -e ~/.ssh/agents/personal ] && . ~/.ssh/agents/personal >/dev/null
+fi
 
 stable_auth_dir=/tmp
 [ -d "$XDG_RUNTIME_DIR" ] && stable_auth_dir="$XDG_RUNTIME_DIR"

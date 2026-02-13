@@ -94,9 +94,10 @@ _hostname_prompt() {
 }
 
 _nox_prompt() {
-    if ! _running_on_wsl && ! [ "$SSH_CLIENT" ] && ! [ "$DISPLAY" ]; then
-        colour_part 5 nox
+    if _on_macos || _running_on_wsl || [ "$SSH_CLIENT" ] || [ "$DISPLAY" ]; then
+        return
     fi
+    colour_part 5 nox
 }
 
 _user_prompt() {

@@ -1,5 +1,8 @@
-[build]
+[target.'cfg(target_os = "linux")']
 rustflags = ["-C", "target-cpu=native", "-C", "link-arg=-fuse-ld=mold"]
+
+[target.'cfg(not(target_os = "linux"))']
+rustflags = ["-C", "target-cpu=native"]
 
 [profile.release]
 codegen-units = 1

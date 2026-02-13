@@ -1,6 +1,6 @@
 #!/bin/bash
 
 shopt -s extglob
-shopt -s globstar
+shopt -s globstar 2>/dev/null
 set -o noclobber
 set +o hashall

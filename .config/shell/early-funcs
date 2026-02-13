@@ -12,6 +12,10 @@ use_first_to_exist() {
     return 1
 }
 
+_UNAME_S=$(uname -s)
+_on_macos() { [ "$_UNAME_S" = Darwin ]; }
+_on_linux() { [ "$_UNAME_S" = Linux ]; }
+
 _running_on_wsl() {
     is-wsl
 }

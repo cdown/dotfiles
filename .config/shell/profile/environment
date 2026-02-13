@@ -12,13 +12,23 @@ export NSS_DEFAULT_DB_TYPE=sql
 # If we weren't started by pam_systemd, try to guess so that things like
 # systemctl work
 if [ -z "$XDG_RUNTIME_DIR" ]; then
-    export XDG_RUNTIME_DIR=/run/user/$UID
+    if [ -d "/run/user/$UID" ]; then
+        export XDG_RUNTIME_DIR=/run/user/$UID
+    elif [ -n "$TMPDIR" ]; then
+        export XDG_RUNTIME_DIR="${TMPDIR%/}"
+    fi
+fi
+
+if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 # Allow $config home, which comes from shell init
 # shellcheck disable=SC2154
 {
-    export PATH="$HOME/git/mkosi/bin:/usr/lib/rustup/bin/:/usr/share/bcc/tools:/opt/chefdk/bin:$config_home/local/bin:$config_home/bin:$config_home/.rbenv/bin:$config_home/.local/bin:$HOME/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/local/ittools/arcanist/bin:/usr/texbin:/opt/local/bin:$HOME/.pyenv/bin:$HOME/.cargo/bin"
+    export PATH="$HOME/git/mkosi/bin:/usr/lib/rustup/bin/:/usr/share/bcc/tools:/opt/chefdk/bin:$config_home/local/bin:$config_home/bin:$config_home/.rbenv/bin:$config_home/.local/bin:$HOME/local/bin:$HOME/bin:$HOME/.rbenv/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/platform-tools:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/local/ittools/arcanist/bin:/usr/texbin:/opt/local/bin:$HOME/.pyenv/bin:$HOME/.cargo/bin:$PATH"
     export MAILCAPS=$config_home/.config/mailcap/linux:$HOME/.config/mailcap/linux
 }
 

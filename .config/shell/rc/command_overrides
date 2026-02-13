@@ -6,15 +6,23 @@
 # shellcheck disable=SC2139
 {
 alias grep="$(use_first_to_exist ggrep grep)"
-alias ls="$(use_first_to_exist gls ls) --color=auto -NAp --group-directories-first"
 alias sed="$(use_first_to_exist gsed sed)"
 alias awk="$(use_first_to_exist gawk awk)"
 alias diff="$(use_first_to_exist colordiff diff)"
+if command -v gls >/dev/null 2>&1; then
+    alias ls='gls --color=auto -NAp --group-directories-first'
+elif _on_macos; then
+    alias ls='ls -GAp'
+else
+    alias ls='ls --color=auto -NAp --group-directories-first'
+fi
 }
 
-alias cp='cp --backup=numbered --reflink=auto --sparse=always'
-alias mv='mv --backup=numbered'
-alias ln='ln --backup=numbered'
+if _on_linux; then
+    alias cp='cp --backup=numbered --reflink=auto --sparse=always'
+    alias mv='mv --backup=numbered'
+    alias ln='ln --backup=numbered'
+fi
 alias rg='rg --hidden -i'
 
 alias startx='exec startx -- -dpi 96 &>| /tmp/startx-$USER'
@@ -94,11 +102,15 @@ for tool_full in /usr/share/bcc/tools/*; do
     alias "$tool"='PATH=$(get-path-without-env) sudo '"$tool_full"
 done
 
-alias dmesg='dmesg -T --color=always | less -R +G'
+if _on_linux; then
+    alias dmesg='dmesg -T --color=always | less -R +G'
+fi
 alias mksrcinfo='makepkg --printsrcinfo >| .SRCINFO'
 
 alias hyperfine='sudo nice -n -20 sudo -u "$USER" hyperfine'
 
 alias ncdu='sudo ncdu -x --color off --confirm-quit --exclude /snapshots /'
 
-alias du='du --apparent-size'
+if _on_linux; then
+    alias du='du --apparent-size'
+fi

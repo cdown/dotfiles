@@ -2,6 +2,13 @@
 
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
-if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+for _zsh_hl in \
+    /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+    if [[ -f "$_zsh_hl" ]]; then
+        . "$_zsh_hl"
+        break
+    fi
+done
+unset _zsh_hl
