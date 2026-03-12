@@ -25,9 +25,18 @@ if exists pyenv; then
             # Waiting to install this one...
             continue
         fi
-        pip install -U pip
-        pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' |
-            xargs -d '\n' pip install -U
+        python -m pip install -U pip
+
+        if python -m pip show pipx >/dev/null 2>&1; then
+            comm -23 \
+                <(pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' | sort -u) \
+                <(pipx list --short --include-injected | sort -u) |
+                xargs -r -d '\n' python -m pip install -U
+            pipx upgrade-all
+        else
+            pipdeptree | grep -P '^\w+' | awk -F= '{ print $1 }' | sort -u |
+                xargs -r -d '\n' python -m pip install -U
+        fi
     done < ~/.pyenv/version
 fi
 

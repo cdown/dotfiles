@@ -5,3 +5,5 @@ for env in pyenv rbenv nodenv plenv; do
         eval "$("$env" init - --no-rehash "${0#-}")"
     fi
 done
+
+export PATH="$config_home/.local/bin:$HOME/.local/bin:$PATH"
