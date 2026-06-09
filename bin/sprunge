@@ -1,12 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
-if [[ $1 ]]; then
-    curl -s https://termbin.com/"${1##*/}"
-else
-    # Don't open the socket until ready, "x" needed to avoid stripping trailing newlines
-    stdin=$(cat; printf x)
-    exec 3<>/dev/tcp/termbin.com/9999
-    printf '%s\n' "${stdin%x}" >&3
-    cat <&3
-    exec 3<&-
-fi
+curl --data-binary @- https://paste.rs/
+printf "\n"
